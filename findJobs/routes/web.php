@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::namespace('TrangChu')->group(function (){
+    Route::name('trangchu.')->group(function (){
+        Route::resource('/','TrangChuController');
+        Route::get('/search','TrangChuController@searchInput');
+        Route::get('/chi-tiet-tuyen-dung','TrangChuController@details')->name('chiTietBaiDang');
+        Route::get('/create-post','TrangChuController@create')->name('create');
+    });
+
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

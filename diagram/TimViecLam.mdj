@@ -12814,7 +12814,6 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 160,
-											"top": -48,
 											"height": 13
 										},
 										{
@@ -12826,6 +12825,7 @@
 											"font": "Arial;13;1",
 											"left": 811.5,
 											"top": 531.5,
+											"top": 555.5,
 											"width": 58,
 											"height": 52,
 											"text": "Đăng ký duyệt bài nhanh",
@@ -12840,7 +12840,6 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 160,
-											"top": -48,
 											"width": 148.10986328125,
 											"height": 13,
 											"text": "(from UseCaseTongQuat)"
@@ -12854,14 +12853,13 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 160,
-											"top": -48,
 											"horizontalAlignment": 1,
 											"wordWrap": true
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 806.5,
-									"top": 524.5,
+									"top": 548.5,
 									"width": 68,
 									"height": 64,
 									"stereotypeLabel": {
@@ -12889,7 +12887,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 80,
-									"top": -24,
 									"width": 10,
 									"height": 10
 								},
@@ -12905,7 +12902,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 80,
-									"top": -24,
 									"width": 10,
 									"height": 10
 								},
@@ -12921,7 +12917,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 80,
-									"top": -24,
 									"width": 10,
 									"height": 10
 								},
@@ -12937,7 +12932,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 80,
-									"top": -24,
 									"width": 10,
 									"height": 10
 								},
@@ -12953,7 +12947,6 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 80,
-									"top": -24,
 									"width": 10,
 									"height": 10
 								}
@@ -12961,7 +12954,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 792,
-							"top": 512,
+							"top": 536,
 							"width": 97,
 							"height": 90,
 							"nameCompartment": {
@@ -13162,7 +13155,7 @@
 							"tail": {
 								"$ref": "AAAAAAF0ghJSRfW5xtY="
 							},
-							"points": "824:512;824:384;864:384",
+							"points": "824:536;824:384;864:384",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF0ghTBVglFM5Q="
@@ -17276,7 +17269,7 @@
 											"top": 276,
 											"width": 150.68701171875,
 											"height": 13,
-											"text": "+luong: string",
+											"text": "+luong: double",
 											"horizontalAlignment": 0
 										},
 										{
@@ -17395,7 +17388,7 @@
 											"top": 381,
 											"width": 150.68701171875,
 											"height": 13,
-											"text": "+kinh_nghiem: int",
+											"text": "+kinh_nghiem: float",
 											"horizontalAlignment": 0
 										},
 										{
@@ -17634,7 +17627,7 @@
 											"top": 576,
 											"width": 150.68701171875,
 											"height": 13,
-											"text": "+isTop10: boolean",
+											"text": "+isHot: boolean",
 											"horizontalAlignment": 0
 										}
 									],
@@ -23795,7 +23788,7 @@
 								"$ref": "AAAAAAF0dtyvtj1uJ2s="
 							},
 							"name": "luong",
-							"type": "string"
+							"type": "double"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -23858,7 +23851,7 @@
 								"$ref": "AAAAAAF0dtyvtj1uJ2s="
 							},
 							"name": "kinh_nghiem",
-							"type": "int"
+							"type": "float"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -23983,7 +23976,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF0dtyvtj1uJ2s="
 							},
-							"name": "isTop10",
+							"name": "isHot",
 							"type": "boolean"
 						}
 					]
@@ -25072,9 +25065,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 262,
-											"top": 145,
+											"top": 151.5,
 											"width": 69,
-											"height": 39,
+											"height": 26,
 											"text": "Xem bài tuyển dụng",
 											"wordWrap": true
 										},
@@ -25108,9 +25101,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 257,
-									"top": 138,
+									"top": 144.5,
 									"width": 79,
-									"height": 51,
+									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF0gd/eJ/t5DK8="
 									},
@@ -25309,7 +25302,7 @@
 									"font": "Arial;13;0",
 									"left": 251.5,
 									"top": 212.5,
-									"width": 94.525390625,
+									"width": 94,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF0gd/eJ/uEB5A="
@@ -26294,7 +26287,7 @@
 									"font": "Arial;13;0",
 									"left": 531.5,
 									"top": 116.5,
-									"width": 94.220703125,
+									"width": 94,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAF0gd/eKPvbSoQ="
