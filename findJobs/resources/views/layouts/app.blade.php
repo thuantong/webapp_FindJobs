@@ -15,7 +15,18 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="shortcut icon" href="{{asset('assets\images\animat-diamond-color.gif')}}">
 
+    <!-- plugin css -->
+    <link href="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- App css -->
+    <link href="{{asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+{{--    <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -24,7 +35,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+{{--                    {{ config('app.name', 'Tìm việc online') }}--}}
+                    {{'Tìm việc online'}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -41,31 +53,36 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            @if (strtolower(Route::currentRouteName()) != 'auth.form.login')
+                                    <a class="nav-link" href="{{ route('auth.form.login') }}">{{ __('Đăng nhập') }}</a>
+                            @endif
+
                             </li>
-                            @if (Route::has('register'))
+
+{{--                            @if (Route::has('register') == false)--}}
+                            @if (strtolower(Route::currentRouteName()) != 'auth.form.register')
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('auth.form.register')}}">{{ __('Tạo tài khoản') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+{{--                            <li class="nav-item dropdown">--}}
+{{--                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
+{{--                                    {{ Auth::user()->name }}--}}
+{{--                                </a>--}}
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+{{--                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
+{{--                                    <a class="dropdown-item" href="{{ route('logout') }}"--}}
+{{--                                       onclick="event.preventDefault();--}}
+{{--                                                     document.getElementById('logout-form').submit();">--}}
+{{--                                        {{ __('Logout') }}--}}
+{{--                                    </a>--}}
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+{{--                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
+{{--                                        @csrf--}}
+{{--                                    </form>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
                         @endguest
                     </ul>
                 </div>
@@ -76,5 +93,24 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{asset('assets\js\vendor.min.js')}}"></script>
+
+    <script src="{{asset('assets\libs\apexcharts\apexcharts.min.js')}}"></script>
+    <script src="{{asset('assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>
+    {{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
+    {{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js')}}"></script>--}}
+
+    <!-- Peity chart-->
+    <script src="{{asset('assets\libs\peity\jquery.peity.min.js')}}"></script>
+    <script src="{{asset('assets\js\chat-js-customs.js')}}"></script>
+    <script src="{{asset('assets\js\croppie\croppie.js')}}"></script>
+
+    <!-- init js -->
+    {{--<script src="{{asset('assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
+
+    <!-- App js -->
+    <script src="{{asset('assets\js\app.min.js')}}"></script>
+    @stack('scripts')
+    <script src="{{asset('assets\js\customs-js-mine.js')}}"></script>
 </body>
 </html>

@@ -1,25 +1,25 @@
 @extends('master.index')
 @section('content')
-{{--                    <!-- start page title -->//header--}}
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box">
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Minton</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Layouts</a></li>
-                                        <li class="breadcrumb-item active">Preloader</li>
-                                    </ol>
-                                </div>
-                                <h4 class="page-title">Preloader</h4>
-                            </div>
-                        </div>
-                    </div>
+    {{--                    <!-- start page title -->//header--}}
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a>Minton</a></li>
+                        <li class="breadcrumb-item"><a>Layouts</a></li>
+                        <li class="breadcrumb-item active">Preloader</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Preloader</h4>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
             <div class="card overflow-auto-scroll">
                 <div class="card-body" id="container-items">
-{{--                    <div class="processing-input d-none">Đang tìm kiếm...</div>--}}
+                    {{--                    <div class="processing-input d-none">Đang tìm kiếm...</div>--}}
 
                 </div>
             </div>
@@ -39,10 +39,14 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
                         <div class="row center-element text-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <button class="btn btn-outline-primary far fa-thumbs-up" id="trang-chu-like-post"> Like</button>
-                                <button class="btn btn-outline-info fab fa-rocketchat" title="Chat với nhà tuyển dụng"> Chat</button>
+                                <button class="btn btn-outline-primary far fa-thumbs-up" id="trang-chu-like-post">
+                                    Like
+                                </button>
+                                <button class="btn btn-outline-info fab fa-rocketchat" title="Chat với nhà tuyển dụng">
+                                    Chat
+                                </button>
 
-{{--                                <button class="btn btn-primary far fa-eye">Quan tâm</button>--}}
+                                {{--                                <button class="btn btn-primary far fa-eye">Quan tâm</button>--}}
                                 <button class="btn btn-outline-warning far fa-file-archive"> Nộp đơn</button>
                                 <button class="btn btn-outline-primary fas fa-exclamation-triangle"> Báo cáo</button>
 
@@ -185,13 +189,13 @@
 @endsection
 @push('scripts')
     <script>
-        function getItemsDefaults(elementResponse){
+        function getItemsDefaults(elementResponse) {
             $.ajax({
-                method:'get',
-                url:'/search',
-                beforeSend: function() {
+                method: 'get',
+                url: '/search',
+                beforeSend: function () {
                     // setting a timeout
-                    if(!elementResponse.find("div").hasClass('processing-input')){
+                    if (!elementResponse.find("div").hasClass('processing-input')) {
                         elementResponse.append('<div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">\n' +
                             '                                                        Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>\n' +
                             '                                                        \n' +
@@ -215,21 +219,21 @@
 
         $(function () {
             getItemsDefaults($('#container-items'));
-            $('#container-items').parents().on('scroll',function () {
+            $('#container-items').parents().on('scroll', function () {
                 let x = $(this).prop('scrollHeight');
                 let vitri = parseFloat(x) - parseFloat(Math.abs($(this).height()));
 
-                if(parseInt(vitri) == $(this).scrollTop()){
+                if (parseInt(vitri) == $(this).scrollTop()) {
                     getItemsDefaults($('#container-items'));
                     return;
                 }
             })
 //like
-            $('#trang-chu-like-post').on('click',function () {
-                if($(this).hasClass('btn-outline-primary') == true){
+            $('#trang-chu-like-post').on('click', function () {
+                if ($(this).hasClass('btn-outline-primary') == true) {
                     $(this).removeClass('btn-outline-primary');
                     $(this).addClass('btn-primary');
-                }else if($(this).hasClass('btn-primary')){
+                } else if ($(this).hasClass('btn-primary')) {
                     $(this).removeClass('btn-primary');
                     $(this).addClass('btn-outline-primary');
                 }

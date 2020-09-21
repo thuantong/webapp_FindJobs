@@ -131,3 +131,13 @@ a:hover{
 /*.did{*/
 /*    height: auto;!important;*/
 /*}*/
+#avatar-user:active{
+    border: 1px black solid;
+}
+.btn-top-right{
+    top:5px!important;
+    right: 5px!important;
+}
+.irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-single{
+    font-size: 12px!important;
+}

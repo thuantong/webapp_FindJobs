@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{asset('assets\images\animat-diamond-color.gif')}}">
@@ -15,7 +16,20 @@
 
     <!-- App css -->
     <link href="{{asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">
+{{--    <link href="{{asset('assets\icon\font-awesome\font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\themify-icons\themify-icons.css')}}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\font-awesome\css\font-awesome.min.css')}}">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\icofont\css\icofont.css')}}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">
+        <link href="{{asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
+
+<!-- Jquery Toast css -->
+    <link href="assets\libs\jquery-toast\jquery.toast.min.css" rel="stylesheet" type="text/css">
+{{--        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
 
@@ -41,7 +55,6 @@
     <!-- Topbar Start -->
     <div class="navbar-custom">
 
-
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
             <li class="dropdown notification-list">
@@ -55,7 +68,7 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#"
                    role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="fe-bell noti-icon"></i>
+                    <i class="icofont icofont-bell-alt noti-icon"></i>
                     <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
@@ -151,19 +164,20 @@
                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="assets\images\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1">
-                                Nik Patel <i class="mdi mdi-chevron-down"></i>
+                                {{Auth::user()->ho_ten}} <i class="icofont icofont-caret-down"></i>
                             </span>
                 </a>
+
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
+                        <h6 class="text-overflow text-center m-0">{{Auth::user()->ho_ten}}</h6>
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{route('user.nguoiTimViec')}}" class="dropdown-item notify-item">
                         <i class="remixicon-account-circle-line"></i>
-                        <span>My Account</span>
+                        <span>Thông tin tài khoản</span>
                     </a>
 
                     <!-- item-->
@@ -185,12 +199,22 @@
                     </a>
 
                     <div class="dropdown-divider"></div>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a class="dropdown-item  notify-item"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                         <i class="remixicon-logout-box-line"></i>
-                        <span>Logout</span>
+                        <span>Đăng xuất</span>
+{{--                        {{ __('Logout') }}--}}
                     </a>
+
+                    <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    <!-- item-->
+{{--                    <a href=""  class="dropdown-item notify-item">--}}
+{{--                        <i class="remixicon-logout-box-line"></i>--}}
+{{--                        <span>Logout</span>--}}
+{{--                    </a>--}}
 
                 </div>
             </li>
@@ -201,7 +225,7 @@
 
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
             <li>
-                <a href="index.html" class="nav-link logo text-center">
+                <a href="/" class="nav-link logo text-center">
                         <span class="logo-lg">
                             <img src="assets\images\logo-sm.png" alt="" height="24">
 {{--                            <img src="assets\images\logo-light.png" alt="" height="20">--}}
@@ -215,7 +239,7 @@
             </li>
             <li>
                 <button class="button-menu-mobile waves-effect waves-light">
-                    <i class="fe-menu"></i>
+                    <i class="icofont icofont-navigation-menu"></i>
                 </button>
             </li>
 
@@ -906,9 +930,17 @@
 <script src="{{asset('assets\libs\peity\jquery.peity.min.js')}}"></script>
 <script src="{{asset('assets\js\chat-js-customs.js')}}"></script>
 
+<!-- Tost-->
+<script src="assets\libs\jquery-toast\jquery.toast.min.js"></script>
+
+<!-- toastr init js-->
+<script src="assets\js\pages\toastr.init.js"></script>
 <!-- init js -->
 {{--<script src="{{asset('assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
+<!-- Modal-Effect -->
+<script src="{{asset('assets\libs\custombox\custombox.min.js')}}"></script>
 
+<script src="{{asset('assets\js\croppie\croppie.js')}}"></script>
 <!-- App js -->
 <script src="{{asset('assets\js\app.min.js')}}"></script>
 <script src="{{asset('assets\js\customs-js-mine.js')}}"></script>

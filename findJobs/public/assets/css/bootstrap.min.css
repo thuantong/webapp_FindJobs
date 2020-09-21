@@ -5427,7 +5427,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     display: inline-block;
     padding-right: .5rem;
     color: #ced4da;
-    content: ""
+    content: "/"
 }
 
 .breadcrumb-item + .breadcrumb-item:hover::before {
@@ -10882,6 +10882,19 @@ a.bg-purple:focus, a.bg-purple:hover, button.bg-purple:focus, button.bg-purple:h
 }
 
 @media (min-width: 576px) {
+    .text-sm-left {
+        text-align: left !important
+    }
+
+    .text-sm-right {
+        text-align: right !important
+    }
+
+    .text-sm-center {
+        text-align: center !important
+    }
+}
+@media (max-width: 576px) {
     .text-sm-left {
         text-align: left !important
     }

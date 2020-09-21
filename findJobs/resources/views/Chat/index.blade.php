@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 container-chat">
+<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 d-none container-chat">
     <div class="row" style="background-color: rgba(95,152,255,1);z-index: 0">
         <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 header-chat" >
             <h5>Nguyễn thái sươn</h5>
