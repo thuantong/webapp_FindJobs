@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Traits\StoredJobsTrait;
 use Illuminate\Http\Request;
 use App\Models\JobsModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TrangChuController extends Controller
@@ -17,6 +18,9 @@ class TrangChuController extends Controller
     }
 
     public function index(){
+        if (Auth::user()->loai == 3){
+            dd('trang admin');
+        }
         return view('TrangChu.index');
     }
     public function searchInput(Request $request){

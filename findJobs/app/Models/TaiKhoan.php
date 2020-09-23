@@ -52,5 +52,9 @@ class TaiKhoan extends Authenticatable
     public function nha_tuyen_dungs(){
         return $this->hasOne(NhaTuyenDung::class,'tai_khoan_id');
     }
+    public function getPhanQuyenIdsAttribute()
+    {
+        return $this->phan_quyens->pluck('id');
+    }
 
 }

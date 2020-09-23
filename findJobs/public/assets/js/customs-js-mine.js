@@ -91,14 +91,14 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
             data: arrayData,
             headers: headerCus,
             success: function (res) {
-                    console.log(res)
+                    // console.log(res)
                 if (res.status == 200) {
                     elementIDToSave.html(buttonText);
                     elementIDToSave.removeAttr('disabled').html(buttonText);
 
                     let elementID = elementIDToSave.attr('id');
                     $.toast({
-                        heading: res.status_text.toLowerCase(),
+                        heading: res.title + ' ' + res.status_text.toLowerCase(),
                         hideAfter: 2000,
                         icon: 'success',
                         loaderBg: '#5ba035',
@@ -120,7 +120,7 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
                         v.addClass('test');
                     });
                     $.toast({
-                        heading: res.status_text.toLowerCase(),
+                        heading: res.title + ' ' + res.status_text.toLowerCase(),
                         hideAfter: 3000,
                         icon: 'error',
                         loaderBg: 'red',

@@ -34,9 +34,11 @@
     <link href="{{asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
 
 </head>
-
+{{--@if(Route::currentRouteName() == 'user.nguoiTimViec')--}}
+{{--<body class="enlarged">--}}
+{{--@else--}}
 <body>
-
+{{--@endif--}}
 <!-- Pre-loader -->
 <div id="preloader">
     <div id="status">

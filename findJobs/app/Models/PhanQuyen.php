@@ -14,6 +14,10 @@ class PhanQuyen extends Model
     {
         return $this->belongsToMany(TaiKhoan::class, 'loai_tai_khoan','role_id','account_id');
     }
+    public function getTaiKhoanIdsAttribute()
+    {
+        return $this->tai_khoans->pluck('id');
+    }
 //    protected $attributes = [
 //        'status' => 1,
 //    ];

@@ -55,4 +55,5 @@ trang quan tri
 <script src="{{asset('assets\js\app.min.js')}}"></script>
 <script src="{{asset('assets\js\customs-js-mine.js')}}"></script>
 <script src="{{asset('assets\js\croppie\croppie.js')}}"></script>
+@stack('scripts')
 </html>

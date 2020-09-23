@@ -48,7 +48,13 @@ Route::namespace('User')->group(function () {
         Route::post('/user-set-avatar', 'UserController@setAvatar');
         Route::post('/doi-mat-khau', 'UserController@doiMatKhau')->name('doiMatKhau');
         Route::get('/user-skill-view','UserController@getViewSkill');
+        Route::get('/user-skill-view-append','UserController@getViewSkillAppend');
         Route::post('/user-skill-update','UserController@upDateSkill');
+
+        //nguoi tim viec
+        Route::get('/nguoi-tim-viec/project-view','UserController@projectView')->name('projectView');
+        Route::get('/nguoi-tim-viec/project-view/add','UserController@projectView')->name('projectAdd');
+        Route::get('/nguoi-tim-viec/project-view/get-project-status','UserController@getHtmlProjectStatus');
     });
 });
 //Auth::routes();
@@ -58,6 +64,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::namespace('PhanQuyen')->group(function () {
     Route::name('phanquyen.')->group(function () {
         Route::resource('/phan-quyen', 'PhanQuyenController');
+        Route::post('/phan-quyen-setter', 'PhanQuyenController@setPhanQuyen')->name('setter');
     });
 
 });
+
+Route::get('/khong-tim-thay-trang','ErrorController@func404');

@@ -189,6 +189,10 @@
 @endsection
 @push('scripts')
     <script>
+        // var body = document.body;
+        //
+        // body.classList.add("enlarged");
+        // $('body').addClass('enlarged');
         function getItemsDefaults(elementResponse) {
             $.ajax({
                 method: 'get',
@@ -218,6 +222,7 @@
 
 
         $(function () {
+
             getItemsDefaults($('#container-items'));
             $('#container-items').parents().on('scroll', function () {
                 let x = $(this).prop('scrollHeight');
@@ -239,6 +244,7 @@
                 }
 
             });
+
         });
     </script>
 @endpush

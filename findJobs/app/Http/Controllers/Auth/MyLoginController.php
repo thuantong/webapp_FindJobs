@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\TaiKhoan;
 use App\Traits\LoginTrait;
 use Illuminate\Http\Request;
 //use Illuminate\Http\JsonResponse;
 //use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,12 +38,16 @@ class MyLoginController extends Controller
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
-//        dd($request->all(),$request->session()->all());
-//        if ($response = $this->authenticated($request, $this->guard()->user())) {
-//            return $response;
-//        }
-            return redirect('/');
+        $getRole = TaiKhoan::query()->find(Auth::user()->id)->getPhanQuyenIdsAttribute();
+        Session::put('role',$getRole->toArray());
 
+        if (Auth::user()->loai == 1){
+            return redirect('/');
+        }elseif (Auth::user()->loai == 2){
+            dd('nhà tuyển dụng');
+        }elseif (Auth::user()->loai == 3){
+            dd('trang admin');
+        }
     }
     protected function sendFailedLoginResponse(Request $request)
     {
