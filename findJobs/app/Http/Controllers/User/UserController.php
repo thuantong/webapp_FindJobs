@@ -6,12 +6,13 @@ use App\Models\TaiKhoan;
 use App\Traits\NguoiTimViecTrait;
 use App\Http\Controllers\Controller;
 use App\Models\NguoiTimViec;
+use App\Traits\NhaTuyenDungTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    use NguoiTimViecTrait;
+    use NguoiTimViecTrait,NhaTuyenDungTrait;
     public function __construct()
     {
         $this->middleware('auth');
@@ -20,19 +21,11 @@ class UserController extends Controller
     public function index(){
 
     }
-    public function getEmployee(Request $request){
-//        $query = TaiKhoan::query()->find(Auth::user()->id)->phan_quyens();
-//        dd($query->toSql());
-        $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->first();
 
-        return view('User.nguoiTimViec',compact('nguoiTimViec'));
-    }
     public function setEmployee(){
 
     }
-    public function getEmployer(){
 
-    }
 
     public function setEmployer(){
 

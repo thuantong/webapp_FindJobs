@@ -38,15 +38,15 @@ $(function () {
 const getErrorRespone = (res) => {
     // $('input[name]')
 };
-$(document).on('hidden.bs.modal',function () {
-    $('input').val('').trigger('input');
-});
+// $(document).on('hidden.bs.modal',,function () {
+//     $('input').val('').trigger('input');
+// });
 
 
 const getResponseAjax = (method, url, arrayData, arrayCustom) => {
     let headerCus = '';
 
-    let elementIDToSave = $('#'+arrayCustom.beforeSendElement);
+    let elementIDToSave = $('#' + arrayCustom.beforeSendElement);
     let newArray = [];
     let items = {};
     let errorCount = 0;
@@ -54,7 +54,7 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
     let response_func = '';
     // console.log(arrayData == '');
     // console.log(arrayData == '');
-    if(arrayCustom == ''){
+    if (arrayCustom == '') {
         $.each(arrayCustom, function (index, value) {
 
             if (arrayData.hasOwnProperty(index)) {
@@ -65,15 +65,15 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
 
     newArray.push(items);
 
-    $.each(elementIDToSave.parents('.modal').find('input').not('input[type="hidden"]'),function (i,v) {
-        if($(v).val() == null || $(v).val() == ''){
+    $.each(elementIDToSave.parents('.modal').find('input').not('input[type="hidden"]'), function (i, v) {
+        if ($(v).val() == null || $(v).val() == '') {
             errorCount++;
             $(v).addClass('is-invalid');
             $(v).parent().find('.invalid-feedback strong').text($(v).attr('title') + ' ' + 'không được để trống');
         }
     });
 
-    if(errorCount == 0){
+    if (errorCount == 0) {
         switch (method.toLowerCase()) {
             case 'post':
                 headerCus = {
@@ -83,7 +83,8 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
             case 'get':
                 headerCus = {};
                 break;
-        };
+        }
+        ;
 
         $.ajax({
             method: method,
@@ -91,7 +92,7 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
             data: arrayData,
             headers: headerCus,
             success: function (res) {
-                    // console.log(res)
+                // console.log(res)
                 if (res.status == 200) {
                     elementIDToSave.html(buttonText);
                     elementIDToSave.removeAttr('disabled').html(buttonText);
@@ -105,17 +106,17 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
                         position: 'top-right',
                         stack: 1,
                         // text: 'Bạn vừa ' + arrayCustom.resHeading.toLowerCase() + ' ' + res.status_text.toLowerCase() + '!',
-                        text: res.message.toUpperCase()+'!',
+                        text: res.message.toUpperCase() + '!',
                     });
                     let modalID = $('#' + elementID).parents('.modal').attr('id');
                     $('#' + modalID).modal('hide');
                 } else if (res.status == 400) {
-                    if (res.reset == 1){
+                    if (res.reset == 1) {
                         $('input').val('').trigger('input');
                     }
-                    elementIDToSave.attr('id',arrayCustom.beforeSendElement).html(buttonText);
+                    elementIDToSave.attr('id', arrayCustom.beforeSendElement).html(buttonText);
                     elementIDToSave.removeAttr('disabled').html(buttonText);
-                    $.each(newArray[0],function (i,v) {
+                    $.each(newArray[0], function (i, v) {
 
                         v.addClass('test');
                     });
@@ -126,7 +127,7 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
                         loaderBg: 'red',
                         position: 'top-right',
                         stack: 1,
-                        text: res.message.toUpperCase()+'!',
+                        text: res.message.toUpperCase() + '!',
                         // text: 'Bạn vừa ' + arrayCustom.resHeading.toLowerCase() + ' ' + res.status_text.toLowerCase() + '!',
                     });
                 }
@@ -134,10 +135,46 @@ const getResponseAjax = (method, url, arrayData, arrayCustom) => {
             },
             beforeSend: function (xhr) {
                 elementIDToSave.html('<span class="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true"></span>');
-                elementIDToSave.attr('disabled','disabled');
+                elementIDToSave.attr('disabled', 'disabled');
             },
         });
 
     }
 
 };
+
+const lichNgay = (res) => {
+    return res.datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        language: 'vi',
+
+    });
+};
+
+const lichThang = (res) => {
+    return res.datepicker({
+        viewMode: "months",
+        minViewMode: "months",
+        format: 'mm/yyyy',
+        autoclose: true,
+        language: 'vi'
+    });
+};
+
+// $(document).on('focus', 'input,textarea', function () {
+//     $(this).focus();
+// });
+
+$('textarea').each(function () {
+    if($(this).val() == ''){
+        this.setAttribute('style','overflow-y:hidden;');
+    }else{
+        this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+    }
+}).on('input', function () {
+
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight)+10 + 'px';
+});
+

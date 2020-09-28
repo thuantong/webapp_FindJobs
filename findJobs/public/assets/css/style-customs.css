@@ -141,3 +141,22 @@ a:hover{
 .irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-single{
     font-size: 12px!important;
 }
+.scroll-fixed-top{
+    position: fixed;
+    top: 70px;
+    right: 0;
+    z-index: 5;
+}
+.check-null{
+    border: 1px solid #ced4da
+}
+
+.check-null.is-invalid{
+    border: 1px #f1556c solid;
+}
+.modal textarea{
+    min-height: 10px;
+}
+textarea{
+    resize: none!important;
+}

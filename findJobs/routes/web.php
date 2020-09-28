@@ -42,19 +42,19 @@ Route::namespace('User')->group(function () {
     Route::name('user.')->group(function () {
         Route::resource('/user', 'UserController');
         Route::get('/nguoi-tim-viec', 'UserController@getEmployee')->name('nguoiTimViec');
-        Route::get('/user-employer', 'UserController@getEmployer');
+//        Route::get('/user-employer', 'UserController@getEmployer');
         Route::get('/user-set-employer', 'UserController@setEmployee');
         Route::get('/user-set-employer', 'UserController@setEmployer');
         Route::post('/user-set-avatar', 'UserController@setAvatar');
-        Route::post('/doi-mat-khau', 'UserController@doiMatKhau')->name('doiMatKhau');
+        Route::post('/doi-mat-khau', 'UserController@doiMatKhauNtv')->name('doiMatKhau');
         Route::get('/user-skill-view','UserController@getViewSkill');
         Route::get('/user-skill-view-append','UserController@getViewSkillAppend');
-        Route::post('/user-skill-update','UserController@upDateSkill');
-
         //nguoi tim viec
         Route::get('/nguoi-tim-viec/project-view','UserController@projectView')->name('projectView');
-        Route::get('/nguoi-tim-viec/project-view/add','UserController@projectView')->name('projectAdd');
-        Route::get('/nguoi-tim-viec/project-view/get-project-status','UserController@getHtmlProjectStatus');
+        Route::get('/nguoi-tim-viec/project-view/get-exp-html','UserController@getHtmlExp');
+        Route::post('/nguoi-tim-viec/update','UserController@setNguoiTimViec');
+
+        Route::get('/nha-tuyen-dung','UserController@getEmployer')->name('nhaTuyendung');
     });
 });
 //Auth::routes();
@@ -69,4 +69,4 @@ Route::namespace('PhanQuyen')->group(function () {
 
 });
 
-Route::get('/khong-tim-thay-trang','ErrorController@func404');
+Route::get('/khong-tim-thay-trang','ErrorController@func404')->name('notFoundRoute');

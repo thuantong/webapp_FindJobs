@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Đăng nhập') }}
                                 </button>
@@ -65,7 +65,20 @@
                                 @endif
                             </div>
                         </div>
+
+
                     </form>
+                    <div class="text-center">
+                        <h5 class="mt-3 text-muted">{{__('Đăng nhập với')}}</h5>
+                        <ul class="social-list list-inline mt-3 mb-0">
+                            <li class="list-inline-item">
+                                <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

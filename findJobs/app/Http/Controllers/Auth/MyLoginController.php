@@ -44,7 +44,7 @@ class MyLoginController extends Controller
         if (Auth::user()->loai == 1){
             return redirect('/');
         }elseif (Auth::user()->loai == 2){
-            dd('nhà tuyển dụng');
+            return redirect()->route('user.nhaTuyendung');
         }elseif (Auth::user()->loai == 3){
             dd('trang admin');
         }

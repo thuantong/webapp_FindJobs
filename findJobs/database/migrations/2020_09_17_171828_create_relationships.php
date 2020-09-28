@@ -42,8 +42,8 @@ class CreateRelationships extends Migration
         Schema::table('bai_tuyen_dung', function (Blueprint $table) {
             $table->foreign('kieu_lam_viec_id')->references('id')->on('kieu_lam_viec')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('chuc_vu_id')->references('id')->on('chuc_vu')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('nganh_nghe_id')->references('id')->on('nganh_nghe')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('nha_tuyen_dung_id')->references('id')->on('nha_tuyen_dung')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('nganh_nghe_id')->references('id')->on('nganh_nghe')->onDelete('no action')->onUpdate('no action');
+            $table->foreign('nha_tuyen_dung_id')->references('id')->on('nha_tuyen_dung')->onDelete('no action')->onUpdate('no action');
         });
         Schema::table('duyet_tin', function (Blueprint $table) {
             $table->foreign('bai_dang_id')->references('id')->on('bai_tuyen_dung')->onDelete('cascade')->onUpdate('cascade');
