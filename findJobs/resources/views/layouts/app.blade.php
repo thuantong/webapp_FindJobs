@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
+{{--    <title>TMTJobs</title>--}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,7 +20,13 @@
 
     <!-- plugin css -->
     <link href="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\themify-icons\themify-icons.css')}}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\font-awesome\css\font-awesome.min.css')}}">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\icofont\css\icofont.css')}}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\feather\css\feather.css')}}">
     <!-- App css -->
     <link href="{{asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 {{--    <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
@@ -30,11 +37,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-image: url('{{asset('images/background-JOBS.jpg')}}')!important;">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand text-white" href="{{ url('/') }}">
 {{--                    {{ config('app.name', 'Tìm việc online') }}--}}
                     {{'Tìm việc online'}}
                 </a>
@@ -54,7 +61,7 @@
                         @guest
                             <li class="nav-item">
                             @if (strtolower(Route::currentRouteName()) != 'auth.form.login')
-                                    <a class="nav-link" href="{{ route('auth.form.login') }}">{{ __('Đăng nhập') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('auth.form.login') }}">{{ __('Đăng nhập') }}</a>
                             @endif
 
                             </li>
@@ -62,7 +69,7 @@
 {{--                            @if (Route::has('register') == false)--}}
                             @if (strtolower(Route::currentRouteName()) != 'auth.form.register')
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('auth.form.register')}}">{{ __('Tạo tài khoản') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('auth.form.register')}}">{{ __('Tạo tài khoản') }}</a>
                                 </li>
                             @endif
                         @else

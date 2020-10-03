@@ -11,4 +11,7 @@ class NganhNghe extends Model
     public $timestamps = true;
     protected $fillable = ['name', 'mo_ta'];
     //
+//    public function nh(){
+//        return $this->belongsTo(TaiKhoan::class,'tai_khoan_id');
+//    }
 }

@@ -16,7 +16,7 @@
         </td>
     </tr>
 @elseif($type == 1)
-    @if($nguoiTimViec)
+    @if($nguoiTimViec['projects'] != null)
         @foreach(unserialize($nguoiTimViec['projects']) as $row)
             <tr>
                 <td>{{$row['id']}}</td>

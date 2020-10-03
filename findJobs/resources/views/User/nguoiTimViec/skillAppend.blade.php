@@ -14,7 +14,7 @@
         <input type="text" class="skill_append" data-value="{{__('NULL')}}">
     </div>
 @elseif($typeSend == 1)
-    @if($nguoiTimViec)
+    @if($nguoiTimViec['ky_nang'] != null)
 
         @foreach(unserialize($nguoiTimViec['ky_nang']) as $row)
             <div class="pt-1 skill">

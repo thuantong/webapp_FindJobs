@@ -55,8 +55,25 @@ Route::namespace('User')->group(function () {
         Route::post('/nguoi-tim-viec/update','UserController@setNguoiTimViec');
 
         Route::get('/nha-tuyen-dung','UserController@getEmployer')->name('nhaTuyendung');
+        Route::post('/nha-tuyen-dung/set-logo-company','UserController@setLogoCongTy')->name('setLogoCongTy');
+        Route::get('/nha-tuyen-dung/confirm-email','UserController@confirmEmailNhaTuyenDung')->name('nhaTuyenDung.confirmEmail');
+        Route::post('/nha-tuyen-dung/update','UserController@updateNhaTuyenDung')->name('nhaTuyenDung.update');
     });
 });
+
+Route::namespace('BaiViet')->group(function (){
+    Route::name('baiviet.')->group(function (){
+        Route::resource('/dang-bai-viet','BaiVietController');
+    });
+});
+
+Route::namespace('CongTy')->group(function (){
+    Route::name('congty.')->group(function (){
+        Route::get('/danh-sach-cong-ty','CongTyController@index')->name('index');
+        Route::get('/danh-sach-cong-ty/data','CongTyController@getDanhSach')->name('getdanhsach');
+    });
+});
+
 //Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -69,4 +86,4 @@ Route::namespace('PhanQuyen')->group(function () {
 
 });
 
-Route::get('/khong-tim-thay-trang','ErrorController@func404')->name('notFoundRoute');
+//Route::get('/khong-tim-thay-trang','ErrorController@func404')->name('notFoundRoute');

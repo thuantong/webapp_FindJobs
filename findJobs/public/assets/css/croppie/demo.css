@@ -234,8 +234,8 @@ pre[class*="language"] {
     display: inline-block;
 }
 .upload-demo-wrap {
-    width: 300px;
-    height: 300px;
+    /*width: 300px;*/
+    height: 400px;
     margin: 0 auto;
 }
 

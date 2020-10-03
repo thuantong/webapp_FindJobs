@@ -16,5 +16,7 @@ class BaiTuyenDung extends Model
         'status' => 0,
         'gioi_tinh' => 1,
     ];
-    //
+    public function getNhaTuyenDung(){
+        return $this->belongsTo(NhaTuyenDung::class,'nha_tuyen_dung_id');
+    }
 }

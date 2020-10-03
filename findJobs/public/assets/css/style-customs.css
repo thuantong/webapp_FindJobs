@@ -119,11 +119,15 @@ div.overflow-auto-scroll{
 }
 
 .center-element{
-    justify-content: center;align-items: center;display: flex
+    justify-content: center;
+    align-items: center;
+    display: flex
 }
 a:hover{
     cursor: pointer;
-    /*text-decoration: underline!important;*/
+}
+a:active{
+    text-decoration: underline!important;
 }
 .container-chat{
     width: 300px;height: 400px;bottom: 1%;position: fixed;right: 10px;z-index: 10
@@ -146,6 +150,7 @@ a:hover{
     top: 70px;
     right: 0;
     z-index: 5;
+
 }
 .check-null{
     border: 1px solid #ced4da
@@ -159,4 +164,17 @@ a:hover{
 }
 textarea{
     resize: none!important;
+}
+.cr-viewport{
+    width: 400px;
+    height: 350px;
+}
+select option{
+    text-align: center;
+}
+.modal:nth-of-type(even) {
+    z-index: 1052 !important;
+}
+.modal-backdrop.show:nth-of-type(even) {
+    z-index: 1051 !important;
 }

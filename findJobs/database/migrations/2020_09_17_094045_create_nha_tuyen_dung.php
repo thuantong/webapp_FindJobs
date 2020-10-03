@@ -28,7 +28,7 @@ class CreateNhaTuyenDung extends Migration
             $table->text('avatar')->nullable();
             $table->smallInteger('status')->nullable();
             $table->bigInteger('bai_dang_id')->unsigned()->nullable();
-            $table->integer('nganh_nghe_id')->unsigned()->nullable();
+            $table->text('nganh_nghe_id')->nullable();
             $table->bigInteger('tai_khoan_id')->unsigned()->nullable();
             $table->timestamps();
         });

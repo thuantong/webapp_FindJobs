@@ -2,36 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Tìm việc làm</title>
+    <title>{{ config('app.name') }}</title>
+
+{{--    <title>Tìm việc làm</title>--}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('assets\images\animat-diamond-color.gif')}}">
+    <link rel="shortcut icon" href="{{URL::asset('assets\images\animat-diamond-color.gif')}}">
 
     <!-- plugin css -->
-    <link href="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">
 
     <!-- App css -->
-    <link href="{{asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-{{--    <link href="{{asset('assets\icon\font-awesome\font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
-    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\themify-icons\themify-icons.css')}}">
+    <link href="{{URL::asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    {{--    <link href="{{asset('assets\icon\font-awesome\font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\themify-icons\themify-icons.css')}}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\font-awesome\css\font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\font-awesome\css\font-awesome.min.css')}}">
     <!-- ico font -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\icofont\css\icofont.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\icofont\css\icofont.css')}}">
     <!-- feather Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">
-        <link href="{{asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\feather\css\feather.css')}}">
+    <link href="{{URL::asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
 
-<!-- Jquery Toast css -->
-    <link href="assets\libs\jquery-toast\jquery.toast.min.css" rel="stylesheet" type="text/css">
-{{--        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
-    <link href="{{asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
+    <!-- Jquery Toast css -->
+    <link href="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
+    {{--        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{URL::asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
 
 </head>
 {{--@if(Route::currentRouteName() == 'user.nguoiTimViec')--}}
@@ -164,7 +166,7 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="assets\images\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                    <img src="@if(Session::get('avatar') != null){{URL::asset(Session::get('avatar'))}}@elseif(Session::get('avatar') == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif" alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1">
                                 {{Auth::user()->ho_ten}} <i class="icofont icofont-caret-down"></i>
                             </span>
@@ -177,7 +179,8 @@
                     </div>
 
                     <!-- item-->
-                    <a href="@if(Auth::user()->loai == 1){{route('user.nguoiTimViec')}}@elseif(Auth::user()->loai == 2){{route('user.nhaTuyendung')}}@endif" class="dropdown-item notify-item">
+                    <a href="@if(Auth::user()->loai == 1){{route('user.nguoiTimViec')}}@elseif(Auth::user()->loai == 2){{route('user.nhaTuyendung')}}@endif"
+                       class="dropdown-item notify-item">
                         <i class="remixicon-account-circle-line"></i>
                         <span>Thông tin tài khoản</span>
                     </a>
@@ -206,17 +209,17 @@
                                                      document.getElementById('logout-form').submit();">
                         <i class="remixicon-logout-box-line"></i>
                         <span>Đăng xuất</span>
-{{--                        {{ __('Logout') }}--}}
+                        {{--                        {{ __('Logout') }}--}}
                     </a>
 
                     <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                     <!-- item-->
-{{--                    <a href=""  class="dropdown-item notify-item">--}}
-{{--                        <i class="remixicon-logout-box-line"></i>--}}
-{{--                        <span>Logout</span>--}}
-{{--                    </a>--}}
+                    {{--                    <a href=""  class="dropdown-item notify-item">--}}
+                    {{--                        <i class="remixicon-logout-box-line"></i>--}}
+                    {{--                        <span>Logout</span>--}}
+                    {{--                    </a>--}}
 
                 </div>
             </li>
@@ -355,8 +358,8 @@
     <!-- end Topbar -->
 
     <!-- ========== Left Sidebar Start ========== -->
-    @include('master.nav')
-    <!-- Left Sidebar End -->
+@include('master.nav')
+<!-- Left Sidebar End -->
 
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
@@ -450,47 +453,35 @@
 <div class="rightbar-overlay"></div>
 
 <!-- Vendor js -->
-<script src="{{asset('assets\js\vendor.min.js')}}"></script>
+<script src="{{URL::asset('assets\js\vendor.min.js')}}"></script>
 
-<script src="{{asset('assets\libs\apexcharts\apexcharts.min.js')}}"></script>
-<script src="{{asset('assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>
+<script src="{{URL::asset('assets\libs\apexcharts\apexcharts.min.js')}}"></script>
+<script src="{{URL::asset('assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>
 {{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
 {{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js')}}"></script>--}}
 
 <!-- Peity chart-->
-<script src="{{asset('assets\libs\peity\jquery.peity.min.js')}}"></script>
-<script src="{{asset('assets\js\chat-js-customs.js')}}"></script>
+<script src="{{URL::asset('assets\libs\peity\jquery.peity.min.js')}}"></script>
+<script src="{{URL::asset('assets\js\chat-js-customs.js')}}"></script>
 
 <!-- Tost-->
-<script src="assets\libs\jquery-toast\jquery.toast.min.js"></script>
+<script src="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.js')}}"></script>
 
 <!-- toastr init js-->
-<script src="assets\js\pages\toastr.init.js"></script>
+<script src="{{URL::asset('assets\js\pages\toastr.init.js')}}"></script>
 <!-- init js -->
 {{--<script src="{{asset('assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
 <!-- Modal-Effect -->
-<script src="{{asset('assets\libs\custombox\custombox.min.js')}}"></script>
+<script src="{{URL::asset('assets\libs\custombox\custombox.min.js')}}"></script>
 
-<script src="{{asset('assets\js\croppie\croppie.js')}}"></script>
+<script src="{{URL::asset('assets\js\croppie\croppie.js')}}"></script>
 <!-- App js -->
-<script src="{{asset('assets\js\app.min.js')}}"></script>
-<script src="{{asset('assets\js\customs-js-mine.js')}}"></script>
+<script src="{{URL::asset('assets\js\app.min.js')}}"></script>
+<script src="{{URL::asset('assets\js\customs-js-mine.js')}}"></script>
 {{--<script src="{{asset('assets\js\date-picker-vi.js')}}"></script>--}}
 @stack('scripts')
 <script type="text/javascript">
-    $.fn.datepicker.dates['vi'] = {
-        days: ["Chủ Nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"],
-        daysShort: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
-        daysMin: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
-        // months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-        months: ["Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư", "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín", "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai"],
-        monthsShort: ["TH1", "TH2", "TH3", "TH4", "TH5", "TH6", "TH7", "TH8", "TH9", "TH10", "TH11", "TH12"],
-        today: "Today",
-        clear: "Clear",
-        format: "dd/mm/yyyy",
-        titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
-        weekStart: 0
-    };
+
 
     $(document).on('click', function (e) {
 

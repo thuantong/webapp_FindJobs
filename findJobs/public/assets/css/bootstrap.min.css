@@ -2666,7 +2666,8 @@ textarea.form-control {
     width: 100%;
     margin-top: .25rem;
     font-size: .75rem;
-    color: #f1556c
+    color: #f1556c;
+    text-align: left !important
 }
 
 .invalid-tooltip {
@@ -2685,9 +2686,9 @@ textarea.form-control {
 }
 
 .form-control.is-invalid, .was-validated .form-control:invalid {
-    border-color: #f1556c;
+    border-color: #f1556c!important;
     padding-right: calc(1.5em + .9rem);
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f1556c' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23f1556c' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+    /*background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f1556c' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23f1556c' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");*/
     background-repeat: no-repeat;
     background-position: center right calc(.375em + .1875rem);
     background-size: calc(.75em + .375rem) calc(.75em + .375rem)
@@ -7309,7 +7310,8 @@ a.close.disabled {
 }
 
 .bg-primary {
-    background-color: #7266ba !important
+    background-color: #7266ba !important;
+    color: white;
 }
 
 a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-primary:hover {

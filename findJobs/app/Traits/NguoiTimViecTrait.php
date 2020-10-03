@@ -102,6 +102,7 @@ trait NguoiTimViecTrait
 //        return $typeSend;
         if ($typeSend == 1){
             $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
+//            return $nguoiTimViec;
             return view('User.nguoiTimViec.skillAppend',compact('typeSend','nguoiTimViec'));
         }elseif ($typeSend == 0){
             return view('User.nguoiTimViec.skillAppend',compact('typeSend'));
@@ -150,12 +151,6 @@ trait NguoiTimViecTrait
         }elseif ($typeSend == 0){
             return view('User.nguoiTimViec.htmlKinhNghiemLamViec',compact('typeSend'));
         }
-//        if($request->ajax()){
-//            $typeSend = $request->get('type');
-//            return view('User.nguoiTimViec.htmlKinhNghiemLamViec',compact('typeSend'));
-//        }
-
-
 
     }
 
@@ -174,7 +169,6 @@ trait NguoiTimViecTrait
         $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
         $nguoiTimViec->gioi_thieu = $request->gt_ban_than;
         $nguoiTimViec->gioi_tinh = $request->gioi_tinh;
-
 
 
         $nguoiTimViec->muc_tieu_nghe_nghiep = $request->muc_tieu_nghe_nghiep;

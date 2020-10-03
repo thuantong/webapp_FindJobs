@@ -39,11 +39,16 @@ class MyLoginController extends Controller
     {
         $request->session()->regenerate();
         $getRole = TaiKhoan::query()->find(Auth::user()->id)->getPhanQuyenIdsAttribute();
+
         Session::put('role',$getRole->toArray());
 
         if (Auth::user()->loai == 1){
+            $getAvatar = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
+            Session::put('avatar',$getAvatar['avatar']);
             return redirect('/');
         }elseif (Auth::user()->loai == 2){
+            $getAvatar = TaiKhoan::query()->find(Auth::user()->id)->nha_tuyen_dungs;
+            Session::put('avatar',$getAvatar['avatar_tuyen_dung']);
             return redirect()->route('user.nhaTuyendung');
         }elseif (Auth::user()->loai == 3){
             dd('trang admin');
@@ -72,6 +77,7 @@ class MyLoginController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        Session::flush();
         return redirect()->route('auth.form.login');
     }
 

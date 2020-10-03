@@ -16,5 +16,11 @@ class NhaTuyenDung extends Model
     public function tai_khoans(){
         return $this->belongsTo(TaiKhoan::class,'tai_khoan_id');
     }
-    //
+
+    public function getBaiTuyenDungs(){
+        return $this->hasMany(BaiTuyenDung::class,'nha_tuyen_dung_id');
+    }
+//    public function nganh_nghe(){
+//        return $this->belongsToMany(NganhNghe::class,'');
+//    }
 }

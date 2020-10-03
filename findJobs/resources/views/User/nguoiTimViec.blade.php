@@ -12,6 +12,7 @@
         {{--        date picker--}}
         <link href="assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
     </head>
+
     <div id="update_avatar_crop" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
@@ -102,7 +103,8 @@
                             @csrf
                             <input type="file" id="update_avatar" class="d-none">
 
-                            <img class="rounded-circle avatar-xl img-thumbnail" src="{{asset($nguoiTimViec['avatar'])}}"
+                            <img class="rounded-circle avatar-xl img-thumbnail"
+                                 src="@if($nguoiTimViec['avatar'] != null){{URL::asset($nguoiTimViec['avatar'])}}@elseif($nguoiTimViec['avatar'] == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
                                  id="avatar-user">
 
                             <h4 class="mb-0">{{Auth::user()->ho_ten}}</h4>
@@ -117,39 +119,29 @@
                                 <h4 class="font-13 text-uppercase">{{__('Giới thiệu bản thân: ')}}</h4>
                                 <p class="font-13 mb-2" id="user_gioi_thieu">
                                     <textarea class="form-control"
-                                              placeholder="@if($nguoiTimViec['gioi_thieu'] == null || $nguoiTimViec['gioi_thieu'] == ''){{'NULL'}}@endif">{{$nguoiTimViec['gioi_thieu']}}</textarea>
+                                              placeholder="@if($nguoiTimViec['gioi_thieu'] == null){{'NULL'}}@endif">@if($nguoiTimViec['gioi_thieu'] != null){{$nguoiTimViec['gioi_thieu']}}@endif</textarea>
                                 </p>
-                                <p class="mb-2 font-13"><strong>{{__('Số điện thoại :')}}</strong><span
-                                        class="ml-2"><input class="form-control phone" value="{{Auth::user()->phone}}"
-                                                            autocomplete="off"></span></p>
+                                <p class="mb-2 font-13"><strong>{{__('Số điện thoại:')}}</strong><span
+                                        class="ml-2">
+                                        <input class="form-control phone not-null" title="Số điện thoại" value="{{Auth::user()->phone}}"
+                                                            autocomplete="off"></span>
+                                    <span class="invalid-feedback" role="alert">
+                                                    <strong></strong>
+                                                </span>
+                                </p>
 
                                 <p class="mb-2 font-13"><strong>{{'Email :'}}</strong> <span
-                                        class="ml-2 "><input class="form-control email" value="{{Auth::user()->email}}"
-                                                             autocomplete="off"></span></p>
+                                        class="ml-2 "><input class="form-control email not-null" data-rule="email" title="Email" value="{{Auth::user()->email}}"
+                                                             autocomplete="off"></span>
+                                    <span class="invalid-feedback" role="alert">
+                                                    <strong></strong>
+                                                </span>
+                                </p>
 
-                                {{--                                <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span--}}
-                                {{--                                        class="ml-2">USA</span></p>--}}
+
                             </div>
 
-                            {{--                            <ul class="social-list list-inline mt-3 mb-0">--}}
-                            {{--                                <li class="list-inline-item">--}}
-                            {{--                                    <a href="javascript: void(0);" class="social-list-item border-purple text-purple"><i--}}
-                            {{--                                            class="mdi mdi-facebook"></i></a>--}}
-                            {{--                                </li>--}}
-                            {{--                                <li class="list-inline-item">--}}
-                            {{--                                    <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i--}}
-                            {{--                                            class="mdi mdi-google"></i></a>--}}
-                            {{--                                </li>--}}
-                            {{--                                <li class="list-inline-item">--}}
-                            {{--                                    <a href="javascript: void(0);" class="social-list-item border-info text-info"><i--}}
-                            {{--                                            class="mdi mdi-twitter"></i></a>--}}
-                            {{--                                </li>--}}
-                            {{--                                <li class="list-inline-item">--}}
-                            {{--                                    <a href="javascript: void(0);"--}}
-                            {{--                                       class="social-list-item border-secondary text-secondary"><i--}}
-                            {{--                                            class="mdi mdi-github-circle"></i></a>--}}
-                            {{--                                </li>--}}
-                            {{--                            </ul>--}}
+
                         </form>
 
                     </div> <!-- end card-box -->
@@ -196,9 +188,9 @@
                                 </h5>
 
                                 <ul class="list-unstyled timeline-sm" id="exp-list">
-{{--                                    @include('User.nguoiTimViec.htmlKinhNghiemLamViec')--}}
+
                                 </ul>
-{{--{{$nguoiTimViec['gioi_thieu']}}--}}
+
                                 <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i
                                         class="mdi mdi-cards-variant mr-1"></i>
                                     {{__('Dự án')}}
@@ -220,51 +212,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {{--                                        <tr>--}}
-                                        {{--                                            <td>1</td>--}}
-                                        {{--                                            <td>App design and development</td>--}}
-                                        {{--                                            <td>01/01/2015</td>--}}
-                                        {{--                                            <td>10/15/2018</td>--}}
-                                        {{--                                            <td><span class="badge badge-info">Work in Progress</span></td>--}}
-                                        {{--                                            <td>Halette Boivin</td>--}}
-                                        {{--                                            <td class="d-none">button</td>--}}
-                                        {{--                                        </tr>--}}
-                                        {{--                                        <tr>--}}
-                                        {{--                                            <td>2</td>--}}
-                                        {{--                                            <td>Coffee detail page - Main Page</td>--}}
-                                        {{--                                            <td>21/07/2016</td>--}}
-                                        {{--                                            <td>12/05/2018</td>--}}
-                                        {{--                                            <td><span class="badge badge-success">Pending</span></td>--}}
-                                        {{--                                            <td>Durandana Jolicoeur</td>--}}
-                                        {{--                                            <td class="d-none">button</td>--}}
-                                        {{--                                        </tr>--}}
-                                        {{--                                        <tr>--}}
-                                        {{--                                            <td>3</td>--}}
-                                        {{--                                            <td>Poster illustation design</td>--}}
-                                        {{--                                            <td>18/03/2018</td>--}}
-                                        {{--                                            <td>28/09/2018</td>--}}
-                                        {{--                                            <td><span class="badge badge-pink">Done</span></td>--}}
-                                        {{--                                            <td>Lucas Sabourin</td>--}}
-                                        {{--                                            <td class="d-none">button</td>--}}
-                                        {{--                                        </tr>--}}
-                                        {{--                                        <tr>--}}
-                                        {{--                                            <td>4</td>--}}
-                                        {{--                                            <td>Drinking bottle graphics</td>--}}
-                                        {{--                                            <td>02/10/2017</td>--}}
-                                        {{--                                            <td>07/05/2018</td>--}}
-                                        {{--                                            <td><span class="badge badge-purple">Work in Progress</span></td>--}}
-                                        {{--                                            <td>Donatien Brunelle</td>--}}
-                                        {{--                                            <td class="d-none">button</td>--}}
-                                        {{--                                        </tr>--}}
-                                        {{--                                        <tr>--}}
-                                        {{--                                            <td>5</td>--}}
-                                        {{--                                            <td>Landing page design - Home</td>--}}
-                                        {{--                                            <td>17/01/2017</td>--}}
-                                        {{--                                            <td>25/05/2021</td>--}}
-                                        {{--                                            <td><span class="badge badge-warning">Coming soon</span></td>--}}
-                                        {{--                                            <td>Karel Auberjo</td>--}}
-                                        {{--                                            <td class="d-none">button</td>--}}
-                                        {{--                                        </tr>--}}
+
 
                                         </tbody>
                                     </table>
@@ -282,28 +230,41 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="ho_ten">{{__('Họ và tên: ')}}</label>
-                                                <input type="text" class="form-control" id="ho_ten"
+                                                <input type="text" class="form-control not-null" id="ho_ten" title="Họ và tên"
                                                        placeholder="Nhập họ và tên" value="{{Auth::user()->ho_ten}}">
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong></strong>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="gioi_tinh">{{__('Giới tính')}}</label>
 
-                                                <select class="form-control" id="gioi_tinh">
+                                                <select class="form-control not-null" id="gioi_tinh" title="Giới tính">
                                                     <option value="" disabled selected
                                                             class="text-center">{{__('Chọn giới tính')}}</option>
-                                                    <option value="1" @if($nguoiTimViec['gioi_tinh'] == 1) selected @endif>{{__('Nam')}}</option>
-                                                    <option value="2" @if($nguoiTimViec['gioi_tinh'] == 2) selected @endif>{{__('Nữ')}}</option>
+                                                    <option value="1"
+                                                            @if($nguoiTimViec['gioi_tinh'] != null && $nguoiTimViec['gioi_tinh'] == 1) selected @endif>{{__('Nam')}}</option>
+                                                    <option value="2"
+                                                            @if($nguoiTimViec['gioi_tinh'] != null && $nguoiTimViec['gioi_tinh'] == 2) selected @endif>{{__('Nữ')}}</option>
                                                 </select>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong></strong>
+                                                </span>
 
                                             </div>
                                         </div> <!-- end col -->
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="ngay_sinh">{{__('Ngày sinh')}}</label>
-                                                <input class="form-control" placeholder="Chọn ngày sinh" id="ngay_sinh" value="{{\Illuminate\Support\Carbon::createFromFormat('Y-m-d',$nguoiTimViec['ngay_sinh'])->format('d/m/Y')}}">
-
+                                                <input class="form-control not-null" title="Ngày sinh"
+                                                       placeholder="@if($nguoiTimViec['ngay_sinh'] == '' || $nguoiTimViec['ngay_sinh'] == null){{'Chọn ngày sinh'}}@endif"
+                                                       id="ngay_sinh"
+                                                       value="@if($nguoiTimViec['ngay_sinh'] == '' || $nguoiTimViec['ngay_sinh'] == null){{''}}@else{{\Illuminate\Support\Carbon::createFromFormat('Y-m-d',$nguoiTimViec['ngay_sinh'])->format('d/m/Y')}}@endif">
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong></strong>
+                                                </span>
                                             </div>
                                         </div> <!-- end col -->
                                     </div> <!-- end row -->
@@ -311,16 +272,17 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label for="muc_tieu_nghe_nghiep">{{__('Mục tiêu nghề nghiệp:')}}</label>
+                                                <label
+                                                    for="muc_tieu_nghe_nghiep">{{__('Mục tiêu nghề nghiệp:')}}</label>
                                                 <textarea class="form-control" id="muc_tieu_nghe_nghiep"
-                                                          placeholder="Hãy viết gì đó...">{{$nguoiTimViec['muc_tieu_nghe_nghiep']}}</textarea>
+                                                          placeholder="Hãy viết gì đó...">@if($nguoiTimViec['muc_tieu_nghe_nghiep'] != null){{$nguoiTimViec['muc_tieu_nghe_nghiep']}}@endif</textarea>
                                             </div>
                                         </div> <!-- end col -->
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label for="so_thich">{{__('Sở thích:')}}</label>
                                                 <textarea class="form-control" id="so_thich"
-                                                          placeholder="Hãy viết gì đó...">{{$nguoiTimViec['so_thich']}}</textarea>
+                                                          placeholder="Hãy viết gì đó...">@if($nguoiTimViec['so_thich'] != null){{$nguoiTimViec['so_thich']}}@endif</textarea>
                                             </div>
                                         </div> <!-- end col -->
                                     </div> <!-- end row -->
@@ -329,7 +291,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="dia_chi">{{__('Địa chỉ')}}</label>
-                                                <input type="text" class="form-control" id="dia_chi" value="{{$nguoiTimViec['dia_chi']}}"
+                                                <input type="text" class="form-control" id="dia_chi"
+                                                       value="@if($nguoiTimViec['dia_chi'] != null){{$nguoiTimViec['dia_chi']}}@endif"
                                                        placeholder="Nhập địa chỉ">
                                                 {{--                                                <span class="form-text text-muted"><small>If you want to change email please <a--}}
                                                 {{--                                                            href="javascript: void(0);">click</a> here.</small></span>--}}
@@ -337,7 +300,8 @@
                                             <div class="form-group">
                                                 <label for="khu_vuc">{{__('Khu vực')}}</label>
 
-                                                <input type="text" class="form-control" id="khu_vuc" value="{{$nguoiTimViec['khu_vuc']}}"
+                                                <input type="text" class="form-control" id="khu_vuc"
+                                                       value="@if($nguoiTimViec['khu_vuc'] != null){{$nguoiTimViec['khu_vuc']}}@endif"
                                                        placeholder="Nhập khu vực">
                                                 {{--                                                <span class="form-text text-muted"><small>If you want to change email please <a--}}
                                                 {{--                                                            href="javascript: void(0);">click</a> here.</small></span>--}}
@@ -346,7 +310,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="vt_ung_tuyen">{{__('Vị trí ứng tuyển')}}</label>
-                                                <input type="text" class="form-control" id="vt_ung_tuyen" value="{{$nguoiTimViec['vi_tri_tim']}}"
+                                                <input type="text" class="form-control" id="vt_ung_tuyen"
+                                                       value="@if($nguoiTimViec['vi_tri_tim'] != null){{$nguoiTimViec['vi_tri_tim']}}@endif"
                                                        placeholder="Nhập vị trí ứng tuyển">
                                                 <span class="form-text text-muted"><small>Vị trí ứng tuyển dùng để hiện cho nhà tuyển dụng thấy, hoặc để lọc bài tuyển dụng</small></span>
                                             </div>
@@ -364,11 +329,15 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex">
-                                                    <input type="text" class="form-control text-center font-weight-bold text-primary"
-                                                           id="muc_luong_from" value="{{trim(substr($nguoiTimViec['muc_luong'],0,strpos($nguoiTimViec['muc_luong'],'-')))}}"
+                                                    <input type="text"
+                                                           class="form-control text-center font-weight-bold text-primary"
+                                                           id="muc_luong_from"
+                                                           value="@if($nguoiTimViec['muc_luong'] != null){{trim(substr($nguoiTimViec['muc_luong'],0,strpos($nguoiTimViec['muc_luong'],'-')))}}@else{{0}}@endif"
                                                            placeholder="Nhập mức lương">
-                                                    <input type="text" class="form-control text-center font-weight-bold text-primary"
-                                                           id="muc_luong_to" value="{{trim(substr($nguoiTimViec['muc_luong'],strpos($nguoiTimViec['muc_luong'],'-')+1))}}"
+                                                    <input type="text"
+                                                           class="form-control text-center font-weight-bold text-primary"
+                                                           id="muc_luong_to"
+                                                           value="@if($nguoiTimViec['muc_luong'] != null){{trim(substr($nguoiTimViec['muc_luong'],strpos($nguoiTimViec['muc_luong'],'-')+1))}}@else{{0}}@endif"
                                                            placeholder="Nhập mức lương">
                                                 </div>
 
@@ -383,14 +352,22 @@
                                                 <label for="hoc_van">{{__('Học vấn:')}}</label>
                                                 <select class="form-control hoc_van" id="hoc_van">
                                                     <option disabled selected value="">{{__('Chọn học vấn')}}</option>
-                                                    <option value="1" @if($nguoiTimViec['hoc_van'] == 1) selected @endif>{{__('Đại học')}}</option>
-                                                    <option value="2" @if($nguoiTimViec['hoc_van'] == 2) selected @endif>{{__('Cao đẳng')}}</option>
-                                                    <option value="3" @if($nguoiTimViec['hoc_van'] == 3) selected @endif>{{__('Trung cấp')}}</option>
-                                                    <option value="4" @if($nguoiTimViec['hoc_van'] == 4) selected @endif>{{__('Thạc sĩ')}}</option>
-                                                    <option value="5" @if($nguoiTimViec['hoc_van'] == 5) selected @endif>{{__('Tiến sĩ')}}</option>
-                                                    <option value="6" @if($nguoiTimViec['hoc_van'] == 6) selected @endif>{{__('Trung cấp')}}</option>
-                                                    <option value="7" @if($nguoiTimViec['hoc_van'] == 7) selected @endif>{{__('Chứng chỉ')}}</option>
-                                                    <option value="8" @if($nguoiTimViec['hoc_van'] == 8) selected @endif>{{__('Trung học phổ thông')}}</option>
+                                                    <option value="1"
+                                                            @if($nguoiTimViec['hoc_van'] != null && $nguoiTimViec['hoc_van'] == 1) selected @endif>{{__('Đại học')}}</option>
+                                                    <option value="2"
+                                                            @if($nguoiTimViec['hoc_van'] != null && $nguoiTimViec['hoc_van'] == 2) selected @endif>{{__('Cao đẳng')}}</option>
+                                                    <option value="3"
+                                                            @if($nguoiTimViec['hoc_van'] != null && $nguoiTimViec['hoc_van'] == 3) selected @endif>{{__('Trung cấp')}}</option>
+                                                    <option value="4"
+                                                            @if($nguoiTimViec['hoc_van'] != null && $nguoiTimViec['hoc_van'] == 4) selected @endif>{{__('Thạc sĩ')}}</option>
+                                                    <option value="5"
+                                                            @if($nguoiTimViec['hoc_van'] != null && $nguoiTimViec['hoc_van'] == 5) selected @endif>{{__('Tiến sĩ')}}</option>
+                                                    <option value="6"
+                                                            @if($nguoiTimViec['hoc_van'] != null && $nguoiTimViec['hoc_van'] == 6) selected @endif>{{__('Trung cấp')}}</option>
+                                                    <option value="7"
+                                                            @if($nguoiTimViec['hoc_van'] != null && $nguoiTimViec['hoc_van'] == 7) selected @endif>{{__('Chứng chỉ')}}</option>
+                                                    <option value="8"
+                                                            @if($nguoiTimViec['hoc_van'] != null && $nguoiTimViec['hoc_van'] == 8) selected @endif>{{__('Trung học phổ thông')}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -398,8 +375,10 @@
                                             <div class="form-group">
                                                 <label
                                                     for="ten_truong_tot_nghiep">{{__('Tên trường tốt nghiệp: ')}}</label>
-                                                <input class="form-control ten_truong_tot_nghiep" value="{{$nguoiTimViec['ten_truong_tot_nghiep']}}"
-                                                       id="ten_truong_tot_nghiep" placeholder="VD: Trường Đại Học Công Nghiệp Thành Phố HCM.">
+                                                <input class="form-control ten_truong_tot_nghiep"
+                                                       value="@if($nguoiTimViec['ten_truong_tot_nghiep'] != null){{$nguoiTimViec['ten_truong_tot_nghiep']}}@endif"
+                                                       id="ten_truong_tot_nghiep"
+                                                       placeholder="VD: Trường Đại Học Công Nghiệp Thành Phố HCM.">
                                             </div>
 
                                         </div>
@@ -411,16 +390,20 @@
                                                 <label for="loai_cong_viec">{{__('Loại công việc')}}</label>
                                                 <select class="form-control loai_cong_viec" id="loai_cong_viec">
                                                     <option disabled selected value="">{{__('Loại công việc')}}</option>
-                                                    <option value="1" @if($nguoiTimViec['loai_cong_viec'] == 1) selected @endif>{{__('Toàn thời gian')}}</option>
-                                                    <option value="2" @if($nguoiTimViec['loai_cong_viec'] == 2) selected @endif>{{__('Bán thời gian')}}</option>
-                                                    <option value="3" @if($nguoiTimViec['loai_cong_viec'] == 3) selected @endif>{{__('Sinh viên - Thực tập')}}</option>
+                                                    <option value="1"
+                                                            @if($nguoiTimViec['loai_cong_viec'] != null && $nguoiTimViec['loai_cong_viec'] == 1) selected @endif>{{__('Toàn thời gian')}}</option>
+                                                    <option value="2"
+                                                            @if($nguoiTimViec['loai_cong_viec'] != null && $nguoiTimViec['loai_cong_viec'] == 2) selected @endif>{{__('Bán thời gian')}}</option>
+                                                    <option value="3"
+                                                            @if($nguoiTimViec['loai_cong_viec'] != null && $nguoiTimViec['loai_cong_viec'] == 3) selected @endif>{{__('Sinh viên - Thực tập')}}</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
                                             <div class="form-group">
                                                 <label for="ten_cong_viec">{{__('Tên công việc: ')}}</label>
-                                                <input class="form-control ten_cong_viec" id="ten_cong_viec" value="{{$nguoiTimViec['ten_cong_viec']}}"
+                                                <input class="form-control ten_cong_viec" id="ten_cong_viec"
+                                                       value="@if($nguoiTimViec['ten_cong_viec'] != null){{$nguoiTimViec['ten_cong_viec']}}@endif"
                                                        placeholder="VD: Nhân viên kế toán">
                                             </div>
                                         </div>
@@ -437,7 +420,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-facebook-official"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control social-link" id="social-fb" value="{{unserialize($nguoiTimViec['social'])[0]}}"
+                                                    <input type="text" class="form-control social-link" id="social-fb"
+                                                           value="@if($nguoiTimViec['social'] != null){{unserialize($nguoiTimViec['social'])[0]}}@endif"
                                                            placeholder="Url">
                                                 </div>
                                             </div>
@@ -450,7 +434,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-twitter"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control social-link" id="social-tw" value="{{unserialize($nguoiTimViec['social'])[1]}}"
+                                                    <input type="text" class="form-control social-link" id="social-tw"
+                                                           value="@if($nguoiTimViec['social'] != null){{unserialize($nguoiTimViec['social'])[1]}}@endif"
                                                            placeholder="Username">
                                                 </div>
                                             </div>
@@ -463,9 +448,12 @@
                                                 <label for="social-insta">Instagram</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fa fa-instagram"></i></span>
+                                                        <span class="input-group-text"><i
+                                                                class="fa fa-instagram"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control social-link" id="social-insta" value="{{unserialize($nguoiTimViec['social'])[2]}}"
+                                                    <input type="text" class="form-control social-link"
+                                                           id="social-insta"
+                                                           value="@if($nguoiTimViec['social'] != null){{unserialize($nguoiTimViec['social'])[2]}}@endif"
                                                            placeholder="Url">
                                                 </div>
                                             </div>
@@ -478,7 +466,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-linkedin"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control social-link" id="social-lin" value="{{unserialize($nguoiTimViec['social'])[3]}}"
+                                                    <input type="text" class="form-control social-link" id="social-lin"
+                                                           value="@if($nguoiTimViec['social'] != null){{unserialize($nguoiTimViec['social'])[3]}}@endif"
                                                            placeholder="Url">
                                                 </div>
                                             </div>
@@ -494,7 +483,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-skype"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control social-link" id="social-sky" value="{{unserialize($nguoiTimViec['social'])[4]}}"
+                                                    <input type="text" class="form-control social-link" id="social-sky"
+                                                           value="@if($nguoiTimViec['social'] != null){{unserialize($nguoiTimViec['social'])[4]}}@endif"
                                                            placeholder="@username">
                                                 </div>
                                             </div>
@@ -507,18 +497,20 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-github"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control social-link" id="social-gh" value="{{unserialize($nguoiTimViec['social'])[5]}}"
+                                                    <input type="text" class="form-control social-link" id="social-gh"
+                                                           value="@if($nguoiTimViec['social'] != null){{unserialize($nguoiTimViec['social'])[5]}}@endif"
                                                            placeholder="Username">
                                                 </div>
                                             </div>
                                         </div> <!-- end col -->
                                     </div> <!-- end row -->
 
-{{--                                    <div class="text-right">--}}
-{{--                                        <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i--}}
-{{--                                                class="mdi mdi-content-save"></i> Save--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
+
+                                    {{--                                    <div class="text-right">--}}
+                                    {{--                                        <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i--}}
+                                    {{--                                                class="mdi mdi-content-save"></i> Save--}}
+                                    {{--                                        </button>--}}
+                                    {{--                                    </div>--}}
                                 </form>
                             </div>
                             <!-- end settings content-->
@@ -547,12 +539,15 @@
     <script src="assets\libs\jquery-quicksearch\jquery.quicksearch.min.js"></script>
     <script src="assets\libs\select2\select2.min.js"></script>
 
+
+
     {{--date picker--}}
     <script src="assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js"></script>
     <script src="assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js"></script>
 
-
     <script type="text/javascript" src="{{asset('assets\js\app\nguoiTimViec.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('assets\js\date-picker-vi.js')}}"></script>
     <script type="text/javascript">
         var $uploadCrop;
 
@@ -586,6 +581,7 @@
         });
 
         $(function () {
+
             $('body').addClass('enlarged');
 
             $('#avatar-user').on('click', function () {
@@ -615,9 +611,7 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                         },
-                        // beforeSend: function(xhr) {
-                        //
-                        // },
+
                         success: res => {
                             $('#avatar-user').attr('src', res);
                             // $('#toastr-three').click();

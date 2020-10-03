@@ -13,7 +13,7 @@
         <p class="text-muted mt-2 description-exp"></p>
     </li>
 @elseif($typeSend == 1)
-    @if($nguoiTimViec)
+    @if($nguoiTimViec['exp_lam_viec'] != null)
         @foreach(unserialize($nguoiTimViec['exp_lam_viec']) as $row)
             <li class="timeline-sm-item">
                 <span class="timeline-sm-date time-exp"><b>{{$row['from_date']}}</b><br>đến<br><b>{{$row['to_date']}}</b></span>
