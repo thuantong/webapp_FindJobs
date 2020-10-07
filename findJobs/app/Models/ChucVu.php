@@ -8,7 +8,7 @@ class ChucVu extends Model
 {
     protected $table = 'chuc_vu';
     protected $primaryKey  = 'id';
-    public $timestamps = true;
-    protected $fillable = ['name', 'text'];
+    public $timestamps = false;
+    protected $fillable = ['name', 'mo_ta'];
     //
 }

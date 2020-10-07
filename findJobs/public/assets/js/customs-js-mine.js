@@ -20,6 +20,33 @@ function remove_vietnamese_string(str) {
 }
 
 $(function () {
+    // let chieuCaoInput =
+    // $('.input-group-append').css('height',chieuCaoInput+'px');
+
+    // $('input').on('focus',function () {
+    //
+    //     // var x = $(this).offset().top / 2, y = $('.modal-body').scrollY;
+    //     // // elem.focus();
+    //     // console.log(x)
+    //     // $('.modal-body').scrollTop(x);
+    //     $('.modal-body').scrollIntoView();
+    // })
+
+    $('.input-group-append').each(function () {
+        // console.log($(this).parent().find('.form-control').css('border-radius'))
+        if ( $(this).parent().find('.form-control').prop("tagName").toLowerCase() == 'select'){
+            let chieuCaoInput =  $(this).parent().find('.form-control').outerHeight() -2;
+            $(this).css('height',chieuCaoInput+'px');
+            $(this).css('top','1px');
+            $(this).css('left','-4px');
+            $(this).find('span').css('border-radius','.2rem');
+            $(this).find('span').css('border-left','none');
+            $(this).find('span').css('border-top','none');
+            $(this).find('span').css('border-bottom','none');
+        }
+
+    });
+
     $('div::-webkit-scrollbar-thumb').attr('style', 'display:none;');
     $('.overflow-auto-scroll').scroll(function () {
         $('div::-webkit-scrollbar-thumb').css('display', 'none');
@@ -377,17 +404,41 @@ const getHtmlResponse = (data) => {
             timeOut = 3000;
             break;
     }
-
-    $.toast({
-        heading: data.title + ' ' + data.status_text.toLowerCase(),
-        hideAfter: timeOut,
-        icon: type,
-        loaderBg: backgroudLoad,
-        position: 'top-right',
-        stack: 1,
-        text: data.message.toUpperCase() + '!',
-    });
+    // return toast.success('We do have the Kapua suite available.', 'Turtle Bay Resort', {timeOut: 5000});
+    // return $.toast({
+    //     heading: data.title + ' ' + data.status_text.toLowerCase(),
+    //     hideAfter: timeOut,
+    //     icon: type,
+    //     loaderBg: backgroudLoad,
+    //     position: 'top-right',
+    //     stack: 1,
+    //     text: data.message.toUpperCase() + '!',
+    // });
+    // return
+    return getNotificationAjax(data);
 }
+
+const getNotificationAjax = (message) => {
+    let backgroudColor = '';
+    switch (message.status) {
+        case 200:
+            backgroudColor = '#2fb614';
+            break;
+        case 400:
+            backgroudColor = '#cb4745';
+            break;
+    }
+    vtoast.show(message.title, message.message, {
+        width: 250,
+        margin: 20,
+        "progressbar": "bottom",
+        color: "#FFFFFF",
+        backgroundcolor: backgroudColor,
+        unfocusduration: 500,
+        "duration": 1500,
+        opacity: "1"
+    });
+};
 $(document).on('keypress', 'textarea.break-custom', function (e) {
     if (e.keyCode === 13) {
         $(this).val(function (i, val) {
@@ -403,40 +454,87 @@ $(document).on('focus', 'textarea.break-custom', function () {
     if ($(this).val() == '') {
         $(this).val(function (i, value) {
             return '- ';
-        })
+        });
     }
 });
 $(document).on('init.dt', function (e, settings, json) {
-    $('table').removeAttr('style');
+    // $(settings.nTable).css('width','100%');
+    // let realWidth = $(settings.nTHead.parentElement).width();
+    // console.log(realWidth)
+    // $(settings.nTHead.parentElement).css('width',(realWidth+12)+'px');
+    //
+    // $(settings.nTHead.parentElement.parentElement).css('width',(realWidth+12)+'px');
+    // console.log(settings)
+    // $('table tbody tr').each(function () {
+    //     $(this).find('td').eq(0).addClass('center-element');
+    // });
+
+
+    // console.log($(settings.nTHead.parentElement.parentElement))
+    $($.fn.dataTable.tables(true)).DataTable()
+        .columns.adjust();
 });
 
-const datatableAjax = (element, ajax ,column) => {
-    $.ajax({
-        method: ajax.method,
-        url: ajax.url,//'',
-        success: function (res) {
-            element.DataTable({
-                data: res,
-                columns: column,
-                "lengthChange": false,
-                processing: true,
-                ordering: false,
-                scrollY: true,
-                scrollX: true,
-                scrollCollapse: true,
-                language: {
-                    paginate: {
-                        previous: "<i class='fa fa-caret-left'>",
-                        next: "<i class='fa fa-caret-right'>"
-                    },
-                    "info": '',
-                    emptyTable: "Không có dữ liệu",
-                    processing: 'Đang tải ....',
-                    'search': 'Tìm kiếm'
-                },
-            });
 
-        }
+const datatableAjax = (element, ajax, column) => {
+    element.css('width','100%')
+    return element.DataTable({
+        ajax: {
+            url: ajax.url,
+            type: ajax.method,
+            dataSrc: 'data'
+        },
+        columns: column,
+        lengthChange: false,
+        processing: false,
+        ordering: false,
+        scrollY: "70vh",
+        autoWidth: true,
+        searching: true,
+        // scrollX: true,
+        scrollX: true,
+        scrollCollapse: true,
+        pagingType: "full_numbers",
+        // fixedHeader: "true",
+        language: {
+            paginate: {
+                previous: "<i class='fa fa-caret-left'>",
+                next: "<i class='fa fa-caret-right'>",
+                "first": "Trang đầu",
+                "last": "Trang cuối",
+            },
+            infoPostFix: "",
+            info: "Hiển thị từ _START_ đến _END_ của _TOTAL_ mục",
+            infoEmpty: "Hiển thị từ 0 đến 0 của 0 mục",
+            zeroRecords: "Không tìm thấy kết quả",
+            thousands: ",",
+            emptyTable: "không có dữ liệu trong bảng",
+            processing: 'Đang tải ....',
+            search: 'Tìm kiếm',
+            loadingRecords: "Đang tải ....",
+            infoFiltered: "(Lọc từ _MAX_ mục)",
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                text: 'Thêm mới',
+                className: 'btn btn-primary them-moi-danh-sach',
 
+            }
+        ]
     });
 }
+
+const alertConfirm = (title) =>{
+    return Swal.fire({
+        title: "Xác nhận "+title.toLowerCase()+"?",
+        text: "Nếu xác nhận điều này, dữ lệu sẽ không được hoàn tác lại!",
+        type: "warning",
+        showCancelButton: !0,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Vâng, tôi muốn "+title.toLowerCase()+"!",
+        cancelButtonText: "Không "+title.toLowerCase()
+    });
+}
+

@@ -27,10 +27,12 @@
     <!-- feather Awesome -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\feather\css\feather.css')}}">
     <link href="{{URL::asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
+{{--    <link href="{{URL::asset('assets\css\croppie\2_6_4\croppie.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{URL::asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Jquery Toast css -->
-    <link href="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.css')}}" rel="stylesheet" type="text/css">
+{{--    <link href="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{URL::asset('assets\js\vtoast\vtoast.css')}}" rel="stylesheet" type="text/css">
     {{--        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{URL::asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{URL::asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
@@ -179,7 +181,7 @@
                     </div>
 
                     <!-- item-->
-                    <a href="@if(Auth::user()->loai == 1){{route('user.nguoiTimViec')}}@elseif(Auth::user()->loai == 2){{route('user.nhaTuyendung')}}@endif"
+                    <a href="@if(Session::get('loai_tai_khoan') == 1){{route('user.nguoiTimViec')}}@elseif(Session::get('loai_tai_khoan') == 2){{route('user.nhaTuyenDung')}}@endif"
                        class="dropdown-item notify-item">
                         <i class="remixicon-account-circle-line"></i>
                         <span>Thông tin tài khoản</span>
@@ -465,16 +467,18 @@
 <script src="{{URL::asset('assets\js\chat-js-customs.js')}}"></script>
 
 <!-- Tost-->
-<script src="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.js')}}"></script>
+<script src="{{URL::asset('assets\js\vtoast\vtoast.js')}}"></script>
+{{--<script src="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.js')}}"></script>--}}
 
 <!-- toastr init js-->
-<script src="{{URL::asset('assets\js\pages\toastr.init.js')}}"></script>
+{{--<script src="{{URL::asset('assets\js\pages\toastr.init.js')}}"></script>--}}
 <!-- init js -->
 {{--<script src="{{asset('assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
 <!-- Modal-Effect -->
 <script src="{{URL::asset('assets\libs\custombox\custombox.min.js')}}"></script>
 
 <script src="{{URL::asset('assets\js\croppie\croppie.js')}}"></script>
+{{--<script src="{{URL::asset('assets\js\croppie\2_6_4\croppie.js')}}"></script>--}}
 <!-- App js -->
 <script src="{{URL::asset('assets\js\app.min.js')}}"></script>
 <script src="{{URL::asset('assets\js\customs-js-mine.js')}}"></script>

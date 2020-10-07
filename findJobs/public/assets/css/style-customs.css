@@ -14,7 +14,8 @@
 }
 /* width */
 div::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
+    height: 8px;
 }
 
 /* Track */
@@ -177,4 +178,48 @@ select option{
 }
 .modal-backdrop.show:nth-of-type(even) {
     z-index: 1051 !important;
+}
+/*table {*/
+/*    width: 100%;*/
+/*}*/
+.max-width-300px{
+    max-width: 300px;
+    word-wrap: break-word;
+    text-align: left;
+}
+/*custom button datatable*/
+.dt-buttons.btn-group{
+    float: left;
+}
+.dt-buttons.btn-group button{
+    color: #fff;
+    background-color: #7266ba;
+    border-color: #7266ba
+}
+.dt-buttons.btn-group button:hover {
+    color: #fff;
+    background-color: #5b4eac;
+    border-color: #564aa3
+}
+
+.dt-buttons.btn-group button.focus, .dt-buttons.btn-group button:focus {
+    -webkit-box-shadow: 0 0 0 .15rem rgba(135, 125, 196, .5);
+    box-shadow: 0 0 0 .15rem rgba(135, 125, 196, .5)
+}
+
+.dt-buttons.btn-group button.disabled, .dt-buttons.btn-group button:disabled {
+    color: #fff;
+    background-color: #7266ba;
+    border-color: #7266ba
+}
+
+.dt-buttons.btn-group button:not(:disabled):not(.disabled).active, .dt-buttons.btn-group button:not(:disabled):not(.disabled):active, .show > .dt-buttons.btn-group button.dropdown-toggle {
+    color: #fff;
+    background-color: #564aa3;
+    border-color: #52469b
+}
+
+.dt-buttons.btn-group button:not(:disabled):not(.disabled).active:focus, .dt-buttons.btn-group button:not(:disabled):not(.disabled):active:focus, .show > .dt-buttons.btn-group button.dropdown-toggle:focus {
+    -webkit-box-shadow: 0 0 0 .15rem rgba(135, 125, 196, .5);
+    box-shadow: 0 0 0 .15rem rgba(135, 125, 196, .5)
 }

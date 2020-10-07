@@ -8,10 +8,11 @@ class QuanTam extends Model
 {
     protected $table = 'quan_tam';
     protected $primaryKey  = 'id';
-    public $timestamps = true;
-    protected $fillable = ['nha_tuyen_dung_id'];
+//    protected $fillable = ['nha_tuyen_dung_id'];
 //    protected $attributes = [
 //        'status' => 1,
 //    ];
     //
+
 }
+

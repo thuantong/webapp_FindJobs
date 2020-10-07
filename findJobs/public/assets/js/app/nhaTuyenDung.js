@@ -180,24 +180,17 @@ $(document).on('click','.save-profile',function () {
         let method = 'post';
         let url = '/nha-tuyen-dung/update';
         let data = {
-            name_company : $('#ten_cong_ty').val(),
-            website_company : $('#link_website').val(),
-            email_company : $('#email_cong_ty').val(),
-            phone_company : $('#dien_thoai_cong_ty').val(),
-            address_company : $('#dia_chi_chinh').val(),
-            time_company : $('#from_time').val() + ' - ' + $('#to_time').val(),
-            day_company : $('#from_day').val() + ' - ' + $('#to_day').val(),
-            employees_company : $('#quy_mo_nhan_su').val(),
-            linh_vuc_company : $('#linh_vuc_hoat_dong').val(),
-            fax_company : $('#fax_cong_ty').val(),
-            logo_company : $('#logo_cong_ty').find('img').data('src'),
+
             ho_ten_nhatuyendung : $('#ho_ten').val(),
             email_nhatuyendung : $('#email_tuyen_dung').val(),
             gioi_tinh_nhatuyendung : $('#gioi_tinh_tuyen_dung').val(),
+            dia_chi_nhatuyendung : $('#dia_chi').val(),
             ngay_sinh_nhatuyendung : $('#ngay_sinh_tuyen_dung').val(),
             phone_nhatuyendung : $('#phone_tuyen_dung').val(),
             avatar_nhatuyendung : $('#avatar_tuyen_dung').find('img').data('src'),
+            gioi_thieu_nhatuyendung : $('#gioi_thieu').val(),
             social_nhatuyendung : social
+
         };
 
         sendAjaxNoFunc(method,url,data,button).done(res=>{

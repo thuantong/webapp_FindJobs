@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,19 +27,19 @@ trait NhaTuyenDungTrait
 //        $date = date('d/m/Y','01/02/2020');
 //        $date = '1996-12-01';
 //        dd(substr(date('Ymd') - date('Ymd', strtotime($date)), 0));
-        if (Auth::user()->loai == 2) {
-            $nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->nha_tuyen_dungs;
+        if (Session::get('loai_tai_khoan') == 2) {
+            $nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
 //            dd($nhaTuyenDung);
             $nganhNghe = NganhNghe::all();
             return view('User.nhaTuyenDung',compact('nhaTuyenDung','nganhNghe'));
         } else {
-            return redirect()->route('notFoundRoute');
+            abort(404);
         }
     }
 
     public function setLogoCongTy(Request $request)
     {
-        $nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->nha_tuyen_dungs;
+        $nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
 
         $res = $request->fileName;
 
@@ -52,8 +53,8 @@ trait NhaTuyenDungTrait
         file_put_contents($path, $image);
 //        $nhaTuyenDung->avatar = 'images/' . $imageName;
 //        $nhaTuyenDung->save();
-
-        return response('images/' . $imageName);
+        return $this->getResponse('Cập nhật',200,'Cắt ảnh thành công!','images/' . $imageName);
+//        return response();
     }
 
     public function confirmEmailNhaTuyenDung(Request $request)
@@ -91,30 +92,21 @@ trait NhaTuyenDungTrait
             $taiKhoan->email = $request->email_nhatuyendung;
             $taiKhoan->phone = $request->phone_nhatuyendung;
 
-            $nhaTuyenDung = $taiKhoan->nha_tuyen_dungs;
-            $nhaTuyenDung->gioi_tinh_tuyen_dung = $request->gioi_tinh_nhatuyendung;
-            $nhaTuyenDung->nam_sinh_tuyen_dung = Carbon::createFromFormat('d/m/Y',$request->ngay_sinh_nhatuyendung)->format('Y-m-d');
-            $nhaTuyenDung->avatar_tuyen_dung = $request->avatar_nhatuyendung;
-            $nhaTuyenDung->ten_cong_ty = $request->name_company;
-            $nhaTuyenDung->websites = $request->website_company;
-            $nhaTuyenDung->email_cong_ty = $request->email_company;
-            $nhaTuyenDung->phone_cong_ty = $request->phone_company;
-            $nhaTuyenDung->dia_chi = $request->address_company;
-            $nhaTuyenDung->gio_lam_viec = $request->time_company;//
-            $nhaTuyenDung->ngay_lam_viec_cong_ty = $request->day_company;
-            $nhaTuyenDung->so_luong_employee = $request->employees_company;
-            $nhaTuyenDung->nganh_nghe_id = serialize($request->linh_vuc_company);
-            $nhaTuyenDung->fax_cong_ty = $request->fax_company;
-            $nhaTuyenDung->avatar = $request->logo_company;
+            $nhaTuyenDung = $taiKhoan->getNhaTuyenDung;
+            $nhaTuyenDung->gioi_tinh = $request->gioi_tinh_nhatuyendung;
+            $nhaTuyenDung->gioi_thieu = $request->gioi_thieu_nhatuyendung;
+            $nhaTuyenDung->dia_chi = $request->dia_chi_nhatuyendung;
+            $nhaTuyenDung->avatar = $request->avatar_nhatuyendung;
             $nhaTuyenDung->mang_xa_hoi = serialize($request->social_nhatuyendung);
 
             $taiKhoan->save();
             $nhaTuyenDung->save();
+            Session::put('avatar',$nhaTuyenDung->avatar);
             $message = 'Cập nhật thông tin cá nhân thành công';
             return $this->getResponse($title,200,$message,0);
         }catch (\Exception $e){
             $message = 'Cập nhật thông tin cá nhân thất bại! Kiểm tra lại dữ liệu!';
-            return $this->getResponse($title,400,$e.$message,0);
+            return $this->getResponse($title,400,$message,0);
         }
 
     }

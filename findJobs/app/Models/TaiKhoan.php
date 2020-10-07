@@ -19,7 +19,7 @@ class TaiKhoan extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'ho_ten', 'email', 'password','phone','status','loai'
+        'ho_ten', 'email','email_verify', 'password','phone','status','email_verify'
     ];
 
     /**
@@ -42,19 +42,43 @@ class TaiKhoan extends Authenticatable
     protected $attributes = [
         'status' => 1,
     ];
-    public function phan_quyens(){
-        return $this->belongsToMany(PhanQuyen::class, 'loai_tai_khoan','account_id','role_id');
-//        return $this->hasMany(LoaiTaiKhoan::class,'account_id');
+
+    //lấy phân quyền
+    public function getPhanQuyen(){
+        return $this->belongsToMany(PhanQuyen::class,'phan_quyen_tai_khoan','tai_khoan_id','phan_quyen_id');
     }
-    public function nguoi_tim_viecs(){
+    public function getPhanQuyenId(){
+        return $this->getPhanQuyen->pluck('id');
+    }
+
+    //get thông tin người tìm việc
+    public function getNguoiTimViec(){
         return $this->hasOne(NguoiTimViec::class,'tai_khoan_id');
     }
-    public function nha_tuyen_dungs(){
+    public function getNguoiTimViecId(){
+        return $this->getNguoiTimViec->pluck('id');
+    }
+
+    //get thông tin nhà tuyển dụng
+    public function getNhaTuyenDung(){
         return $this->hasOne(NhaTuyenDung::class,'tai_khoan_id');
     }
-    public function getPhanQuyenIdsAttribute()
-    {
-        return $this->phan_quyens->pluck('id');
+    public function getNhaTuyenDungId(){
+        return $this->getNhaTuyenDung->pluck('id');
     }
+//    public function phan_quyens(){
+//        return $this->belongsToMany(PhanQuyen::class, 'loai_tai_khoan','account_id','role_id');
+////        return $this->hasMany(LoaiTaiKhoan::class,'account_id');
+//    }
+//    public function nguoi_tim_viecs(){
+//        return $this->hasOne(NguoiTimViec::class,'tai_khoan_id');
+//    }
+//    public function nha_tuyen_dungs(){
+//        return $this->hasOne(NhaTuyenDung::class,'tai_khoan_id');
+//    }
+//    public function getPhanQuyenIdsAttribute()
+//    {
+//        return $this->phan_quyens->pluck('id');
+//    }
 
 }

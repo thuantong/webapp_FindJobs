@@ -72,12 +72,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-//        dd($data);
         return TaiKhoan::create([
             'ho_ten' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'loai' => $data['loai_tai_khoan'],
             'password' => Hash::make($data['password']),
 //            'remember_token'=>Str::random(100)
         ]);

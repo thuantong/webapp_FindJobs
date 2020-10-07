@@ -54,7 +54,7 @@ Route::namespace('User')->group(function () {
         Route::get('/nguoi-tim-viec/project-view/get-exp-html','UserController@getHtmlExp');
         Route::post('/nguoi-tim-viec/update','UserController@setNguoiTimViec');
 
-        Route::get('/nha-tuyen-dung','UserController@getEmployer')->name('nhaTuyendung');
+        Route::get('/nha-tuyen-dung','UserController@getEmployer')->name('nhaTuyenDung');
         Route::post('/nha-tuyen-dung/set-logo-company','UserController@setLogoCongTy')->name('setLogoCongTy');
         Route::get('/nha-tuyen-dung/confirm-email','UserController@confirmEmailNhaTuyenDung')->name('nhaTuyenDung.confirmEmail');
         Route::post('/nha-tuyen-dung/update','UserController@updateNhaTuyenDung')->name('nhaTuyenDung.update');
@@ -63,7 +63,8 @@ Route::namespace('User')->group(function () {
 
 Route::namespace('BaiViet')->group(function (){
     Route::name('baiviet.')->group(function (){
-        Route::resource('/dang-bai-viet','BaiVietController');
+        Route::get('/dang-bai-viet','BaiVietController@index')->name('index');
+        Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost');
     });
 });
 
@@ -71,6 +72,10 @@ Route::namespace('CongTy')->group(function (){
     Route::name('congty.')->group(function (){
         Route::get('/danh-sach-cong-ty','CongTyController@index')->name('index');
         Route::get('/danh-sach-cong-ty/data','CongTyController@getDanhSach')->name('getdanhsach');
+        Route::post('/danh-sach-cong-ty/tao-moi','CongTyController@setDanhSach')->name('setdanhsach');
+        Route::post('/danh-sach-cong-ty/cap-nhat','CongTyController@updateDanhSach')->name('updatedanhsach');
+        Route::post('/danh-sach-cong-ty/xoa','CongTyController@xoaDanhSach')->name('xoadanhsach');
+        Route::get('/danh-sach-cong-ty/du-lieu-cap-nhat','CongTyController@getCapNhat')->name('getcapnhat');
     });
 });
 
@@ -82,6 +87,14 @@ Route::namespace('PhanQuyen')->group(function () {
     Route::name('phanquyen.')->group(function () {
         Route::resource('/phan-quyen', 'PhanQuyenController');
         Route::post('/phan-quyen-setter', 'PhanQuyenController@setPhanQuyen')->name('setter');
+    });
+
+});
+
+Route::namespace('SoDu')->group(function () {
+    Route::name('sodu.')->group(function () {
+        Route::get('/so-du-tai-khoan','SoDuController@index')->name('index');
+        Route::post('/so-du-tai-khoan/dang-ky','SoDuController@dangKy')->name('dangky');
     });
 
 });

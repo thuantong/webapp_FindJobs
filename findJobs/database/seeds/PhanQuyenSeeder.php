@@ -13,16 +13,24 @@ class PhanQuyenSeeder extends Seeder
     {
         DB::table('phan_quyen')->insert([
             [
-                'name'=>'Xem bài đăng',
-                'mo_ta'=>'Xem bài viết'
+                'name' => 'Người tìm việc',
+                'mo_ta' => 'Người tìm việc'
             ],
             [
-                'name'=>'Sửa bài đăng',
-                'mo_ta'=>'Sửa bài viết'
+                'name' => 'Nhà tuyển dụng',
+                'mo_ta' => 'Nhà tuyển dụng'
             ],
             [
-                'name'=>'Xóa bài đăng',
-                'mo_ta'=>'Xóa bài viết'
+                'name' => 'Admin',
+                'mo_ta' => 'Admin'
+            ],
+            [
+                'name'=>'Người tìm việc dịch vụ',
+                'mo_ta' => 'Người tìm việc dịch vụ'
+            ],
+            [
+                'name'=>'Nhà tuyển dụng dịch vụ',
+                'mo_ta' => 'Người tìm việc dịch vụ'
             ]
 //            [
 //                'name'=>'Đăng bài',

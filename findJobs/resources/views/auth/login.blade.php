@@ -51,7 +51,13 @@
                                 </div>
                             </div>
                         </div>
-
+                        @if(isset($message_register))
+                            <div class="form-group row mb-1" id="show-response-dang-ky">
+                                <div class="col-md-12 text-center">
+                                   <span class="text-success">{{$message_register}}</span>
+                                </div>
+                            </div>
+                        @endif
                         <div class="form-group row mb-0">
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary">
@@ -84,4 +90,14 @@
         </div>
     </div>
 </div>
+
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        $(function () {
+            $('input').on('input',function () {
+                $('#show-response-dang-ky').remove();
+            })
+        })
+    </script>
+    @endpush
