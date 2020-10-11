@@ -51,5 +51,8 @@ class CongTy extends Model
     {
         return $this->getNhaTuyenDung->pluck('id');
     }
+    public  function getBaiTuyenDung(){
+        return $this->hasMany(BaiTuyenDung::class,'cong_ty_id');
+    }
 
 }

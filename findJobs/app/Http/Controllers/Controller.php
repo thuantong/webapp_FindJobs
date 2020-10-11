@@ -16,6 +16,8 @@ class Controller extends BaseController
             $status_text = 'Thành công';
         }elseif($status == 400){
             $status_text = 'Thất bại';
+        }else{
+            $status_text = '';
         }
         return array(
             'title'=> $title,

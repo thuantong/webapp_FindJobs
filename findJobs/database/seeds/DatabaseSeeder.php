@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             DiaDiemSeeder::class,
             ChucVuSeeder::class,
             KieuLamViecSeeder::class,
-            BangCapSeeder::class
+            BangCapSeeder::class,
+            LoaiTheSeeder::class,
+            HangMucThanhToanSeeder::class
 //            LoaiTaiKhoanSeeder::class
         ]);
         // $this->call(UserSeeder::class);

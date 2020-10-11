@@ -361,6 +361,16 @@ const lichThang = (res) => {
     });
 };
 
+const lichNam = (res) =>{
+    return res.datepicker({
+        viewMode: "years",
+        minViewMode: "years",
+        format: 'yyyy',
+        autoclose: true,
+        language: 'vi'
+    });
+}
+
 // $(document).on('focus', 'input,textarea', function () {
 //     $(this).focus();
 // });
@@ -523,7 +533,7 @@ const datatableAjax = (element, ajax, column) => {
             }
         ]
     });
-}
+};
 
 const alertConfirm = (title) =>{
     return Swal.fire({
@@ -538,3 +548,28 @@ const alertConfirm = (title) =>{
     });
 }
 
+function copy(value){
+    var aux = document.createElement("div");
+    aux.setAttribute("contentEditable", true);
+    aux.innerHTML = value;
+    aux.setAttribute("onfocus", "document.execCommand('selectAll',false,null)");
+    document.body.appendChild(aux);
+    aux.focus();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+
+    vtoast.show('Sao chép thành công!','', {
+        width: 250,
+        margin: 20,
+        "progressbar": "bottom",
+        color: "#FFFFFF",
+        backgroundcolor: '#2fb614',
+        unfocusduration: 500,
+        "duration": 800,
+        opacity: "1"
+    });
+}
+$(document).on('click','.button-menu-mobile',function () {
+    $($.fn.dataTable.tables(true)).DataTable()
+        .columns.adjust();
+});

@@ -22,13 +22,7 @@ class NhaTuyenDung extends Model
     protected $attributes = [
         'status' => 1,
     ];
-//    public function tai_khoans(){
-//        return $this->belongsTo(TaiKhoan::class,'tai_khoan_id');
-//    }
-//
-//    public function getBaiTuyenDungs(){
-//        return $this->hasMany(BaiTuyenDung::class,'nha_tuyen_dung_id');
-//    }
+
 
     //Quan tâm người tìm việc
     public function getNguoiTimViecQuanTam()
@@ -95,6 +89,10 @@ class NhaTuyenDung extends Model
     public function getSoDuId()
     {
         return $this->getSoDu->pluck('id');
+    }
+
+    public function getDonHang(){
+        return $this->hasMany(DonHang::class,'nha_tuyen_dung_id');
     }
 
 }

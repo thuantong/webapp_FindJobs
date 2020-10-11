@@ -18,7 +18,8 @@ Route::namespace('Auth')->group(function (){
 //        Route::resource('/login', 'TrangChuController');
         Route::get('/dang-nhap','MyLoginController@showLoginForm')->name('form.login');
         Route::post('/go-login','MyLoginController@login')->name('login');
-        Route::post('/logout','MyLoginController@logout')->name('logout');
+//        Route::post('/go-login?admin','MyLoginController@login')->name('login.admin');
+        Route::get('/logout','MyLoginController@logout')->name('logout');
 
         Route::get('/dang-ky','RegisterController@showRegistrationForm')->name('form.register');
         Route::post('/go-dang-ky','RegisterController@register')->name('register');
@@ -90,13 +91,35 @@ Route::namespace('PhanQuyen')->group(function () {
     });
 
 });
+Route::namespace('Admin')->group(function () {
+    Route::name('admin.')->group(function (){
+        Route::get('/admin','AdminTrangChuController@index')->name('index');
+//        Route::get('/admin/login')->name('index');
+    });
+});
+
 
 Route::namespace('SoDu')->group(function () {
     Route::name('sodu.')->group(function () {
         Route::get('/so-du-tai-khoan','SoDuController@index')->name('index');
         Route::post('/so-du-tai-khoan/dang-ky','SoDuController@dangKy')->name('dangky');
+        Route::post('/so-du-tai-khoan/nap-the','SoDuController@napThe')->name('napThe');
+    });
+
+});
+Route::namespace('TheCao')->group(function () {
+    Route::name('thecao.')->group(function () {
+        Route::get('/the-cao/danh-sach','TheCaoController@index')->name('index');
+        Route::get('/the-cao/lay-danh-sach','TheCaoController@getDanhSach')->name('getDanhSach');
+        Route::post('/the-cao/them-danh-sach','TheCaoController@setDanhSach')->name('setDanhSach');
     });
 
 });
 
+Route::namespace('QuanLyBaiDang')->group(function (){
+    Route::name('quanlybaidang.')->group(function (){
+        Route::get('/quan-ly-tuyen-dung/quan-ly-bai-dang','QuanLyBaiDangController@index')->name('index');
+        Route::get('/quan-ly-tuyen-dung/quan-ly-bai-dang/get-danh-sach','QuanLyBaiDangController@getDanhSach')->name('getdanhsach');
+    });
+});
 //Route::get('/khong-tim-thay-trang','ErrorController@func404')->name('notFoundRoute');

@@ -8,8 +8,8 @@ class QuanTriVien extends Model
 {
     protected $table = 'quan_tri_vien';
     protected $primaryKey  = 'id';
-    public $timestamps = true;
-    protected $fillable = ['dia_chi','name'];
+    public $timestamps = false;
+    protected $fillable = ['dia_chi','cap_bac'];
 
     //lấy tin nhắn người tìm việc
     public function getTinNhanNguoiTimViec(){
@@ -18,5 +18,8 @@ class QuanTriVien extends Model
     //lấy tin nhắn nhà tuyển dụng
     public function getTinNhanNhaTuyenDung(){
         return $this->belongsToMany(NhaTuyenDung::class,'tin_nhan','quan_tri_vien_id','nha_tuyen_dung_id');
+    }
+    public function getTaiKhoan(){
+        return $this->belongsTo(TaiKhoan::class,'tai_khoan_id');
     }
 }

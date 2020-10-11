@@ -16,7 +16,7 @@
                 {{--                    --}}
                 {{--                </div>--}}
                 <div class="modal-body p-0">
-                    <button type="button" class="close position-absolute" style="right: 1rem" data-dismiss="modal"
+                    <button type="button" class="close position-absolute text-danger" style="right: 1rem" data-dismiss="modal"
                             aria-hidden="true">×
                     </button>
                     <img src="" style="width: 100%">

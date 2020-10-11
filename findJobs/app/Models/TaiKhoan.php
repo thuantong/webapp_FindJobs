@@ -66,6 +66,10 @@ class TaiKhoan extends Authenticatable
     public function getNhaTuyenDungId(){
         return $this->getNhaTuyenDung->pluck('id');
     }
+
+    public function getQuanTriVien(){
+        return $this->hasOne(QuanTriVien::class,'tai_khoan_id');
+    }
 //    public function phan_quyens(){
 //        return $this->belongsToMany(PhanQuyen::class, 'loai_tai_khoan','account_id','role_id');
 ////        return $this->hasMany(LoaiTaiKhoan::class,'account_id');

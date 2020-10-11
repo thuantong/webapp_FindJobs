@@ -125,16 +125,8 @@ $(function () {
                     name: namePicture,
             };
             sendAjaxNoFunc(method,url,data,__this.attr('id')).done(function (e) {
-                $(elementID).find('img').attr('src', e).data('src',e);
-                $.toast({
-                    heading: 'Vừa thay đổi ảnh!',
-                    hideAfter: 2000,
-                    icon: 'success',
-                    loaderBg: '#5ba035',
-                    position: 'top-right',
-                    stack: 1,
-                    text: 'Thay đổi Logo',
-                });
+                $(elementID).find('img').attr('src', e.reset).data('src',e.reset);
+                getHtmlResponse(e);
                 $('#doi_anh_dai_dien').modal('hide');
             })
 

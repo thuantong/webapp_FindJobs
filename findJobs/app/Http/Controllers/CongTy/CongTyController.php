@@ -9,6 +9,7 @@ use App\Models\NhaTuyenDung;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class CongTyController extends Controller
 {
@@ -36,9 +37,9 @@ class CongTyController extends Controller
     public function index()
     {
 
-        $nganhNghe = NganhNghe::all();
+        $data['nganh_nghe'] = NganhNghe::all();
 //        dd(\GuzzleHttp\json_decode());
-        return view('CongTy.index', compact('nganhNghe'));
+        return view('CongTy.index', compact('data'));
     }
 
     public function getDanhSach()
@@ -85,6 +86,11 @@ class CongTyController extends Controller
             $congTyNew->so_nhan_vien = $request->quy_mo_nhan_su;
             $congTyNew->fax = $request->fax_cong_ty;
             $congTyNew->logo = $request->logo_cong_ty != null ? $request->logo_cong_ty : 'images/default-company-logo.jpg';
+            $congTyNew->gioi_thieu = $request->gioi_thieu_cong_ty;
+            $congTyNew->so_chi_nhanh = $request->so_luong_chi_nhanh;
+            $congTyNew->dia_chi_chi_nhanh = serialize($request->dia_chi_chi_nhanh);
+            $congTyNew->nam_thanh_lap = $request->nam_thanh_lap;
+
 
             $congTyNew->save();
 
@@ -122,7 +128,10 @@ class CongTyController extends Controller
             $congTyNew->so_nhan_vien = $request->quy_mo_nhan_su;
             $congTyNew->fax = $request->fax_cong_ty;
             $congTyNew->logo = $request->logo_cong_ty;
-
+            $congTyNew->gioi_thieu = $request->gioi_thieu_cong_ty;
+            $congTyNew->so_chi_nhanh = $request->so_luong_chi_nhanh;
+            $congTyNew->dia_chi_chi_nhanh = serialize($request->dia_chi_chi_nhanh);
+            $congTyNew->nam_thanh_lap = $request->nam_thanh_lap;
             $congTyNew->save();
 
             $nganhNghe = $request->linh_vuc_hoat_dong;
@@ -143,13 +152,19 @@ class CongTyController extends Controller
 
     public function getCapNhat(Request $request)
     {
-        $nganhNghe = NganhNghe::all();
-        $id = $request->get('id');
-        $congTy = CongTy::query()->find($id);
-        $layNganhNghe = $congTy->getNganhNgheId()->toArray();
+//        $nganhNghe = NganhNghe::all();
+//        $id = $request->get('id');
+//        $congTy = CongTy::query()->find($id);
+//        $layNganhNghe = $congTy->getNganhNgheId()->toArray();
+
+        $data['id'] = $request->get('id');
+        $data['cong_ty'] = CongTy::query()->find($data['id']);
+        $data['mang_nganh_nghe'] = $data['cong_ty']->getNganhNgheId()->toArray();
+        $data['nganh_nghe'] = NganhNghe::all();
+
 //        return in_array(3,$layNganhNghe) == true;
 //        return $layNganhNghe;
-        return view('CongTy.modal.capNhat', compact('id', 'nganhNghe', 'congTy', 'layNganhNghe'));
+        return view('CongTy.modal.capNhat', compact('data'));
     }
 
     public function xoaDanhSach(Request $request)

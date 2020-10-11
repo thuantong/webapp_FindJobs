@@ -26,20 +26,34 @@ class MyLoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        if ($request->get('message_register') != null && $request->get('message_register') == 1) {
-            $message_register = 'Tạo tài khoản thành công! Nhập lại tài khoản vừa tạo!';
-            return view('auth.login', compact('message_register'));
-        } elseif ($request->get('message_register') != 1 && $request->get('message_register') != null) {
-            abort(404);
-        } elseif ($request->get('message_register') == null) {
-            return view('auth.login');
+        if ($request->has('admin')){
+            return view('Admin.Login.login');
+        }else{
+            if ($request->get('message_register') != null && $request->get('message_register') == 1) {
+                $message_register = 'Tạo tài khoản thành công! Nhập lại tài khoản vừa tạo!';
+                return view('auth.login', compact('message_register'));
+            } elseif ($request->get('message_register') != 1 && $request->get('message_register') != null) {
+                abort(404);
+            } elseif ($request->get('message_register') == null) {
+                return view('auth.login');
+            }
         }
+
+//        dd();
     }
 
     protected function validateLogin(array $request)
     {
+
+        if (array_key_exists ( 'admin' , $request )){
+            return Validator::make($request, [
+                $this->username() => ['required', 'string'],
+                'password' => ['required', 'string', 'min:8'],
+
+            ]);
+        }
         return Validator::make($request, [
-            $this->username() => ['required', 'string'],
+            $this->username() => ['required', 'string','email'],
             'password' => ['required', 'string', 'min:8'],
 
         ]);
@@ -66,17 +80,10 @@ class MyLoginController extends Controller
                 Session::put('avatar', $nhaTuyenDung['avatar']);
                 return redirect()->route('user.nhaTuyenDung');
             case 3:
-                dd('Admin');
+                Session::put('loai_tai_khoan','admin'.$getPhanQuyen['id']);
+
+                return redirect()->route('admin.index');
         }
-//        if ($getPhanQuyen['id'] == 1) {
-//            Session::put('avatar', $findUser->getNguoiTimViec()->get('avatar'));
-//            return redirect('/');
-//        } elseif ($getPhanQuyen['id'] == 2) {
-//            Session::put('avatar', $findUser->getNhaTuyenDung()->get('avatar'));
-//            return redirect()->route('user.nhaTuyendung');
-//        } elseif ($getPhanQuyen['id'] == 3) {
-//            dd('Admin');
-//        }
 
     }
 
@@ -89,6 +96,7 @@ class MyLoginController extends Controller
 
     public function login(Request $request)
     {
+//        dd($request->has('admin'));
         $this->validateLogin($request->all())->validate();
 
         if ($this->attemptLogin($request)) {

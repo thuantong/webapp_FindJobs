@@ -15,8 +15,8 @@ class CreateQuanTriVienTable extends Migration
     {
         Schema::create('quan_tri_vien', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('dia_chi');
-            $table->string('name');
+            $table->text('dia_chi')->nullable();
+            $table->string('cap_bac')->nullable();
             $table->bigInteger('tai_khoan_id')->nullable();
         });
     }

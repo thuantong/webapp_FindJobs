@@ -20,8 +20,9 @@ class CreateBaiTuyenDungTable extends Migration
             $table->string('tuoi')->unsigned();
             $table->string('ten_chuc_vu')->unsigned();
             $table->date('han_tuyen')->nullable();
+            $table->dateTime('han_bai_viet')->nullable();
             $table->integer('so_luong_tuyen')->nullable();
-            $table->float('kinh_nghiem')->unique()->nullable();
+            $table->float('kinh_nghiem')->unsigned()->nullable();
             $table->smallInteger('gioi_tinh_tuyen')->nullable();
             $table->text('mo_ta')->nullable();
             $table->text('quyen_loi')->nullable();

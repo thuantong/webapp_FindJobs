@@ -105,10 +105,45 @@
                         <label for="dia_chi_chinh">{{__('Địa chỉ chính: ')}}</label>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 text-left">
-                        <input class="form-control" id="dia_chi_chinh"
+                        <input class="form-control not-null" id="dia_chi_chinh" title="Địa chỉ chính"
                                value="">
+                        <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
                     </div>
                 </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
+                        <label for="so_luong_chi_nhanh">{{__('Số lượng chi nhánh: ')}}</label>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-left">
+                        <input class="form-control not-null" id="so_luong_chi_nhanh" title="Số lượng chi nhánh" readonly
+                               value="0">
+
+                        <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
+
+                    </div>
+                </div>
+
+                <div class="row form-group d-none" id="dia_chi_chi_nhanh">
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
+                        <label for="dia_chi_chi_nhanh">{{__('Địa chỉ chi nhánh: ')}}</label>
+                    </div>
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 text-left" id="dia_chi_chi_nhanh_append">
+{{--                        <input class="form-control dia_chi_chi_nhanh child-not-null" title="Địa chỉ chi nhánh"--}}
+{{--                               value="">--}}
+
+{{--                        <span class="invalid-feedback" role="alert">--}}
+{{--                            <strong></strong>--}}
+{{--                        </span>--}}
+{{--                        <input value="dasd">--}}
+
+                    </div>
+                </div>
+
                 <div class="row form-group">
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
                         <label>{{__('Giờ làm việc: ')}}</label>
@@ -120,7 +155,7 @@
                             </div>
 
                             <input class="form-control not-null" style="border-left: none" id="from_time"
-                                   value="{{date('H:i')}}">
+                                   value="{{date('08:00')}}">
                             <span class="invalid-feedback" role="alert">
                             <strong></strong>
                         </span>
@@ -133,7 +168,7 @@
                                 <span class="input-group-text pl-0 pr-0">{{__('Đến')}}</span>
                             </div>
                             <input class="form-control not-null" style="border-left: none" id="to_time"
-                                   value="{{date('H:i')}}">
+                                   value="{{date('17:30')}}">
                             <span class="invalid-feedback" role="alert">
                             <strong></strong>
                         </span>
@@ -226,9 +261,11 @@
                                 title="Lĩnh vực"
                                 aria-hidden="true">
                             <option value="" disabled>Ngành Nghề</option>
-                            @foreach($nganhNghe as $row)
-                                <option value="{{$row['id']}}">{{$row['name']}}</option>
-                            @endforeach
+                            @if($data['nganh_nghe'] != null)
+                                @foreach($data['nganh_nghe'] as $row)
+                                    <option value="{{$row['id']}}">{{$row['name']}}</option>
+                                @endforeach
+                            @endif
                         </select>
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -242,6 +279,24 @@
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                         <input class="form-control" id="fax_cong_ty" value="">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
+                        <label for="nam_thanh_lap">{{__('Năm thành lập: ')}}</label>
+                    </div>
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        <input class="form-control" id="nam_thanh_lap" value="{{date('Y')}}">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
+                        <label for="logo_cong_ty">{{__('Giới thiệu công ty: ')}}</label>
+                    </div>
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 center-element position-relative">
+                        <textarea class="form-control not-null break-custom" id="gioi_thieu_cong_ty"></textarea>
                     </div>
                 </div>
 
@@ -289,6 +344,8 @@
 
                     </div>
                 </div>
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>

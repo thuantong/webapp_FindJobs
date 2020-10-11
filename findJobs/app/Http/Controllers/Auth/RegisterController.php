@@ -50,18 +50,22 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-//        dd(Validator::make($data, [
-//            'name' => ['required', 'string', 'max:255'],
-//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-//            'password' => ['required', 'string', 'min:8', 'confirmed'],
-//            'phone' => ['required', 'max:10','min:10'],
-//        ]));
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:tai_khoan'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => ['required', 'max:10','min:10'],
-        ]);
+        if (array_key_exists('admin',$data)){
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'max:255', 'unique:tai_khoan'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'phone' => ['required', 'max:10','min:10'],
+            ]);
+        }else{
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:tai_khoan'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'phone' => ['required', 'max:10','min:10'],
+            ]);
+        }
+
     }
 
     /**

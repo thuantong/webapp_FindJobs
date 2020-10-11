@@ -96,9 +96,9 @@ trait NhaTuyenDungTrait
             $nhaTuyenDung->gioi_tinh = $request->gioi_tinh_nhatuyendung;
             $nhaTuyenDung->gioi_thieu = $request->gioi_thieu_nhatuyendung;
             $nhaTuyenDung->dia_chi = $request->dia_chi_nhatuyendung;
-            $nhaTuyenDung->avatar = $request->avatar_nhatuyendung;
+            $nhaTuyenDung->avatar = $request->avatar_nhatuyendung[0];
             $nhaTuyenDung->mang_xa_hoi = serialize($request->social_nhatuyendung);
-
+//            return $nhaTuyenDung;
             $taiKhoan->save();
             $nhaTuyenDung->save();
             Session::put('avatar',$nhaTuyenDung->avatar);
@@ -106,7 +106,7 @@ trait NhaTuyenDungTrait
             return $this->getResponse($title,200,$message,0);
         }catch (\Exception $e){
             $message = 'Cập nhật thông tin cá nhân thất bại! Kiểm tra lại dữ liệu!';
-            return $this->getResponse($title,400,$message,0);
+            return $this->getResponse($title,400,$e->getMessage(),0);
         }
 
     }

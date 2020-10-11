@@ -11,5 +11,8 @@ class KieuLamViec extends Model
     public $timestamps = true;
         protected $fillable = ['name', 'mo_ta'];
 
+        public function getBaiTuyenDung(){
+            return $this->hasMany(BaiTuyenDung::class,'kieu_lam_viec_id');
+        }
     //
 }

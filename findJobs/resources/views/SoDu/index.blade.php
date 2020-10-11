@@ -1,5 +1,38 @@
 @extends('master.index')
 @section('content')
+
+    <div class="modal fade bs-example-modal-center" id="nap_the_modal" tabindex="-1" role="dialog"
+         aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{__('Nạp thẻ')}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group center-element">
+                        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                            <label>Code: </label>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <input value="" class="form-control not-null" title="Code" id="code">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect"
+                            data-dismiss="modal" id="close">{{__('Thoát')}}</button>
+                    <button type="button" class="btn btn-info waves-effect waves-light" id="save">
+                        {{__('Lưu lại')}}
+                    </button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
     <div class="row">
         <div class="col-12">
             <div class="page-title-box mb-1">
@@ -26,24 +59,34 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
                         @if(Session::get('so_du') == null)
-                        <button class="btn btn-light" id="dang_ky_so_du">Đăng ký số dư</button>
+                        <button class="btn btn-light waves-effect" id="dang_ky_so_du">Đăng ký số dư</button>
                             @else
-                            <div class="table-responsive">
-                                <table class="col-12">
-                                    <thead>
-                                    <tr>
-                                        <th>Tài Khoản</th>
-                                        <th>Số tiền</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>{{$data['data']['ten_tai_khoan']}}</td>
-                                        <td>{{$data['data']['tong_tien']}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Tài Khoản</th>
+                                                <th>Số Xu</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>{{$data['data']['ten_tai_khoan']}}</td>
+                                                <td>@money_xu($data['data']['tong_tien'])</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <button class="btn btn-primary waves-effect" id="nap_the">Nạp thẻ</button>
+                                </div>
+                            </div>
+
                         @endif
                     </div>
                 </div>
@@ -62,7 +105,22 @@
                         window.location.href = '{{route('sodu.index')}}';
                     }
                 });
-            })
+            });
+            $('#nap_the').on('click',function () {
+                $('#nap_the_modal').modal('show')
+            });
+            $('#nap_the_modal #save').on('click',function () {
+                let code = $(this).parents('.modal').find('#code').val();
+                sendAjaxNoFunc('post','/so-du-tai-khoan/nap-the',{code:code},$(this).attr('id')).done(e=>{
+                    // console.log(e);
+                    getHtmlResponse(e);
+                    if (e.status == 200){
+                        // $('#nap_the_modal').modal('hide');
+                        window.location.href = '/so-du-tai-khoan';
+                    }
+                })
+            });
+
         })
     </script>
     @endpush

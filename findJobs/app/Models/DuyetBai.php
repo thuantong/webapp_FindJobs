@@ -9,6 +9,9 @@ class DuyetBai extends Model
     protected $table = 'duyet_bai';
     protected $primaryKey  = 'id';
     public $timestamps = true;
-//    protected $fillable = ['name', 'text'];
+    protected $fillable = ['status'];
     //
+    public function getBaiTuyenDung(){
+        return $this->belongsTo(BaiTuyenDung::class,'bai_dang_id');
+    }
 }

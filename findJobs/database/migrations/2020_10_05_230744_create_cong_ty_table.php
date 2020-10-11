@@ -29,7 +29,7 @@ class CreateCongTyTable extends Migration
             $table->text('logo')->nullable();
             $table->text('gioi_thieu')->nullable();
             $table->smallInteger('status')->nullable();
-            $table->date('nam_thanh_lap')->nullable();
+            $table->string('nam_thanh_lap',6)->nullable();
             $table->bigInteger('nha_tuyen_dung_id')->nullable();
             $table->timestamps();
         });
