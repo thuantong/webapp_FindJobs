@@ -131,11 +131,11 @@
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                         <select class="form-control not-null" id="so_kinh_nghiem" title="Số năm kinh nghiệm">
-                            <option selected disabled value="">Số năm kinh nghiệm</option>
-                            <option value="1">Dưới 1 năm</option>
-                            <option value="2">1 đến 2 năm</option>
-                            <option value="3">2 đến 3 năm</option>
-                            <option value="4">Trên 3 năm</option>
+                            <option selected disabled value="">Chọn kinh nghiệm</option>
+                            @foreach($data['kinh_nghiem'] as $row)
+                                <option value="{{$row['id']}}">{{$row['name']}}</option>
+                                @endforeach
+
                         </select>
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -312,22 +312,6 @@
                     </div>
                 </div>
 
-                <div class="row form-group">
-                    <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 text-center text-md-right">
-                        <label><abbr class="text-danger  font-15">* </abbr>{{__('Số ngày đăng tin:')}}</label>
-                    </div>
-                    <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                        <input class="form-control not-null text-center" value="1" id="so_ngay_ton_tai"
-                               title="Số ngày đăng tin">
-
-                        <span class="invalid-feedback" role="alert">
-                            <strong></strong>
-                        </span>
-                    </div>
-                    <span class="form-text text-muted"><small>Số ngày tin được hiển thị trên mục bài đăng tìm việc! (1000đ/1 ngày,tương ứng 1 xu)</small></span>
-
-                </div>
-
                 <div class="row">
                     <label class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
                         <h4 class="text-uppercase bg-light p-2">{{__('Thông Tin Chính')}}</h4></label>
@@ -381,6 +365,43 @@
                             <strong></strong>
                         </span>
                     </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                        <h4 class="text-uppercase bg-light p-2">{{__('Đang ký dịch vụ')}}</h4></label>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 text-center text-md-right">
+                        <label><abbr class="text-danger  font-15">* </abbr>{{__('Số ngày đăng tin:')}}</label>
+                    </div>
+                    <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                        <input class="form-control not-null text-center" value="1" id="so_ngay_ton_tai"
+                               title="Số ngày đăng tin">
+
+                        <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
+                    </div>
+                    <span class="form-text text-muted"><small>Số ngày tin được hiển thị trên mục bài đăng tìm việc! (1000đ/1 ngày,tương ứng 1 xu)</small></span>
+
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 text-center text-md-right">
+                        <label><abbr class="text-danger  font-15">* </abbr>{{__('Đăng ký bài viết HOT:')}}</label>
+                    </div>
+                    <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                        <input class="form-control not-null text-center" value="1" id="so_ngay_ton_tai"
+                               title="Số ngày đăng tin">
+
+                        <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
+                    </div>
+                    <span class="form-text text-muted"><small>Số ngày tin được hiển thị trên mục bài đăng tìm việc! (1000đ/1 ngày,tương ứng 1 xu)</small></span>
+
                 </div>
 
                 <div class="row">

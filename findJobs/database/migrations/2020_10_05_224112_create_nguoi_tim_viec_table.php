@@ -15,7 +15,7 @@ class CreateNguoiTimViecTable extends Migration
     {
         Schema::create('nguoi_tim_viec', function (Blueprint $table) {
             $table->bigIncrements('id')->unique()->unique();
-            $table->string('ho_ten')->nullable();
+//            $table->string('ho_ten')->nullable();
             $table->string('viec_can_tim')->nullable();
             $table->text('gioi_thieu')->nullable();
             $table->text('dia_chi')->nullable();

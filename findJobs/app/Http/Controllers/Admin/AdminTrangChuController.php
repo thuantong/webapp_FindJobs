@@ -36,7 +36,6 @@ class AdminTrangChuController extends Controller
             abort(404);
         }
 //                dd(Session::get('loai_tai_khoan'));
-
 //        $baiDuyet = json_decode(CongTy::with('getNhaTuyenDung','getNganhNghe')->get());
 //        $data = $baiDuyet['created_at'];
 //        dd(json_decode($data));
@@ -52,21 +51,21 @@ class AdminTrangChuController extends Controller
 
     public function getThongbao()
     {
-        $baiDuyet = BaiTuyenDung::with('getDuyetTin', 'getNhaTuyenDung')->get()->toArray();
-        $tinChuaDoc = DuyetBai::all()->where('status', 0)->count();
-        Carbon::setLocale('vi');
-        if ($baiDuyet != null) {
-            for ($i = 0; $i < count($baiDuyet); $i++) {
-                $baiDuyet[$i]['created_at'] = Carbon::parse($baiDuyet[$i]['created_at'])->diffForHumans(null, null, true, 2);
-                $baiDuyet[$i]['get_nha_tuyen_dung']['tai_khoan'] = NhaTuyenDung::query()->find($baiDuyet[$i]['get_nha_tuyen_dung']['id'])->getTaiKhoan->toArray();
-                $baiDuyet[$i]['trang_thai_xem_tin'] = DuyetBai::query()->where('bai_dang_id', $baiDuyet[$i]['id'])->first('status');
-            }
+//        $baiDuyet = BaiTuyenDung::with('getDuyetTin', 'getNhaTuyenDung')->get()->toArray();
+//        $tinChuaDoc = DuyetBai::all()->where('status', 0)->count();
+//        Carbon::setLocale('vi');
+//        if ($baiDuyet != null) {
+//            for ($i = 0; $i < count($baiDuyet); $i++) {
+//                $baiDuyet[$i]['created_at'] = Carbon::parse($baiDuyet[$i]['created_at'])->diffForHumans(null, null, true, 2);
+//                $baiDuyet[$i]['get_nha_tuyen_dung']['tai_khoan'] = NhaTuyenDung::query()->find($baiDuyet[$i]['get_nha_tuyen_dung']['id'])->getTaiKhoan->toArray();
+//                $baiDuyet[$i]['trang_thai_xem_tin'] = DuyetBai::query()->where('bai_dang_id', $baiDuyet[$i]['id'])->first('status');
+//            }
+//
+//            $data['duyet_tin'] = $baiDuyet;
+//            $data['tin_chua_doc'] = $tinChuaDoc;
+//        }
 
-            $data['duyet_tin'] = $baiDuyet;
-            $data['tin_chua_doc'] = $tinChuaDoc;
-        }
-
-        return $data;
+        return [];
     }
 
     public function chuyenTrangThaiDaXem(Request $request)

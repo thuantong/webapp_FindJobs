@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class BaiTuyenDung extends Model
 {
     protected $table = 'bai_tuyen_dung';
     protected $primaryKey = 'id';
+//    protected $dateFormat = 'Y-m-d H+7:i:sO';
     public $timestamps = true;
     protected $fillable = [
         'tieu_de',
@@ -33,6 +35,20 @@ class BaiTuyenDung extends Model
         'isHot' => 0,
         'status' => 0,
     ];
+    protected $casts = [
+        'created_at' => 'datetime:H:i - d/m/Y',
+        'update_at' => 'datetime:H:i - d/m/Y,',
+        'han_tuyen' => 'datetime:d/m/Y',
+
+    ];
+//    protected $dates = [
+//        'created_at', 'updated_at'
+//    ];
+//
+//    public function setStartDatetimeAttribute($date)
+//    {
+//        $this->attributes['created_at'] = Carbon::parse($this->attributes['created_at'])->setTimezone('Asia/Ho_Chi_Minh')->format('d/m/Y H:i');
+//    }
 
     //lấy nhà tuyển dụng
     public function getNhaTuyenDung()
@@ -54,6 +70,11 @@ class BaiTuyenDung extends Model
     public function getNganhNgheId()
     {
         return $this->getNganhNghe->pluck('id');
+    }
+
+    public function getNganhNgheName()
+    {
+        return $this->getNganhNghe->pluck('name');
     }
 
     public function getDonHang()
@@ -90,6 +111,9 @@ class BaiTuyenDung extends Model
 
     public function getDuyetTin(){
         return $this->hasOne(DuyetBai::class,'bai_dang_id');
+    }
+    public function getKinhNghiem(){
+        return $this->belongsTo(KinhNghiem::class,'kinh_nghiem_id');
     }
 
 }

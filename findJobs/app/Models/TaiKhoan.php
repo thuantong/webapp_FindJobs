@@ -19,7 +19,7 @@ class TaiKhoan extends Authenticatable
      * @var array
      */
     protected $fillable = [
-//        'ho_ten',
+        'ho_ten',
         'email',
         'email_verify',
         'password',

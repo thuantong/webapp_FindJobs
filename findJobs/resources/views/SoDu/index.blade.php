@@ -68,7 +68,7 @@
                 @endif
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-                        @if(Session::get('so_du') == null)
+                        @if(Session::exists('so_du') == false)
                         <button class="btn btn-light waves-effect" id="dang_ky_so_du">Đăng ký số dư</button>
                             @else
                             <div class="row">

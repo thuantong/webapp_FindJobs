@@ -9,7 +9,10 @@ class QuanTriVien extends Model
     protected $table = 'quan_tri_vien';
     protected $primaryKey  = 'id';
     public $timestamps = false;
-    protected $fillable = ['ho_ten','dia_chi','cap_bac'];
+    protected $fillable = [
+//        'ho_ten',
+        'dia_chi',
+        'cap_bac'];
 
     //lấy tin nhắn người tìm việc
     public function getTinNhanNguoiTimViec(){

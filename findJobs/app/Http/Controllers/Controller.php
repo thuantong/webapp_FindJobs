@@ -41,7 +41,7 @@ class Controller extends BaseController
 //            dd(Session::get('so_du'));
             if (Session::get('so_du') != null){
                 return $this->getResponse($title,200,'Có số dư');
-            }elseif (Session::get('so_du') == null){
+            }elseif (Session::get('so_du') == null && Session::get('so_du') != 0){
                 $data = array(
                     'ten_chuc_nang' =>$chucNang,
                     'href'=>$route
@@ -55,5 +55,8 @@ class Controller extends BaseController
     public function printFileSql($command,$toSql){
         Storage::disk('local')->append('sql.txt', '/*'.$command.'*/');
         Storage::disk('local')->append('sql.txt', $toSql);
+    }
+    public function tzHoChiMinh(){
+        return 'Asia/Ho_Chi_Minh';
     }
 }

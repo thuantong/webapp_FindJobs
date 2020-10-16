@@ -77,7 +77,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return TaiKhoan::create([
-//            'ho_ten' => $data['name'],
+            'ho_ten' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),

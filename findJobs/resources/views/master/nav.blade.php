@@ -33,10 +33,11 @@
             {{--{{Session::get('loai_tai_khoan')}}--}}
             {{--{{json_encode(Session::get('role'))}}--}}
             <ul class="metismenu" id="side-menu">
+{{--                {{Session::has('so_du') == true}}--}}
                 @if(Auth::user() != null)
                     <li class="">
-                        @if(Session::get('loai_tai_khoan') != 'admin3')
-                            @if(Session::get('so_du') == null)
+                        @if(Session::get('loai_tai_khoan') != 3)
+                            @if(Session::exists('so_du') == false)
                                 <a href="{{route('sodu.index')}}" class="waves-effect text-center">
                                     <span>{{__('Chưa đăng ký số dư')}}</span>
                                 </a>
@@ -105,7 +106,7 @@
 
                 @endif
 
-                @if(Session::get('loai_tai_khoan') == 'admin3')
+                @if(Session::get('loai_tai_khoan') == 3)
                     <li class="menu-title">{{__('Quản lý bài đăng')}}</li>
 
                     <li>

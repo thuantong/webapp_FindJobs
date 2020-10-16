@@ -129,6 +129,7 @@ Route::namespace('Admin')->group(function () {
 
         Route::get('/admin/danh-sach-bai-duyet','DuyetBaiVietController@index')->name('duyetbaiviet');
         Route::get('/admin/danh-sach-bai-duyet/get','DuyetBaiVietController@getDanhSachDuyetTin')->name('getDanhSachDuyetTin');
+        Route::get('/admin/duyet-tin/xem-bai-dang','DuyetBaiVietController@getBaiTuyenDung')->name('getBaiTuyenDung');
     });
 
 });

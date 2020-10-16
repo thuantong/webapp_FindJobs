@@ -11,7 +11,7 @@ class NguoiTimViec extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'ho_ten',
+//        'ho_ten',
         'viec_can_tim',
         'gioi_thieu',
         'dia_chi',

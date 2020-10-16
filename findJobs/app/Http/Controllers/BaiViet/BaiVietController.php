@@ -10,6 +10,7 @@ use App\Models\DonHang;
 use App\Models\DuyetBai;
 use App\Models\HangMucThanhToan;
 use App\Models\KieuLamViec;
+use App\Models\KinhNghiem;
 use App\Models\NganhNghe;
 use App\Models\NhaTuyenDung;
 //use Carbon\Carbon;
@@ -63,6 +64,7 @@ class BaiVietController extends Controller
 //        dd(json_encode(Money::VND(5000.00)));
 //        dd(number_format(, 0));
 //        dd($this->kiemTraSoDu());
+        $data['kinh_nghiem'] = KinhNghiem::query()->orderBy('id','asc')->get();
         $data['nganh_nghe'] = NganhNghe::query()->orderBy('name','asc')->get();
         $data['cong_ty'] = $this->nhaTuyenDung->getCongTy()->orderBy('created_at','desc')->get();
         $data['chuc_vu'] = ChucVu::query()->orderBy('name','asc')->get();
@@ -86,7 +88,7 @@ class BaiVietController extends Controller
 
             $baiViet->ten_chuc_vu = $request->ten_chuc_vu;//
             $baiViet->so_luong_tuyen = $request->so_luong_tuyen;//
-            $baiViet->kinh_nghiem = $request->so_kinh_nghiem;//
+            $baiViet->kinh_nghiem_id = $request->so_kinh_nghiem;//
             $baiViet->han_tuyen = Carbon::createFromFormat('d/m/Y',$request->han_tuyen_dung)->format('Y-m-d');//
 //ngành nghề
             $baiViet->luong = serialize($request->muc_luong);

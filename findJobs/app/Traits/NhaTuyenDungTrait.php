@@ -76,12 +76,12 @@ trait NhaTuyenDungTrait
         $title = 'Cập nhật';
         try {
             $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
-//            $taiKhoan->ho_ten = $request->ho_ten_nhatuyendung;
+            $taiKhoan->ho_ten = $request->ho_ten_nhatuyendung;
             $taiKhoan->email = $request->email_nhatuyendung;
             $taiKhoan->phone = $request->phone_nhatuyendung;
 
             $nhaTuyenDung = $taiKhoan->getNhaTuyenDung;
-            $nhaTuyenDung->ho_ten = $request->ho_ten_nhatuyendung;
+//            $nhaTuyenDung->ho_ten = $request->ho_ten_nhatuyendung;
             $nhaTuyenDung->gioi_tinh = $request->gioi_tinh_nhatuyendung;
             $nhaTuyenDung->gioi_thieu = $request->gioi_thieu_nhatuyendung;
             $nhaTuyenDung->dia_chi = $request->dia_chi_nhatuyendung;
@@ -91,7 +91,7 @@ trait NhaTuyenDungTrait
             $taiKhoan->save();
             $nhaTuyenDung->save();
             Session::put('avatar',$nhaTuyenDung->avatar);
-            Session::put('ho_ten',$nhaTuyenDung->ho_ten);
+//            Session::put('ho_ten',$nhaTuyenDung->ho_ten);
             $message = 'Cập nhật thông tin cá nhân thành công';
             return $this->getResponse($title,200,$message,$nhaTuyenDung);
         }catch (\Exception $e){

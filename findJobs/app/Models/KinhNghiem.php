@@ -4,16 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class KieuLamViec extends Model
+class KinhNghiem extends Model
 {
-    protected $table = 'kieu_lam_viec';
+    protected $table = 'kinh_nghiem';
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = ['name', 'mo_ta'];
-
-    public function getBaiTuyenDung()
-    {
-        return $this->hasMany(BaiTuyenDung::class, 'kieu_lam_viec_id');
+    public function getBaiTuyenDung(){
+        return $this->hasMany(BaiTuyenDung::class,'kinh_nghiem_id');
     }
     //
 }

@@ -115,8 +115,8 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">
                         <input class="form-control not-null" id="ho_ten" title="Họ tên"
-                               placeholder="@if(Session::get('ho_ten') == null){{"Nhập họ tên"}}@endif"
-                               value="@if(Session::get('ho_ten') != null){{Session::get('ho_ten')}}@endif">
+                               placeholder="@if(Auth::user()->ho_ten == null){{"Nhập họ tên"}}@endif"
+                               value="@if(Auth::user()->ho_ten != null){{Auth::user()->ho_ten}}@endif">
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
                         </span>
