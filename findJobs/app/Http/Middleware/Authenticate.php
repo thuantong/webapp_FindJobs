@@ -15,6 +15,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+//        dd($request->has('admin'));
         if (! $request->expectsJson()) {
             Session::flush();
             return route('auth.form.login');

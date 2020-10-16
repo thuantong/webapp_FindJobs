@@ -69,41 +69,31 @@ trait NhaTuyenDungTrait
         if($timEmail == 1){
             return $this->getResponse('Email', 400, 'Email đã tồn tại!');
         }
-//        return $emailNhaTuyenDung;
-//        return $this->getResponse('Email', 400, 'Email đã tồn tại!');
-//        switch (strtolower($emailNhaTuyenDung)){
-//            case '':
-//        }
-//        return ;
-//        return
-//        return Validator::make($request, [
-////            'name' => ['required', 'string', 'max:255'],
-//            'email_nha_tuyen_dung' => ['required', 'string', 'email', 'max:255', 'unique:tai_khoan'],
-////            'password' => ['required', 'string', 'min:8', 'confirmed'],
-////            'phone' => ['required', 'max:10','min:10'],
-//        ])->validate();
+
     }
 
     public function updateNhaTuyenDung(Request $request){
         $title = 'Cập nhật';
         try {
             $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
-            $taiKhoan->ho_ten = $request->ho_ten_nhatuyendung;
+//            $taiKhoan->ho_ten = $request->ho_ten_nhatuyendung;
             $taiKhoan->email = $request->email_nhatuyendung;
             $taiKhoan->phone = $request->phone_nhatuyendung;
 
             $nhaTuyenDung = $taiKhoan->getNhaTuyenDung;
+            $nhaTuyenDung->ho_ten = $request->ho_ten_nhatuyendung;
             $nhaTuyenDung->gioi_tinh = $request->gioi_tinh_nhatuyendung;
             $nhaTuyenDung->gioi_thieu = $request->gioi_thieu_nhatuyendung;
             $nhaTuyenDung->dia_chi = $request->dia_chi_nhatuyendung;
-            $nhaTuyenDung->avatar = $request->avatar_nhatuyendung[0];
+            $nhaTuyenDung->avatar = $request->avatar_nhatuyendung;
             $nhaTuyenDung->mang_xa_hoi = serialize($request->social_nhatuyendung);
 //            return $nhaTuyenDung;
             $taiKhoan->save();
             $nhaTuyenDung->save();
             Session::put('avatar',$nhaTuyenDung->avatar);
+            Session::put('ho_ten',$nhaTuyenDung->ho_ten);
             $message = 'Cập nhật thông tin cá nhân thành công';
-            return $this->getResponse($title,200,$message,0);
+            return $this->getResponse($title,200,$message,$nhaTuyenDung);
         }catch (\Exception $e){
             $message = 'Cập nhật thông tin cá nhân thất bại! Kiểm tra lại dữ liệu!';
             return $this->getResponse($title,400,$e->getMessage(),0);

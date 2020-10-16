@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover mb-0 nowrap" id="danh-sach-cong-ty">
+                            <table class="table table-bordered table-hover mb-0" id="danh-sach-cong-ty">
                                 <thead class="thead-light">
                                 <tr>
                                     <th class="text-center">Logo</th>

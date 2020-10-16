@@ -1,8 +1,9 @@
+window.scrollTo({ top: 0, behavior: 'smooth' });
 $(function () {
     // $('#from_time').clockpicker({
     //     autoclose: true,
     // });
-
+    // $(window).scrollTop(0);
     $('#from_time,#to_time').datetimepicker({
         format: 'HH:mm',
         icons: {
@@ -124,8 +125,11 @@ $(function () {
                     fileName: resp,
                     name: namePicture,
             };
+            // console.log('anh moi',data)
             sendAjaxNoFunc(method,url,data,__this.attr('id')).done(function (e) {
-                $(elementID).find('img').attr('src', e.reset).data('src',e.reset);
+                // console.log('anh moi',$(elementID).find('img'))
+
+                $(elementID).find('img').attr('src', e.reset[0]).data('data',e.reset[0]);
                 getHtmlResponse(e);
                 $('#doi_anh_dai_dien').modal('hide');
             })
@@ -163,7 +167,7 @@ $(document).on('click','.save-profile',function () {
     let error = 0;
     let button = $(this).attr('id');
     error += notNullMessage(elementNull);
-
+    // alert();
     if (error == 0){
         let social = [];
         $('.social-link').each(function () {
@@ -179,22 +183,20 @@ $(document).on('click','.save-profile',function () {
             dia_chi_nhatuyendung : $('#dia_chi').val(),
             ngay_sinh_nhatuyendung : $('#ngay_sinh_tuyen_dung').val(),
             phone_nhatuyendung : $('#phone_tuyen_dung').val(),
-            avatar_nhatuyendung : $('#avatar_tuyen_dung').find('img').data('src'),
+            avatar_nhatuyendung : $('#avatar_tuyen_dung').find('img').data('data'),
             gioi_thieu_nhatuyendung : $('#gioi_thieu').val(),
             social_nhatuyendung : social
 
         };
-
+        // console.log(data)
         sendAjaxNoFunc(method,url,data,button).done(res=>{
-            console.log(res)
+            // console.log(res)
             getHtmlResponse(res);
             if (res.status == 200){
-                $('#'+button).attr('disabled','disabled');
+                // $('#'+button).attr('disabled','disabled');
                 window.location.href = '/nha-tuyen-dung';
             }
         });
     }
 });
-// $(document).on('hover','#logo_cong_ty',function () {
-//     console.log('ccc')
-// });
+

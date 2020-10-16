@@ -48,6 +48,7 @@
     </div>
 
     <div class="row">
+
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card-box p-1 mb-1 text-right">
                 {{--                <div class="row">--}}
@@ -55,7 +56,16 @@
                 {{--                        <button class="btn btn-primary" id="them-moi">Thêm mới</button>--}}
                 {{--                    </div>--}}
                 {{--                </div>--}}
-
+                @if(isset($checkSoDu))
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center text-danger">
+{{--                        {{'Bạn phải đăng ký số dư để sử dụng chức năng '.strtolower($checkSoDu['reset'][0])}}--}}
+                        {{'Bạn phải đăng ký số dư để sử dụng chức năng '.$checkSoDu['reset'][0]['ten_chuc_nang']}}
+                        <span class="d-none" id="check-so-du-chuc-nang">{{$checkSoDu['reset'][0]['href']}}</span>
+{{--                        {{'Sau khi đăng ký thành công chọn!!'}}<a href="{{URL::asset($checkSoDu['reset'][0]['href'])}}">Đăng tin</a>--}}
+                    </div>
+                </div>
+                @endif
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
                         @if(Session::get('so_du') == null)
@@ -64,8 +74,8 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
+                                        <table class="table table-bordered">
+                                            <thead class="thead-light">
                                             <tr>
                                                 <th>Tài Khoản</th>
                                                 <th>Số Xu</th>
@@ -102,7 +112,12 @@
                 sendAjaxNoFunc('post','/so-du-tai-khoan/dang-ky',{},$(this).attr('id')).done(e =>{
                     getHtmlResponse(e);
                     if(e.status == 200){
-                        window.location.href = '{{route('sodu.index')}}';
+                        let hrefContent = $('#check-so-du-chuc-nang').text();
+                        if (hrefContent != undefined){
+                            window.location.href = hrefContent;
+                        }else{
+                            window.location.href = '{{route('sodu.index')}}';
+                        }
                     }
                 });
             });
@@ -116,7 +131,7 @@
                     getHtmlResponse(e);
                     if (e.status == 200){
                         // $('#nap_the_modal').modal('hide');
-                        window.location.href = '/so-du-tai-khoan';
+                        window.location.href = '{{route('sodu.index')}}';
                     }
                 })
             });

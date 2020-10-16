@@ -7,6 +7,8 @@
         <link href="assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
 
     </head>
+    @include('User.modal.doiMatKhau')
+
     <div class="modal fade bs-example-modal-center" id="xem_anh_dai_dien" tabindex="-1" role="dialog"
          aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered">
@@ -65,8 +67,6 @@
 
 
 
-
-
     <div class="row">
         <div class="col-12">
             <div class="page-title-box mb-1">
@@ -102,218 +102,7 @@
 
 
     <div class="row center-element">
-{{--        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">--}}
-{{--            <div class="card-box p-1 mb-1 text-right">--}}
-{{--                <div class="row">--}}
-{{--                    <label class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">--}}
-{{--                        <h4 class="text-uppercase bg-light p-2">{{__('Thông Tin Công Ty Tuyển Dụng')}}</h4></label>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="ten_cong_ty"><abbr class="text-danger  font-15">* </abbr>{{__('Tên công ty: ')}}--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">--}}
-{{--                        <input class="form-control not-null" id="ten_cong_ty" title="Tên công ty"--}}
-{{--                               value="@if($nhaTuyenDung['ten_cong_ty'] != null){{$nhaTuyenDung['ten_cong_ty']}}@endif">--}}
-{{--                        <span class="invalid-feedback" role="alert">--}}
-{{--                            <strong></strong>--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="link_website">{{__('Website: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">--}}
-{{--                        <input class="form-control" id="link_website" title="Website"--}}
-{{--                               value="@if($nhaTuyenDung['websites'] != null){{$nhaTuyenDung['websites']}}@endif">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="email_cong_ty"><abbr class="text-danger  font-15">* </abbr>{{__('Email: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">--}}
-{{--                        <input class="form-control not-null" id="email_cong_ty" data-rule="email" title="Email"--}}
-{{--                               value="@if($nhaTuyenDung['email_cong_ty'] != null){{$nhaTuyenDung['email_cong_ty']}}@endif">--}}
-{{--                        <span class="invalid-feedback" role="alert">--}}
-{{--                            <strong></strong>--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="dien_thoai_cong_ty"><abbr--}}
-{{--                                class="text-danger  font-15">* </abbr>{{__('Điện thoại: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">--}}
-{{--                        <input class="form-control not-null" id="dien_thoai_cong_ty" maxlength="10" title="Điện thoại"--}}
-{{--                               value="@if($nhaTuyenDung['phone_cong_ty'] != null){{$nhaTuyenDung['phone_cong_ty']}}@endif">--}}
-{{--                        <span class="invalid-feedback" role="alert">--}}
-{{--                            <strong></strong>--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="dia_chi_chinh">{{__('Địa chỉ chính: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">--}}
-{{--                        <input class="form-control" id="dia_chi_chinh"--}}
-{{--                               value="@if($nhaTuyenDung['dia_chi'] != null){{$nhaTuyenDung['dia_chi']}}@endif">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label>{{__('Giờ làm việc: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 pr-md-0">--}}
-{{--                        <div class="input-group">--}}
-{{--                            <div class="input-group-append">--}}
-{{--                                <span class="input-group-text pl-1 pr-1">{{__('Từ')}}</span>--}}
-{{--                            </div>--}}
 
-{{--                            <input class="form-control" style="border-left: none" id="from_time"--}}
-{{--                                   value="@if($nhaTuyenDung['gio_lam_viec'] != null){{trim(substr($nhaTuyenDung['gio_lam_viec'],0,strpos($nhaTuyenDung['gio_lam_viec'],'-')))}}@else{{date('08:00')}}@endif">--}}
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-{{--                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 pl-md-0">--}}
-{{--                        <div class="input-group">--}}
-{{--                            <div class="input-group-append">--}}
-{{--                                <span class="input-group-text pl-0 pr-0">{{__('Đến')}}</span>--}}
-{{--                            </div>--}}
-{{--                            <input class="form-control" style="border-left: none" id="to_time"--}}
-{{--                                   value="@if($nhaTuyenDung['gio_lam_viec'] != null){{trim(substr($nhaTuyenDung['gio_lam_viec'],strpos($nhaTuyenDung['gio_lam_viec'],'-')+1))}} @else{{date('17:00')}}@endif">--}}
-
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label>{{__('Ngày làm việc: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 pr-md-0">--}}
-{{--                        <div class="input-group">--}}
-{{--                            <div class="input-group-append pl-1 pr-1" style="position: absolute;z-index: 1;left: -6px;">--}}
-{{--                                <span class="input-group-text pl-1 pr-1">{{__('Từ')}}</span>--}}
-{{--                            </div>--}}
-{{--                            <select class="form-control" id="from_day">--}}
-{{--                                <option value="" selected disabled>Chọn thứ</option>--}}
-{{--                                                                <option value="1" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null) @if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],0,strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-'))) == 1) selected @endif @endif>{{__('Chủ nhật')}}</option>--}}
-{{--                                                                <option value="2" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],0,strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-'))) == 2) selected @endif @endif>{{__('Thứ hai')}}</option>--}}
-{{--                                                                <option value="3" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],0,strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-'))) == 3) selected @endif @endif>{{__('Thứ ba')}}</option>--}}
-{{--                                                                <option value="4" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],0,strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-'))) == 4) selected @endif @endif>{{__('Thứ tư')}}</option>--}}
-{{--                                                                <option value="5" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],0,strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-'))) == 5) selected @endif @endif>{{__('Thứ năm')}}</option>--}}
-{{--                                                                <option value="6" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],0,strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-'))) == 6) selected @endif @endif>{{__('Thứ sáu')}}</option>--}}
-{{--                                                                <option value="7" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],0,strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-'))) == 7) selected @endif @endif>{{__('Thứ bảy')}}</option>--}}
-{{--                                                                <option value="8" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],0,strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-'))) == 8) selected @endif @endif>{{__('Sáng - Thứ bảy')}}</option>--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-{{--                    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 pl-md-0">--}}
-{{--                        <div class="input-group">--}}
-{{--                            <div class="input-group-append pl-1 pr-1" style="position: absolute;z-index: 1;left: -6px;">--}}
-{{--                                <span class="input-group-text pl-0 pr-0">{{__('Đến')}}</span>--}}
-{{--                            </div>--}}
-{{--                            <select class="form-control" id="to_day">--}}
-{{--                                <option value="" selected disabled>Chọn thứ</option>--}}
-{{--                                                                <option value="1" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-')+1)) == 1) selected @endif @endif>{{__('Chủ nhật')}}</option>--}}
-{{--                                                                <option value="2" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-')+1)) == 2) selected @endif @endif>{{__('Thứ hai')}}</option>--}}
-{{--                                                                <option value="3" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-')+1)) == 3) selected @endif @endif>{{__('Thứ ba')}}</option>--}}
-{{--                                                                <option value="4" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-')+1)) == 4) selected @endif @endif>{{__('Thứ tư')}}</option>--}}
-{{--                                                                <option value="5" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-')+1)) == 5) selected @endif @endif>{{__('Thứ năm')}}</option>--}}
-{{--                                                                <option value="6" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-')+1)) == 6) selected @endif @endif>{{__('Thứ sáu')}}</option>--}}
-{{--                                                                <option value="7" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-')+1)) == 7) selected @endif @endif>{{__('Thứ bảy')}}</option>--}}
-{{--                                                                <option value="8" @if($nhaTuyenDung['ngay_lam_viec_cong_ty'] != null)@if(trim(substr($nhaTuyenDung['ngay_lam_viec_cong_ty'],strpos($nhaTuyenDung['ngay_lam_viec_cong_ty'],'-')+1)) == 8) selected @endif @endif>{{__('Sáng - Thứ bảy')}}</option>--}}
-{{--                            </select>--}}
-{{--                            --}}{{--                            <input class="form-control" id="to_day" value="{{date('D')}}">--}}
-
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="quy_mo_nhan_su">{{__('Quy mô nhân sự: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">--}}
-{{--                        <select class="form-control" id="quy_mo_nhan_su">--}}
-
-{{--                            <option disabled selected value="">Quy mô nhân sự</option>--}}
-{{--                                                        <option value="1" @if($nhaTuyenDung['so_luong_employee'] != null)@if($nhaTuyenDung['so_luong_employee'] == 1) selected @endif @endif>Dưới 20 người</option>--}}
-{{--                                                        <option value="2" @if($nhaTuyenDung['so_luong_employee'] != null)@if($nhaTuyenDung['so_luong_employee'] == 2) selected @endif @endif>Từ 20 đến 50 người</option>--}}
-{{--                                                        <option value="3" @if($nhaTuyenDung['so_luong_employee'] != null)@if($nhaTuyenDung['so_luong_employee'] == 3) selected @endif @endif>Từ 50 đến 75 người</option>--}}
-{{--                                                        <option value="4" @if($nhaTuyenDung['so_luong_employee'] != null)@if($nhaTuyenDung['so_luong_employee'] == 4) selected @endif @endif>Trên 75 người</option>--}}
-{{--                        </select>--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="linh_vuc_hoat_dong"><abbr class="text-danger  font-15">* </abbr>{{__('Lĩnh vực: ')}}--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">--}}
-
-{{--                        <select id="linh_vuc_hoat_dong" class="form-control not-null" multiple="multiple" tabindex="-1"--}}
-{{--                                title="Lĩnh vực"--}}
-{{--                                aria-hidden="true">--}}
-{{--                            <option value="" disabled>Ngành Nghề</option>--}}
-{{--                            @foreach($nganhNghe as $row)--}}
-{{--                                <option value="{{$row['id']}}" @if(unserialize($nhaTuyenDung['nganh_nghe_id']) != null) @if(in_array($row['id'],unserialize($nhaTuyenDung['nganh_nghe_id']))) selected @endif @endif>{{$row['name']}}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                        <span class="invalid-feedback" role="alert">--}}
-{{--                            <strong></strong>--}}
-{{--                        </span>--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="fax_cong_ty">{{__('FAX: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">--}}
-{{--                        <input class="form-control" id="fax_cong_ty" value="@if($nhaTuyenDung['fax_cong_ty'] != null){{$nhaTuyenDung['fax_cong_ty']}}@endif">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="row form-group">--}}
-{{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">--}}
-{{--                        <label for="logo_cong_ty">{{__('Logo: ')}}</label>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 center-element position-relative">--}}
-{{--                        <div style="width: 8rem;height: 8rem;" id="logo_cong_ty">--}}
-{{--                            <img src="{{asset($nhaTuyenDung['avatar'])}}" class="avatar-xl img-thumbnail" data-src="{{$nhaTuyenDung['avatar']}}"--}}
-{{--                                 alt="profile-image" tabindex="-1" style="width: 100%;height: 100%">--}}
-{{--                            <div class="position-absolute center-element"--}}
-{{--                                 style="display:none;width: 8rem;height: 8rem;background-color: rgba(50, 58, 70, .55);top:0">--}}
-{{--                                <div>--}}
-{{--                                    <div class="row mt-1 mb-1">--}}
-{{--                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">--}}
-{{--                                            <button class="btn btn-success btn-sm">Đổi ảnh</button>--}}
-{{--                                            <input type="file" class="d-none">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="row mt-1 mb-1">--}}
-{{--                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">--}}
-{{--                                            <button class="btn btn-light btn-sm">Xem ảnh</button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <div class="card-box p-1 mb-1 text-right">
                 <div class="row">
@@ -326,8 +115,8 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">
                         <input class="form-control not-null" id="ho_ten" title="Họ tên"
-                               placeholder="@if(Auth::user()->ho_ten == null){{"Nhập email"}}@endif"
-                               value="@if(Auth::user()->ho_ten != null){{Auth::user()->ho_ten}}@endif">
+                               placeholder="@if(Session::get('ho_ten') == null){{"Nhập họ tên"}}@endif"
+                               value="@if(Session::get('ho_ten') != null){{Session::get('ho_ten')}}@endif">
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
                         </span>
@@ -423,7 +212,7 @@
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 center-element position-relative">
                         <div style="width: 8rem;height: 8rem;" id="avatar_tuyen_dung">
-                            <img src="{{asset(Session::get('avatar'))}}" class="avatar-xl img-thumbnail" data-src="{{Session::get('avatar')}}"
+                            <img src="{{asset(Session::get('avatar'))}}" class="avatar-xl img-thumbnail" data-data="{{Session::get('avatar')}}"
                                  alt="profile-image" tabindex="-1" style="width: 100%;height: 100%">
                             <div class="position-absolute center-element"
                                  style="display:none;width: 8rem;height: 8rem;background-color: rgba(50, 58, 70, .55);top:0">
@@ -562,6 +351,7 @@
 
 
     <script type="text/javascript" src="{{asset('assets\js\app\nhaTuyenDung.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets\js\app\doi_mat_khau.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets\js\date-picker-vi.js')}}"></script>
     <script>
         $(function () {

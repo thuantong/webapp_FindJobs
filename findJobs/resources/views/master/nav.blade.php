@@ -30,26 +30,26 @@
 
     <!--- Sidemenu -->
         <div id="sidebar-menu">
-{{--{{Session::get('loai_tai_khoan')}}--}}
-{{--{{json_encode(Session::get('role'))}}--}}
+            {{--{{Session::get('loai_tai_khoan')}}--}}
+            {{--{{json_encode(Session::get('role'))}}--}}
             <ul class="metismenu" id="side-menu">
                 @if(Auth::user() != null)
-                <li class="">
-                    @if(Session::get('loai_tai_khoan') != 3)
-                    @if(Session::get('so_du') == null)
-                        <a href="{{route('sodu.index')}}" class="waves-effect text-center">
-                            <span>{{__('Chưa đăng ký số dư')}}</span>
-                        </a>
-                        @else
-                    <div class="input-group center-element">
-                        <span class="text-center"><b>{{__('Số dư: ')}}&nbsp;</b></span>
-                        <a class="waves-effect" href="{{route('sodu.index')}}">@money_xu(Session::get('so_du'))</a>
-{{--                        <span class="text-center"></span>--}}
-                        <span class="text-center"><b>&nbsp;Xu</b></span>
-                    </div>
+                    <li class="">
+                        @if(Session::get('loai_tai_khoan') != 'admin3')
+                            @if(Session::get('so_du') == null)
+                                <a href="{{route('sodu.index')}}" class="waves-effect text-center">
+                                    <span>{{__('Chưa đăng ký số dư')}}</span>
+                                </a>
+                            @else
+                                <div class="input-group center-element">
+                                    <span class="text-center"><b>{{__('Số dư: ')}}&nbsp;</b></span>
+                                    <a class="waves-effect" href="{{route('sodu.index')}}">@money_xu(Session::get('so_du'))</a>
+                                    {{--                        <span class="text-center"></span>--}}
+                                    <span class="text-center"><b>&nbsp;Xu</b></span>
+                                </div>
 
-                    @endif
-                </li>
+                            @endif
+                    </li>
                 @endif
                 {{--                Phần Nhà tuyển dụng--}}
                 @if(Session::get('loai_tai_khoan') == 2)
@@ -100,6 +100,18 @@
                         <a href="{{route('congty.index')}}" class="waves-effect">
                             <i class="fa fa-users"></i>
                             <span>{{__('Danh sách công ty')}}</span>
+                        </a>
+                    </li>
+
+                @endif
+
+                @if(Session::get('loai_tai_khoan') == 'admin3')
+                    <li class="menu-title">{{__('Quản lý bài đăng')}}</li>
+
+                    <li>
+                        <a href="{{route('admin.duyetbaiviet')}}" class="waves-effect">
+                            <i class="fa fa-users"></i>
+                            <span>{{__('Duyệt bài viết')}}</span>
                         </a>
                     </li>
                 @endif

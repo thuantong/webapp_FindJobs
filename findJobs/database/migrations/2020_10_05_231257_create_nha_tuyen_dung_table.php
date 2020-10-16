@@ -15,6 +15,7 @@ class CreateNhaTuyenDungTable extends Migration
     {
         Schema::create('nha_tuyen_dung', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('ho_ten')->nullable();
             $table->string('prefix')->nullable();
             $table->text('dia_chi')->nullable();
             $table->text('mang_xa_hoi')->nullable();

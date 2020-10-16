@@ -34,6 +34,7 @@ class BaiVietController extends Controller
                 $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
                 $this->hangMucThanhToan = HangMucThanhToan::query()->find('1');
                 $this->tienDangTin = $this->hangMucThanhToan->first()->gia;//1 xu 1 ngày
+
                 return $next($request);
             });
 //        }
@@ -49,6 +50,16 @@ class BaiVietController extends Controller
     }
 
     public function index(){
+//        $dataCheck = array(
+//            'ten_chuc_nang' =>$chucNang,
+//            'href'=>route();
+//        );
+        $checkSoDu = $this->checkDangKySoDu('Đăng bài tuyển dụng','/dang-bai-viet');
+//                dd($checkSoDu);
+        if ($checkSoDu['status'] == 400){
+//            dd($checkSoDu);
+            return view('SoDu.index',compact('checkSoDu'));
+        }
 //        dd(json_encode(Money::VND(5000.00)));
 //        dd(number_format(, 0));
 //        dd($this->kiemTraSoDu());
@@ -97,7 +108,7 @@ class BaiVietController extends Controller
 
 //            return $this->tienDangTin * $request->so_ngay_ton_tai;
             if ($this->kiemTraSoDu($this->tienDangTin * $request->so_ngay_ton_tai) == false){
-                return $this->getResponse($title,405,'Số dư của bạn hiện không đủ xu!');
+                return $this->getResponse('Nạp thêm xu',405,'Số dư của bạn hiện không đủ xu!');
             }
 
             $this->nhaTuyenDung->getBaiViet()->save($baiViet);

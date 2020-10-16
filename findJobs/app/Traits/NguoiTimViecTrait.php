@@ -41,31 +41,31 @@ trait NguoiTimViecTrait
         }
     }
 
-    public function doiMatKhauNtv(Request $request)
-    {
-        $tatus_sucess = 'Thành công';
-        $tatus_error = 'Thất bại';
-
-        if (Auth::guard()->attempt(['email' => Auth::user()->email, 'password' => $request->password_old]) == true) {
-            if ($request->password_new == $request->re_password_new) {
-                $taiKhoanTim = TaiKhoan::query()->find(Auth::user()->id);
-                $taiKhoanTim->password = bcrypt($request->password_new);
-                $taiKhoanTim->save();
-                $message = 'Mật khẩu thay đổi thành công';
-                return $response = $this->getResponse($tatus_sucess, 200, $message);
-            } else {
-                $message = 'Mật khẩu xác thực không chính xác';
-                $reset = 1;
-                return $response = $this->getResponse($tatus_error, 400, $message, $reset);
-            }
-        } else if (Auth::guard()->attempt(['email' => Auth::user()->email, 'password' => $request->password_old]) == false) {
-            $message = 'Mật khẩu cũ không chính xác';
-            $reset = 1;
-
-            return $response = $this->getResponse($tatus_error, 400, $message, $reset);
-        }
-
-    }
+//    public function doiMatKhauNtv(Request $request)
+//    {
+//        $tatus_sucess = 'Thành công';
+//        $tatus_error = 'Thất bại';
+//
+//        if (Auth::guard()->attempt(['email' => Auth::user()->email, 'password' => $request->password_old]) == true) {
+//            if ($request->password_new == $request->re_password_new) {
+//                $taiKhoanTim = TaiKhoan::query()->find(Auth::user()->id);
+//                $taiKhoanTim->password = bcrypt($request->password_new);
+//                $taiKhoanTim->save();
+//                $message = 'Mật khẩu thay đổi thành công';
+//                return $response = $this->getResponse($tatus_sucess, 200, $message);
+//            } else {
+//                $message = 'Mật khẩu xác thực không chính xác';
+//                $reset = 1;
+//                return $response = $this->getResponse($tatus_error, 400, $message, $reset);
+//            }
+//        } else if (Auth::guard()->attempt(['email' => Auth::user()->email, 'password' => $request->password_old]) == false) {
+//            $message = 'Mật khẩu cũ không chính xác';
+//            $reset = 1;
+//
+//            return $response = $this->getResponse($tatus_error, 400, $message, $reset);
+//        }
+//
+//    }
 
 //    public function
 

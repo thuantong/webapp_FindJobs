@@ -16,9 +16,9 @@
                                class="col-sm-12 col-md-5 col-lg-5 col-xl-5 col-form-label text-sm-center text-md-right">{{ __('Nhập mật khẩu cũ') }}</label>
 
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <input id="password-old" type="password"
-                                   class="password-old form-control @error('password-old') is-invalid @enderror" name="password-old"
-                                   value="" required autofocus title="{{ __('Nhập mật khẩu cũ') }}">
+                            <input id="password-old" type="password" title="Mật khẩu cũ"
+                                   class="password-old form-control not-null check-min" name="password-old"
+                                   value="" required autofocus>
 
 {{--                            @error('password-old')--}}
                             <span class="invalid-feedback" role="alert">
@@ -33,9 +33,9 @@
                                class="col-sm-12 col-md-5 col-lg-5 col-xl-5 col-form-label text-sm-center text-md-right">{{ __('Nhập mật khẩu mới') }}</label>
 
                         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <input id="password-new" type="password"
-                                   class="password-new form-control @error('password-new') is-invalid @enderror" name="password-new"
-                                   value="" required autofocus title="{{ __('Nhập mật khẩu mới') }}">
+                            <input id="password-new" type="password" title="Mật khẩu mới"
+                                   class="password-new form-control not-null check-min" name="password-new"
+                                   value="" required autofocus>
 
 {{--                            @error('password-new')--}}
                             <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
 
                         <div class="col-md-6 col-lg-6 col-xl-6">
                             <input id="re-password-new" type="password"
-                                   class="re-password-new form-control @error('re-password-new') is-invalid @enderror"
+                                   class="re-password-new form-control not-null check-min"
                                    name="re-password-new" value="" required autofocus title="{{ __('Nhập lại mật khẩu mới') }}">
 
 {{--                            @error('re-password-new')--}}

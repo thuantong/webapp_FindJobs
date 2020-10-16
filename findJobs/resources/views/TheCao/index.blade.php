@@ -180,7 +180,7 @@
             });
             $(document).on('click','.btn-outline-trigger',function () {
                 let id = $(this).data('id');
-                sendAjaxNoFunc('post','/the-cao/them-danh-sach',{id:id},$(this).attr('id')).done(e=>{
+                sendAjaxNoFunc('post','/the-cao/them-danh-sach',{id:id},'').done(e=>{
                     // console.log(e)
                     getHtmlResponse(e);
                     if (e.status == 200){

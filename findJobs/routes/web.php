@@ -47,7 +47,7 @@ Route::namespace('User')->group(function () {
         Route::get('/user-set-employer', 'UserController@setEmployee');
         Route::get('/user-set-employer', 'UserController@setEmployer');
         Route::post('/user-set-avatar', 'UserController@setAvatar');
-        Route::post('/doi-mat-khau', 'UserController@doiMatKhauNtv')->name('doiMatKhau');
+        Route::post('/doi-mat-khau', 'UserController@doiMatKhau')->name('doiMatKhau');
         Route::get('/user-skill-view','UserController@getViewSkill');
         Route::get('/user-skill-view-append','UserController@getViewSkillAppend');
         //nguoi tim viec
@@ -91,12 +91,7 @@ Route::namespace('PhanQuyen')->group(function () {
     });
 
 });
-Route::namespace('Admin')->group(function () {
-    Route::name('admin.')->group(function (){
-        Route::get('/admin','AdminTrangChuController@index')->name('index');
-//        Route::get('/admin/login')->name('index');
-    });
-});
+
 
 
 Route::namespace('SoDu')->group(function () {
@@ -123,3 +118,17 @@ Route::namespace('QuanLyBaiDang')->group(function (){
     });
 });
 //Route::get('/khong-tim-thay-trang','ErrorController@func404')->name('notFoundRoute');
+Route::namespace('Admin')->group(function () {
+    Route::name('admin.')->group(function (){
+        Route::get('/admin','AdminTrangChuController@index')->name('index');
+        Route::get('/admin/get-thong-bao','AdminTrangChuController@getThongbao')->name('getThongbao');
+        Route::post('/admin/thong-bao/chuyen-trang-thai','AdminTrangChuController@chuyenTrangThaiDaXem')->name('chuyenTrangThaiDaXem');
+//        Route::get('/admin/login')->name('index');
+//        Route::get('/admin/login')->name('index');
+
+
+        Route::get('/admin/danh-sach-bai-duyet','DuyetBaiVietController@index')->name('duyetbaiviet');
+        Route::get('/admin/danh-sach-bai-duyet/get','DuyetBaiVietController@getDanhSachDuyetTin')->name('getDanhSachDuyetTin');
+    });
+
+});

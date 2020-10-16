@@ -70,17 +70,22 @@ class MyLoginController extends Controller
             case 1:
                 $nguoiTimViec = $findUser->getNguoiTimViec;
                 $soDu = $nguoiTimViec->getSoDu;
+                Session::put('ho_ten',$nguoiTimViec->ho_ten);
                 Session::put('so_du', $soDu['tong_tien']);
                 Session::put('avatar', $nguoiTimViec['avatar']);
                 return redirect('/');
             case 2:
                 $nhaTuyenDung = $findUser->getNhaTuyenDung;
                 $soDu = $nhaTuyenDung->getSoDu;
+                Session::put('ho_ten',$nhaTuyenDung->ho_ten);
                 Session::put('so_du', $soDu['tong_tien']);
                 Session::put('avatar', $nhaTuyenDung['avatar']);
                 return redirect()->route('user.nhaTuyenDung');
             case 3:
-                Session::put('loai_tai_khoan','admin'.$getPhanQuyen['id']);
+                $quanTriVien = $findUser->getQuanTriVien;
+                Session::put('ho_ten',$quanTriVien->ho_ten);
+
+//                Session::put('loai_tai_khoan','admin'.$getPhanQuyen['id']);
 
                 return redirect()->route('admin.index');
         }

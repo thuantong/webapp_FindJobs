@@ -10,6 +10,7 @@ class NhaTuyenDung extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
+        'ho_ten',
         'prefix',
         'dia_chi',
         'mang_xa_hoi',

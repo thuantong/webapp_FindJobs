@@ -170,14 +170,14 @@
                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="@if(Session::get('avatar') != null){{URL::asset(Session::get('avatar'))}}@elseif(Session::get('avatar') == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif" alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1">
-                                {{Auth::user()->ho_ten}} <i class="icofont icofont-caret-down"></i>
+                                {{Session::get('ho_ten')}} <i class="icofont icofont-caret-down"></i>
                             </span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow text-center m-0">{{Auth::user()->ho_ten}}</h6>
+                        <h6 class="text-overflow text-center m-0">{{Session::get('ho_ten')}}</h6>
                     </div>
 
                     <!-- item-->

@@ -67,6 +67,7 @@ return [
     |
     */
 
+//    'timezone' => 'utc',
     'timezone' => 'Asia/Ho_Chi_Minh',
 
     /*

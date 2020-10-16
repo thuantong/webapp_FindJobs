@@ -102,11 +102,7 @@ $(function () {
 
     });
 
-    // $('input[data-rule="phone"]').on('input',function () {
-    //     if(){
-    //
-    //     }
-    // });
+
 });
 
 
@@ -300,6 +296,7 @@ const sendAjaxNoFunc = (method, url, data, ...button) => {
                 myButton.html(buttonHtml);
                 myButton.removeAttr('disabled').html(buttonHtml);
             }
+            // myButton.removeAttr('disabled').html(buttonHtml);
             return res;
         },
         beforeSend: function (xhr) {
@@ -311,11 +308,11 @@ const sendAjaxNoFunc = (method, url, data, ...button) => {
     });
 }
 
-const getMessageError = (element, data) => {
-    // console.log('element',element.parent(),data)
-    element.addClass('is-invalid');
-    element.parent().find('.invalid-feedback').find('strong').text(data.message);
-};
+// const getMessageError = (element, data) => {
+//     // console.log('element',element.parent(),data)
+//     element.addClass('is-invalid');
+//     element.parent().find('.invalid-feedback').find('strong').text(data.message);
+// };
 
 const notNullMessage = (element) => {
     let error = 0;
@@ -339,6 +336,7 @@ const notNullMessage = (element) => {
     });
     return error;
 };
+
 $(document).on('change', 'select', function () {
     $(this).removeClass('is-invalid').parent().find('.select2-container').find('.select2-selection').removeAttr('style');
 });
@@ -411,7 +409,7 @@ const getHtmlResponse = (data) => {
         case '400':
             backgroudLoad = 'red';
             type = 'error';
-            timeOut = 3000;
+            timeOut = 3200;
             break;
     }
     // return toast.success('We do have the Kapua suite available.', 'Turtle Bay Resort', {timeOut: 5000});
@@ -433,21 +431,32 @@ const getNotificationAjax = (message) => {
     switch (message.status) {
         case 200:
             backgroudColor = '#2fb614';
+            vtoast.show(message.title, message.message, {
+                width: 250,
+                margin: 20,
+                "progressbar": "bottom",
+                color: "#FFFFFF",
+                backgroundcolor: backgroudColor,
+                unfocusduration: 500,
+                "duration": 1500,
+                opacity: "1"
+            });
             break;
         case 400:
             backgroudColor = '#cb4745';
+            vtoast.show(message.title, message.message, {
+                width: 250,
+                margin: 20,
+                "progressbar": "bottom",
+                color: "#FFFFFF",
+                backgroundcolor: backgroudColor,
+                unfocusduration: 500,
+                "duration": 1500,
+                opacity: "1"
+            });
             break;
     }
-    vtoast.show(message.title, message.message, {
-        width: 250,
-        margin: 20,
-        "progressbar": "bottom",
-        color: "#FFFFFF",
-        backgroundcolor: backgroudColor,
-        unfocusduration: 500,
-        "duration": 1500,
-        opacity: "1"
-    });
+
 };
 $(document).on('keypress', 'textarea.break-custom', function (e) {
     if (e.keyCode === 13) {
@@ -535,16 +544,17 @@ const datatableAjax = (element, ajax, column) => {
     });
 };
 
-const alertConfirm = (title) =>{
+const alertConfirm = (data) =>{
+    let datares = data;
     return Swal.fire({
-        title: "Xác nhận "+title.toLowerCase()+"?",
-        text: "Nếu xác nhận điều này, dữ lệu sẽ không được hoàn tác lại!",
+        title: datares.title,
+        text: datares.message,
         type: "warning",
         showCancelButton: !0,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Vâng, tôi muốn "+title.toLowerCase()+"!",
-        cancelButtonText: "Không "+title.toLowerCase()
+        confirmButtonText: "Vâng, tôi muốn "+datares.title.toLowerCase()+"!",
+        cancelButtonText: "Không "+datares.title.toLowerCase()
     });
 }
 
@@ -570,6 +580,23 @@ function copy(value){
     });
 }
 $(document).on('click','.button-menu-mobile',function () {
-    $($.fn.dataTable.tables(true)).DataTable()
-        .columns.adjust();
+    if ($('body').find('table').length > 0 ){
+        $($.fn.dataTable.tables(true)).DataTable()
+            .columns.adjust();
+    }
+
 });
+
+const validateMin = (e) =>{
+    let error = 0;
+    e.each(function () {
+        // console.log($(this))
+        if ($(this).val().length < 8){
+            $(this).addClass('is-invalid');
+            $(this).parent().find('.invalid-feedback').addClass('text-left').find('strong').text($(this).attr('title') + ' phải ít nhất 8 chữ số!');
+            error++;
+        }
+    });
+
+    return error;
+}

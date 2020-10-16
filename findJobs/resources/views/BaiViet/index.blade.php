@@ -8,6 +8,8 @@
         <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
               type="text/css">
+        <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+
 
     </head>
     @include('BaiViet.modal.xemTruoc')
@@ -406,6 +408,9 @@
     <script type="text/javascript"
             src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
 
     <script type="text/javascript" src="{{URL::asset('assets\js\app\nhaTuyenDung_dang_bai.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
