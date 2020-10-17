@@ -96,7 +96,6 @@
     <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
 
-
     <link rel="stylesheet" type="text/css"
           href="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
     <script type="text/javascript"

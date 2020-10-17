@@ -72,9 +72,9 @@
             <div class="page-title-box mb-1">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a>Minton</a></li>
-                        <li class="breadcrumb-item"><a>Layouts</a></li>
-                        <li class="breadcrumb-item active">Preloader</li>
+                        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a>Thông tin</a></li>
+                        <li class="breadcrumb-item active">Thông tin nhà tuyển dụng</li>
                     </ol>
                 </div>
                 <h4 class="page-title">{{__('Phần Nhà Tuyển Dụng')}}</h4>
@@ -101,7 +101,7 @@
     </div>
 
 
-    <div class="row center-element">
+    <div class="row center-element nha-tuyen-dung-container">
 
         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <div class="card-box p-1 mb-1 text-right">

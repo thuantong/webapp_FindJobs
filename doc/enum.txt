@@ -1,0 +1,11 @@
+Trạng thái:
+- Bài tuyển dụng:
+		+ 0 : Chờ duyệt
+		+ 1 : Đã được duyệt
+		+ 2 : Bị từ chối (Kèm tin nhắn)
+		+ 3 : Đã chỉnh sửa
+- Duyệt tin :
+		+ 0 : Chưa đọc
+		+ 1 : Đã đọc
+		+ 2 : Đã duyệt
+		+ 3 : Đã từ chối

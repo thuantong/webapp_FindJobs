@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row duyet-tin-container">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card-box p-1 mb-1">
 
@@ -47,6 +47,7 @@
                                     <th class="text-center">Người đăng</th>
                                     <th class="text-center">Thời gian thêm</th>
                                     <th class="text-center">Số ngày đăng</th>
+                                    <th class="text-center">Trạng thái</th>
                                     <th class="text-center">Chức năng</th>
                                 </tr>
                                 </thead>
@@ -91,7 +92,7 @@
 
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
     <script type="text/javascript">
-
+        let table = '';
 
         $(function () {
             // $(window).resize()
@@ -113,7 +114,10 @@
             // }).done(e=>{
             //     console.log(e)
             // });
-            getDanhSachDuyetTin();
+            table = getDanhSachDuyetTin();
+            $('#danh-sach-duyet-tin').on('init.dt', function () {
+                $('button.them-moi-danh-sach').addClass('d-none');
+            })
         });
         const getDanhSachDuyetTin = () => {
             let ajax = {
@@ -125,7 +129,7 @@
                     render: function (api, rowIdx, columns, meta) {
                         return meta.row + 1;
                     },
-                    className: 'text-primary'
+                    className: 'text-primary text-center'
                 },
 
                 {
@@ -145,18 +149,46 @@
                 },
                 {
                     render: function (api, rowIdx, columns, meta) {
-                        return '<div class="d-flex" data-id="' + columns.id + '">' +
-                            '<a class="waves-effect text-primary mr-1" id="xem_noi_dung" style="text-decoration: underline">Xem Nội dung</a>' +
-                            '<button class="btn btn-sm btn-primary waves-effect" id="phe_duyet_tin">Phê duyệt</button>' +
-                            '<button class="btn btn-sm btn-light waves-effect" id="tu_choi_duyet_tin">Từ chối</button>' +
+                        switch (parseInt(columns.status)) {
+                            case 0:
+                                return '<span class="text-warning">Chờ duyệt</span>';
+                            // break;
+                            case 1:
+                                return '<span class="text-info">Đã được duyệt</span>';
+                            // break;
+                            case 2:
+                                return '<span class="text-danger">Đã bị từ chối</span>';
+                            // break;
+                        }
+                        // return columns.so_ngay_bai_dang + ' Ngày';
+                    },
+                    className: 'text-center'
+                },
+                {
+                    render: function (api, rowIdx, columns, meta) {
+                        let classHide = '';
+                        switch (parseInt(columns.status)) {
+                            case 1:
+                                classHide = 'd-none'
+                                break;
+                            case 2:
+                                classHide = 'd-none'
+                                break;
+                        }
+
+                        return '<div class="d-flex center-element" data-id="' + columns.id + '">' +
+                            '<a class="waves-effect text-primary mr-1 xem_noi_dung" style="text-decoration: underline">Xem Nội dung</a>' +
+                            '<button class="btn btn-sm btn-primary waves-effect phe_duyet_tin '+classHide+'">Phê duyệt</button>' +
+                            '<button class="btn btn-sm btn-light waves-effect tu_choi_duyet_tin '+classHide+'">Từ chối</button>' +
                             '</div>';
                     },
+                    className :'text-center'
                 },
             ]
             return datatableAjax($('#danh-sach-duyet-tin'), ajax, column);
 
         }
-        $(document).on('click', '#xem_noi_dung', function () {
+        $(document).on('click', '.duyet-tin-container .xem_noi_dung', function () {
             let id = $(this).parent().data('id');
             // console.log('cc',id)
             sendAjaxNoFunc('get', '/admin/duyet-tin/xem-bai-dang', {id: id}, '').then(e => {
@@ -174,39 +206,79 @@
 
                 $('#review-modal').find('.nganh_nghe').html(array_nganh_nghe.join(' - '));
                 $('#review-modal').find('.kinh_nghiem').text(e.get_kinh_nghiem.name);
-                $('#review-modal').find('.tieu_de').text(e.tieu_de);
+                $('#review-modal').find('.tieu_de,.iteam-click span:eq(0)').text(e.tieu_de);
                 $('#review-modal').find('.yc_bang_cap').html(e.get_bang_cap.name);
                 $('#review-modal').find('.so_luong_tuyen').html(e.so_luong_tuyen);
-                $('#review-modal').find('.han_nop').html(e.han_tuyen);
+                $('#review-modal').find('.han_nop,.iteam-click span:eq(4)').html(e.han_tuyen);
                 $('#review-modal').find('.kieu_lam_viec').html(e.get_kieu_lam_viec.name);
                 let gioi_tinh = '';
                 switch (e.gioi_tinh_tuyen) {
                     case '1':
-                        gioi_tinh ='Nam';
+                        gioi_tinh = 'Nam';
                         break;
                     case '2':
-                        gioi_tinh ='Nữ';
+                        gioi_tinh = 'Nữ';
                         break;
                     case '3':
-                        gioi_tinh ='Tất cả';
+                        gioi_tinh = 'Tất cả';
                         break;
 
                 }
                 {{--console.log({{unserialize(''+e.luong+'')}})--}}
                 $('#review-modal').find('.gioi_tinh_tuyen').text(gioi_tinh);
-                $('#review-modal').find('.dia_diem').text(e.get_dia_diem.name);
-                $('#review-modal').find('.muc_luong').text(e.luong.join(' - ')+' Triệu');
+                $('#review-modal').find('.dia_diem,.iteam-click span:eq(3)').text(e.get_dia_diem.name);
+                $('#review-modal').find('.muc_luong,.iteam-click span:eq(2)').text(e.luong.join(' - ') + ' Triệu');
                 // $('#review-modal').find('#nganh_nghe').text(e.get_kieu_lam_viec.name);
                 $('#review-modal').find('#yeu_cau_cong_viec').text(e.yeu_cau_cong_viec);
                 $('#review-modal').find('#quyen_loi_cong_viec').text(e.quyen_loi);
-                $('#review-modal').find('.iteam-click img').attr('src','/'+e.get_cong_ty.logo);
-                $('#review-modal').find('.cong_ty').text(e.get_cong_ty.name);
+                $('#review-modal').find('.iteam-click img').attr('src', '/' + e.get_cong_ty.logo);
+                // $('#review-modal').find('.iteam-click img').attr('src','/'+e.get_cong_ty.logo);
+                $('#review-modal').find('.cong_ty,.iteam-click span:eq(1)').text(e.get_cong_ty.name);
                 $('#review-modal').find('#name_nguoi_dang').text(e.get_nha_tuyen_dung.ho_ten);
+                switch (e.isHot) {
+                    case '0':
+                        $('#review-modal').find('.ribbon-two.ribbon-two-danger').addClass('d-none');
+                        break;
+                    case '1':
+                        $('#review-modal').find('.ribbon-two.ribbon-two-danger').removeClass('d-none');
+                        break;
+                }
                 $('#review-modal').modal('show');
 
             })
 
 
+        });
+
+        $(document).on('click', '.duyet-tin-container .phe_duyet_tin', function () {
+            let __this = $(this);
+            let ten_bai_viet = $(this).parents('tr').find('td').eq(1).text();
+            let data = {
+                title: 'Phê duyệt bài viết',
+                message: 'Bạn muốn phê duyệt cho bài viết: ' + ten_bai_viet,
+            }
+            alertConfirm(data).then(r => {
+                let idPost = __this.parent().data('id');
+                // console.log(idPost)
+                let ajax = {
+                    method: 'post',
+                    url: '/admin/duyet-tin/confirm',
+                    data: {id: idPost}
+                };
+
+                if (r.value == true) {
+                    sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '').done(e => {
+                        // console.log(e);
+                        // getResponseAjax()
+                        getHtmlResponse(e);
+
+                        if (e.status == 200) {
+                            table.ajax.reload(null, false);
+                        }
+                    });
+
+                }
+            })
         });
     </script>
 @endpush

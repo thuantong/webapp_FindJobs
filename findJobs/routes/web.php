@@ -29,6 +29,7 @@ Route::namespace('Auth')->group(function (){
 Route::namespace('TrangChu')->group(function () {
     Route::name('trangchu.')->group(function () {
         Route::resource('/', 'TrangChuController');
+        Route::get('/tuyen-dung', 'TrangChuController@getBaiTuyenDung');
         Route::get('/search', 'TrangChuController@searchInput');
         Route::get('/chi-tiet-tuyen-dung', 'TrangChuController@details')->name('chiTietBaiDang');
         Route::get('/create-post', 'TrangChuController@create')->name('create');
@@ -130,6 +131,7 @@ Route::namespace('Admin')->group(function () {
         Route::get('/admin/danh-sach-bai-duyet','DuyetBaiVietController@index')->name('duyetbaiviet');
         Route::get('/admin/danh-sach-bai-duyet/get','DuyetBaiVietController@getDanhSachDuyetTin')->name('getDanhSachDuyetTin');
         Route::get('/admin/duyet-tin/xem-bai-dang','DuyetBaiVietController@getBaiTuyenDung')->name('getBaiTuyenDung');
+        Route::post('/admin/duyet-tin/confirm','DuyetBaiVietController@confirmBaiTuyenDung')->name('confirmBaiTuyenDung');
     });
 
 });

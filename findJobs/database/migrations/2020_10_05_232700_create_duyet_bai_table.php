@@ -16,6 +16,7 @@ class CreateDuyetBaiTable extends Migration
         Schema::create('duyet_bai', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->smallInteger('status');
+            $table->string('noi_dung');
             $table->bigInteger('bai_dang_id')->nullable();
             $table->bigInteger('quan_tri_vien_id')->nullable();
             $table->timestamps();

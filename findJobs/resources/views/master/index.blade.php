@@ -442,7 +442,7 @@
         </div>
     </div>
     <div class="left-search-content overflow-auto-scroll p-2">
-        @include('TrangChu.items')
+{{--        @include('TrangChu.items')--}}
     </div>
 </div>
 

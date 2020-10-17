@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\icofont\css\icofont.css')}}">
     <!-- feather Awesome -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">
+    <link href="{{URL::asset('assets\js\vtoast\vtoast.css')}}" rel="stylesheet" type="text/css">
+
     {{--        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
@@ -364,7 +366,7 @@
         </div>
     </div>
     <div class="left-search-content overflow-auto-scroll p-2">
-        @include('TrangChu.items')
+{{--        @include('TrangChu.items')--}}
     </div>
 </div>
 </body>
@@ -379,6 +381,8 @@
 <!-- Peity chart-->
 <script src="{{asset('assets\libs\peity\jquery.peity.min.js')}}"></script>
 <script src="{{asset('assets\js\chat-js-customs.js')}}"></script>
+
+<script src="{{URL::asset('assets\js\vtoast\vtoast.js')}}"></script>
 
 <!-- init js -->
 {{--<script src="{{asset('assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}

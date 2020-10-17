@@ -163,11 +163,12 @@ $(function () {
 });
 
 $(document).on('click','.save-profile',function () {
-    let elementNull = $('.not-null');
+    let elementNull = $('.nha-tuyen-dung-container .not-null');
     let error = 0;
     let button = $(this).attr('id');
     error += notNullMessage(elementNull);
     // alert();
+    console.log(error)
     if (error == 0){
         let social = [];
         $('.social-link').each(function () {

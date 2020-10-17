@@ -30,8 +30,8 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="row text-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <h4 class="m-0">Công ty truyền thông</h4>
-                                <label class="float-right">Nhà tuyển dụng: <span>Hoàng tân</span></label>
+                                <h4 class="m-0 tieu_de bg-light p-1">Đang tải...</h4>
+                                <label class="float-left">Công ty: <span class="cong_ty">Đang tải...</span></label><label class="float-right">Nhà tuyển dụng: <span id="name_nguoi_dang">Đang tải...</span></label>
                             </div>
 
                         </div>
@@ -39,133 +39,136 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
                         <div class="row center-element text-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <button class="btn btn-outline-primary far fa-thumbs-up" id="trang-chu-like-post">
-                                    Like
+                                <button class="btn btn-outline-primary"
+                                        id="trang-chu-like-post">
+                                    <i class="icofont icofont-thumbs-up"></i> Like
                                 </button>
-                                <button class="btn btn-outline-info fab fa-rocketchat" title="Chat với nhà tuyển dụng">
-                                    Chat
+                                <button class="btn btn-outline-info"
+                                        title="Chat với nhà tuyển dụng">
+                                    <i class="icofont icofont-ui-text-loading "></i> Chat
                                 </button>
 
-                                {{--                                <button class="btn btn-primary far fa-eye">Quan tâm</button>--}}
-                                <button class="btn btn-outline-warning far fa-file-archive"> Nộp đơn</button>
-                                <button class="btn btn-outline-primary fas fa-exclamation-triangle"> Báo cáo</button>
+
+                                <button class="btn btn-outline-warning"><i class="fa fa-send"></i> Nộp đơn</button>
+                                <button class="btn btn-outline-primary"><i class="fa fa-exclamation"></i> Báo cáo
+                                </button>
 
                             </div>
 
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
-                        <div class="row pt-2 pb-0 border">
+                        <div class="row pt-0 pb-0 border">
                             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <div class="row border-bottom">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="far fa-address-card"></label>
+                                <div class="row border-bottom pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="fa fa-street-view"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Chức vụ:</span>
-                                        <p>
-                                            <label>Lập trình viên php</label>
-                                    </div>
+                                        <p class="mb-0">
+                                            <label class="chuc_vu">Đang tải...</label>
+                                        </p></div>
                                 </div>
 
-                                <div class="row border-bottom">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="fas fa-tools"></label>
-                                    </div>
-                                    <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Ngành nghề:</span>
-                                        <p>
-                                            <label>Công nghệ thông tin</label>
-                                    </div>
-                                </div>
-
-                                <div class="row border-bottom">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="fab fa-whmcs"></label>
+                                <div class="row border-bottom pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="icofont icofont-brainstorming"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Kinh nghiệm:</span>
-                                        <p>
-                                            <label>1 năm</label>
-                                    </div>
+                                        <p class="mb-0">
+                                            <label class="kinh_nghiem">Đang tải...</label>
+                                        </p></div>
                                 </div>
 
-                                <div class="row border-bottom">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="fas fa-graduation-cap"></label>
+                                <div class="row border-bottom pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="fa fa-graduation-cap"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Yêu cầu bằng cấp:</span>
-                                        <p>
-                                            <label>Đại học/Cao đẳng</label>
-                                    </div>
+                                        <p class="mb-0">
+                                            <label class="yc_bang_cap">Đang tải...</label>
+                                        </p></div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class=" fas fa-users"></label>
+                                <div class="row border-bottom pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="fa fa-user-plus"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Số lượng cần tuyển:</span>
-                                        <p>
-                                            <label>10</label>
+                                        <p class="mb-0">
+                                            <label class="so_luong_tuyen">Đang tải...</label>
+                                        </p></div>
+                                </div>
+
+                                <div class="row pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="icofont icofont-chart-histogram"></label>
                                     </div>
+                                    <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                                        <span>Ngành nghề:</span>
+                                        <p class="mb-0">
+                                            <label class="nganh_nghe">Đang tải...</label>
+                                        </p></div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <div class="row border-bottom">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="far fa-calendar-times"></label>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 border-left">
+                                <div class="row border-bottom pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="fa fa-calendar-plus-o"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Hạn nộp hồ sơ:</span>
-                                        <p>
-                                            <label>22/02/2020</label>
-                                    </div>
+                                        <p class="mb-0">
+                                            <label class="han_nop">Đang tải...</label>
+                                        </p></div>
                                 </div>
 
-                                <div class="row border-bottom">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="fas fa-business-time"></label>
+                                <div class="row border-bottom pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="fa fa-briefcase"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Hình thức làm việc:</span>
-                                        <p>
-                                            <label>Toàn thời gian</label>
-                                    </div>
+                                        <p class="mb-0">
+                                            <label class="kieu_lam_viec">Đang tải...</label>
+                                        </p></div>
                                 </div>
 
-                                <div class="row border-bottom">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="fas fa-transgender"></label>
+                                <div class="row border-bottom pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="fa fa-transgender"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Giới tính:</span>
-                                        <p>
-                                            <label>Nam - Nữ</label>
-                                    </div>
+                                        <p class="mb-0">
+                                            <label class="gioi_tinh_tuyen">Đang tải...</label>
+                                        </p></div>
                                 </div>
 
-                                <div class="row border-bottom">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="fas fa-map-marker-alt"></label>
+                                <div class="row border-bottom pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="icofont icofont-location-pin"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Địa điểm tuyển dụng:</span>
-                                        <p>
-                                            <label>TPHCM</label>
-                                    </div>
+                                        <p class="mb-0">
+                                            <label class="dia_diem">Đang tải...</label>
+                                        </p></div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                        <label class="far fa-money-bill-alt"></label>
+                                <div class="row pt-1">
+                                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+                                        <label class="icofont icofont-money"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Mức lương:</span>
-                                        <p>
-                                            <label>7 triệu - 10 triệu</label>
-                                    </div>
+                                        <p class="mb-0">
+                                            <label class="muc_luong">Đang tải...</label>
+                                        </p></div>
                                 </div>
 
                             </div>
@@ -180,6 +183,7 @@
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
@@ -189,48 +193,52 @@
 @endsection
 @push('scripts')
     <script>
+        let currenPage = null;
+        let nextPage = null;
+        let next_page_check = null;
         // var body = document.body;
         //
         // body.classList.add("enlarged");
         // $('body').addClass('enlarged');
-        function getItemsDefaults(elementResponse) {
-            $.ajax({
+        function getItemsDefaults(elementResponse,newPage) {
+            $(elementResponse).find('.processing-input:last').removeClass('d-none');
+
+            let ajax = {
                 method: 'get',
-                url: '/search',
-                beforeSend: function () {
-                    // setting a timeout
-                    if (!elementResponse.find("div").hasClass('processing-input')) {
-                        elementResponse.append('<div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">\n' +
-                            '                                                        Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>\n' +
-                            '                                                        \n' +
-                            '                                                    </button></div>');
-                    }
-
-                },
-                success: function (res) {
-                    $(elementResponse).find('.processing-input').remove();
-
-                    elementResponse.append(res);
-                    let widthImage = $('#container-items .iteam-click').find('img').parent().width();
-                    let heightImage = widthImage;
-                    $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
+                url: '/tuyen-dung',
+                data : {page :newPage}
+            };
+            sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e =>{
+                // console.log('data day',e)
+                elementResponse.append(e);
+                $(elementResponse).find('.processing-input').not(':last').addClass('d-none');
 
 
-                }
+                currenPage = parseInt($('.item-container-page:last').data('current'));
+                nextPage = currenPage + parseInt(1);
+                next_page_check = $('.item-container-page:last').data('pageurl');
+
+                let widthImage = $('#container-items .iteam-click').find('img').parent().width();
+                let heightImage = widthImage;
+                $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
             })
+
         }
 
 
         $(function () {
 
-            getItemsDefaults($('#container-items'));
-            $('#container-items').parents().on('scroll', function () {
+            getItemsDefaults($('#container-items'), 1);
+            $('#container-items').parents().on('scroll', function (e) {
                 let x = $(this).prop('scrollHeight');
                 let vitri = parseFloat(x) - parseFloat(Math.abs($(this).height()));
 
                 if (parseInt(vitri) == $(this).scrollTop()) {
-                    getItemsDefaults($('#container-items'));
-                    return;
+                    console.log(next_page_check)
+                    if (next_page_check != ''){
+                        getItemsDefaults($('#container-items'),nextPage);
+                    }
+
                 }
             })
 //like

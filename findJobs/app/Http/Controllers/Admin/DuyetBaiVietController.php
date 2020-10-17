@@ -36,8 +36,8 @@ class DuyetBaiVietController extends Controller
             ->leftJoin('nha_tuyen_dung','bai_tuyen_dung.nha_tuyen_dung_id','=','nha_tuyen_dung.id')
             ->leftJoin('tai_khoan','tai_khoan.id','=','nha_tuyen_dung.tai_khoan_id')
             ->leftJoin('don_hang','bai_tuyen_dung.id','=','don_hang.bai_tuyen_dung_id')
-            ->where('nha_tuyen_dung.status',1)
-            ->orderBy('created_at','desc')
+//            ->where('bai_tuyen_dung.status',0)
+            ->orderBy('bai_tuyen_dung.status','asc')
             ->get()->toArray();
 //        return $allBaiDuyet;
 
@@ -56,5 +56,17 @@ class DuyetBaiVietController extends Controller
 
         return $data;
     }
-    //
+
+    public function confirmBaiTuyenDung(Request $request){
+        $title = "Thông báo";
+        $id = $request->id;
+        $baiTuyenDung = BaiTuyenDung::query()->find($id);
+        try {
+            $baiTuyenDung->status = 1;//accept
+            $baiTuyenDung->save();
+            return $this->getResponse($title,200,'Phê duyệt bài viết '.$baiTuyenDung->tieu_de.' Thành công!');
+        }catch (\Exception $e){
+            return $this->getResponse($title,400,'Phê duyệt bài viết '.$baiTuyenDung->tieu_de.' Thất bại!');
+        }
+    }
 }

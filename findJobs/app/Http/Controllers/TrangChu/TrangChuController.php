@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\TrangChu;
 
 use App\Http\Controllers\Controller;
+use App\Models\BaiTuyenDung;
 use App\Traits\StoredJobsTrait;
 use Illuminate\Http\Request;
 use App\Models\JobsModel;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class TrangChuController extends Controller
 {
@@ -18,9 +21,9 @@ class TrangChuController extends Controller
     }
 
     public function index(){
-        if (Auth::user()->loai == 3){
-            dd('trang admin');
-        }
+//        if (Auth::user()->loai == 3){
+//            dd('trang admin');
+//        }
         return view('TrangChu.index');
     }
     public function searchInput(Request $request){
@@ -85,7 +88,37 @@ class TrangChuController extends Controller
             dd('khoong ton tai');
         }
     }
-    public function logout(){
-        Auth::logout();
+
+    public function getBaiTuyenDung(Request $request){
+        $page = $request->get('page');
+//        $baiTuyenDung = BaiTuyenDung::query()->with('getCongTy','getDiaDiem')->paginate(1,'*','page',$page);
+        $baiTuyenDung = BaiTuyenDung::query()->select(['bai_tuyen_dung.*','tai_khoan.ho_ten','don_hang.so_luong as so_ngay_bai_dang','dia_diem.name as dia_diem','cong_ty.name as cong_ty_name','cong_ty.logo as cong_ty_logo'])
+            ->leftJoin('duyet_bai','bai_tuyen_dung.id','=','duyet_bai.bai_dang_id')
+            ->leftJoin('nha_tuyen_dung','bai_tuyen_dung.nha_tuyen_dung_id','=','nha_tuyen_dung.id')
+            ->leftJoin('tai_khoan','tai_khoan.id','=','nha_tuyen_dung.tai_khoan_id')
+            ->leftJoin('don_hang','bai_tuyen_dung.id','=','don_hang.bai_tuyen_dung_id')
+            ->leftJoin('dia_diem','bai_tuyen_dung.dia_diem_id','=','dia_diem.id')
+            ->leftJoin('cong_ty','bai_tuyen_dung.cong_ty_id','=','cong_ty.id')
+            ->where('bai_tuyen_dung.status',1)
+            ->orderBy('isHot','asc')
+            ->paginate(10,'*','page',$page);
+//        $data = Response::json($baiTuyenDung);
+//        dd($data['data']);
+//        $data = $this->pagi
+//dd(Carbon::createFromFormat('Y-m-d',$baiTuyenDung[0]->han_tuyen)->format('d/m/Y'));
+//dd(Carbon::parse($baiTuyenDung[0]->han_tuyen)->format('d/m/Y'));
+//        dd($baiTuyenDung);
+
+        $data['bai_tuyen_dung'] = $baiTuyenDung;
+        $data['trang_hien_tai'] = $baiTuyenDung->currentPage();
+        $data['check_trang'] = $baiTuyenDung->nextPageUrl();
+//        $data['trang_hien_tai'] = $baiTuyenDung->currentPage();
+//        dd($data);
+//        dd($data['bai_tuyen_dung']->currentPage());
+        return view('TrangChu.items',compact('data'));
+//        return $baiTuyenDung;
     }
+//    public function logout(){
+//        Auth::logout();
+//    }
 }
