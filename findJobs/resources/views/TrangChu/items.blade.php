@@ -5,14 +5,14 @@
 @if($data['bai_tuyen_dung'] != null)
     <input type="hidden" class="item-container-page" data-current="{{$data['trang_hien_tai']}}" data-pageurl="{{$data['check_trang']}}">
     @foreach($data['bai_tuyen_dung'] as $row)
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ribbon-box iteam-click">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 ribbon-box iteam-click" data-id="{{$row['id']}}">
         <div class="row">
             <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 p-0 center-element">
                 <img src="{{URL::asset($row['cong_ty_logo'])}}">
             </div>
             <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 text-center">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><h5 class="mb-0"><a target="_blank" href="{{route('trangchu.chiTietBaiDang',['post','1'])}}"><span title="{{$row['tieu_de']}}">{{$row['tieu_de']}}</span></a>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><h5 class="mb-0"><a class="xem-chi-tiet-post" href="{{route('baiviet.getThongTinBaiViet',[$row['id'],0])}}"><span title="{{$row['tieu_de']}}">{{$row['tieu_de']}}</span></a>
                         </h5></div>
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><i><span title="{{$row['cong_ty_name']}}">{{$row['cong_ty_name']}}</span></i>
                     </div>
@@ -54,14 +54,14 @@
             $('.left-search-content .iteam-click').find('img').css('width', widthImage_search).css('height', heightImage_search);
 
         });
-        //container index
-        let widthImage = $('#container-items .iteam-click').find('img').parent().width();
-        let heightImage = widthImage;
-
-        $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
-        //mũi tên
+        // //container index
+        // let widthImage = $('#container-items .iteam-click').find('img').parent().width();
+        // let heightImage = widthImage;
+        //
+        // $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
+        // //mũi tên
         $('#container-items .iteam-click').on('click', function () {
-            console.log($(this).height());
+            // console.log($(this).height());
             let haflHeight = parseFloat($(this).height())*0.4;
             $(this).find('.arrow-item').css('top',haflHeight+'px');
             if($(document).width() >= 576){
@@ -73,12 +73,13 @@
                 $('.arrow-item').addClass('d-none');
             }
         });
-        //resize post
-        $(window).resize(function () {
-            widthImage = $('#container-items .iteam-click').find('img').parent().width();
-            heightImage = widthImage;
-            $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
-        });
+        // //resize post
+        // $(window).resize(function () {
+        //     widthImage = $('#container-items .iteam-click').find('img').parent().width();
+        //     heightImage = widthImage;
+        //     $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
+        //     console.log('cái con cặc')
+        // });
         })
     </script>
     @endpush

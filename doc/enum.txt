@@ -9,3 +9,8 @@ Trạng thái:
 		+ 1 : Đã đọc
 		+ 2 : Đã duyệt
 		+ 3 : Đã từ chối
+
+- Giới tính :
+		+ 1 : Nam
+		+ 2 : Nữ
+		+ 3 : Tất cả 

@@ -116,4 +116,11 @@ class BaiTuyenDung extends Model
         return $this->belongsTo(KinhNghiem::class,'kinh_nghiem_id');
     }
 
+    public function getBaiThich(){
+        return $this->belongsToMany(NguoiTimViec::class,'thich','bai_tuyen_dung_id','nguoi_tim_viec_id');
+    }
+    public function getBaiThichID(){
+        return $this->getBaiThich->pluck('id');
+    }
+
 }

@@ -66,7 +66,9 @@ Route::namespace('User')->group(function () {
 Route::namespace('BaiViet')->group(function (){
     Route::name('baiviet.')->group(function (){
         Route::get('/dang-bai-viet','BaiVietController@index')->name('index');
-        Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost');
+//        Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost');
+        Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet={detail}','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet');
+        Route::get('/bai-viet/like','BaiVietController@likePost')->name('likePost');
     });
 });
 

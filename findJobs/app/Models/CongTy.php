@@ -54,5 +54,8 @@ class CongTy extends Model
     public  function getBaiTuyenDung(){
         return $this->hasMany(BaiTuyenDung::class,'cong_ty_id');
     }
+    public function getQuyMoNhanSu(){
+        return $this->belongsTo(QuyMoNhanSu::class,'so_nhan_vien');
+    }
 
 }

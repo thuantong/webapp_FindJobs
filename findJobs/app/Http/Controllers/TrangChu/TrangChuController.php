@@ -100,7 +100,8 @@ class TrangChuController extends Controller
             ->leftJoin('dia_diem','bai_tuyen_dung.dia_diem_id','=','dia_diem.id')
             ->leftJoin('cong_ty','bai_tuyen_dung.cong_ty_id','=','cong_ty.id')
             ->where('bai_tuyen_dung.status',1)
-            ->orderBy('isHot','asc')
+            ->orderBy('isHot','desc')
+            ->orderBy('bai_tuyen_dung.created_at','desc')
             ->paginate(10,'*','page',$page);
 //        $data = Response::json($baiTuyenDung);
 //        dd($data['data']);
@@ -112,9 +113,10 @@ class TrangChuController extends Controller
         $data['bai_tuyen_dung'] = $baiTuyenDung;
         $data['trang_hien_tai'] = $baiTuyenDung->currentPage();
         $data['check_trang'] = $baiTuyenDung->nextPageUrl();
-//        $data['trang_hien_tai'] = $baiTuyenDung->currentPage();
-//        dd($data);
-//        dd($data['bai_tuyen_dung']->currentPage());
+
+//        $data['bai_thich'] = BaiTuyenDung::with('getBaiThich')->get()->toArray();
+//        dd($data['bai_thich'][0]['get_bai_thich']);
+//        return $data;
         return view('TrangChu.items',compact('data'));
 //        return $baiTuyenDung;
     }

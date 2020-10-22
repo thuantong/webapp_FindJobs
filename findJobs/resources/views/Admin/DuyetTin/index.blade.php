@@ -192,7 +192,7 @@
             let id = $(this).parent().data('id');
             // console.log('cc',id)
             sendAjaxNoFunc('get', '/admin/duyet-tin/xem-bai-dang', {id: id}, '').then(e => {
-                console.log(e);
+                // console.log(e);
 
 
                 $('#review-modal').find('#dia_chi').find('span').text(e.dia_chi);

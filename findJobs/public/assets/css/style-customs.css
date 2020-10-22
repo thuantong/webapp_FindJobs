@@ -223,3 +223,36 @@ select option{
     -webkit-box-shadow: 0 0 0 .15rem rgba(135, 125, 196, .5);
     box-shadow: 0 0 0 .15rem rgba(135, 125, 196, .5)
 }
+
+.like-animation{
+    animation-name: like_bai_viet;
+    animation-duration: 0.3s;
+}
+@keyframes like_bai_viet {
+    0%   {
+        -ms-transform: scale(2,2); /* IE 9 */
+        transform: scale(2,2); /* Standard syntax */
+        opacity: 0.2;
+        /*position: fixed;*/
+    }
+    25% {
+        -ms-transform: scale(1.7,1.7); /* IE 9 */
+        transform: scale(1.7,1.7); /* Standard syntax */
+        opacity: 0.4;
+    }
+    50% {
+        -ms-transform: scale(1.4,1.4); /* IE 9 */
+        transform: scale(1.4,1.4); /* Standard syntax */
+        opacity: 0.6;
+    }
+    75% {
+        -ms-transform: scale(1.1,1.1); /* IE 9 */
+        transform: scale(1.1,1.1); /* Standard syntax */
+        opacity: 0.8;
+    }
+
+    100% { -ms-transform: scale(1,1); /* IE 9 */
+        transform: scale(1,1); /* Standard syntax */
+        /*position: fixed;*/
+    }
+}

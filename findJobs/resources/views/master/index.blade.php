@@ -19,6 +19,9 @@
     <!-- App css -->
     <link href="{{URL::asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     {{--    <link href="{{asset('assets\icon\font-awesome\font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
+<!-- typicon icon -->
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\typicons-icons\css\typicons.min.css')}}">
+
     <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\themify-icons\themify-icons.css')}}">
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\font-awesome\css\font-awesome.min.css')}}">
@@ -485,7 +488,6 @@
 {{--<script src="{{asset('assets\js\date-picker-vi.js')}}"></script>--}}
 @stack('scripts')
 <script type="text/javascript">
-
 
     $(document).on('click', function (e) {
 

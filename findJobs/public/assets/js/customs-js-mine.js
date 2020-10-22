@@ -18,8 +18,12 @@ function remove_vietnamese_string(str) {
     }
 
 }
+const refreshTimeOut = () =>{
+    setTimeout("location.reload(true);",1000 * 60 * 60);//1 tiếng
+};
 
 $(function () {
+    refreshTimeOut();
     // let chieuCaoInput =
     // $('.input-group-append').css('height',chieuCaoInput+'px');
 
@@ -334,14 +338,14 @@ const notNullMessage = (element) => {
         }
 
     });
-    return error;
+    return parseInt(error);
 };
 
 $(document).on('change', 'select', function () {
     $(this).removeClass('is-invalid').parent().find('.select2-container').find('.select2-selection').removeAttr('style');
 });
-const lichNgay = (res) => {
-    return res.datepicker({
+const lichNgay = (element) => {
+    return element.datepicker({
         format: 'dd/mm/yyyy',
         autoclose: true,
         language: 'vi',
@@ -349,8 +353,8 @@ const lichNgay = (res) => {
     });
 };
 
-const lichThang = (res) => {
-    return res.datepicker({
+const lichThang = (element) => {
+    return element.datepicker({
         viewMode: "months",
         minViewMode: "months",
         format: 'mm/yyyy',
@@ -359,8 +363,8 @@ const lichThang = (res) => {
     });
 };
 
-const lichNam = (res) =>{
-    return res.datepicker({
+const lichNam = (element) =>{
+    return element.datepicker({
         viewMode: "years",
         minViewMode: "years",
         format: 'yyyy',
@@ -599,4 +603,26 @@ const validateMin = (e) =>{
     });
 
     return error;
+};
+
+const fullSizePage = () =>{
+    $('body').addClass('sidebar-enable enlarged')
 }
+
+// $(document).on('click','#trang-chu-like-post',function () {
+//
+//     let __this = $(this);
+//     __this.toggleClass('like-animation');
+// //     const mywidth = __this.width();
+// //     const myheight = __this.height();
+// //     // console.log(mywidth)
+// //     // console.log('now',(parseFloat(__this.width())*1.5))
+// //     __this.animate({
+// //             'width' : '+='+(parseFloat(mywidth)*parseFloat(1.2))+'px',
+// //             'height' : '+='+(parseFloat(myheight)*parseFloat(1.2))+'px'
+// //     });
+// //     __this.animate({
+// //         'width' : mywidth+'px',
+// //         'height' : mywidth+'px'
+// //     });
+// });

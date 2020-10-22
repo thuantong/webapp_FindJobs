@@ -6,6 +6,7 @@ use App\Models\NguoiTimViec;
 use App\Models\TaiKhoan;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -33,11 +34,12 @@ trait NguoiTimViecTrait
 //        return $str;
 //    }
     public function getEmployee(Request $request){
-        if(Auth::user()->loai == 1){
-            $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->first();
+        if(Session::get('loai_tai_khoan') == 1){
+            $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->get();
+            $nguoiTimViec = $nguoiTimViec[0];
             return view('User.nguoiTimViec',compact('nguoiTimViec'));
         }else{
-            return redirect()->route('notFoundRoute');
+            abort(404);
         }
     }
 

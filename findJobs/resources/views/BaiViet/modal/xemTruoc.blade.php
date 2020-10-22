@@ -42,7 +42,7 @@
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="form-group row">
                                     <label class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-center">
-                                        <h4 class="tieu_de bg-light p-1 m-0" id="tieu_de">Nhân viên bảo hiểm</h4></label>
+                                        <h4 class="tieu_de bg-light p-1 m-0" id="tieu_de">Đang tải...</h4></label>
 
                                 </div>
 

@@ -66,4 +66,8 @@ class NguoiTimViec extends Model
     public function getTinNhanQuanTriVien(){
         return $this->belongsToMany(QuanTriVien::class,'tin_nhan','nguoi_tim_viec_id','quan_tri_vien_id');
     }
+
+    public function getBaiThich(){
+        return $this->belongsToMany(BaiTuyenDung::class,'thich','nguoi_tim_viec_id','bai_tuyen_dung_id');
+    }
 }

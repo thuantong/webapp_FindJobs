@@ -5986,8 +5986,8 @@ a.badge-purple.focus, a.badge-purple:focus {
 }
 
 .progress-bar-animated {
-    -webkit-animation: progress-bar-stripes 1s linear infinite;
-    animation: progress-bar-stripes 1s linear infinite
+    -webkit-animation: progress-bar-stripes 0.6s linear infinite;
+    animation: progress-bar-stripes 0.6s linear infinite
 }
 
 @media (prefers-reduced-motion: reduce) {

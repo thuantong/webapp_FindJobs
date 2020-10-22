@@ -38,6 +38,7 @@ class DuyetBaiVietController extends Controller
             ->leftJoin('don_hang','bai_tuyen_dung.id','=','don_hang.bai_tuyen_dung_id')
 //            ->where('bai_tuyen_dung.status',0)
             ->orderBy('bai_tuyen_dung.status','asc')
+//            ->order
             ->get()->toArray();
 //        return $allBaiDuyet;
 
