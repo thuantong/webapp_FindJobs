@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-cap-nhat-project" tabindex="-1" role="dialog"
+<div class="modal hide fade" id="modal-cap-nhat-project" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
@@ -34,7 +34,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <input type="text"
                                class="form-control from-date-project"
-                               value="" required autofocus title="{{ __('Nhập thời gian bắt đầu') }}">
+                               value="01/2020" required autofocus title="{{ __('Nhập thời gian bắt đầu') }}">
                         <span class="invalid-feedback" role="alert">
                                         <strong></strong>
                                     </span>
@@ -50,7 +50,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <input type="text"
                                class="form-control to-date-project"
-                               value="" required autofocus title="{{ __('Thời gian hoàn thành') }}">
+                               value="02/2020" required autofocus title="{{ __('Thời gian hoàn thành') }}">
                         <span class="invalid-feedback" role="alert">
                                         <strong></strong>
                                     </span>

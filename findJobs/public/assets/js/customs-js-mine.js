@@ -110,165 +110,165 @@ $(function () {
 });
 
 
-const getResponseAjax = (method, url, arrayData, arrayCustom) => {
-    let headerCus = '';
+// const getResponseAjax = (method, url, arrayData, arrayCustom) => {
+//     let headerCus = '';
+//
+//     let elementIDToSave = $('#' + arrayCustom.beforeSendElement);
+//     let newArray = [];
+//     let items = {};
+//     let errorCount = 0;
+//     const buttonText = elementIDToSave.html();
+//     let response_func = '';
+//     // console.log(arrayData == '');
+//     // console.log(arrayData == '');
+//     if (arrayCustom == '') {
+//         $.each(arrayCustom, function (index, value) {
+//
+//             if (arrayData.hasOwnProperty(index)) {
+//                 items[index] = value;
+//             }
+//         });
+//     }
+//
+//     newArray.push(items);
+//
+//     $.each(elementIDToSave.parents('.modal').find('input').not('input[type="hidden"]'), function (i, v) {
+//         if ($(v).val() == null || $(v).val() == '') {
+//             errorCount++;
+//             $(v).addClass('is-invalid');
+//             $(v).parent().find('.invalid-feedback strong').text($(v).attr('title') + ' ' + 'không được để trống');
+//         }
+//     });
+//
+//     if (errorCount == 0) {
+//         switch (method.toLowerCase()) {
+//             case 'post':
+//                 headerCus = {
+//                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+//                 };
+//                 break;
+//             case 'get':
+//                 headerCus = {};
+//                 break;
+//         }
+//         ;
+//
+//         $.ajax({
+//             method: method,
+//             url: url,
+//             data: arrayData,
+//             headers: headerCus,
+//             success: function (res) {
+//                 // console.log(res)
+//                 if (res.status == 200) {
+//                     elementIDToSave.html(buttonText);
+//                     elementIDToSave.removeAttr('disabled').html(buttonText);
+//
+//                     let elementID = elementIDToSave.attr('id');
+//                     $.toast({
+//                         heading: res.title + ' ' + res.status_text.toLowerCase(),
+//                         hideAfter: 2000,
+//                         icon: 'success',
+//                         loaderBg: '#5ba035',
+//                         position: 'top-right',
+//                         stack: 1,
+//                         // text: 'Bạn vừa ' + arrayCustom.resHeading.toLowerCase() + ' ' + res.status_text.toLowerCase() + '!',
+//                         text: res.message.toUpperCase() + '!',
+//                     });
+//                     let modalID = $('#' + elementID).parents('.modal').attr('id');
+//                     $('#' + modalID).modal('hide');
+//                 } else if (res.status == 400) {
+//                     if (res.reset == 1) {
+//                         $('input').val('').trigger('input');
+//                     }
+//                     elementIDToSave.attr('id', arrayCustom.beforeSendElement).html(buttonText);
+//                     elementIDToSave.removeAttr('disabled').html(buttonText);
+//                     $.each(newArray[0], function (i, v) {
+//
+//                         v.addClass('test');
+//                     });
+//                     $.toast({
+//                         heading: res.title + ' ' + res.status_text.toLowerCase(),
+//                         hideAfter: 3000,
+//                         icon: 'error',
+//                         loaderBg: 'red',
+//                         position: 'top-right',
+//                         stack: 1,
+//                         text: res.message.toUpperCase() + '!',
+//                         // text: 'Bạn vừa ' + arrayCustom.resHeading.toLowerCase() + ' ' + res.status_text.toLowerCase() + '!',
+//                     });
+//                 }
+//
+//             },
+//             beforeSend: function (xhr) {
+//                 elementIDToSave.html('<span class="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true"></span>');
+//                 elementIDToSave.attr('disabled', 'disabled');
+//             },
+//         });
+//
+//     }
+//
+// };
 
-    let elementIDToSave = $('#' + arrayCustom.beforeSendElement);
-    let newArray = [];
-    let items = {};
-    let errorCount = 0;
-    const buttonText = elementIDToSave.html();
-    let response_func = '';
-    // console.log(arrayData == '');
-    // console.log(arrayData == '');
-    if (arrayCustom == '') {
-        $.each(arrayCustom, function (index, value) {
 
-            if (arrayData.hasOwnProperty(index)) {
-                items[index] = value;
-            }
-        });
-    }
-
-    newArray.push(items);
-
-    $.each(elementIDToSave.parents('.modal').find('input').not('input[type="hidden"]'), function (i, v) {
-        if ($(v).val() == null || $(v).val() == '') {
-            errorCount++;
-            $(v).addClass('is-invalid');
-            $(v).parent().find('.invalid-feedback strong').text($(v).attr('title') + ' ' + 'không được để trống');
-        }
-    });
-
-    if (errorCount == 0) {
-        switch (method.toLowerCase()) {
-            case 'post':
-                headerCus = {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                };
-                break;
-            case 'get':
-                headerCus = {};
-                break;
-        }
-        ;
-
-        $.ajax({
-            method: method,
-            url: url,
-            data: arrayData,
-            headers: headerCus,
-            success: function (res) {
-                // console.log(res)
-                if (res.status == 200) {
-                    elementIDToSave.html(buttonText);
-                    elementIDToSave.removeAttr('disabled').html(buttonText);
-
-                    let elementID = elementIDToSave.attr('id');
-                    $.toast({
-                        heading: res.title + ' ' + res.status_text.toLowerCase(),
-                        hideAfter: 2000,
-                        icon: 'success',
-                        loaderBg: '#5ba035',
-                        position: 'top-right',
-                        stack: 1,
-                        // text: 'Bạn vừa ' + arrayCustom.resHeading.toLowerCase() + ' ' + res.status_text.toLowerCase() + '!',
-                        text: res.message.toUpperCase() + '!',
-                    });
-                    let modalID = $('#' + elementID).parents('.modal').attr('id');
-                    $('#' + modalID).modal('hide');
-                } else if (res.status == 400) {
-                    if (res.reset == 1) {
-                        $('input').val('').trigger('input');
-                    }
-                    elementIDToSave.attr('id', arrayCustom.beforeSendElement).html(buttonText);
-                    elementIDToSave.removeAttr('disabled').html(buttonText);
-                    $.each(newArray[0], function (i, v) {
-
-                        v.addClass('test');
-                    });
-                    $.toast({
-                        heading: res.title + ' ' + res.status_text.toLowerCase(),
-                        hideAfter: 3000,
-                        icon: 'error',
-                        loaderBg: 'red',
-                        position: 'top-right',
-                        stack: 1,
-                        text: res.message.toUpperCase() + '!',
-                        // text: 'Bạn vừa ' + arrayCustom.resHeading.toLowerCase() + ' ' + res.status_text.toLowerCase() + '!',
-                    });
-                }
-
-            },
-            beforeSend: function (xhr) {
-                elementIDToSave.html('<span class="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true"></span>');
-                elementIDToSave.attr('disabled', 'disabled');
-            },
-        });
-
-    }
-
-};
-
-
-const sendAjax = (method, url, data, button) => {
-    const myButton = button.text();
-    switch (method.toLowerCase()) {
-        case 'post':
-            headerCus = {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            };
-            break;
-        case 'get':
-            headerCus = {};
-            break;
-    }
-    ;
-    $.ajax({
-        method: method,
-        url: url,
-        data: arrayData,
-        headers: headerCus,
-        success: function (res) {
-            // console.log(res)
-            if (res.status == 200) {
-
-                let elementID = elementIDToSave.attr('id');
-                $.toast({
-                    heading: res.title + ' ' + res.status_text.toLowerCase(),
-                    hideAfter: 2000,
-                    icon: 'success',
-                    loaderBg: '#5ba035',
-                    position: 'top-right',
-                    stack: 1,
-                    text: res.message.toUpperCase() + '!',
-                });
-                let modalID = $('#' + elementID).parents('.modal').attr('id');
-                $('#' + modalID).modal('hide');
-            } else if (res.status == 400) {
-                button.html(myButton);
-                button.removeAttr('disabled').html(myButton);
-                if (res.reset == 1) {
-                    $('input').val('').trigger('input');
-                }
-                $.toast({
-                    heading: res.title + ' ' + res.status_text.toLowerCase(),
-                    hideAfter: 3000,
-                    icon: 'error',
-                    loaderBg: 'red',
-                    position: 'top-right',
-                    stack: 1,
-                    text: res.message.toUpperCase() + '!',
-                });
-            }
-
-        },
-        beforeSend: function (xhr) {
-            button.html('<span class="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true"></span>');
-            button.attr('disabled', 'disabled');
-        },
-    });
-}
+// const sendAjax = (method, url, data, button) => {
+//     const myButton = button.text();
+//     switch (method.toLowerCase()) {
+//         case 'post':
+//             headerCus = {
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+//             };
+//             break;
+//         case 'get':
+//             headerCus = {};
+//             break;
+//     }
+//     ;
+//     $.ajax({
+//         method: method,
+//         url: url,
+//         data: arrayData,
+//         headers: headerCus,
+//         success: function (res) {
+//             // console.log(res)
+//             if (res.status == 200) {
+//
+//                 let elementID = elementIDToSave.attr('id');
+//                 $.toast({
+//                     heading: res.title + ' ' + res.status_text.toLowerCase(),
+//                     hideAfter: 2000,
+//                     icon: 'success',
+//                     loaderBg: '#5ba035',
+//                     position: 'top-right',
+//                     stack: 1,
+//                     text: res.message.toUpperCase() + '!',
+//                 });
+//                 let modalID = $('#' + elementID).parents('.modal').attr('id');
+//                 $('#' + modalID).modal('hide');
+//             } else if (res.status == 400) {
+//                 button.html(myButton);
+//                 button.removeAttr('disabled').html(myButton);
+//                 if (res.reset == 1) {
+//                     $('input').val('').trigger('input');
+//                 }
+//                 $.toast({
+//                     heading: res.title + ' ' + res.status_text.toLowerCase(),
+//                     hideAfter: 3000,
+//                     icon: 'error',
+//                     loaderBg: 'red',
+//                     position: 'top-right',
+//                     stack: 1,
+//                     text: res.message.toUpperCase() + '!',
+//                 });
+//             }
+//
+//         },
+//         beforeSend: function (xhr) {
+//             button.html('<span class="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true"></span>');
+//             button.attr('disabled', 'disabled');
+//         },
+//     });
+// }
 
 const sendAjaxNoFunc = (method, url, data, ...button) => {
     let myButton = '';
@@ -626,3 +626,16 @@ const fullSizePage = () =>{
 // //         'height' : mywidth+'px'
 // //     });
 // });
+// $(document).on("shown.bs.modal",".modal", function () {
+//     if ($(".modal-backdrop").length > 1) {
+//         // $(".modal.show:first").css('opacity',0.5);
+//         $("modal-backdrop:first").css('z-index',1051);
+//     }
+// });
+$(document).on('show.bs.modal', '.modal', function (event) {
+    var zIndex = 1040 + (10 * $('.modal:visible').length);
+    $(this).css('z-index', zIndex);
+    setTimeout(function() {
+        $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+    }, 0);
+});

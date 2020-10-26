@@ -218,19 +218,16 @@ class BaiVietController extends Controller
         $data['get_nha_tuyen_dung']['ho_ten'] = NhaTuyenDung::query()->find($data['get_nha_tuyen_dung']['id'])->getTaiKhoan['ho_ten'];
         $data['luong'] = unserialize($data['luong']);
         $data['tieu_de'] = ucwords($data['tieu_de']);
-//        $data['total_thich'] = Thich::query()->where('bai_tuyen_dung_id',$post)->count();
-//        $data['cac_bai_thich'] = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->getBaiThichID()->get();
         $data['bai_da_thich']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getBaiThich->pluck('id')->toArray();
         $data['bai_da_thich']['total'] = Thich::query()->where('bai_tuyen_dung_id',$post)->count();
-//        dd($data['cac_bai_thich']);
         $data['cong_ty_nganh_nghe'] = CongTy::query()->find($data['cong_ty_id'])->getNganhNghe()->get()->toArray();
         $data['quy_mo_nhan_su'] = CongTy::query()->find($data['cong_ty_id'])->getQuyMoNhanSu()->get()->toArray();
         $data['quy_mo_nhan_su'] = $data['quy_mo_nhan_su'][0];
-//                dd($data);
 
         $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->get()->toArray();
         $nguoiTimViec = $nguoiTimViec[0];
 //        dd($nguoiTimViec);
+//        dd(Auth::user()->id);
 //        dd($data);
         switch (intval($detail)){
             case 0:

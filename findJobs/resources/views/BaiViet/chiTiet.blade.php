@@ -11,7 +11,7 @@
         {{--        date picker--}}
         <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
     </head>
-@include('NopDon.NopDonModal.index')
+
 
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -245,6 +245,12 @@
         </div>
 
     </div>
+
+    @include('NopDon.NopDonModal.index')
+    @include('User.modal.capNhatProject')
+    @include('User.modal.capNhatExp')
+
+
 @endsection
 @push('scripts')
     <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
@@ -262,10 +268,13 @@
     <!-- Plugins js-->
     <script src="{{URL::asset('assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>
 
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>
+
     <!-- Init js-->
     <script src="{{URL::asset('assets\js\pages\form-wizard.init.js')}}"></script>
 
-    <script>
+    <script type="text/javascript">
         $(function () {
             $('#gioi_tinh').select2({
                 dropdownParent: $('#modal-nop-don')
@@ -277,20 +286,75 @@
             });
             //nút next hồ sơ
             $('#modal-nop-don #luu-nop-ho-so,#modal-nop-don #tab-nop-don-header.form-wizard-header li.nav-item').on('click',function (e) {
-                // alert()
-                
                 let error = 0;
-                // $('#modal-nop-don #tab-nop-don.tab-content .tab-pane').each(function () {
-                //     if($(this).hasClass('active') == true){
-                //         error += parseInt(notNullMessage($(this).find('.not-null')));
-                //     }
-                // });
+                let __this = $(this);
                 error += parseInt(notNullMessage($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active .not-null')));
-
+                if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').length){
+                    if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').is(':checked') == false){
+                        $('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').addClass('is-invalid').parent().find('span.invalid-feedback').find('strong').text('Bạn phải đồng ý điều khoản này')
+                        error += 1;
+                        // return false;
+                    }
+                }
                 if (error == 0){
+                    if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('.ajax-nop-don').length){
+                        //check tab2
 
+                        if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('ul#exp-list li').length == 0){
+                            $('#modal-nop-don .modal-footer').find('span').removeClass('d-none').text('Bạn phải thêm kinh nghiệm làm việc (học vấn)!!');
+                            return false;
+                        }else{
+                            $('#modal-nop-don .modal-footer').find('span').addClass('d-none').text('ok!!');
+                            let kinh_nghiem_array = [];
+                            let project_array = [];
+                            $('#modal-nop-don .modal-body #exp-list li').each(function () {
+                                let item = {};
+                                item.time_exp = $(this).find('.time-exp').find('b').eq(0).text() + ' Đến ' + $(this).find('.time-exp').find('b').eq(1).text();
+                                item.company_name_exp = $(this).find('.company-name-exp').text();
+                                item.company_link_exp = $(this).find('.company-link-exp').text();
+                                item.description_exp = $(this).find('.description-exp').text();
+                                kinh_nghiem_array.push(item);
+                                // time-exp
+                            });
+                            $('#modal-nop-don .modal-body #table-project tr').each(function () {
+                                let item = {};
+                                item.id = $(this).find('td').eq(0).text();
+                                item.project_name = $(this).find('.project-name').text();
+                                item.project_from = $(this).find('.project-from').text();
+                                item.project_to = $(this).find('.project-to').text();
+                                item.project_status = $(this).find('.project-status').text();
+                                item.project_links = $(this).find('.project-links').find('span').text();
+                                project_array.push(item);
+                                // time-exp
+                            });
+                            let ajax = {
+                                method:'post',
+                                url:'/nop-don-ung-tuyen',
+                                data:{
+                                    id_bai_viet : '{{$data['id']}}',
+                                    ho_ten : $('#modal-nop-don .modal-body #ho_ten').val(),
+                                    gioi_tinh : $('#modal-nop-don .modal-body #gioi_tinh').val(),
+                                    ngay_sinh : $('#modal-nop-don .modal-body #ngay_sinh').val(),
+                                    so_dien_thoai : $('#modal-nop-don .modal-body #so_dien_thoai').val(),
+                                    dia_chi : $('#modal-nop-don .modal-body #dia_chi').val(),
+                                    check : $('#modal-nop-don .modal-body #allow-see-infomation:checked').length,
+                                    kinh_nghiem : kinh_nghiem_array,
+                                    projects : project_array,
+                                },
+                            }
+                            sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(function (r) {
+                                    console.log(r);
+                                    getHtmlResponse(r);
+                                    if (r.status == 200){
+                                        $('#modal-nop-don').modal('hide');
+                                    }
+                            })
+                            console.log('bắt đầu gửi ajax',ajax.data);
+                        }
+
+                    }
                 }else {
-                    console.log(error)
+                    console.log(error);
                     return false;
                 }
 
@@ -368,5 +432,8 @@
             // });
 
         })
+        $(document).on('hidden.bs.modal','#modal-cap-nhat-exp',function () {
+            $('#modal-nop-don .modal-footer').find('span').addClass('d-none').text('ok!!');
+        });
     </script>
 @endpush

@@ -118,15 +118,7 @@
                                                 {{--                                                <span class="form-text text-muted"><small>If you want to change email please <a--}}
                                                 {{--                                                            href="javascript: void(0);">click</a> here.</small></span>--}}
                                             </div>
-                                            {{--                                            <div class="form-group">--}}
-                                            {{--                                                <label for="khu_vuc">{{__('Khu vực')}}</label>--}}
 
-                                            {{--                                                <input type="text" class="form-control" id="khu_vuc"--}}
-                                            {{--                                                       value="@if($nguoiTimViec['khu_vuc'] != null){{$nguoiTimViec['khu_vuc']}}@endif"--}}
-                                            {{--                                                       placeholder="Nhập khu vực">--}}
-                                            {{--                                                --}}{{--                                                <span class="form-text text-muted"><small>If you want to change email please <a--}}
-                                            {{--                                                --}}{{--                                                            href="javascript: void(0);">click</a> here.</small></span>--}}
-                                            {{--                                            </div>--}}
                                         </div>
 
                                         <div class="col-md-6">
@@ -141,54 +133,69 @@
                                                 {{--                                                <span class="form-text text-muted"><small>If you want to change email please <a--}}
                                                 {{--                                                            href="javascript: void(0);">click</a> here.</small></span>--}}
                                             </div>
-{{--                                            <div class="form-group">--}}
-{{--                                                <label for="khu_vuc">{{__('Khu vực')}}</label>--}}
 
-{{--                                                <input type="text" class="form-control" id="khu_vuc"--}}
-{{--                                                       value="@if($nguoiTimViec['khu_vuc'] != null){{$nguoiTimViec['khu_vuc']}}@endif"--}}
-{{--                                                       placeholder="Nhập khu vực">--}}
-{{--                                                --}}{{--                                                <span class="form-text text-muted"><small>If you want to change email please <a--}}
-{{--                                                --}}{{--                                                            href="javascript: void(0);">click</a> here.</small></span>--}}
-{{--                                            </div>--}}
                                         </div>
-{{--                                        <div class="col-md-6">--}}
-{{--                                            <div class="form-group">--}}
-{{--                                                <label for="vt_ung_tuyen">{{__('Vị trí ứng tuyển')}}</label>--}}
-{{--                                                <input type="text" class="form-control" id="vt_ung_tuyen"--}}
-{{--                                                       value="@if($nguoiTimViec['vi_tri_tim'] != null){{$nguoiTimViec['vi_tri_tim']}}@endif"--}}
-{{--                                                       placeholder="Nhập vị trí ứng tuyển">--}}
-{{--                                                <span class="form-text text-muted"><small>Vị trí ứng tuyển dùng để hiện cho nhà tuyển dụng thấy, hoặc để lọc bài tuyển dụng</small></span>--}}
-{{--                                            </div>--}}
-{{--                                        </div> <!-- end col -->--}}
+
                                     </div> <!-- end row -->
 
+                                    <div class="form-group row justify-content-end mb-0">
+                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right">
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="allow-see-infomation" type="checkbox" class="form-control d-none">
+                                                <label for="allow-see-infomation" class="mb-0">
+                                                    Đồng ý cho nhà tuyển dụng có thể truy cập thông tin cá nhân!
+                                                </label>
+                                                <span class="invalid-feedback text-right" role="alert">
+                                                    <strong></strong>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
                         </div>
 
                         <div class="tab-pane" id="profile-tab-2">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group row mb-3">
-                                        <label class="col-md-3 col-form-label" for="name1"> First name</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="name1" name="name1" class="form-control" value="Francis">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-3">
-                                        <label class="col-md-3 col-form-label" for="surname1"> Last name</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="surname1" name="surname1" class="form-control" value="Brinkman">
-                                        </div>
-                                    </div>
+                            <div class="row" id="about-me-exp">
+                                <div class="ajax-nop-don d-none"></div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <h5 class="mb-4 text-uppercase bg-light p-2"><i class="mdi mdi-briefcase mr-1"></i>
+                                        {{__('Kinh nghiệm làm việc(hoặc thời gian học tập)')}}
+                                        <button class="btn btn-sm btn-pink pt-0 pb-0 pr-1 pl-1 ml-1"
+                                                id="add-new-exp">{{__('+')}}</button>
+                                    </h5>
 
-                                    <div class="form-group row mb-3">
-                                        <label class="col-md-3 col-form-label" for="email1">Email</label>
-                                        <div class="col-md-9">
-                                            <input type="email" id="email1" name="email1" class="form-control" value="cory1979@hotmail.com">
-                                        </div>
+                                    <ul class="list-unstyled timeline-sm" id="exp-list">
+
+                                    </ul>
+
+                                    <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i
+                                            class="mdi mdi-cards-variant mr-1"></i>
+                                        {{__('Dự án')}}
+                                        <button class="btn btn-sm btn-pink pt-0 pb-0 pr-1 pl-1 ml-1"
+                                                id="add-new-project">{{__('+')}}</button>
+
+                                    </h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless mb-0 table-project" id="table-project">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>{{__('Tên dự án')}}</th>
+                                                <th>{{__('Thời gian bắt đầu')}}</th>
+                                                <th>{{__('Ngày hoàn thành')}}</th>
+                                                <th>{{__('Trạng thái')}}</th>
+                                                <th>{{__('Liên kết')}}</th>
+                                                <th>{{__('Chức năng')}}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div> <!-- end col -->
+                                </div>
                             </div> <!-- end row -->
                         </div>
 
@@ -212,7 +219,7 @@
                             </div> <!-- end row -->
                         </div>
 
-                        <ul class="list-inline mb-0 wizard">
+                        <ul class="list-inline mb-0 wizard d-none">
                             <li class="previous list-inline-item">
                                 <a href="javascript: void(0);" class="btn btn-secondary">Trở lại</a>
                             </li>
@@ -224,11 +231,19 @@
                     </div> <!-- tab-content -->
                 </div> <!-- end #progressbarwizard-->
             </div>
-{{--            <div class="modal-footer">--}}
+            <div class="modal-footer">
 
-{{--                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Thoát')}}</button>--}}
-{{--                <button type="button" class="btn btn-primary" id="save-exp">{{__('Cập nhật')}}</button>--}}
-{{--            </div>--}}
+                    <div class="col-sm-6 col-md-6 col-xl-6 col-xl-6">
+                        <button class="btn btn-primary waves-effect float-left">Trở lại</button>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-xl-6 col-xl-6 pl-1">
+                        <span class="text-danger d-none"></span>
+                        <button class="btn btn-primary waves-effect float-right">Tiếp theo</button>
+                    </div>
+
+{{--                <button type="button" class="btn btn-secondary float-left" data-dismiss="modal">{{__('Thoát')}}</button>--}}
+{{--                <button type="button" class="btn btn-primary float-right" id="save-exp">{{__('Cập nhật')}}</button>--}}
+            </div>
         </div>
     </div>
 </div>

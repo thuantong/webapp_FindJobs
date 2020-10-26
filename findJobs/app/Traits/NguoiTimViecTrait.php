@@ -2,6 +2,9 @@
 
 namespace App\Traits;
 
+use App\Models\BangCap;
+use App\Models\DiaDiem;
+use App\Models\KieuLamViec;
 use App\Models\NguoiTimViec;
 use App\Models\TaiKhoan;
 use Illuminate\Support\Carbon;
@@ -37,7 +40,11 @@ trait NguoiTimViecTrait
         if(Session::get('loai_tai_khoan') == 1){
             $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->get();
             $nguoiTimViec = $nguoiTimViec[0];
-            return view('User.nguoiTimViec',compact('nguoiTimViec'));
+            $data['nguoi_tim_viec'] = $nguoiTimViec;
+            $data['bang_cap'] = BangCap::all()->toArray();
+            $data['kieu_lam_viec'] = KieuLamViec::all()->toArray();
+            $data['dia_diem'] = DiaDiem::all()->toArray();
+            return view('User.nguoiTimViec',compact('data'));
         }else{
             abort(404);
         }
@@ -129,9 +136,9 @@ trait NguoiTimViecTrait
 //        $data = array();
         $index = $request->get('index');
         $type = $request->get('type');
-
+        $data = $request->get('data');
         if($type == 0){
-            return view('User.nguoiTimViec.projectsAppend',compact('index','type'));
+            return view('User.nguoiTimViec.projectsAppend',compact('index','type','data'));
         }elseif ($type == 1){
             $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
 
@@ -147,11 +154,13 @@ trait NguoiTimViecTrait
 
     public function getHtmlExp(Request $request){
         $typeSend = $request->get('type');
+        $data = $request->get('data');
+//        dd($data);
         if ($typeSend == 1){
             $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
             return view('User.nguoiTimViec.htmlKinhNghiemLamViec',compact('typeSend','nguoiTimViec'));
         }elseif ($typeSend == 0){
-            return view('User.nguoiTimViec.htmlKinhNghiemLamViec',compact('typeSend'));
+            return view('User.nguoiTimViec.htmlKinhNghiemLamViec',compact('typeSend','data'));
         }
 
     }
@@ -162,36 +171,45 @@ trait NguoiTimViecTrait
 //        return json_decode($all_skill);
 //        return json_decode($request->all_exp);
 //        return json_decode($request->all_exp);
-        $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
-        $taiKhoan->phone = $request->so_dien_thoai;
-        $taiKhoan->email = $request->dia_chi_email;
-        $taiKhoan->ho_ten = $request->ho_ten;
-        $taiKhoan->save();
+        try {
+            $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
 
-        $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
-        $nguoiTimViec->gioi_thieu = $request->gt_ban_than;
-        $nguoiTimViec->gioi_tinh = $request->gioi_tinh;
+//            return $taiKhoan;
+            $taiKhoan->phone = $request->so_dien_thoai;
+            $taiKhoan->email = $request->dia_chi_email;
+            $taiKhoan->ho_ten = $request->ho_ten;
+            $taiKhoan->save();
+
+            $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
+//            return $nguoiTimViec;
+            $nguoiTimViec->gioi_thieu = $request->gt_ban_than;
+            $nguoiTimViec->gioi_tinh = $request->gioi_tinh;
 
 
-        $nguoiTimViec->muc_tieu_nghe_nghiep = $request->muc_tieu_nghe_nghiep;
-        $nguoiTimViec->so_thich = $request->so_thich;
-        $nguoiTimViec->dia_chi = $request->dia_chi;
-        $nguoiTimViec->vi_tri_tim = $request->vt_ung_tuyen;
-        $nguoiTimViec->vi_tri_tim = $request->vt_ung_tuyen;
-        $nguoiTimViec->khu_vuc = $request->khu_vuc;
-        $nguoiTimViec->muc_luong = $request->muc_luong;
-        $nguoiTimViec->hoc_van = $request->hoc_van;
-        $nguoiTimViec->ten_truong_tot_nghiep = $request->ten_truong_tot_nghiep;
-        $nguoiTimViec->loai_cong_viec = $request->loai_cong_viec;
-        $nguoiTimViec->viec_can_tim = $request->ten_cong_viec;
-        $nguoiTimViec->ky_nang = serialize($request->all_skills);
-        $nguoiTimViec->social = serialize($request->all_social);
-        $nguoiTimViec->exp_lam_viec = serialize($request->all_exp);
-        $nguoiTimViec->projects = serialize($request->all_projects);
-        $nguoiTimViec->ngay_sinh = Carbon::createFromFormat('d/m/Y',$request->ngay_sinh)->format('Y-m-d');
+            $nguoiTimViec->muc_tieu_nghe_nghiep = $request->muc_tieu_nghe_nghiep;
+            $nguoiTimViec->so_thich = $request->so_thich;
+            $nguoiTimViec->dia_chi = $request->dia_chi;
+            $nguoiTimViec->vi_tri_tim = $request->vt_ung_tuyen;
+            $nguoiTimViec->vi_tri_tim = $request->vt_ung_tuyen;
+            $nguoiTimViec->khu_vuc = $request->khu_vuc;
+            $nguoiTimViec->muc_luong = $request->muc_luong;
+            $nguoiTimViec->hoc_van = $request->hoc_van;
+            $nguoiTimViec->ten_truong_tot_nghiep = $request->ten_truong_tot_nghiep;
+            $nguoiTimViec->loai_cong_viec = $request->loai_cong_viec;
+            $nguoiTimViec->viec_can_tim = $request->ten_cong_viec;
+            $nguoiTimViec->ky_nang = serialize($request->all_skills);
+            $nguoiTimViec->social = serialize($request->all_social);
+            $nguoiTimViec->exp_lam_viec = serialize($request->all_exp);
+            $nguoiTimViec->projects = serialize($request->all_projects);
+            $nguoiTimViec->ngay_sinh = Carbon::createFromFormat('d/m/Y',$request->ngay_sinh)->format('Y-m-d');
 
-        $nguoiTimViec->save();
-        return $this->getResponse('Cập nhật hồ sơ',200,'Cập nhật hồ sơ thành công!',0);
+            $nguoiTimViec->save();
+            return $this->getResponse('Cập nhật hồ sơ',200,'Cập nhật hồ sơ thành công!',0);
+        }catch (\Exception $e){
+            return $this->getResponse('Cập nhật hồ sơ',400,$e->getMessage(),0);
+
+        }
+
     }
 
 }

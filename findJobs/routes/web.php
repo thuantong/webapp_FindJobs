@@ -137,3 +137,9 @@ Route::namespace('Admin')->group(function () {
     });
 
 });
+
+Route::namespace('NopDon')->group(function (){
+    Route::name('nopdon.')->group(function (){
+        Route::post('/nop-don-ung-tuyen','NopDonController@nopDonUngTuyen')->name('nopDonUngTuyen');
+    });
+});

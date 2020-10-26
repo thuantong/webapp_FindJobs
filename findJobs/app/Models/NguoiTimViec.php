@@ -25,7 +25,10 @@ class NguoiTimViec extends Model
         'avatar',
         'status',
         'social',
-        'muc_luong'
+        'muc_luong',
+        'ten_truong_tot_nghiep',
+        'tag_jobs',
+        'muc_tieu_nghe_nghiep',
     ];
     protected $attributes = [
         'status' => 1,
@@ -69,5 +72,8 @@ class NguoiTimViec extends Model
 
     public function getBaiThich(){
         return $this->belongsToMany(BaiTuyenDung::class,'thich','nguoi_tim_viec_id','bai_tuyen_dung_id');
+    }
+    public function getDonXinViec(){
+        return $this->belongsToMany(BaiTuyenDung::class,'don_xin_viec','nguoi_tim_viec_id','bai_tuyen_dung_id')->withTimestamps();
     }
 }

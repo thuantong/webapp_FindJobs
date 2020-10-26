@@ -1,16 +1,16 @@
 @if($type == 0)
     <tr>
         <td>{{$index}}</td>
-        <td class="project-name">{{__('NULL')}}</td>
-        <td class="project-from">{{__('NULL')}}</td>
-        <td class="project-to">{{__('NULL')}}</td>
-        <td class="project-status" style="width: 20%!important;">{{__('NULL')}}</td>
-        <td class="project-links">{{__('NULL')}}</td>
+        <td class="project-name">{{$data['name']}}</td>
+        <td class="project-from">{{$data['fromDate']}}</td>
+        <td class="project-to">{{$data['toDate']}}</td>
+        <td class="project-status" style="width: 20%!important;"><span class="{{$data['status']['class']}}">{{$data['status']['text']}}</span></td>
+        <td class="project-links">{{$data['links']}}</td>
         <td>
             <div class="btn-group btn-group-sm" style="float: none;">
 
-                <button class="btn btn-warning btn-sm cap-nhat-project">Cập nhật</button>
-                <button class="btn btn-danger btn-sm xoa1-project">Xóa</button>
+                <button class="btn btn-warning btn-sm cap-nhat-project"><span class="fa fa-edit"></span></button>
+                <button class="btn btn-danger btn-sm xoa1-project"><span class="fa fa-trash"></span></button>
             </div>
 
         </td>
@@ -43,8 +43,8 @@
                 <td>
                     <div class="btn-group btn-group-sm" style="float: none;">
 
-                        <button class="btn btn-warning btn-sm cap-nhat-project">Cập nhật</button>
-                        <button class="btn btn-danger btn-sm xoa1-project">Xóa</button>
+                        <button class="btn btn-warning btn-sm cap-nhat-project"><span class="fa fa-edit"></span></button>
+                        <button class="btn btn-danger btn-sm xoa1-project"><span class="fa fa-trash"></span></button>
                     </div>
 
                 </td>
