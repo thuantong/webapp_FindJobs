@@ -131,7 +131,8 @@ $(document).on('click', '#modal-cap-nhat-project .modal-footer button:eq(1)', fu
                     toDate : toDate,
                     status : {
                         class: getHtmlStatusProject(status),
-                        text : status_text
+                        text : status_text,
+                        id: status
                     },
                     links : links,
                 }

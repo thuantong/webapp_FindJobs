@@ -4,7 +4,7 @@
         <td class="project-name">{{$data['name']}}</td>
         <td class="project-from">{{$data['fromDate']}}</td>
         <td class="project-to">{{$data['toDate']}}</td>
-        <td class="project-status" style="width: 20%!important;"><span class="{{$data['status']['class']}}">{{$data['status']['text']}}</span></td>
+        <td class="project-status" data-id="{{$data['status']['id']}}" style="width: 20%!important;"><span class="{{$data['status']['class']}}">{{$data['status']['text']}}</span></td>
         <td class="project-links">{{$data['links']}}</td>
         <td>
             <div class="btn-group btn-group-sm" style="float: none;">

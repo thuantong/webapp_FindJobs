@@ -50,7 +50,7 @@
 {{--                                                Thích: <small class="tong-luot-thich">100</small>--}}
 {{--                                            </small>--}}
 {{--                                            <small class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">--}}
-{{--                                                Ứng tuyển: <small class="tong-ung-tuyen">100</small>--}}
+{{--                                                Ứng tuyển: <small class="tong-ung-tuyen">{{$data['don_xin_viec']['total']}}</small>--}}
 {{--                                            </small>--}}
 {{--                                        </div>--}}
 {{--                                    </div>--}}
@@ -75,8 +75,8 @@
                                                     <i class="icofont icofont-ui-text-loading "></i> Chat
                                                 </button>
 
-                                                <div class="btn btn-outline-warning waves-effect position-relative" id="call-modal-nop-don"><i class="fa fa-send"> Nộp đơn</i>
-                                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">400</span>
+                                                <div class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning @endif waves-effect position-relative" @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) id="call-modal-nop-don" @endif><i class="fa fa-send">@if(in_array($data['id'],$data['don_xin_viec']['data'])){{' Đã ứng tuyển'}}@else{{' Nộp đơn'}}@endif</i>
+{{--                                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
 
                                                 </div>
                                                 <button class="btn btn-outline-primary"><i class="fa fa-exclamation"></i> Báo cáo
@@ -253,6 +253,9 @@
 
 @endsection
 @push('scripts')
+    <script type="text/javascript">
+        let idBaiTuyenDung = '{{$data['id']}}';
+    </script>
     <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
     <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
@@ -271,99 +274,13 @@
     <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>
 
+
     <!-- Init js-->
     <script src="{{URL::asset('assets\js\pages\form-wizard.init.js')}}"></script>
 
+
     <script type="text/javascript">
         $(function () {
-            $('#gioi_tinh').select2({
-                dropdownParent: $('#modal-nop-don')
-            });
-            lichNgay($('#ngay_sinh'));
-            $("#ngay_sinh").datepicker( "setDate" , "1/1/1990" );
-            $('#call-modal-nop-don').on('click',function () {
-                $('#modal-nop-don').modal('show')
-            });
-            //nút next hồ sơ
-            $('#modal-nop-don #luu-nop-ho-so,#modal-nop-don #tab-nop-don-header.form-wizard-header li.nav-item').on('click',function (e) {
-                let error = 0;
-                let __this = $(this);
-                error += parseInt(notNullMessage($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active .not-null')));
-                if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').length){
-                    if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').is(':checked') == false){
-                        $('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').addClass('is-invalid').parent().find('span.invalid-feedback').find('strong').text('Bạn phải đồng ý điều khoản này')
-                        error += 1;
-                        // return false;
-                    }
-                }
-                if (error == 0){
-                    if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('.ajax-nop-don').length){
-                        //check tab2
-
-                        if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('ul#exp-list li').length == 0){
-                            $('#modal-nop-don .modal-footer').find('span').removeClass('d-none').text('Bạn phải thêm kinh nghiệm làm việc (học vấn)!!');
-                            return false;
-                        }else{
-                            $('#modal-nop-don .modal-footer').find('span').addClass('d-none').text('ok!!');
-                            let kinh_nghiem_array = [];
-                            let project_array = [];
-                            $('#modal-nop-don .modal-body #exp-list li').each(function () {
-                                let item = {};
-                                item.time_exp = $(this).find('.time-exp').find('b').eq(0).text() + ' Đến ' + $(this).find('.time-exp').find('b').eq(1).text();
-                                item.company_name_exp = $(this).find('.company-name-exp').text();
-                                item.company_link_exp = $(this).find('.company-link-exp').text();
-                                item.description_exp = $(this).find('.description-exp').text();
-                                kinh_nghiem_array.push(item);
-                                // time-exp
-                            });
-                            $('#modal-nop-don .modal-body #table-project tr').each(function () {
-                                let item = {};
-                                item.id = $(this).find('td').eq(0).text();
-                                item.project_name = $(this).find('.project-name').text();
-                                item.project_from = $(this).find('.project-from').text();
-                                item.project_to = $(this).find('.project-to').text();
-                                item.project_status = $(this).find('.project-status').text();
-                                item.project_links = $(this).find('.project-links').find('span').text();
-                                project_array.push(item);
-                                // time-exp
-                            });
-                            let ajax = {
-                                method:'post',
-                                url:'/nop-don-ung-tuyen',
-                                data:{
-                                    id_bai_viet : '{{$data['id']}}',
-                                    ho_ten : $('#modal-nop-don .modal-body #ho_ten').val(),
-                                    gioi_tinh : $('#modal-nop-don .modal-body #gioi_tinh').val(),
-                                    ngay_sinh : $('#modal-nop-don .modal-body #ngay_sinh').val(),
-                                    so_dien_thoai : $('#modal-nop-don .modal-body #so_dien_thoai').val(),
-                                    dia_chi : $('#modal-nop-don .modal-body #dia_chi').val(),
-                                    check : $('#modal-nop-don .modal-body #allow-see-infomation:checked').length,
-                                    kinh_nghiem : kinh_nghiem_array,
-                                    projects : project_array,
-                                },
-                            }
-                            sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(function (r) {
-                                    console.log(r);
-                                    getHtmlResponse(r);
-                                    if (r.status == 200){
-                                        $('#modal-nop-don').modal('hide');
-                                    }
-                            })
-                            console.log('bắt đầu gửi ajax',ajax.data);
-                        }
-
-                    }
-                }else {
-                    console.log(error);
-                    return false;
-                }
-
-            });
-
-            $('#modal-nop-don #tab-nop-don-header.form-wizard-header li.nav-item:eq(2)').on('click',function () {
-                return false;
-            });
-
             $('#trang-chu-like-post').on('click', function () {
                 let __this = $(this);
                 let idPost = __this.data('id');
@@ -412,28 +329,8 @@
 
             });
 
-            // fullSizePage();
-            // var fixedScroll = $('#scroll-fixed').offset();
-            // const headerTop = fixedScroll.top;
-            //
-            // $(window).on('scroll', function () {
-            //
-            //     let offsetleft = fixedScroll.left;
-            //     // console.log(offsetleft);
-            //     // console.log(fixedScroll.top, window.pageYOffset + 70);
-            //     if (window.pageYOffset + 70 >= headerTop) {
-            //         $('#scroll-fixed').addClass('scroll-fixed-top');
-            //         $('#scroll-fixed').offset({left:offsetleft});
-            //     } else {
-            //         $('#scroll-fixed').removeClass('scroll-fixed-top');
-            //         $('#scroll-fixed').offset({left:offsetleft});
-            //
-            //     }
-            // });
-
-        })
-        $(document).on('hidden.bs.modal','#modal-cap-nhat-exp',function () {
-            $('#modal-nop-don .modal-footer').find('span').addClass('d-none').text('ok!!');
         });
+
     </script>
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>
 @endpush

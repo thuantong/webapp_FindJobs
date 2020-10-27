@@ -69,6 +69,7 @@ Route::namespace('BaiViet')->group(function (){
 //        Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost');
         Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet={detail}','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet');
         Route::get('/bai-viet/like','BaiVietController@likePost')->name('likePost');
+        Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon');
     });
 });
 

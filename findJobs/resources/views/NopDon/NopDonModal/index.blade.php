@@ -63,9 +63,9 @@
                                                     <option value="" disabled selected
                                                             class="text-center">{{__('Chọn giới tính')}}</option>
                                                     <option value="1"
-                                                            @if($nguoiTimViec['gioi_tinh'] != null) @if($nguoiTimViec['gioi_tinh'] == 1) selected @endif @endif>{{__('Nam')}}</option>
+                                                            @if($data['nguoi_tim_viec']['gioi_tinh'] != null) @if($data['nguoi_tim_viec']['gioi_tinh'] == 1) selected @endif @endif>{{__('Nam')}}</option>
                                                     <option value="2"
-                                                            @if($nguoiTimViec['gioi_tinh'] != null) @if($nguoiTimViec['gioi_tinh'] == 2)  selected @endif @endif>{{__('Nữ')}}</option>
+                                                            @if($data['nguoi_tim_viec']['gioi_tinh'] != null) @if($data['nguoi_tim_viec']['gioi_tinh'] == 2)  selected @endif @endif>{{__('Nữ')}}</option>
                                                 </select>
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong></strong>
@@ -77,9 +77,9 @@
                                             <div class="form-group">
                                                 <label for="ngay_sinh">{{__('Ngày sinh')}}</label>
                                                 <input class="form-control not-null" title="Ngày sinh"
-                                                       placeholder="@if($nguoiTimViec['ngay_sinh'] == '' || $nguoiTimViec['ngay_sinh'] == null){{'Chọn ngày sinh'}}@endif"
+                                                       placeholder="@if($data['nguoi_tim_viec']['ngay_sinh'] == '' || $data['nguoi_tim_viec']['ngay_sinh'] == null){{'Chọn ngày sinh'}}@endif"
                                                        id="ngay_sinh"
-                                                       value="@if($nguoiTimViec['ngay_sinh'] == '' || $nguoiTimViec['ngay_sinh'] == null){{''}}@else{{\Illuminate\Support\Carbon::createFromFormat('Y-m-d',$nguoiTimViec['ngay_sinh'])->format('d/m/Y')}}@endif">
+                                                       value="@if($data['nguoi_tim_viec']['ngay_sinh'] == '' || $data['nguoi_tim_viec']['ngay_sinh'] == null){{''}}@else{{\Illuminate\Support\Carbon::createFromFormat('Y-m-d',$data['nguoi_tim_viec']['ngay_sinh'])->format('d/m/Y')}}@endif">
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong></strong>
                                                 </span>
@@ -93,14 +93,14 @@
 {{--                                                <label--}}
 {{--                                                    for="muc_tieu_nghe_nghiep">{{__('Mục tiêu nghề nghiệp:')}}</label>--}}
 {{--                                                <textarea class="form-control" id="muc_tieu_nghe_nghiep"--}}
-{{--                                                          placeholder="Hãy viết gì đó...">@if($nguoiTimViec['gioi_thieu'] != null){{$nguoiTimViec['gioi_thieu']}}@endif</textarea>--}}
+{{--                                                          placeholder="Hãy viết gì đó...">@if($data['nguoi_tim_viec']['gioi_thieu'] != null){{$data['nguoi_tim_viec']['gioi_thieu']}}@endif</textarea>--}}
 {{--                                            </div>--}}
 {{--                                        </div> <!-- end col -->--}}
 {{--                                        <div class="col-6">--}}
 {{--                                            <div class="form-group">--}}
 {{--                                                <label for="so_thich">{{__('Sở thích:')}}</label>--}}
 {{--                                                <textarea class="form-control" id="so_thich"--}}
-{{--                                                          placeholder="Hãy viết gì đó...">@if($nguoiTimViec['so_thich'] != null){{$nguoiTimViec['so_thich']}}@endif</textarea>--}}
+{{--                                                          placeholder="Hãy viết gì đó...">@if($data['nguoi_tim_viec']['so_thich'] != null){{$data['nguoi_tim_viec']['so_thich']}}@endif</textarea>--}}
 {{--                                            </div>--}}
 {{--                                        </div> <!-- end col -->--}}
 {{--                                    </div> <!-- end row -->--}}
@@ -125,7 +125,7 @@
                                             <div class="form-group">
                                                 <label for="dia_chi">{{__('Địa chỉ')}}</label>
                                                 <input type="text" class="form-control not-null" id="dia_chi" title="Địa chỉ"
-                                                       value="@if($nguoiTimViec['dia_chi'] != null){{$nguoiTimViec['dia_chi']}}@endif"
+                                                       value="@if($data['nguoi_tim_viec']['dia_chi'] != null){{$data['nguoi_tim_viec']['dia_chi']}}@endif"
                                                        placeholder="Nhập địa chỉ">
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong></strong>
@@ -166,7 +166,23 @@
                                     </h5>
 
                                     <ul class="list-unstyled timeline-sm" id="exp-list">
-
+                                        @if($data['nguoi_tim_viec']['exp_lam_viec'] != null)
+                                            @foreach($data['nguoi_tim_viec']['exp_lam_viec'] as $row)
+                                                <li class="timeline-sm-item">
+                                                    <span class="timeline-sm-date time-exp"><b>{{$row['from_date']}}</b><br>đến<br><b>{{$row['to_date']}}</b></span>
+                                                    <div class="btn-group btn-group-sm mb-1" style="float: none;">
+                                                        {{----}}
+                                                        <button class="btn btn-sm btn-warning mr-1 cap-nhat-exp">{{__('Cập nhật')}}</button>
+                                                        <button class="btn btn-sm btn-danger ml-1 mr-1 xoa1-exp">{{__('Xóa')}}</button>
+                                                    </div>
+                                                    {{----}}
+                                                    <h5 class="mt-0 mb-1 company-name-exp">{{$row['tenCtyVaChucVu']}}</h5>
+                                                    {{----}}
+                                                    <p class="company-link-exp">{{$row['websites']}}</p>
+                                                    <p class="text-muted mt-2 description-exp">{{$row['mo_ta']}}</p>
+                                                </li>
+                                                @endforeach
+                                            @endif
                                     </ul>
 
                                     <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i

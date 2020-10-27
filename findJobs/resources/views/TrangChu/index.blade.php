@@ -1,6 +1,21 @@
 @extends('master.index')
 @section('content')
+    <head>
+        <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
+        <!-- ION Slider -->
+        <link href="{{URL::asset('assets\libs\ion-rangeslider\ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
+        {{--        <link href="assets\libs\bootstrap-select\bootstrap-select.min.css" rel="stylesheet" type="text/css">--}}
+        <link href="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet">
+        <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+
+        {{--        date picker--}}
+        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
+    </head>
     {{--                    <!-- start page title -->//header--}}
+    @include('User.modal.capNhatExp')
+    @include('User.modal.capNhatProject')
+    @include('NopDon.modal.master')
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -186,7 +201,13 @@
                                 </button>
 
 
-                                <button class="btn btn-outline-warning"><i class="fa fa-send"></i> Nộp đơn</button>
+{{--                                <div class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning @endif waves-effect position-relative" @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) id="call-modal-nop-don" @endif><i class="fa fa-send">@if(in_array($data['id'],$data['don_xin_viec']['data'])){{' Đã ứng tuyển'}}@else{{' Nộp đơn'}}@endif</i>--}}
+{{--                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
+{{----}}
+{{--                                </div>--}}
+                                <button class="btn btn-outline-warning waves-effect position-relative call-modal-nop-don"><i class="fa fa-send">{{' Nộp đơn'}}</i>
+
+                                </button>
                                 <button class="btn btn-outline-primary"><i class="fa fa-exclamation"></i> Báo cáo
                                 </button>
 
@@ -204,11 +225,15 @@
 @endsection
 @push('scripts')
     <script>
+        let idBaiTuyenDung='';
         let currenPage = null;
         let nextPage = null;
         let next_page_check = null;
         // var body = document.body;
-        //
+        // $(document).on('click','#modal-nop-don #tab-nop-don-header.form-wizard-header li.nav-item a',function () {
+        //     alert('')
+        //     return false;
+        // });
         // body.classList.add("enlarged");
         // $('body').addClass('enlarged');
         function getItemsDefaults(elementResponse,newPage) {
@@ -263,16 +288,36 @@
                     $('#trang-chu-like-post').removeClass('btn-outline-primary');
                     $('#trang-chu-like-post').addClass('btn-primary');
                     $('#trang-chu-like-post').addClass('like-animation');
-                    $('#trang-chu-like-post').find('i').text('Đã thích')
+                    $('#trang-chu-like-post').find('i').text('Đã thích');
+
                 }else{
                     $('#trang-chu-like-post').removeClass('btn-primary');
                     $('#trang-chu-like-post').removeClass('like-animation');
                     $('#trang-chu-like-post').addClass('btn-outline-primary');
-                    $('#trang-chu-like-post').find('i').text('Thích')
+                    $('#trang-chu-like-post').find('i').text('Thích');
+
                 }
+
+                if (e.don_xin_viec.data.includes(e.id) == true){
+                    $('.call-modal-nop-don').removeClass('btn-outline-warning');
+                    $('.call-modal-nop-don').addClass('btn-warning');
+                    $('.call-modal-nop-don').addClass('like-animation');
+                    $('.call-modal-nop-don').find('i').text('Đã ứng tuyển');
+                    $('.call-modal-nop-don').removeAttr('id');
+
+                }else{
+                    $('.call-modal-nop-don').removeClass('btn-warning');
+                    $('.call-modal-nop-don').removeClass('like-animation');
+                    $('.call-modal-nop-don').addClass('btn-outline-warning');
+                    $('.call-modal-nop-don').find('i').text('Nộp đơn');
+                    $('.call-modal-nop-don').attr('id','call-modal-nop-don');
+                }
+                $('.tieu-de-chi-tiet').data('id',e.id);
+                idBaiTuyenDung = $('.tieu-de-chi-tiet').data('id');
                 //lượt thích
                 // total_thich
                 $('.tong-luot-thich').text(e.bai_da_thich.total);
+                $('.tong-ung-tuyen').text(e.don_xin_viec.total);
                 //end
 
                 $('.tieu-de-chi-tiet').text(e.tieu_de);
@@ -342,6 +387,13 @@
             }
 
         };
+        $(document).on('click','#call-modal-nop-don',function () {
+            sendAjaxNoFunc('get','/bai-viet/get-view-nop-don',{id:idBaiTuyenDung},'').done(e=>{
+                $('#modal-nop-don .modal-content').html(e);
+                $('#modal-nop-don').modal('show')
+            })
+
+        });
 //main
         $(function () {
 
@@ -489,7 +541,7 @@
                     getThongTinChiTietPost(null);
 
                     sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(r =>{
-                        // console.log('thongtin',r);
+                        console.log('thongtin',r);
                         getThongTinChiTietPost(r);
                         __this.addClass('iteam-click-active')
                     });
@@ -498,4 +550,28 @@
             }
         }
     </script>
+
+    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
+
+
+
+    {{--date picker--}}
+    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
+    <!-- Plugins js-->
+{{--    <script src="{{URL::asset('assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>--}}
+
+{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>--}}
+{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>--}}
+
+
+    <!-- Init js-->
+{{--    <script src="{{URL::asset('assets\js\pages\form-wizard.init.js')}}"></script>--}}
+{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>--}}
+
 @endpush

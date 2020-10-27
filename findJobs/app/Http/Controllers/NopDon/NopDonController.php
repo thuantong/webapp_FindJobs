@@ -39,8 +39,19 @@ class NopDonController extends Controller
             $this->nguoiTimViec->projects = serialize($request->projects);
 
             $this->nguoiTimViec->save();
-            $this->capNhatDonXinViec($this->nguoiTimViec,$id);
-            return $this->getResponse($title,200,'Nộp đơn ứng tuyển thành công');
+
+            $baiTuyenDungIds = $this->nguoiTimViec->getDonXinViec->pluck('id')->toArray();
+//            return in_array($id,$this->nguoiTimViec->getDonXinViec->get()->pluck('id'));
+//            return in_array($id,$this->nguoiTimViec->getDonXinViec->pluck('id'));
+//            return in_array(2,$baiTuyenDungIds) == false;
+            if ($this->capNhatDonXinViec($this->nguoiTimViec,$id) == false){
+                return $this->getResponse($title,401,'Bạn đã ứng tuyển bài viết này rồi');
+            }
+//            else{
+                return $this->getResponse($title,200,'Nộp đơn ứng tuyển thành công');
+//            }
+//            $this->capNhatDonXinViec($this->nguoiTimViec,$id);
+
         }catch (\Exception $exception){
             return $this->getResponse($title,400,$exception->getMessage());
         }
@@ -48,8 +59,12 @@ class NopDonController extends Controller
 
     public function capNhatDonXinViec($nguoiTimViec,$idBaiTuyenDung){
         try {
-            $baiTuyenDung = BaiTuyenDung::query()->find($idBaiTuyenDung)->getDonXinViec()->attach($nguoiTimViec);
-            return $baiTuyenDung;
+//            $this->nguoiTimViec->getDonXinViec->pluck('id');
+            if (in_array($idBaiTuyenDung,$this->nguoiTimViec->getDonXinViec->pluck('id')->toArray()) == true){
+                return false;
+            }
+            BaiTuyenDung::query()->find($idBaiTuyenDung)->getDonXinViec()->attach($nguoiTimViec);
+            return true;
         }catch (\Exception $e){
             return $this->getResponse('Cập nhật đơn xin việc',400,$e->getMessage());
         }
