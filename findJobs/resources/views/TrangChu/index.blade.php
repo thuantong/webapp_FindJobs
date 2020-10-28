@@ -172,7 +172,8 @@
                         <div class="row pt-1 pb-0">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
                                 <a class="btn btn-success float-left" id="xem-chi-tiet-rut-gon">Xem chi tiết</a>
-                                <button class="btn btn-info float-right">Quan tâm nhà tuyển dụng</button>
+                                <button class="btn btn-outline-primary float-right"><i class="fa fa-exclamation"></i> Báo cáo
+                                </button>
                             </div>
 
                         </div>
@@ -208,8 +209,7 @@
                                 <button class="btn btn-outline-warning waves-effect position-relative call-modal-nop-don"><i class="fa fa-send">{{' Nộp đơn'}}</i>
 
                                 </button>
-                                <button class="btn btn-outline-primary"><i class="fa fa-exclamation"></i> Báo cáo
-                                </button>
+
 
                             </div>
 

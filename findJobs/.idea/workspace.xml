@@ -2,19 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/js/app/chuc-nang-nop-don-ung-tuyen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/NopDon/modal/content.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/NopDon/modal/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/findJobs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/findJobs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NopDon/NopDonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NopDon/NopDonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/NguoiTimViecTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/NguoiTimViecTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style-customs.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style-customs.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/app/cap-nhat-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/cap-nhat-project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/app/chuc-nang-nop-don-ung-tuyen.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/chuc-nang-nop-don-ung-tuyen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/NopDon/modal/content.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/NopDon/modal/content.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/items.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/modal/capNhatProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/modal/capNhatProject.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlKinhNghiemLamViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlKinhNghiemLamViec.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlProjectStatus.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlProjectStatus.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/projectsAppend.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/projectsAppend.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -89,7 +96,6 @@
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
@@ -146,7 +152,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
@@ -163,6 +168,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/moneyphp/money" />
       <path value="$PROJECT_DIR$/vendor/cknow/laravel-money" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
     </include_path>
   </component>
   <component name="ProjectId" id="1hUcohfHyZLohJq1fkszwoQjShJ" />
@@ -246,6 +252,7 @@
       <workItem from="1603621325562" duration="18934000" />
       <workItem from="1603689424088" duration="28766000" />
       <workItem from="1603779583914" duration="28058000" />
+      <workItem from="1603870654370" duration="31677000" />
     </task>
     <servers />
   </component>
@@ -261,10 +268,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="476" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/78.0.1288.768@78.0.1288.768" timestamp="1601925610950" />
-    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603731953641">
+    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603907612642">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1603731953641" />
+    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1603907612642" />
     <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1603641991683">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -289,11 +296,11 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1602004293090" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1603779584537">
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1603870681630">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1603779584537" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1603870681630" />
     <state x="429" y="140" width="586" height="488" key="find.popup" timestamp="1602784075560">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -302,10 +309,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1603709433964" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1603813494872">
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1603911112779">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1603813494872" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1603911112779" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -377,12 +384,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php</url>
-          <line>32</line>
+          <line>35</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php</url>
-          <line>245</line>
+          <line>246</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -402,22 +409,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php</url>
-          <line>168</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php</url>
           <line>170</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php</url>
-          <line>184</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php</url>
-          <line>185</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -430,19 +422,24 @@
           <line>226</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php</url>
+          <line>297</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js</url>
-          <line>103</line>
+          <line>92</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js</url>
-          <line>105</line>
+          <line>94</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js</url>
-          <line>107</line>
+          <line>96</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

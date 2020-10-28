@@ -17,6 +17,7 @@ use App\Models\NganhNghe;
 use App\Models\NguoiTimViec;
 use App\Models\NhaTuyenDung;
 //use Carbon\Carbon;
+use App\Models\QuanTam;
 use App\Models\TaiKhoan;
 use App\Models\Thich;
 use Illuminate\Support\Carbon;
@@ -232,8 +233,8 @@ class BaiVietController extends Controller
         $data['nguoi_tim_viec'] = $nguoiTimViec[0];
         $data['nguoi_tim_viec']['exp_lam_viec'] = unserialize($data['nguoi_tim_viec']['exp_lam_viec']);
         $data['nguoi_tim_viec']['projects'] = unserialize($data['nguoi_tim_viec']['projects']);
-
-        return view('NopDon.modal.content',compact('data'));
+        $typeSend = 1;
+        return view('NopDon.modal.content',compact('data','typeSend'));
     }
 
     public function getThongTinBaiViet($post,$detail){
@@ -245,10 +246,15 @@ class BaiVietController extends Controller
         $data['tieu_de'] = ucwords($data['tieu_de']);
         $data['bai_da_thich']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getBaiThich->pluck('id')->toArray();
         $data['bai_da_thich']['total'] = Thich::query()->where('bai_tuyen_dung_id',$post)->count();
+        //lấy nhà tuyern dụng đã quan tâm
+        $data['nha_tuyen_dung_da_quan_tam']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getNhaTuyenDungQuanTam->pluck('id')->toArray();
+        $data['nha_tuyen_dung_da_quan_tam']['total'] = QuanTam::query()->where('nha_tuyen_dung_id',$data['get_nha_tuyen_dung']['id'])->count();
+
         $data['cong_ty_nganh_nghe'] = CongTy::query()->find($data['cong_ty_id'])->getNganhNghe()->get()->toArray();
         $data['quy_mo_nhan_su'] = CongTy::query()->find($data['cong_ty_id'])->getQuyMoNhanSu()->get()->toArray();
         $data['quy_mo_nhan_su'] = $data['quy_mo_nhan_su'][0];
 
+        $data['get_nha_tuyen_dung']['tai_khoan'] = TaiKhoan::query()->find($data['get_nha_tuyen_dung']['tai_khoan_id'])->toArray();
         $data['don_xin_viec']['total'] = DonXinViec::query()->where('bai_tuyen_dung_id',$post)->count();
         $data['don_xin_viec']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getDonXinViec()->get()->pluck('id')->toArray();
 
@@ -265,7 +271,9 @@ class BaiVietController extends Controller
                 return $data;
             case 1:
 //                dd($nguoiTimViec);
-                return view('BaiViet.chiTiet',compact('data','nguoiTimViec'));
+//                dd($data);
+                $typeSend = 1;
+                return view('BaiViet.chiTiet',compact('data','nguoiTimViec','typeSend'));
         }
 //        return $data;
     }

@@ -189,7 +189,7 @@
 
                         </h5>
                         <div class="table-responsive">
-                            <table class="table table-borderless mb-0 table-project" id="table-project">
+                            <table class="table table-bordered mb-0 table-project" id="table-project">
                                 <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
@@ -202,44 +202,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if($data['nguoi_tim_viec']['projects'] != null)
-{{--                                    @dd($data['nguoi_tim_viec']['projects'])--}}
-                                    @foreach($data['nguoi_tim_viec']['projects'] as $row)
-{{--                                        {{dd()}}--}}
-                                        <tr>
-                                            <td>{{$row['id']}}</td>
-                                            <td class="project-name">{{$row['project_name']}}</td>
-                                            <td class="project-from">{{$row['project_from']}}</td>
-                                            <td class="project-to">{{$row['project_to']}}</td>
-                                            <td class="project-status" style="width: 20%!important;">
-{{--                                                @switch($row['project_status'])--}}
-{{--                                                    @case(1)--}}
-{{--                                                    <span class="badge badge-info">{{__('Đang tiến hành')}}</span>--}}
-{{--                                                    @break--}}
-{{--                                                    @case(2)--}}
-{{--                                                    <span class="badge badge-pink">{{__('Đang chờ xử lý')}}</span>--}}
-{{--                                                    @break--}}
-{{--                                                    @case(3)--}}
-{{--                                                    <span class="badge badge-success">{{__('Hoàn thành')}}</span>--}}
-{{--                                                    @break--}}
-{{--                                                    @case(4)--}}
-{{--                                                    <span class="badge badge-warning">{{__('Sắp có')}}</span>--}}
-{{--                                                    @break--}}
-{{--                                                @endswitch--}}
-                                            </td>
-                                            <td class="project-links">{{$row['project_links']}}</td>
-                                            <td>
-                                                <div class="btn-group btn-group-sm" style="float: none;">
-
-                                                    <button class="btn btn-warning btn-sm cap-nhat-project"><span class="fa fa-edit"></span></button>
-                                                    <button class="btn btn-danger btn-sm xoa1-project"><span class="fa fa-trash"></span></button>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-
+                                    @include('User.nguoiTimViec.projectsAppend')
                                 </tbody>
                             </table>
                         </div>

@@ -190,7 +190,7 @@
                                 </h5>
 
                                 <ul class="list-unstyled timeline-sm" id="exp-list">
-
+                                    @include('User.nguoiTimViec.htmlKinhNghiemLamViec')
                                 </ul>
 
                                 <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i
@@ -201,7 +201,7 @@
 
                                 </h5>
                                 <div class="table-responsive">
-                                    <table class="table table-borderless mb-0 table-project" id="table-project">
+                                    <table class="table table-bordered mb-0 table-project" id="table-project">
                                         <thead class="thead-light">
                                         <tr>
                                             <th>#</th>
@@ -214,7 +214,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
+                                        @include('User.nguoiTimViec.projectsAppend')
 
                                         </tbody>
                                     </table>
@@ -300,23 +300,23 @@
                                                 {{--                                                <span class="form-text text-muted"><small>If you want to change email please <a--}}
                                                 {{--                                                            href="javascript: void(0);">click</a> here.</small></span>--}}
                                             </div>
-                                            <div class="form-group">
-                                                <label for="khu_vuc">{{__('Khu vực')}}</label>
 
-                                                <select class="form-control" id="khu_vuc">
-                                                    <option disabled selected value="">{{__('Chọn khu vực')}}</option>
-                                                    @foreach($data['dia_diem'] as $row)
-                                                    <option value="{{$row['id']}}" @if($data['nguoi_tim_viec']['dia_diem_id'] != null) @if($data['dia_diem_id'] == $row['id']) selected @endif @endif>{{$row['name']}}</option>
-                                                        @endforeach
-                                                </select>
-{{--                                                <input type="text" class="form-control" id="khu_vuc"--}}
-{{--                                                       value="@if($data['nguoi_tim_viec']['khu_vuc'] != null){{$data['nguoi_tim_viec']['khu_vuc']}}@endif"--}}
-{{--                                                       placeholder="Nhập khu vực">--}}
-                                                {{--                                                <span class="form-text text-muted"><small>If you want to change email please <a--}}
-                                                {{--                                                            href="javascript: void(0);">click</a> here.</small></span>--}}
-                                            </div>
                                         </div>
-                                        {{--                                        <div class="col-md-6">--}}
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label for="khu_vuc">{{__('Khu vực')}}</label>
+
+                                                                                        <select class="form-control not-null" id="khu_vuc" title="Chọn khu vực">
+                                                                                            <option disabled selected value="">{{__('Chọn khu vực')}}</option>
+                                                                                            @foreach($data['dia_diem'] as $row)
+                                                                                                <option value="{{$row['id']}}"
+                                                                                                        @if($data['nguoi_tim_viec']['dia_diem_id'] != null) @if($data['nguoi_tim_viec']['dia_diem_id'] == $row['id']) selected @endif @endif>{{$row['name']}}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                        <span class="invalid-feedback" role="alert">
+                                        <strong></strong>
+                                    </span>
+                                                                                    </div>
                                         {{--                                            <div class="form-group">--}}
                                         {{--                                                <label for="vt_ung_tuyen">{{__('Vị trí ứng tuyển')}}</label>--}}
                                         {{--                                                <input type="text" class="form-control" id="vt_ung_tuyen"--}}
@@ -324,7 +324,7 @@
                                         {{--                                                       placeholder="Nhập vị trí ứng tuyển">--}}
                                         {{--                                                <span class="form-text text-muted"><small>Vị trí ứng tuyển dùng để hiện cho nhà tuyển dụng thấy, hoặc để lọc bài tuyển dụng</small></span>--}}
                                         {{--                                            </div>--}}
-                                        {{--                                        </div> <!-- end col -->--}}
+                                                                                </div> <!-- end col -->
                                     </div> <!-- end row -->
 
                                     <h5 class="mb-3 text-uppercase bg-light p-2"><i
@@ -359,14 +359,19 @@
                                         <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                             <div class="form-group">
                                                 <label for="hoc_van">{{__('Học vấn:')}}</label>
-                                                <select class="form-control hoc_van" id="hoc_van">
+                                                <select class="form-control not-null hoc_van" id="hoc_van"
+                                                        title="Học vấn">
                                                     <option disabled selected value="">{{__('Chọn học vấn')}}</option>
                                                     @foreach($data['bang_cap'] as $row)
                                                         @if($row['id'] != 1)
-                                                        <option value="{{$row['id']}}" @if($data['nguoi_tim_viec']['hoc_van'] != null) @if($data['nguoi_tim_viec']['hoc_van'] == $row['id']) selected @endif @endif>{{$row['name']}}</option>
+                                                            <option value="{{$row['id']}}"
+                                                                    @if($data['nguoi_tim_viec']['bang_cap_id'] != null) @if($data['nguoi_tim_viec']['bang_cap_id'] == $row['id']) selected @endif @endif>{{$row['name']}}</option>
                                                         @endif
-                                                            @endforeach
+                                                    @endforeach
                                                 </select>
+                                                <span class="invalid-feedback" role="alert">
+                                        <strong></strong>
+                                    </span>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
@@ -391,14 +396,14 @@
                                                     @foreach($data['kieu_lam_viec'] as $row)
                                                         <option value="{{$row['id']}}"
                                                                 @if($data['nguoi_tim_viec']['kieu_lam_viec_id'] != null) @if($data['nguoi_tim_viec']['kieu_lam_viec_id'] == $row['id']) selected @endif @endif>{{$row['name']}}</option>
-                                                        @endforeach
+                                                    @endforeach
 
-                                                        {{--                                                    <option value="1"--}}
-                                                        {{--                                                            @if($data['nguoi_tim_viec']['loai_cong_viec'] != null && $data['nguoi_tim_viec']['loai_cong_viec'] == 1) selected @endif>{{__('Toàn thời gian')}}</option>--}}
-                                                        {{--                                                    <option value="2"--}}
-                                                        {{--                                                            @if($data['nguoi_tim_viec']['loai_cong_viec'] != null && $data['nguoi_tim_viec']['loai_cong_viec'] == 2) selected @endif>{{__('Bán thời gian')}}</option>--}}
-                                                        {{--                                                    <option value="3"--}}
-                                                        {{--                                                            @if($data['nguoi_tim_viec']['loai_cong_viec'] != null && $data['nguoi_tim_viec']['loai_cong_viec'] == 3) selected @endif>{{__('Sinh viên - Thực tập')}}</option>--}}
+                                                    {{--                                                    <option value="1"--}}
+                                                    {{--                                                            @if($data['nguoi_tim_viec']['loai_cong_viec'] != null && $data['nguoi_tim_viec']['loai_cong_viec'] == 1) selected @endif>{{__('Toàn thời gian')}}</option>--}}
+                                                    {{--                                                    <option value="2"--}}
+                                                    {{--                                                            @if($data['nguoi_tim_viec']['loai_cong_viec'] != null && $data['nguoi_tim_viec']['loai_cong_viec'] == 2) selected @endif>{{__('Bán thời gian')}}</option>--}}
+                                                    {{--                                                    <option value="3"--}}
+                                                    {{--                                                            @if($data['nguoi_tim_viec']['loai_cong_viec'] != null && $data['nguoi_tim_viec']['loai_cong_viec'] == 3) selected @endif>{{__('Sinh viên - Thực tập')}}</option>--}}
                                                 </select>
                                             </div>
                                         </div>

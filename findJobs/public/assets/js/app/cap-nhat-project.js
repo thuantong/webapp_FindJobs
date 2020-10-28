@@ -43,6 +43,10 @@ lichThang($('#modal-cap-nhat-project .to-date-project,#modal-cap-nhat-exp .to-da
 $(document).on('click','#add-new-project', function () {
     $('#modal-cap-nhat-project').modal('show');
     $('#modal-cap-nhat-project').data('kieu','themmoi');
+    $('#modal-cap-nhat-project').find('input,textarea').not('.from-date-project,.to-date-project').val('');
+    $('#modal-cap-nhat-project').find('select').val('').trigger('change.select2');
+    // $('#modal-cap-nhat-project').find('.from-date-project').val('');
+    // $('#modal-cap-nhat-project').find('.to-date-project').val('');
 
 });
 //xóa một dự án
@@ -65,13 +69,13 @@ $(document).on('click', '.cap-nhat-project', function () {
     let name = $(this).parents('tr').find('td').eq(1).text();
     let fromDate = $(this).parents('tr').find('td').eq(2).text();
     let toDate = $(this).parents('tr').find('td').eq(3).text();
-    let status = $(this).parents('tr').find('td').eq(4).text();
+    let status = $(this).parents('tr').find('td').eq(4).data('id');
     let links = $(this).parents('tr').find('td').eq(5).text();
     $('#modal-cap-nhat-project .modal-body').find('input').eq(0).val(indexs);
     $('#modal-cap-nhat-project .modal-body').find('input').eq(1).val((name == 'NULL') ? '' : name);
     $('#modal-cap-nhat-project .modal-body').find('input').eq(2).val((fromDate == 'NULL') ? '' : fromDate);
     $('#modal-cap-nhat-project .modal-body').find('input').eq(3).val((toDate == 'NULL') ? '' : toDate);
-    $('#modal-cap-nhat-project .modal-body').find('input').eq(4).val((status == 'NULL') ? '' : status);
+    $('#modal-cap-nhat-project .modal-body').find('select').val((status == '') ? '' : status).trigger('change.select2');
     $('#modal-cap-nhat-project .modal-body').find('textarea').val((links == 'NULL') ? '' : links);
 
     $('#modal-cap-nhat-project').modal('show');
@@ -88,10 +92,8 @@ $(document).on('shown.bs.modal', '#modal-cap-nhat-project', function () {
 
 //nút cập nhật dự án
 $(document).on('click', '#modal-cap-nhat-project .modal-footer button:eq(1)', function () {
-    // $('#modal-cap-nhat-project').data('kieu','themmoi');
     let kieu_modal = $('#modal-cap-nhat-project').data('kieu');
     let __this = $(this);
-    // alert()
     let _parent = $('#modal-cap-nhat-project .modal-body');
     let indexs = _parent.find('input').eq(0).val();
     let name = _parent.find('input').eq(1).val();
@@ -102,17 +104,8 @@ $(document).on('click', '#modal-cap-nhat-project .modal-footer button:eq(1)', fu
     let links = _parent.find('textarea').val();
 
     let errorCount = 0;
-    // console.log('index nè',indexs);
-    // let elementIDToSave = $('#' + arrayCustom.beforeSendElement);
-    $.each($(this).parents('#modal-cap-nhat-project').find('input').not('input[type="hidden"]'), function (i, v) {
-        if ($(v).val() == null || $(v).val() == '') {
-            errorCount++;
-            $(v).addClass('is-invalid');
-            $(v).parent().find('.invalid-feedback strong').text($(v).attr('title') + ' ' + 'không được để trống');
-        }
-    });
 
-    // (errorCount == 0) ? $('#modal-cap-nhat-project').modal('hide') : errorCount;
+    errorCount += notNullMessage($('#modal-cap-nhat-project').find('.not-null'));
 
     if (errorCount == 0) {
 
@@ -136,6 +129,8 @@ $(document).on('click', '#modal-cap-nhat-project .modal-footer button:eq(1)', fu
                     },
                     links : links,
                 }
+                // console.log(data);
+                // return;
                 setTRowProject(indexTrow,data, 0,__this.attr('id')).done(async res => {
 
                     await $('#table-project').find('tbody').append(res);

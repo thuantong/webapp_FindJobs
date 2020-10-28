@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 text-center">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><h5 class="mb-0"><a class="xem-chi-tiet-post" href="{{route('baiviet.getThongTinBaiViet',[$row['id'],0])}}"><span title="{{$row['tieu_de']}}">{{$row['tieu_de']}}</span></a>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><h5 class="mb-0"><a class="xem-chi-tiet-post" href="{{route('baiviet.getThongTinBaiViet',[$row['id'],1])}}"><span title="{{$row['tieu_de']}}">{{$row['tieu_de']}}</span></a>
                         </h5></div>
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><i><span title="{{$row['cong_ty_name']}}">{{$row['cong_ty_name']}}</span></i>
                     </div>

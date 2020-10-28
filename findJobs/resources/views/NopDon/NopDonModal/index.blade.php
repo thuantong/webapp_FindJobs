@@ -166,23 +166,8 @@
                                     </h5>
 
                                     <ul class="list-unstyled timeline-sm" id="exp-list">
-                                        @if($data['nguoi_tim_viec']['exp_lam_viec'] != null)
-                                            @foreach($data['nguoi_tim_viec']['exp_lam_viec'] as $row)
-                                                <li class="timeline-sm-item">
-                                                    <span class="timeline-sm-date time-exp"><b>{{$row['from_date']}}</b><br>đến<br><b>{{$row['to_date']}}</b></span>
-                                                    <div class="btn-group btn-group-sm mb-1" style="float: none;">
-                                                        {{----}}
-                                                        <button class="btn btn-sm btn-warning mr-1 cap-nhat-exp">{{__('Cập nhật')}}</button>
-                                                        <button class="btn btn-sm btn-danger ml-1 mr-1 xoa1-exp">{{__('Xóa')}}</button>
-                                                    </div>
-                                                    {{----}}
-                                                    <h5 class="mt-0 mb-1 company-name-exp">{{$row['tenCtyVaChucVu']}}</h5>
-                                                    {{----}}
-                                                    <p class="company-link-exp">{{$row['websites']}}</p>
-                                                    <p class="text-muted mt-2 description-exp">{{$row['mo_ta']}}</p>
-                                                </li>
-                                                @endforeach
-                                            @endif
+                                        @include('User.nguoiTimViec.htmlKinhNghiemLamViec')
+
                                     </ul>
 
                                     <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i
@@ -193,7 +178,7 @@
 
                                     </h5>
                                     <div class="table-responsive">
-                                        <table class="table table-borderless mb-0 table-project" id="table-project">
+                                        <table class="table table-bordered mb-0 table-project" id="table-project">
                                             <thead class="thead-light">
                                             <tr>
                                                 <th>#</th>
@@ -206,8 +191,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-
-
+                                                @include('User.nguoiTimViec.projectsAppend')
                                             </tbody>
                                         </table>
                                     </div>

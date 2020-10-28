@@ -16,7 +16,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <input type="hidden" id="project-index" value="">
                         <input type="text"
-                               class="form-control"
+                               class="form-control not-null"
                                value="" required autofocus title="{{ __('Nhập tên dự án') }}">
 
                         <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <input type="text"
-                               class="form-control from-date-project"
+                               class="form-control not-null from-date-project"
                                value="01/2020" required autofocus title="{{ __('Nhập thời gian bắt đầu') }}">
                         <span class="invalid-feedback" role="alert">
                                         <strong></strong>
@@ -49,7 +49,7 @@
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <input type="text"
-                               class="form-control to-date-project"
+                               class="form-control not-null to-date-project"
                                value="02/2020" required autofocus title="{{ __('Thời gian hoàn thành') }}">
                         <span class="invalid-feedback" role="alert">
                                         <strong></strong>

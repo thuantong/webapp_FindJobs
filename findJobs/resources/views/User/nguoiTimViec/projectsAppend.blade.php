@@ -1,10 +1,11 @@
-@if($type == 0)
+@if($typeSend == 0)
     <tr>
         <td>{{$index}}</td>
         <td class="project-name">{{$data['name']}}</td>
-        <td class="project-from">{{$data['fromDate']}}</td>
-        <td class="project-to">{{$data['toDate']}}</td>
-        <td class="project-status" data-id="{{$data['status']['id']}}" style="width: 20%!important;"><span class="{{$data['status']['class']}}">{{$data['status']['text']}}</span></td>
+        <td class="project-from text-center">{{$data['fromDate']}}</td>
+        <td class="project-to text-center">{{$data['toDate']}}</td>
+        <td class="project-status text-center" data-id="{{$data['status']['id']}}"><span
+                class="{{$data['status']['class']}}">{{$data['status']['text']}}</span></td>
         <td class="project-links">{{$data['links']}}</td>
         <td>
             <div class="btn-group btn-group-sm" style="float: none;">
@@ -15,16 +16,18 @@
 
         </td>
     </tr>
-@elseif($type == 1)
-    @if($nguoiTimViec['projects'] != null)
-        @foreach(unserialize($nguoiTimViec['projects']) as $row)
+@elseif($typeSend == 1)
+    @if($data['nguoi_tim_viec']['projects'] != null)
+{{--                @dd($data['nguoi_tim_viec']['projects'])--}}
+        @foreach($data['nguoi_tim_viec']['projects'] as $row)
             <tr>
-                <td>{{$row['id']}}</td>
-                <td class="project-name">{{$row['name']}}</td>
-                <td class="project-from">{{$row['from_date']}}</td>
-                <td class="project-to">{{$row['to_date']}}</td>
-                <td class="project-status" style="width: 20%!important;">
-                    @switch($row['trang_thai'])
+                <td class="text-primary">{{$row['id']}}</td>
+                <td class="project-name">{{$row['project_name']}}</td>
+                <td class="project-from text-center">{{$row['project_from']}}</td>
+                <td class="project-to text-center">{{$row['project_to']}}</td>
+                <td class="project-status text-center" data-id="{{$row['id']}}">
+                    {{--                    @if(isset($row['project_status']))--}}
+                    @switch(intval($row['project_status']))
                         @case(1)
                         <span class="badge badge-info">{{__('Đang tiến hành')}}</span>
                         @break
@@ -38,12 +41,14 @@
                         <span class="badge badge-warning">{{__('Sắp có')}}</span>
                         @break
                     @endswitch
+                    {{--                    @endif--}}
                 </td>
-                <td class="project-links">{{$row['websites']}}</td>
+                <td class="project-links">{{$row['project_links']}}</td>
                 <td>
                     <div class="btn-group btn-group-sm" style="float: none;">
 
-                        <button class="btn btn-warning btn-sm cap-nhat-project"><span class="fa fa-edit"></span></button>
+                        <button class="btn btn-warning btn-sm cap-nhat-project"><span class="fa fa-edit"></span>
+                        </button>
                         <button class="btn btn-danger btn-sm xoa1-project"><span class="fa fa-trash"></span></button>
                     </div>
 

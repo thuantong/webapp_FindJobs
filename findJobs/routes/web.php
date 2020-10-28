@@ -144,3 +144,9 @@ Route::namespace('NopDon')->group(function (){
         Route::post('/nop-don-ung-tuyen','NopDonController@nopDonUngTuyen')->name('nopDonUngTuyen');
     });
 });
+
+Route::namespace('QuanTam')->group(function (){
+    Route::name('quantam.')->group(function (){
+        Route::post('/quan-tam-nha-tuyen-dung','QuanTamController@setQuanTam')->name('setQuanTam');
+    });
+});

@@ -50,7 +50,7 @@ $(function () {
                         item.project_from = $(this).find('.project-from').text();
                         item.project_to = $(this).find('.project-to').text();
                         item.project_status = $(this).find('.project-status').data('id');
-                        item.project_links = $(this).find('.project-links').find('span').text();
+                        item.project_links = $(this).find('.project-links').text();
                         project_array.push(item);
                         // time-exp
                     });
@@ -69,13 +69,15 @@ $(function () {
                             projects : project_array,
                         },
                     }
-                    console.log('cacacx',project_array)
+                    // console.log('cacacx',project_array)
                     $('#progressbarwizard').bootstrapWizard('previous');
                     alertConfirm({title:'Xác nhận ứng tuyển', message:'Bạn muốn ứng tuyển công việc này?'}).then(value=>{
 
                         if (value.value == true){
                             // console.log('dđ')
 
+                            console.log('data sen',ajax);
+                            // return;
                             sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(function (r) {
                                 console.log(r);
                                 getHtmlResponse(r);

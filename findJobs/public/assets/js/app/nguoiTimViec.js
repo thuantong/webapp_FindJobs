@@ -42,16 +42,16 @@ $(function () {
             from_fixed: false,
         });
     });
-    //lấy dữ liệu bảng kinh nghiệm
-    getHtmlExpNew(1).done(res => {
-        $('#about-me-exp').find('ul').append(res);
-    });
+    // //lấy dữ liệu bảng kinh nghiệm
+    // getHtmlExpNew(1).done(res => {
+    //     $('#about-me-exp').find('ul').append(res);
+    // });
 
-    //lấy dữ liệu bảng dự án
-    setTRowProject(0, 1).done(res => {
-        // console.log('tr',res);
-        $('#table-project').find('tbody').append(res);
-    });
+    // //lấy dữ liệu bảng dự án
+    // setTRowProject(0, 1).done(res => {
+    //     // console.log('tr',res);
+    //     $('#table-project').find('tbody').append(res);
+    // });
     $('#gioi_tinh,.hoc_van,.loai_cong_viec').select2();
 
     //thêm kỹ năng
@@ -71,28 +71,17 @@ $(function () {
         });
     });
 
-
-
 });
-
 
 //đổi điểm tăng chữ ở span
 $(document).on('change', '.skill_append', function () {
     $(this).parent().find('.skill_value').text($(this).val());
 });
 
-
-
-
-
-
-
 //xóa một kỹ năng
 $(document).on('click', '.remove-skill', function () {
     $(this).parents('.pt-1.skill').remove();
 });
-
-
 
 //nút không lưu
 $(document).on('click', '.cancel-profile', function () {
@@ -113,7 +102,7 @@ $(document).on('click', '.save-profile', function () {
     let so_thich = $('textarea#so_thich').val();//sở thích
     let dia_chi = $('input#dia_chi').val();//địa chỉ
     let vt_ung_tuyen = $('input#vt_ung_tuyen').val();//vị trí ứng tuyển
-    let khu_vuc = $('input#khu_vuc').val();//khu vực
+    let khu_vuc = $('select#khu_vuc').val();//khu vực
     //không lấy
     let muc_luong_from = $('input#muc_luong_from').val();
     let muc_luong_to = $('input#muc_luong_to').val();
@@ -169,11 +158,11 @@ $(document).on('click', '.save-profile', function () {
         $('#table-project').find('tbody').find('tr').each(function () {
             let item = {};
             item.id = $(this).find('td').eq(0).text();
-            item.name = $(this).find('td').eq(1).text();
-            item.from_date = $(this).find('td').eq(2).text();
-            item.to_date = $(this).find('td').eq(3).text();
-            item.trang_thai = $(this).find('td').eq(4).data('id');
-            item.websites = $(this).find('td').eq(5).text();
+            item.project_name = $(this).find('.project-name').text();
+            item.project_from = $(this).find('.project-from').text();
+            item.project_to = $(this).find('.project-to').text();
+            item.project_status = $(this).find('.project-status').data('id');
+            item.project_links = $(this).find('.project-links').text();
             all_projects.push(item);
         });
     }
@@ -181,7 +170,7 @@ $(document).on('click', '.save-profile', function () {
     // console.log(error)
     if (error == 0) {
 
-        $('.save-profile,.cancel-profile').addClass('d-none');
+        // $('.save-profile,.cancel-profile').addClass('d-none');
         let ajax = {
             method: 'post',
             url: '/nguoi-tim-viec/update',
@@ -208,8 +197,8 @@ $(document).on('click', '.save-profile', function () {
                 all_projects: all_projects,
             },
         };
-        console.log('data ngtk', ajax.data);
-        return false;
+        // console.log('data ngtk', ajax.data);
+        // return false;
         sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,__this.attr('id')).done(r=>{
             // console.log(r)
             getHtmlResponse(r);

@@ -36,15 +36,22 @@ trait NguoiTimViecTrait
 //        $str = preg_replace("/( )/", '', $str);
 //        return $str;
 //    }
+
     public function getEmployee(Request $request){
         if(Session::get('loai_tai_khoan') == 1){
-            $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->get();
-            $nguoiTimViec = $nguoiTimViec[0];
+//            $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->get()->toArray();
+            $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->toArray();
+
             $data['nguoi_tim_viec'] = $nguoiTimViec;
+
+            $data['nguoi_tim_viec']['exp_lam_viec'] = unserialize($data['nguoi_tim_viec']['exp_lam_viec']);
+            $data['nguoi_tim_viec']['projects'] = unserialize($data['nguoi_tim_viec']['projects']);
             $data['bang_cap'] = BangCap::all()->toArray();
             $data['kieu_lam_viec'] = KieuLamViec::all()->toArray();
             $data['dia_diem'] = DiaDiem::all()->toArray();
-            return view('User.nguoiTimViec',compact('data'));
+            $typeSend = 1;
+//            dd($data);
+            return view('User.nguoiTimViec',compact('data','typeSend'));
         }else{
             abort(404);
         }
@@ -106,11 +113,10 @@ trait NguoiTimViecTrait
 
     public function getViewSkillAppend(Request $request)
     {
-
         $typeSend = $request->get('type');
 //        return $typeSend;
         if ($typeSend == 1){
-            $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
+            $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
 //            return $nguoiTimViec;
             return view('User.nguoiTimViec.skillAppend',compact('typeSend','nguoiTimViec'));
         }elseif ($typeSend == 0){
@@ -125,7 +131,7 @@ trait NguoiTimViecTrait
         $title = 'Sửa kỹ năng';
         $reset = 0;
         $message = 'Bạn vừa cập nhật kỹ năng thành công';
-        $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
+        $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
 //        return serialize($request->data);
         $nguoiTimViec->ky_nang = serialize($request->data);
         $nguoiTimViec->save();
@@ -135,14 +141,14 @@ trait NguoiTimViecTrait
     public function projectView(Request $request){
 //        $data = array();
         $index = $request->get('index');
-        $type = $request->get('type');
+        $typeSend = intval($request->get('type'));
         $data = $request->get('data');
-        if($type == 0){
-            return view('User.nguoiTimViec.projectsAppend',compact('index','type','data'));
-        }elseif ($type == 1){
+        if($typeSend == 0){
+            return view('User.nguoiTimViec.projectsAppend',compact('index','typeSend','data'));
+        }elseif ($typeSend == 1){
             $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->nguoi_tim_viecs;
 
-            return view('User.nguoiTimViec.projectsAppend',compact('nguoiTimViec','type'));
+            return view('User.nguoiTimViec.projectsAppend',compact('nguoiTimViec','typeSend'));
         }
 
 
@@ -166,11 +172,7 @@ trait NguoiTimViecTrait
     }
 
     public function setNguoiTimViec(Request $request){
-//        return Carbon::createFromFormat('d/m/Y',$request->ngay_sinh)->format('Y-m-d');
-//        $all_skill = json_encode($request->all_exp);
-//        return json_decode($all_skill);
-//        return json_decode($request->all_exp);
-//        return json_decode($request->all_exp);
+
         try {
             $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
 
@@ -185,17 +187,16 @@ trait NguoiTimViecTrait
             $nguoiTimViec->gioi_thieu = $request->gt_ban_than;
             $nguoiTimViec->gioi_tinh = $request->gioi_tinh;
 
-
             $nguoiTimViec->muc_tieu_nghe_nghiep = $request->muc_tieu_nghe_nghiep;
             $nguoiTimViec->so_thich = $request->so_thich;
             $nguoiTimViec->dia_chi = $request->dia_chi;
             $nguoiTimViec->vi_tri_tim = $request->vt_ung_tuyen;
             $nguoiTimViec->vi_tri_tim = $request->vt_ung_tuyen;
-            $nguoiTimViec->khu_vuc = $request->khu_vuc;
+            $nguoiTimViec->dia_diem_id = $request->khu_vuc;
             $nguoiTimViec->muc_luong = $request->muc_luong;
-            $nguoiTimViec->hoc_van = $request->hoc_van;
+            $nguoiTimViec->bang_cap_id = $request->hoc_van;
             $nguoiTimViec->ten_truong_tot_nghiep = $request->ten_truong_tot_nghiep;
-            $nguoiTimViec->loai_cong_viec = $request->loai_cong_viec;
+            $nguoiTimViec->kieu_lam_viec_id = $request->loai_cong_viec;
             $nguoiTimViec->viec_can_tim = $request->ten_cong_viec;
             $nguoiTimViec->ky_nang = serialize($request->all_skills);
             $nguoiTimViec->social = serialize($request->all_social);
