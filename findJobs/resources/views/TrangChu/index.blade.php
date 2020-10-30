@@ -179,6 +179,7 @@
                         </div>
 
                     </div>
+                    @if(intval(Session::get('loai_tai_khoan')) == 1)
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
                         <div class="row center-element">
                             <small class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
@@ -217,6 +218,7 @@
                     </div>
 
                 </div>
+                @endif
             </div>
         </div>
     </div>
@@ -224,56 +226,18 @@
 
 @endsection
 @push('scripts')
-    <script>
+    <script type="text/javascript">
+        $(function () {
+            fullSizePage();
+        });
+    </script>
+    <script type="text/javascript">
+        let loaiTaiKhoan = '{{Session::get('loai_tai_khoan')}}'
         let idBaiTuyenDung='';
         let currenPage = null;
         let nextPage = null;
         let next_page_check = null;
-        // var body = document.body;
-        // $(document).on('click','#modal-nop-don #tab-nop-don-header.form-wizard-header li.nav-item a',function () {
-        //     alert('')
-        //     return false;
-        // });
-        // body.classList.add("enlarged");
-        // $('body').addClass('enlarged');
-        function getItemsDefaults(elementResponse,newPage) {
-            $(elementResponse).find('.processing-input:last').removeClass('d-none');
 
-            let ajax = {
-                method: 'get',
-                url: '/tuyen-dung',
-                data : {page :newPage}
-            };
-            sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e =>{
-                // console.log('data day',e)
-                elementResponse.append(e);
-                $(elementResponse).find('.processing-input').not(':last').addClass('d-none');
-
-
-                currenPage = parseInt($('.item-container-page:last').data('current'));
-                nextPage = currenPage + parseInt(1);
-                next_page_check = $('.item-container-page:last').data('pageurl');
-
-                let widthImage = $('#container-items .iteam-click').find('img').parent().width();
-                let heightImage = widthImage;
-                $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
-
-                // if ($(window).width() >= 576){
-                //     $('.xem-chi-tiet-post').each(function () {
-                //         $(this).attr('target','_blank');
-                //     });
-                //     // $('.xem-chi-tiet-post').attr('target','_blank');
-                // }else if($(window).width() < 576){
-                //     $('.xem-chi-tiet-post').each(function () {
-                //         $(this).removeAttr('target');
-                //     });
-                // }
-                if(parseInt(newPage) == parseInt(1)){
-                    $('#container-items .iteam-click').eq(0).trigger('click');
-                }
-            })
-
-        }
 
         const getProcessing = () =>{
             return '<div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">\n' +
@@ -284,34 +248,37 @@
         const getThongTinChiTietPost = (e) =>{
             // console.log('con cac ne',e)
             if (e != null){
-                if (e.bai_da_thich.data.includes(e.id) == true){
-                    $('#trang-chu-like-post').removeClass('btn-outline-primary');
-                    $('#trang-chu-like-post').addClass('btn-primary');
-                    $('#trang-chu-like-post').addClass('like-animation');
-                    $('#trang-chu-like-post').find('i').text('Đã thích');
+                if (parseInt(loaiTaiKhoan) == 1){
+                    if (e.bai_da_thich.data.includes(e.id) == true){
+                        $('#trang-chu-like-post').removeClass('btn-outline-primary');
+                        $('#trang-chu-like-post').addClass('btn-primary');
+                        $('#trang-chu-like-post').addClass('like-animation');
+                        $('#trang-chu-like-post').find('i').text('Đã thích');
 
-                }else{
-                    $('#trang-chu-like-post').removeClass('btn-primary');
-                    $('#trang-chu-like-post').removeClass('like-animation');
-                    $('#trang-chu-like-post').addClass('btn-outline-primary');
-                    $('#trang-chu-like-post').find('i').text('Thích');
+                    }else{
+                        $('#trang-chu-like-post').removeClass('btn-primary');
+                        $('#trang-chu-like-post').removeClass('like-animation');
+                        $('#trang-chu-like-post').addClass('btn-outline-primary');
+                        $('#trang-chu-like-post').find('i').text('Thích');
 
+                    }
+
+                    if (e.don_xin_viec.data.includes(e.id) == true){
+                        $('.call-modal-nop-don').removeClass('btn-outline-warning');
+                        $('.call-modal-nop-don').addClass('btn-warning');
+                        $('.call-modal-nop-don').addClass('like-animation');
+                        $('.call-modal-nop-don').find('i').text('Đã ứng tuyển');
+                        $('.call-modal-nop-don').removeAttr('id');
+
+                    }else{
+                        $('.call-modal-nop-don').removeClass('btn-warning');
+                        $('.call-modal-nop-don').removeClass('like-animation');
+                        $('.call-modal-nop-don').addClass('btn-outline-warning');
+                        $('.call-modal-nop-don').find('i').text('Nộp đơn');
+                        $('.call-modal-nop-don').attr('id','call-modal-nop-don');
+                    }
                 }
 
-                if (e.don_xin_viec.data.includes(e.id) == true){
-                    $('.call-modal-nop-don').removeClass('btn-outline-warning');
-                    $('.call-modal-nop-don').addClass('btn-warning');
-                    $('.call-modal-nop-don').addClass('like-animation');
-                    $('.call-modal-nop-don').find('i').text('Đã ứng tuyển');
-                    $('.call-modal-nop-don').removeAttr('id');
-
-                }else{
-                    $('.call-modal-nop-don').removeClass('btn-warning');
-                    $('.call-modal-nop-don').removeClass('like-animation');
-                    $('.call-modal-nop-don').addClass('btn-outline-warning');
-                    $('.call-modal-nop-don').find('i').text('Nộp đơn');
-                    $('.call-modal-nop-don').attr('id','call-modal-nop-don');
-                }
                 $('.tieu-de-chi-tiet').data('id',e.id);
                 idBaiTuyenDung = $('.tieu-de-chi-tiet').data('id');
                 //lượt thích
@@ -396,25 +363,21 @@
         });
 //main
         $(function () {
-
-
-            getItemsDefaults($('#container-items'), 1);
+            let ajaxBaiViet = {
+                method:'get',
+                url :"/tin-tuyen-dung",
+                data : {
+                    getTin : 1,
+                    page : 1
+                }
+            }
+            //init lấy danh sách việc làm | lấy page 1
+            getItemsDefaults($('#container-items'), ajaxBaiViet.data.page,ajaxBaiViet);
+            //end init
 
             $('#container-items .iteam-click').eq(0).click();
-            $('#container-items').parents().on('scroll', function (e) {
-                let x = $(this).prop('scrollHeight');
-                let vitri = parseFloat(x) - parseFloat(Math.abs($(this).height()));
 
-                if (parseInt(vitri) == $(this).scrollTop()) {
-                    // console.log(next_page_check)
-                    if (next_page_check != ''){
-                        getItemsDefaults($('#container-items'),nextPage);// append bài viết
-
-                    }
-
-                }
-            })
-//like
+//like || quan tâm bài viết
             $('#trang-chu-like-post').on('click', function () {
                 let __this = $(this);
                 let idPost = $('#container-items .iteam-click.iteam-click-focus').data('id');
@@ -422,9 +385,9 @@
                     __this.removeClass('btn-outline-primary');
                     __this.addClass('btn-primary');
                     __this.addClass('like-animation');
-                    __this.find('i').text('Đã thích')
+                    __this.find('i').text('Đã lưu')
                     let ajax = {
-                        method:'get',
+                        method:'post',
                         url : '/bai-viet/like',
                         data :{
                             id :idPost,
@@ -439,9 +402,9 @@
                     __this.removeClass('btn-primary');
                     __this.removeClass('like-animation');
                     __this.addClass('btn-outline-primary');
-                    __this.find('i').text('Thích')
+                    __this.find('i').text('Lưu bài')
                     let ajax = {
-                        method:'get',
+                        method:'post',
                         url : '/bai-viet/like',
                         data :{
                             id :idPost,
@@ -560,6 +523,7 @@
     {{--date picker--}}
     <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+    <script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 
 
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>

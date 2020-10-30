@@ -41,7 +41,7 @@ $(function () {
         let __parent = $('#form-body');
         let __this = $(this);
         let error = 0;
-        // error += notNullMessage(__parent.find('.not-null'));
+        error += notNullMessage(__parent.find('.not-null'));
         let muc_luong_array = [];
         muc_luong_array.push(__parent.find('#muc_luong_from').val(),__parent.find('#muc_luong_to').val());
         let do_tuoi_array = [];
@@ -69,7 +69,8 @@ $(function () {
                 cong_ty_tuyen_dung:__parent.find('#cong_ty_tuyen_dung').find('option:checked').val(),
                 so_ngay_ton_tai:__parent.find('#so_ngay_ton_tai').val(),
                 nganh_nghe:__parent.find('#nganh_nghe').val(),
-            }
+            };
+            // console.log(data)
 
             sendAjaxNoFunc('post','/dang-bai-viet/luu-tin',data,__this.attr('id')).done(e=>{
                 // console.log(e)

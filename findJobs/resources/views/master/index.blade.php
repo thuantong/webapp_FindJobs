@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>{{ config('app.name') }}</title>
 
-{{--    <title>Tìm việc làm</title>--}}
+    {{--    <title>Tìm việc làm</title>--}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Coderthemes" name="author">
@@ -14,7 +14,8 @@
     <link rel="shortcut icon" href="{{URL::asset('assets\images\animat-diamond-color.gif')}}">
 
     <!-- plugin css -->
-    <link href="{{URL::asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet"
+          type="text/css">
 
     <!-- App css -->
     <link href="{{URL::asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
@@ -30,11 +31,11 @@
     <!-- feather Awesome -->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\feather\css\feather.css')}}">
     <link href="{{URL::asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
-{{--    <link href="{{URL::asset('assets\css\croppie\2_6_4\croppie.css')}}" rel="stylesheet" type="text/css">--}}
+    {{--    <link href="{{URL::asset('assets\css\croppie\2_6_4\croppie.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{URL::asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Jquery Toast css -->
-{{--    <link href="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.css')}}" rel="stylesheet" type="text/css">--}}
+    {{--    <link href="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{URL::asset('assets\js\vtoast\vtoast.css')}}" rel="stylesheet" type="text/css">
     {{--        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{URL::asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
@@ -171,7 +172,9 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="@if(Session::get('avatar') != null){{URL::asset(Session::get('avatar'))}}@elseif(Session::get('avatar') == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif" alt="user-image" class="rounded-circle">
+                    <img
+                        src="@if(Session::get('avatar') != null){{URL::asset(Session::get('avatar'))}}@elseif(Session::get('avatar') == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
+                        alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1">
                                 {{ucwords(Auth::user()->ho_ten)}} <i class="icofont icofont-caret-down"></i>
                             </span>
@@ -427,25 +430,44 @@
 
 
 </div>
+
+{{--Chức năng tìm kiếm--}}
 <!-- END wrapper -->
 <div class="left-search d-none position-absolute bg-white border">
     <div class="left-search-header border" style="display: flex">
-        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
-            <button class="btn btn-default text-left text-dark exit-search fas fa-arrow-left"></button>
+        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 center-element">
+            <button class="btn btn-white border text-left text-dark exit-search fa fa-times"></button>
         </div>
-        <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 center-element">
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">
             <div class="input-group">
-                <input type="search" class="form-control value-search">
-                <button class="btn btn-primary text-left"> lúp</button>
+                <input type="search" class="form-control value-search" id="value-master-search"
+                       placeholder="Nhập từ khóa...">
             </div>
 
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">
-            Tìm Kiếm
+            <select class="form-control" id="dia-diem-master-search">
+                <option selected value="-1">Chọn địa điểm</option>
+                @foreach($dia_diem as $row)
+                    <option value="{{$row['id']}}">{{$row['name']}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">
+            <select class="form-control" id="nganh-nghe-master-search">
+                <option selected value="-1">Tất cả</option>
+                @foreach($nganh_nghe as $row)
+                    <option value="{{$row['id']}}">{{$row['name']}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
+            <button class="btn btn-primary text-left" id="button-master-search"><i class="fa fa-search"></i></button>
+
         </div>
     </div>
-    <div class="left-search-content overflow-auto-scroll p-2">
-{{--        @include('TrangChu.items')--}}
+    <div class="left-search-content overflow-y-auto p-2" id="left-search-content">
+        {{--        @include('TrangChu.items')--}}
     </div>
 </div>
 
@@ -487,7 +509,32 @@
 <script src="{{URL::asset('assets\js\customs-js-mine.js')}}"></script>
 {{--<script src="{{asset('assets\js\date-picker-vi.js')}}"></script>--}}
 @stack('scripts')
+<script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 <script type="text/javascript">
+    // var currenPage = null;
+    // var nextPage = null;
+    // var next_page_check = null;
+    $(document).on('click', '#button-master-search', function () {
+        let tieu_de = $('#value-master-search').val();
+        let nganh_nghe = $('#nganh-nghe-master-search').val();
+        let dia_diem = $('#dia-diem-master-search').val();
+        if (nganh_nghe == -1) {
+            nganh_nghe = '';
+        }
+        if (dia_diem == -1) {
+            dia_diem = '';
+        }
+        let ajax = {
+            method: 'get',
+            url: '/bai-viet/tim-kiem',
+            data: {
+                tieu_de: tieu_de,
+                nganh_nghe_id: nganh_nghe,
+                dia_diem_id: dia_diem,
+            }
+        }
+        getItemsDefaults($('#left-search-content'), 1, ajax, 'timkiem')
+    });
 
     $(document).on('click', function (e) {
 
@@ -501,16 +548,17 @@
                 if ($(document).width() < 500) {
                     $('.left-search').css('width', $(document).width() + 'px');
                 } else if ($(document).width() > 500) {
-                    $('.left-search').css('width', ($(document).width() * 0.5) + 'px');
+                    $('.left-search').css('width', ($(document).width() * 0.8) + 'px');
                 }
             }
             $('.value-search').focus();
         }
     });
     $(function () {
-
+        select2Single($('#dia-diem-master-search'), $('.left-search-header'));
+        select2Single($('#nganh-nghe-master-search'), $('.left-search-header'));
         $('.left-search').css('width', '0px');
-        $('.left-search').css('min-height', ($(document).height() * 0.8) + 'px');
+        $('.left-search-content').css('max-height', ($(document).height() * 0.8) + 'px');
         $('.left-search-header').css('min-height', $('.navbar-custom').height() + 'px');
 
 //exit search container
@@ -520,37 +568,36 @@
 
         });
 
-
         $(window).resize(function () {
             if ($(document).width()) {
                 $('.left-search').css('width', $(document).width() + 'px');
                 if ($(document).width() < 769) {
                     $('.left-search').css('width', $(document).width() + 'px');
                 } else if ($(document).width() > 768) {
-                    $('.left-search').css('width', ($(document).width() * 0.5) + 'px');
+                    $('.left-search').css('width', ($(document).width() * 0.8) + 'px');
                 }
             }
         });
 
-        //event
-        $('#txt-search-master').on('input', function () {
-            // $('.processing-input').
-            // $('#response-search').html('');
-            $.ajax({
-                method: 'get',
-                url: '/search',
-                data: {
-                    text: $(this).val(),
-                },
-                beforeSend: function () {
-                    // setting a timeout
-                    $('#response-search').html('<div class="processing-input">Đang tìm kiếm...</div>');
-                },
-                success: function (res) {
-                    $('#response-search').html(res);
-                },
-            });
-        });
+        // //event
+        // $('#txt-search-master').on('input', function () {
+        //     // $('.processing-input').
+        //     // $('#response-search').html('');
+        //     $.ajax({
+        //         method: 'get',
+        //         url: '/search',
+        //         data: {
+        //             text: $(this).val(),
+        //         },
+        //         beforeSend: function () {
+        //             // setting a timeout
+        //             $('#response-search').html('<div class="processing-input">Đang tìm kiếm...</div>');
+        //         },
+        //         success: function (res) {
+        //             $('#response-search').html(res);
+        //         },
+        //     });
+        // });
 
     });
 </script>

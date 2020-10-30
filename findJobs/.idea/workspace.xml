@@ -2,27 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/findJobs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/findJobs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/app/lay-danh-sach-viec-lam.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/danhSachBaiLuu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/danhSachDaUngTuyen.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/NguoiTimViecTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/NguoiTimViecTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NopDon/NopDonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NopDon/NopDonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BaiTuyenDung.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BaiTuyenDung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DonXinViec.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DonXinViec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/LuuBai.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/LuuBai.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NguoiTimViec.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NguoiTimViec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style-customs.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style-customs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/app/cap-nhat-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/cap-nhat-project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/app/chuc-nang-nop-don-ung-tuyen.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/chuc-nang-nop-don-ung-tuyen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/app/nhaTuyenDung_dang_bai.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/nhaTuyenDung_dang_bai.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/NopDon/modal/content.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/NopDon/modal/content.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/items.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/User/modal/capNhatProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/modal/capNhatProject.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlKinhNghiemLamViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlKinhNghiemLamViec.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlProjectStatus.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlProjectStatus.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/projectsAppend.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/projectsAppend.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/nav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,6 +184,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/Admin/Login" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -253,6 +254,8 @@
       <workItem from="1603689424088" duration="28766000" />
       <workItem from="1603779583914" duration="28058000" />
       <workItem from="1603870654370" duration="31677000" />
+      <workItem from="1603955500394" duration="30249000" />
+      <workItem from="1604041285482" duration="14439000" />
     </task>
     <servers />
   </component>
@@ -264,18 +267,22 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="328" y="195" key="#com.intellij.fileTypes.FileTypeChooser/78.0.1288.768@78.0.1288.768" timestamp="1602234779933" />
+    <state x="527" y="71" key="#com.intellij.ide.util.MemberChooser" timestamp="1603980807659">
+      <screen x="78" y="0" width="1288" height="768" />
+    </state>
+    <state x="527" y="71" key="#com.intellij.ide.util.MemberChooser/78.0.1288.768@78.0.1288.768" timestamp="1603980807659" />
     <state x="476" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1601925610950">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="476" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/78.0.1288.768@78.0.1288.768" timestamp="1601925610950" />
-    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603907612642">
+    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604051329594">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1603907612642" />
-    <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1603641991683">
+    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1604051329594" />
+    <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1603980208391">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="502" y="143" key="FileChooserDialogImpl/78.0.1288.768@78.0.1288.768" timestamp="1603641991683" />
+    <state x="502" y="143" key="FileChooserDialogImpl/78.0.1288.768@78.0.1288.768" timestamp="1603980208391" />
     <state width="1245" height="192" key="GridCell.Tab.0.bottom" timestamp="1603694931579">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -292,15 +299,23 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="1245" height="192" key="GridCell.Tab.0.right/78.0.1288.768@78.0.1288.768" timestamp="1603694931579" />
-    <state width="528" height="446" key="SwitcherDM" timestamp="1602004293090">
+    <state x="225" y="30" key="SettingsEditor" timestamp="1603980968706">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1602004293090" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1603870681630">
+    <state x="225" y="30" key="SettingsEditor/78.0.1288.768@78.0.1288.768" timestamp="1603980968706" />
+    <state width="528" height="446" key="SwitcherDM" timestamp="1603980206995">
+      <screen x="78" y="0" width="1288" height="768" />
+    </state>
+    <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1603980206995" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1604041329848">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1603870681630" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1604041329848" />
+    <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604042329365">
+      <screen x="78" y="0" width="1288" height="768" />
+    </state>
+    <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/78.0.1288.768@78.0.1288.768" timestamp="1604042329365" />
     <state x="429" y="140" width="586" height="488" key="find.popup" timestamp="1602784075560">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -309,10 +324,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1603709433964" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1603911112779">
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1604058109576">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1603911112779" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1604058109576" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -334,7 +349,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
-          <line>365</line>
+          <line>368</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -389,7 +404,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php</url>
-          <line>246</line>
+          <line>255</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -414,18 +429,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/TrangChu/index.blade.php</url>
-          <line>291</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/TrangChu/index.blade.php</url>
-          <line>226</line>
+          <line>233</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php</url>
-          <line>297</line>
-          <option name="timeStamp" value="69" />
+          <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
+          <line>448</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
+          <line>450</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
+          <line>453</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
+          <line>557</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js</url>
@@ -461,6 +486,15 @@
           <url>file://$PROJECT_DIR$/public/assets/js/app/nhaTuyenDung.js</url>
           <line>107</line>
           <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php</url>
+          <line>200</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\BaiViet\BaiVietController" />
+            <option name="methodName" value="luuVaoDuyetTin" />
+          </properties>
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

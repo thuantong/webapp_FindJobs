@@ -13,7 +13,9 @@ class DonXinViec extends Model
     protected $fillable = [
         'file',
         ];
-
+    protected $attributes = [
+        'status' => 0,
+    ];
 
     //
 }

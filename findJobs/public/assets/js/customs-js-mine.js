@@ -18,8 +18,9 @@ function remove_vietnamese_string(str) {
     }
 
 }
-const refreshTimeOut = () =>{
-    setTimeout("location.reload(true);",1000 * 60 * 60);//1 tiếng
+
+const refreshTimeOut = () => {
+    setTimeout("location.reload(true);", 1000 * 60 * 60);//1 tiếng
 };
 
 $(function () {
@@ -38,15 +39,15 @@ $(function () {
 
     $('.input-group-append').each(function () {
         // console.log($(this).parent().find('.form-control').css('border-radius'))
-        if ( $(this).parent().find('.form-control').prop("tagName").toLowerCase() == 'select'){
-            let chieuCaoInput =  $(this).parent().find('.form-control').outerHeight() -2;
-            $(this).css('height',chieuCaoInput+'px');
-            $(this).css('top','1px');
-            $(this).css('left','-4px');
-            $(this).find('span').css('border-radius','.2rem');
-            $(this).find('span').css('border-left','none');
-            $(this).find('span').css('border-top','none');
-            $(this).find('span').css('border-bottom','none');
+        if ($(this).parent().find('.form-control').prop("tagName").toLowerCase() == 'select') {
+            let chieuCaoInput = $(this).parent().find('.form-control').outerHeight() - 2;
+            $(this).css('height', chieuCaoInput + 'px');
+            $(this).css('top', '1px');
+            $(this).css('left', '-4px');
+            $(this).find('span').css('border-radius', '.2rem');
+            $(this).find('span').css('border-left', 'none');
+            $(this).find('span').css('border-top', 'none');
+            $(this).find('span').css('border-bottom', 'none');
         }
 
     });
@@ -105,7 +106,6 @@ $(function () {
         }
 
     });
-
 
 });
 
@@ -363,7 +363,7 @@ const lichThang = (element) => {
     });
 };
 
-const lichNam = (element) =>{
+const lichNam = (element) => {
     return element.datepicker({
         viewMode: "years",
         minViewMode: "years",
@@ -487,7 +487,7 @@ $(document).on('init.dt', function (e, settings, json) {
 });
 
 const datatableAjax = (element, ajax, column) => {
-    element.css('width','100%')
+    element.css('width', '100%')
     return element.DataTable({
         ajax: {
             url: ajax.url,
@@ -535,7 +535,7 @@ const datatableAjax = (element, ajax, column) => {
     });
 };
 
-const alertConfirm = (data) =>{
+const alertConfirm = (data) => {
     let datares = data;
     return Swal.fire({
         title: datares.title,
@@ -544,12 +544,12 @@ const alertConfirm = (data) =>{
         showCancelButton: !0,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Vâng, tôi muốn "+datares.title.toLowerCase()+"!",
-        cancelButtonText: "Không "+datares.title.toLowerCase()
+        confirmButtonText: "Vâng, tôi muốn " + datares.title.toLowerCase() + "!",
+        cancelButtonText: "Không " + datares.title.toLowerCase()
     });
 }
 
-function copy(value){
+function copy(value) {
     var aux = document.createElement("div");
     aux.setAttribute("contentEditable", true);
     aux.innerHTML = value;
@@ -559,7 +559,7 @@ function copy(value){
     document.execCommand("copy");
     document.body.removeChild(aux);
 
-    vtoast.show('Sao chép thành công!','', {
+    vtoast.show('Sao chép thành công!', '', {
         width: 250,
         margin: 20,
         "progressbar": "bottom",
@@ -571,22 +571,23 @@ function copy(value){
     });
 }
 
-if ($(this).find('.table.datatable-check').length){
-    $(document).on('click','.button-menu-mobile',function () {
-        if ($('body').find('table').length > 0 ){
+
+$(document).on('click', '.button-menu-mobile', function () {
+    if ($('body').find('.table.datatable-check').length) {
+        if ($('body').find('table').length > 0) {
             $($.fn.dataTable.tables(true)).DataTable()
                 .columns.adjust();
         }
+    }
 
-    });
-}
+});
 
 
-const validateMin = (e) =>{
+const validateMin = (e) => {
     let error = 0;
     e.each(function () {
         // console.log($(this))
-        if ($(this).val().length < 8){
+        if ($(this).val().length < 8) {
             $(this).addClass('is-invalid');
             $(this).parent().find('.invalid-feedback').addClass('text-left').find('strong').text($(this).attr('title') + ' phải ít nhất 8 chữ số!');
             error++;
@@ -596,7 +597,7 @@ const validateMin = (e) =>{
     return error;
 };
 
-const fullSizePage = () =>{
+const fullSizePage = () => {
     $('body').addClass('sidebar-enable enlarged')
 }
 
@@ -626,7 +627,32 @@ const fullSizePage = () =>{
 $(document).on('show.bs.modal', '.modal', function (event) {
     var zIndex = 1040 + (10 * $('.modal:visible').length);
     $(this).css('z-index', zIndex);
-    setTimeout(function() {
+    setTimeout(function () {
         $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
     }, 0);
 });
+
+const select2Single = (element, parentNode) => {
+    return element.select2({
+        dropdownParent: parentNode
+    }).data('select2').listeners['*'].push(function (name, target) {
+        if (name == 'focus') {
+            $(this.$element).select2("open");
+        }
+    });
+};
+// // on first focus (bubbles up to document), open the menu
+// $(document).on('focus', '.select2-selection.select2-selection--single', function (e) {
+//     $(this).closest(".select2-container").siblings('select:enabled').select2('open');
+// });
+//
+// // steal focus during close - only capture once and stop propogation
+// $(document).on('select2:closing','select.select2', function (e) {
+//     $(e.target).data("select2").$selection.one('focus focusin', function (e) {
+//         e.stopPropagation();
+//     });
+// });
+
+// $("select.form-control").next("select.form-control").find(".select2-selection").focus(function() {
+//     $("#my_id").select2("open");
+// });

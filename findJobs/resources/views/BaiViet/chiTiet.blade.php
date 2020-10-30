@@ -34,7 +34,7 @@
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card-box p-1 mb-1">
 
-                <div class="row">
+                <div class="row" id="container-section">
                     <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -59,6 +59,7 @@
                                 {{--                                    </div>--}}
 
                                 {{--                                </div>--}}
+                                @if(intval(Session::get('loai_tai_khoan')) == 1)
                                 <div class="form-group row">
 
                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
@@ -96,6 +97,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
 
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-3 pr-3">
@@ -189,146 +191,147 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 border-left">
-                        <div class="w-100 overflow-auto-scroll">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <h4 class="tieu_de bg-light p-1 m-0 text-center">Công ty tuyển dụng</h4>
+                        <div class="w-100 position-relative overflow-y-auto">
+                            <div class="w-100" id="noi-dung-right-side" style="height: 300px">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <h4 class="tieu_de bg-light p-1 m-0 text-center">Công ty tuyển dụng</h4>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <h4 class="tieu_de p-1 m-0 text-center"
-                                        id="ten_cong_ty">@if($data['get_cong_ty'] != null) @if($data['get_cong_ty']['name'] != null){{$data['get_cong_ty']['name']}}@endif @endif</h4>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <h4 class="tieu_de p-1 m-0 text-center"
+                                            id="ten_cong_ty">@if($data['get_cong_ty'] != null) @if($data['get_cong_ty']['name'] != null){{$data['get_cong_ty']['name']}}@endif @endif</h4>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <i>
-                                        @if($data['cong_ty_nganh_nghe'] != null)
-                                            {{implode(' - ', array_map(function($c) {
-                                                    return $c['name'];
-                                                }, $data['cong_ty_nganh_nghe']))}}
-                                        @endif
-                                    </i>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <i>
+                                            @if($data['cong_ty_nganh_nghe'] != null)
+                                                {{implode(' - ', array_map(function($c) {
+                                                        return $c['name'];
+                                                    }, $data['cong_ty_nganh_nghe']))}}
+                                            @endif
+                                        </i>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <span class="fa fa-globe"></span><span>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <span class="fa fa-globe"></span><span>
                                         @if($data['get_cong_ty'] != null)
-                                            {{$data['get_cong_ty']['websites']}}
-                                        @endif
+                                                {{$data['get_cong_ty']['websites']}}
+                                            @endif
                                     </span>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <span class="icofont icofont-location-pin"></span><span>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <span class="icofont icofont-location-pin"></span><span>
                                         @if($data['get_cong_ty'] != null)
-                                            {{$data['get_cong_ty']['dia_chi']}}
-                                        @endif
+                                                {{$data['get_cong_ty']['dia_chi']}}
+                                            @endif
                                     </span>
 
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <span class="fa fa-group"></span><span>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <span class="fa fa-group"></span><span>
                                         @if($data['get_cong_ty'] != null)
-                                            {{$data['quy_mo_nhan_su']['name']}}
-                                        @endif
+                                                {{$data['quy_mo_nhan_su']['name']}}
+                                            @endif
                                     </span>
 
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <span>
                                         @if($data['get_cong_ty'] != null)
                                             {{$data['get_cong_ty']['gioi_thieu']}}
                                         @endif
                                     </span>
 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-2">
-                                    <img
-                                        src="@if($data['get_cong_ty']['logo'] != null){{URL::asset(''.$data['get_cong_ty']['logo'].'')}}@endif"
-                                        style="width: calc(90%)">
-                                    {{--                                        @if($data['get_cong_ty'] != null)--}}
-                                    {{--                                            {{$data['get_cong_ty']['gioi_thieu']}}--}}
-                                    {{--                                        @endif--}}
-                                    {{--                                    </img>--}}
-
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <h4 class="tieu_de bg-light p-1 m-0 text-center">Nhà tuyển dụng</h4>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-2">
-                                    <img
-                                        src="@if($data['get_nha_tuyen_dung']['avatar'] != null){{URL::asset(''.$data['get_nha_tuyen_dung']['avatar'].'')}}@endif"
-                                        style="width: calc(90%)">
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <h4 class="ten_nha_tuyen_dung p-1 m-0 text-center"
-                                        id="ten_nha_tuyen_dung">@if($data['get_nha_tuyen_dung'] != null) @if($data['get_nha_tuyen_dung']['ho_ten'] != null){{$data['get_nha_tuyen_dung']['ho_ten']}}@endif @endif</h4>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-                                    <div
-                                        class="btn quan-tam-nha-tuyen-dung @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"
-                                        id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">
-                                        <i class="icofont icofont-thumbs-up">@if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true){{' Đã quan tâm'}}@else{{' Quan tâm'}}@endif</i>
-                                        <span class="badge badge-danger noti-icon-badge position-absolute"
-                                              style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>
                                     </div>
-
-{{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
-{{--                                    <button class="btn btn-info btn-sm"></button>--}}
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-2">
+                                        <img
+                                            src="@if($data['get_cong_ty']['logo'] != null){{URL::asset(''.$data['get_cong_ty']['logo'].'')}}@endif"
+                                            style="width: calc(90%)">
+                                        {{--                                        @if($data['get_cong_ty'] != null)--}}
+                                        {{--                                            {{$data['get_cong_ty']['gioi_thieu']}}--}}
+                                        {{--                                        @endif--}}
+                                        {{--                                    </img>--}}
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <span class="fa fa-envelope"></span><span>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <h4 class="tieu_de bg-light p-1 m-0 text-center">Nhà tuyển dụng</h4>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-2">
+                                        <img
+                                            src="@if($data['get_nha_tuyen_dung']['avatar'] != null){{URL::asset(''.$data['get_nha_tuyen_dung']['avatar'].'')}}@endif"
+                                            style="width: calc(90%)">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <h4 class="ten_nha_tuyen_dung p-1 m-0 text-center"
+                                            id="ten_nha_tuyen_dung">@if($data['get_nha_tuyen_dung'] != null) @if($data['get_nha_tuyen_dung']['ho_ten'] != null){{$data['get_nha_tuyen_dung']['ho_ten']}}@endif @endif</h4>
+                                    </div>
+                                </div>
+                                @if(intval(Session::get('loai_tai_khoan')) == 1)
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                                            <div
+                                                class="btn quan-tam-nha-tuyen-dung @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"
+                                                id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">
+                                                <i class="icofont icofont-thumbs-up">@if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true){{' Đã quan tâm'}}@else{{' Quan tâm'}}@endif</i>
+                                                <span class="badge badge-danger noti-icon-badge position-absolute"
+                                                      style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>
+                                            </div>
+                                            {{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
+                                            {{--                                    <button class="btn btn-info btn-sm"></button>--}}
+                                        </div>
+                                    </div>
+                                @endif
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <span class="fa fa-envelope"></span><span>
                                         @if($data['get_nha_tuyen_dung'] != null)
-                                            {{$data['get_nha_tuyen_dung']['tai_khoan']['email']}}
-                                        @endif
+                                                {{$data['get_nha_tuyen_dung']['tai_khoan']['email']}}
+                                            @endif
                                     </span>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <span class="icofont icofont-location-pin"></span><span>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <span class="icofont icofont-location-pin"></span><span>
                                         @if($data['get_nha_tuyen_dung'] != null)
-                                            {{$data['get_nha_tuyen_dung']['dia_chi']}}
-                                        @endif
+                                                {{$data['get_nha_tuyen_dung']['dia_chi']}}
+                                            @endif
                                     </span>
 
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
                                     <span>
                                         @if($data['get_nha_tuyen_dung'] != null)
@@ -337,6 +340,7 @@
                                         @endif
                                     </span>
 
+                                    </div>
                                 </div>
                             </div>
 
@@ -349,16 +353,23 @@
         </div>
 
     </div>
+    @if(intval(Session::get('loai_tai_khoan')) == 1)
 
     @include('NopDon.NopDonModal.index')
     @include('User.modal.capNhatProject')
     @include('User.modal.capNhatExp')
-
+    @endif
 
 @endsection
 @push('scripts')
     <script type="text/javascript">
         let idBaiTuyenDung = '{{$data['id']}}';
+        $(function () {
+            fullSizePage();
+            let size_parent_of_right_side = $('#container-section').height();
+            console.log(size_parent_of_right_side)
+            $('#noi-dung-right-side').css('height',size_parent_of_right_side+'px')
+        })
     </script>
     <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
     <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>

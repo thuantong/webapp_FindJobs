@@ -11,4 +11,5 @@ class LuuBai extends Model
     public $timestamps = true;
 //    protected $fillable = ['name', 'prefix'];
     //
+
 }

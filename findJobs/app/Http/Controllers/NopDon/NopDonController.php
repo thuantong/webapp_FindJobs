@@ -4,6 +4,7 @@ namespace App\Http\Controllers\NopDon;
 
 use App\Http\Controllers\Controller;
 use App\Models\BaiTuyenDung;
+use App\Models\DonXinViec;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,30 @@ class NopDonController extends Controller
         });
     }
 
+    /**
+     * người tìm việc : view danh sách bài viết đã ứng tuyển
+     */
+    public function danhSachBaiDaNopDon(){
+        return view('User.nguoiTimViec.danhSachDaUngTuyen');
+    }
+
+    public function layDanhSachBaiDaNopDon(){
+        $query = BaiTuyenDung::query()
+            ->select(['bai_tuyen_dung.*','tai_khoan.ho_ten as nha_tuyen_dung_name','cong_ty.name as cong_ty_name','don_xin_viec.status as don_xin_viec_status'])
+            ->leftJoin('nha_tuyen_dung','nha_tuyen_dung.id','=','bai_tuyen_dung.nha_tuyen_dung_id')
+            ->leftJoin('tai_khoan','tai_khoan.id','=','nha_tuyen_dung.tai_khoan_id')
+            ->leftJoin('cong_ty','cong_ty.id','=','bai_tuyen_dung.cong_ty_id')
+            ->leftJoin('don_xin_viec','bai_tuyen_dung.id','=','don_xin_viec.bai_tuyen_dung_id')
+            ->where('don_xin_viec.nguoi_tim_viec_id',$this->nguoiTimViec['id'])
+            ->get()->toArray();
+        $data['data'] = $query;
+        return $data;
+        dd($query);
+    }
+
+    /**
+     * Chức năng nộp đơn ứng tuyển của người tìm việc
+     */
     public function nopDonUngTuyen(Request $request){
         $title = 'Nộp đơn ứng tuyển';
         try {
@@ -63,7 +88,10 @@ class NopDonController extends Controller
             if (in_array($idBaiTuyenDung,$this->nguoiTimViec->getDonXinViec->pluck('id')->toArray()) == true){
                 return false;
             }
-            BaiTuyenDung::query()->find($idBaiTuyenDung)->getDonXinViec()->attach($nguoiTimViec);
+            $query = BaiTuyenDung::query()->find($idBaiTuyenDung)->getDonXinViec()->attach($nguoiTimViec);
+            $donXinViec = DonXinViec::query()->where('nguoi_tim_viec_id',$nguoiTimViec['id'])->where('bai_tuyen_dung_id',$idBaiTuyenDung)->first();
+            $donXinViec->status = 0;
+            $donXinViec->save();
             return true;
         }catch (\Exception $e){
             return $this->getResponse('Cập nhật đơn xin việc',400,$e->getMessage());

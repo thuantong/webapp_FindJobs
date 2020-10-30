@@ -52,6 +52,23 @@
                             @endif
                     </li>
                 @endif
+{{--                người tìm việc--}}
+                @if(Session::get('loai_tai_khoan') == 1)
+                    <li>
+                        <a href="" class="waves-effect">
+                            <i class="fa fa-file-text-o"></i>
+                            <span>{{__('Bài đã lưu')}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('nopdon.danhSachBaiDaNopDon')}}" class="waves-effect">
+                            <i class="fa fa-list-alt"></i>
+                            <span>{{__('Kiểm tra ứng tuyển')}}</span>
+                        </a>
+                    </li>
+
+                @endif
+
                 {{--                Phần Nhà tuyển dụng--}}
                 @if(Session::get('loai_tai_khoan') == 2)
                     <li>

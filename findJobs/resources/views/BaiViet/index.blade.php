@@ -393,7 +393,7 @@
                         <label><abbr class="text-danger  font-15">* </abbr>{{__('Đăng ký bài viết HOT:')}}</label>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                        <input class="form-control not-null text-center" value="1" id="so_ngay_ton_tai"
+                        <input class="form-control not-null text-center" value="1" id="dang_ky_bai_viet_hot"
                                title="Số ngày đăng tin">
 
                         <span class="invalid-feedback" role="alert">

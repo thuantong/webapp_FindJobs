@@ -29,7 +29,7 @@ Route::namespace('Auth')->group(function (){
 Route::namespace('TrangChu')->group(function () {
     Route::name('trangchu.')->group(function () {
         Route::resource('/', 'TrangChuController');
-        Route::get('/tuyen-dung', 'TrangChuController@getBaiTuyenDung');
+
         Route::get('/search', 'TrangChuController@searchInput');
         Route::get('/chi-tiet-tuyen-dung', 'TrangChuController@details')->name('chiTietBaiDang');
         Route::get('/create-post', 'TrangChuController@create')->name('create');
@@ -66,10 +66,13 @@ Route::namespace('User')->group(function () {
 Route::namespace('BaiViet')->group(function (){
     Route::name('baiviet.')->group(function (){
         Route::get('/dang-bai-viet','BaiVietController@index')->name('index');
-//        Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost');
+        Route::get('/tin-tuyen-dung', 'BaiVietController@layTatCaBaiViet');
+        Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost');
         Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet={detail}','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet');
-        Route::get('/bai-viet/like','BaiVietController@likePost')->name('likePost');
+        Route::post('/bai-viet/like','BaiVietController@likePost')->name('likePost');
         Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon');
+        Route::get('/bai-viet/tim-kiem','BaiVietController@timKiemBaiViet')->name('timKiemBaiViet');
+
     });
 });
 
@@ -141,6 +144,8 @@ Route::namespace('Admin')->group(function () {
 
 Route::namespace('NopDon')->group(function (){
     Route::name('nopdon.')->group(function (){
+        Route::get('/nguoi-tim-viec/danh-sach-bai-ung-tuyen','NopDonController@danhSachBaiDaNopDon')->name('danhSachBaiDaNopDon');
+        Route::get('/nguoi-tim-viec/get-danh-sach-bai-ung-tuyen','NopDonController@layDanhSachBaiDaNopDon')->name('layDanhSachBaiDaNopDon');
         Route::post('/nop-don-ung-tuyen','NopDonController@nopDonUngTuyen')->name('nopDonUngTuyen');
     });
 });
@@ -148,5 +153,12 @@ Route::namespace('NopDon')->group(function (){
 Route::namespace('QuanTam')->group(function (){
     Route::name('quantam.')->group(function (){
         Route::post('/quan-tam-nha-tuyen-dung','QuanTamController@setQuanTam')->name('setQuanTam');
+    });
+});
+
+Route::namespace('NguoiTimViec')->group(function (){
+    Route::name('nguoitimviec.')->group(function (){
+        Route::get('/nguoi-tim-viet/danh-sach-bai-luu','LuuBaiController@index')->name('index');
+        Route::get('/nguoi-tim-viet/get-danh-sach-bai-luu','LuuBaiController@getDanhSachBaiLuu')->name('getDanhSachBaiLuu');
     });
 });

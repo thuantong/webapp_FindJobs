@@ -103,12 +103,6 @@ class TrangChuController extends Controller
             ->orderBy('isHot','desc')
             ->orderBy('bai_tuyen_dung.created_at','desc')
             ->paginate(10,'*','page',$page);
-//        $data = Response::json($baiTuyenDung);
-//        dd($data['data']);
-//        $data = $this->pagi
-//dd(Carbon::createFromFormat('Y-m-d',$baiTuyenDung[0]->han_tuyen)->format('d/m/Y'));
-//dd(Carbon::parse($baiTuyenDung[0]->han_tuyen)->format('d/m/Y'));
-//        dd($baiTuyenDung);
 
         $data['bai_tuyen_dung'] = $baiTuyenDung;
         $data['trang_hien_tai'] = $baiTuyenDung->currentPage();

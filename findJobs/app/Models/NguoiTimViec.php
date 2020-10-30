@@ -76,4 +76,8 @@ class NguoiTimViec extends Model
     public function getDonXinViec(){
         return $this->belongsToMany(BaiTuyenDung::class,'don_xin_viec','nguoi_tim_viec_id','bai_tuyen_dung_id')->withTimestamps();
     }
+
+    public function getLuuBai(){
+        return $this->belongsToMany(BaiTuyenDung::class,'luu_bai','nguoi_tim_viec_id','bai_tuyen_dung_id');
+    }
 }
