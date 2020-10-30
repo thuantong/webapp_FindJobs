@@ -21,7 +21,7 @@
                     <h4 class="modal-title">{{__('Cập nhật ảnh đại diện')}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-                <div class="modal-body p-4">
+                <div class="modal-body p-0">
                     <div class="demo-wrap upload-demo">
                         <div class="container">
                             <div class="row">
@@ -630,15 +630,15 @@
                         success: res => {
                             $('#avatar-user').attr('src', res);
                             // $('#toastr-three').click();
-                            $.toast({
-                                heading: 'Sửa thành công!',
-                                hideAfter: 2000,
-                                icon: 'success',
-                                loaderBg: '#5ba035',
-                                position: 'top-right',
-                                stack: 1,
-                                text: 'Thay đổi ảnh đại diện thành công',
-                            });
+                            // $.toast({
+                            //     heading: 'Sửa thành công!',
+                            //     hideAfter: 2000,
+                            //     icon: 'success',
+                            //     loaderBg: '#5ba035',
+                            //     position: 'top-right',
+                            //     stack: 1,
+                            //     text: 'Thay đổi ảnh đại diện thành công',
+                            // });
                             $('#update_avatar_crop').modal('hide');
                             // console.log(res)
                         },

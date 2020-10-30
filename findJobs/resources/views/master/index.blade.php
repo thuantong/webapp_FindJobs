@@ -66,14 +66,18 @@
     <div class="navbar-custom">
 
         <ul class="list-unstyled topnav-menu float-right mb-0">
-
-            <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle  waves-effect waves-light fab fa-rocketchat font-20 call-chat">
-                    {{--                    <i class="fe-bell noti-icon"></i>--}}
-                    {{--                    <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>--}}
+            <li>
+                <a href="/" class="nav-link text-white">
+                    Việc làm
                 </a>
-
             </li>
+{{--            <li class="dropdown notification-list">--}}
+{{--                <a class="nav-link dropdown-toggle  waves-effect waves-light fab fa-rocketchat font-20 call-chat">--}}
+{{--                                        <i class="fe-bell noti-icon"></i>--}}
+{{--                                        <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>--}}
+{{--                </a>--}}
+
+{{--            </li>--}}
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#"
@@ -526,7 +530,8 @@
         }
         let ajax = {
             method: 'get',
-            url: '/bai-viet/tim-kiem',
+            url: '/tin-tuyen-dung',
+            // url: '/bai-viet/tim-kiem', chưa xóa route
             data: {
                 tieu_de: tieu_de,
                 nganh_nghe_id: nganh_nghe,
@@ -578,26 +583,6 @@
                 }
             }
         });
-
-        // //event
-        // $('#txt-search-master').on('input', function () {
-        //     // $('.processing-input').
-        //     // $('#response-search').html('');
-        //     $.ajax({
-        //         method: 'get',
-        //         url: '/search',
-        //         data: {
-        //             text: $(this).val(),
-        //         },
-        //         beforeSend: function () {
-        //             // setting a timeout
-        //             $('#response-search').html('<div class="processing-input">Đang tìm kiếm...</div>');
-        //         },
-        //         success: function (res) {
-        //             $('#response-search').html(res);
-        //         },
-        //     });
-        // });
 
     });
 </script>

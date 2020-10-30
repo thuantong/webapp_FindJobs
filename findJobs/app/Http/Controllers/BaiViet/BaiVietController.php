@@ -374,19 +374,8 @@ class BaiVietController extends Controller
             ->distinct('bai_tuyen_dung.id')
             ->orderBy('bai_tuyen_dung.isHot','desc')
             ->orderBy('bai_tuyen_dung.created_at','desc')
-//            ->paginate(5);
             ->paginate(10,'*','page',$page);
-//            ->get()->toArray();
-//            ->where('bai_tuyen_dung.dia')
-//            ->orderBy('bai_tuyen_dung.isHot','desc')
-//            ->orderBy('bai_tuyen_dung.created_at','desc')
-//            ->get()->toArray();
-//            ->paginate(10,'*','page',$page);
-//
-//        $data['bai_tuyen_dung'] = BaiTuyenDung::with('getCongTy')
-//            ->where('tieu_de','like','%'.$tieuDe.'%')
-//            ->orWhere('ten_chuc_vu','like','%'.$tieuDe.'%')
-//            ->paginate(10,'*','page',$page);
+
 
         $data['trang_hien_tai'] = $data['bai_tuyen_dung']->currentPage();
         $data['check_trang'] = $data['bai_tuyen_dung']->nextPageUrl();
@@ -417,17 +406,19 @@ class BaiVietController extends Controller
             $diaDiem = $request->get('dia_diem_id') == null ? null : $request->get('dia_diem_id');
 
             $query->where('bai_tuyen_dung.tieu_de', 'like', '%' . $tieuDe . '%')
-                ->orWhere('bai_tuyen_dung.ten_chuc_vu','like','%'.$tieuDe.'%');
+                ->where('bai_tuyen_dung.ten_chuc_vu','like','%'.$tieuDe.'%');
             if ($nganhNghe != null) {
                 $query->where('bai_tuyen_dung_nganh_nghe.nganh_nghe_id', $nganhNghe);
             }
             if ($diaDiem != null) {
                 $query->where('bai_tuyen_dung.dia_diem_id', $diaDiem);
+//                dd($query->toSql());
+
             }
         }
         $page = $request->get('page');
 
-        $data['bai_tuyen_dung'] = $query->paginate(10,'*','page',$page);
+        $data['bai_tuyen_dung'] = $query->distinct('bai_tuyen_dung.id')->paginate(10,'*','page',$page);
         $data['trang_hien_tai'] =  $data['bai_tuyen_dung']->currentPage();
         $data['check_trang'] =  $data['bai_tuyen_dung']->nextPageUrl();
 

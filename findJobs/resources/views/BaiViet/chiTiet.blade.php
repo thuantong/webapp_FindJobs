@@ -68,7 +68,7 @@
                                                 <div
                                                     class="btn @if(in_array($data['id'],$data['bai_da_thich']['data']) == true) btn-primary like-animation @else btn-outline-primary @endif waves-effect position-relative"
                                                     id="trang-chu-like-post" data-id="{{$data['id']}}">
-                                                    <i class="icofont icofont-thumbs-up">@if(in_array($data['id'],$data['bai_da_thich']['data'])){{' Đã thích'}}@else{{' Thích'}}@endif</i>
+                                                    <i class="icofont icofont-thumbs-up">@if(in_array($data['id'],$data['bai_da_thich']['data'])){{' Đã lưu'}}@else{{' Lưu bài'}}@endif</i>
                                                     <span class="badge badge-danger noti-icon-badge position-absolute"
                                                           style="right: 0px">{{$data['bai_da_thich']['total']}}</span>
                                                 </div>
@@ -401,7 +401,7 @@
                     __this.removeClass('btn-outline-primary');
                     __this.addClass('btn-primary');
                     __this.addClass('like-animation');
-                    __this.find('i').text('Đã thích');
+                    __this.find('i').text(' Đã lưu');
                     let ajax = {
                         method: 'get',
                         url: '/bai-viet/like',
@@ -421,7 +421,7 @@
                     __this.removeClass('btn-primary');
                     __this.removeClass('like-animation');
                     __this.addClass('btn-outline-primary');
-                    __this.find('i').text('Thích');
+                    __this.find('i').text(' Lưu bài');
                     let ajax = {
                         method: 'get',
                         url: '/bai-viet/like',

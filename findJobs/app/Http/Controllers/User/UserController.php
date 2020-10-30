@@ -9,6 +9,7 @@ use App\Models\NguoiTimViec;
 use App\Traits\NhaTuyenDungTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -73,7 +74,7 @@ class UserController extends Controller
         file_put_contents($path, $image);
         $nguoiTimViec->avatar = 'images/'.$imageName;
         $nguoiTimViec->save();
-
+        Session::put('avatar',$nguoiTimViec->avatar);
         return response('images/'.$imageName);
 
     }

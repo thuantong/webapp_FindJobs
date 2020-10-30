@@ -195,7 +195,7 @@
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <button class="btn btn-outline-primary waves-effect"
                                         id="trang-chu-like-post">
-                                    <i class="icofont icofont-thumbs-up">Thích</i>
+                                    <i class="icofont icofont-thumbs-up">Lưu bài</i>
                                 </button>
                                 <button class="btn btn-outline-info"
                                         title="Chat với nhà tuyển dụng">
@@ -253,13 +253,13 @@
                         $('#trang-chu-like-post').removeClass('btn-outline-primary');
                         $('#trang-chu-like-post').addClass('btn-primary');
                         $('#trang-chu-like-post').addClass('like-animation');
-                        $('#trang-chu-like-post').find('i').text('Đã thích');
+                        $('#trang-chu-like-post').find('i').text(' Đã lưu');
 
                     }else{
                         $('#trang-chu-like-post').removeClass('btn-primary');
                         $('#trang-chu-like-post').removeClass('like-animation');
                         $('#trang-chu-like-post').addClass('btn-outline-primary');
-                        $('#trang-chu-like-post').find('i').text('Thích');
+                        $('#trang-chu-like-post').find('i').text(' Lưu bài');
 
                     }
 
@@ -328,7 +328,7 @@
                 $('#trang-chu-like-post').removeClass('btn-primary');
                 $('#trang-chu-like-post').removeClass('like-animation');
                 $('#trang-chu-like-post').addClass('btn-outline-primary');
-                $('#trang-chu-like-post').find('i').text('Thích');
+                $('#trang-chu-like-post').find('i').text(' Lưu bài');
                 //end
 
                 $('#xem-chi-tiet-rut-gon').removeAttr('href');

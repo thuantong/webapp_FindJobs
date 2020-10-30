@@ -55,7 +55,7 @@
 {{--                người tìm việc--}}
                 @if(Session::get('loai_tai_khoan') == 1)
                     <li>
-                        <a href="" class="waves-effect">
+                        <a href="{{route('nguoitimviec.index')}}" class="waves-effect">
                             <i class="fa fa-file-text-o"></i>
                             <span>{{__('Bài đã lưu')}}</span>
                         </a>
