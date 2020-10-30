@@ -57,12 +57,14 @@
                     <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                         <div class="row">
                             <div class="col-sm-9 col-md-10 col-lg-10 col-xl-10 pr-0">
-                                <select class="form-control not-null" id="cong_ty_tuyen_dung" title="Công ty tuyển dụng">
+                                <select class="form-control not-null" id="cong_ty_tuyen_dung"
+                                        title="Công ty tuyển dụng">
                                     <option value="" disabled selected>Công ty</option>
 
                                     @if($data['cong_ty'] != null)
                                         @foreach($data['cong_ty'] as $row)
-                                            <option value="{{$row['id']}}" data-img="{{$row['logo']}}">{{$row['name']}}</option>
+                                            <option value="{{$row['id']}}"
+                                                    data-img="{{$row['logo']}}">{{$row['name']}}</option>
                                         @endforeach
                                     @endif
 
@@ -91,10 +93,6 @@
                                     <option value="{{$row['id']}}">{{$row['name']}}</option>
                                 @endforeach
                             @endif
-
-                            {{--                            <option value="1">{{__('Nhân viên')}}</option>--}}
-                            {{--                            <option value="2">{{__('Quản lý')}}</option>--}}
-                            {{--                            <option value="3">{{__('Cộng tác viên')}}</option>--}}
                         </select>
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -134,7 +132,7 @@
                             <option selected disabled value="">Chọn kinh nghiệm</option>
                             @foreach($data['kinh_nghiem'] as $row)
                                 <option value="{{$row['id']}}">{{$row['name']}}</option>
-                                @endforeach
+                            @endforeach
 
                         </select>
                         <span class="invalid-feedback" role="alert">
@@ -162,21 +160,6 @@
 
                     </div>
 
-                    {{--                    <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 text-center text-md-right">--}}
-                    {{--                        <label><abbr class="text-danger  font-15">* </abbr>{{__('Số năm kinh nghiệm:')}}</label>--}}
-                    {{--                    </div>--}}
-                    {{--                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">--}}
-                    {{--                        <select class="form-control not-null" id="so_kinh_nghiem" title="Số năm kinh nghiệm">--}}
-                    {{--                            <option selected disabled value="">Số năm kinh nghiệm</option>--}}
-                    {{--                            <option value="1">Dưới 1 năm</option>--}}
-                    {{--                            <option value="2">1 đến 2 năm</option>--}}
-                    {{--                            <option value="3">2 đến 3 năm</option>--}}
-                    {{--                            <option value="4">Trên 3 năm</option>--}}
-                    {{--                        </select>--}}
-                    {{--                        <span class="invalid-feedback" role="alert">--}}
-                    {{--                            <strong></strong>--}}
-                    {{--                        </span>--}}
-                    {{--                    </div>--}}
                 </div>
 
                 <div class="row form-group">
@@ -204,10 +187,6 @@
                                 @endforeach
                             @endif
 
-                            {{--                            <option value="1">Dưới 1 năm</option>--}}
-                            {{--                            <option value="2">1 đến 2 năm</option>--}}
-                            {{--                            <option value="3">2 đến 3 năm</option>--}}
-                            {{--                            <option value="4">Trên 3 năm</option>--}}
                         </select>
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -243,14 +222,11 @@
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                         <select class="form-control not-null" id="bang_cap" title="Bằng cấp yêu cầu">
                             <option disabled selected value="">{{__('Chọn học vấn')}}</option>
-                            <option value="1">{{__('Đại học')}}</option>
-                            <option value="2">{{__('Cao đẳng')}}</option>
-                            <option value="3">{{__('Trung cấp')}}</option>
-                            <option value="4">{{__('Thạc sĩ')}}</option>
-                            <option value="5">{{__('Tiến sĩ')}}</option>
-                            <option value="6">{{__('Trung cấp')}}</option>
-                            <option value="7">{{__('Chứng chỉ')}}</option>
-                            <option value="8">{{__('Trung học phổ thông')}}</option>
+                            @if($data['bang_cap'] != null)
+                                @foreach($data['bang_cap'] as $row)
+                                    <option value="{{$row['id']}}">{{$row['name']}}</option>
+                                @endforeach
+                            @endif
                         </select>
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -430,7 +406,8 @@
             src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
+    <script type="text/javascript"
+            src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
 
     <script type="text/javascript" src="{{URL::asset('assets\js\app\nhaTuyenDung_dang_bai.js')}}"></script>

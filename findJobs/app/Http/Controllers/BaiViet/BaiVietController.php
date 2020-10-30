@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BaiViet;
 
 use App\Http\Controllers\Controller;
 use App\Models\BaiTuyenDung;
+use App\Models\BangCap;
 use App\Models\ChucVu;
 use App\Models\CongTy;
 use App\Models\DiaDiem;
@@ -73,6 +74,7 @@ class BaiVietController extends Controller
         $data['chuc_vu'] = ChucVu::query()->orderBy('name', 'asc')->get();
         $data['dia_diem'] = DiaDiem::query()->orderBy('name', 'asc')->get();
         $data['kieu_lam_viec'] = KieuLamViec::query()->orderBy('name', 'asc')->get();
+        $data['bang_cap'] = BangCap::query()->orderBy('name', 'asc')->get();
         return view('BaiViet.index', compact('data'));
     }
 

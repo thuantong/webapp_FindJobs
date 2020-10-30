@@ -632,10 +632,17 @@ $(document).on('show.bs.modal', '.modal', function (event) {
     }, 0);
 });
 
-const select2Single = (element, parentNode) => {
+const select2Single = (element,...parentNode) => {
     return element.select2({
         dropdownParent: parentNode
     }).data('select2').listeners['*'].push(function (name, target) {
+        if (name == 'focus') {
+            $(this.$element).select2("open");
+        }
+    });
+};
+const select2Default = (element) => {
+    return element.select2().data('select2').listeners['*'].push(function (name, target) {
         if (name == 'focus') {
             $(this.$element).select2("open");
         }

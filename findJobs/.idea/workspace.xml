@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.png1" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.png1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/app/nhaTuyenDung_dang_bai.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/nhaTuyenDung_dang_bai.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,6 +240,7 @@
       <workItem from="1603870654370" duration="31677000" />
       <workItem from="1603955500394" duration="30249000" />
       <workItem from="1604041285482" duration="22185000" />
+      <workItem from="1604085626347" duration="1643000" />
     </task>
     <servers />
   </component>
@@ -296,11 +292,11 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1604059242177" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1604041329848">
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1604085658985">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1604041329848" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1604085658985" />
     <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604042329365">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -313,10 +309,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1603709433964" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1604067103611">
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1604086785247">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1604067103611" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1604086785247" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -393,7 +389,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php</url>
-          <line>255</line>
+          <line>257</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -478,7 +474,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php</url>
-          <line>200</line>
+          <line>202</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\BaiViet\BaiVietController" />
             <option name="methodName" value="luuVaoDuyetTin" />

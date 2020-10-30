@@ -1,5 +1,20 @@
 $(function () {
-    $('#form-body select.form-control').select2();
+    // $('#form-body select.form-control').select2();
+    select2Default($('#form-body #chuc_vu_tuyen'));
+    select2Default($('#form-body #so_kinh_nghiem'));
+    select2Default($('#form-body #bang_cap'));
+    select2Default($('#form-body #gioi_tinh'));
+    select2Default($('#form-body #dia_diem_lam_viec'));
+    select2Default($('#form-body #hinh_thuc'));
+
+    $('#form-body #nganh_nghe').select2({
+        placeholder: ' Chọn Ngành nghề',
+        allowClear: false
+    }).data('select2').listeners['*'].push(function (name, target) {
+        if (name == 'focus') {
+            $(this.$element).select2("open");
+        }
+    });
 
     $('#form-body #cong_ty_tuyen_dung').select2({
         templateResult: function (data) {
@@ -9,6 +24,10 @@ $(function () {
             }
             return span;
             }
+    }).data('select2').listeners['*'].push(function (name, target) {
+        if (name == 'focus') {
+            $(this.$element).select2("open");
+        }
     });
 
     $("#form-body #muc_luong_from").TouchSpin({
@@ -29,10 +48,8 @@ $(function () {
         buttondown_class: "btn btn-primary waves-effect",
         buttonup_class: "btn btn-primary waves-effect"
     });
-    $('#form-body #nganh_nghe').select2({
-        placeholder: ' Chọn Ngành nghề',
-        allowClear: false
-    });
+
+
 
     lichNgay($('#form-body #han_tuyen_dung'));
 
