@@ -22,9 +22,14 @@ function remove_vietnamese_string(str) {
 const refreshTimeOut = () => {
     setTimeout("location.reload(true);", 1000 * 60 * 60);//1 tiếng
 };
-
+const switcheryInit = () =>{
+    $('[data-plugin="switchery"]').each(function (t, e) {
+        new Switchery($(this)[0], $(this).data())
+    });
+};
 $(function () {
     refreshTimeOut();
+
     // let chieuCaoInput =
     // $('.input-group-append').css('height',chieuCaoInput+'px');
 
@@ -288,7 +293,7 @@ const sendAjaxNoFunc = (method, url, data, ...button) => {
             headerCus = {};
             break;
     }
-    ;
+
     return $.ajax({
         method: method,
         url: url,
@@ -498,7 +503,7 @@ const datatableAjax = (element, ajax, column) => {
         lengthChange: false,
         processing: false,
         ordering: false,
-        scrollY: "70vh",
+        scrollY: "55vh",
         autoWidth: true,
         searching: true,
         // scrollX: true,
@@ -518,7 +523,7 @@ const datatableAjax = (element, ajax, column) => {
             infoEmpty: "Hiển thị từ 0 đến 0 của 0 mục",
             zeroRecords: "Không tìm thấy kết quả",
             thousands: ",",
-            emptyTable: "không có dữ liệu trong bảng",
+            emptyTable: "Không có dữ liệu trong bảng",
             processing: 'Đang tải ....',
             search: 'Tìm kiếm',
             loadingRecords: "Đang tải ....",
@@ -648,6 +653,17 @@ const select2Default = (element) => {
         }
     });
 };
+
+/**
+ * Ex: changeSwitchery($('#'),false)
+ * @param element
+ * @param checked
+ */
+function changeSwitchery(element, checked) {
+    if ( ( element.is(':checked') && checked == false ) || ( !element.is(':checked') && checked == true ) ) {
+        element.parent().find('.switchery').trigger('click');
+    }
+}
 // // on first focus (bubbles up to document), open the menu
 // $(document).on('focus', '.select2-selection.select2-selection--single', function (e) {
 //     $(this).closest(".select2-container").siblings('select:enabled').select2('open');
@@ -663,3 +679,12 @@ const select2Default = (element) => {
 // $("select.form-control").next("select.form-control").find(".select2-selection").focus(function() {
 //     $("#my_id").select2("open");
 // });
+
+const checkIsDeviceMedium = () =>{
+    let width = $(window).width();
+    if (width >= 768){
+        return true;
+    }else if (width <= 768){
+        return false;
+    }
+}

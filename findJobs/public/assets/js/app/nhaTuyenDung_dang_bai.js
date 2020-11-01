@@ -119,6 +119,9 @@ $(function () {
         // alert()
     });
 
+    $(document).on('focusout','#form-body #review',function () {
+        $('#form-body #tieu_de_bai_dang').focus();
+    });
     // $(document).on('shown.bs.modal','#form-body div.modal#them-moi-cong-ty',function () {
     //     $(this).data('type','cong_ty_tuyen_dung');
     // })

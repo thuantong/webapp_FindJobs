@@ -124,12 +124,19 @@
                 @endif
 
                 @if(Session::get('loai_tai_khoan') == 3)
-                    <li class="menu-title">{{__('Quản lý bài đăng')}}</li>
+                    <li class="menu-title">{{__('Quản trị viên')}}</li>
 
                     <li>
                         <a href="{{route('admin.duyetbaiviet')}}" class="waves-effect">
                             <i class="fa fa-users"></i>
                             <span>{{__('Duyệt bài viết')}}</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="" class="waves-effect">
+                            <i class="fa fa-users"></i>
+                            <span>{{__('Quản lý tài khoản')}}</span>
                         </a>
                     </li>
                 @endif

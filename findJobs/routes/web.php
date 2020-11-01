@@ -138,6 +138,19 @@ Route::namespace('Admin')->group(function () {
         Route::get('/admin/danh-sach-bai-duyet/get','DuyetBaiVietController@getDanhSachDuyetTin')->name('getDanhSachDuyetTin');
         Route::get('/admin/duyet-tin/xem-bai-dang','DuyetBaiVietController@getBaiTuyenDung')->name('getBaiTuyenDung');
         Route::post('/admin/duyet-tin/confirm','DuyetBaiVietController@confirmBaiTuyenDung')->name('confirmBaiTuyenDung');
+
+        Route::get('/admin/danh-sach-tai-khoan','QuanLyTaiKhoanController@index')->name('danhSachTaiKhoan');
+        Route::get('/admin/danh-sach-tai-khoan/get-data','QuanLyTaiKhoanController@getDanhSachTaiKhoan')->name('getDanhSachTaiKhoan');
+
+        Route::get('/admin/danh-sach-tac-vu','PhanQuyenController@index')->name('danhSachTacVu');
+        Route::get('/admin/danh-sach-tac-vu/get-chuc-vu','PhanQuyenController@getLoaiTaiKhoan')->name('getDanhSachTaiKhoan');
+        Route::get('/admin/danh-sach-tac-vu/get-tac-vu','PhanQuyenController@getTacVu')->name('getTacVu');
+        Route::post('/admin/danh-sach-tac-vu/set-tac-vu','PhanQuyenController@setTacVu')->name('setTacVu');
+        Route::post('/admin/danh-sach-tac-vu/delete-tac-vu','PhanQuyenController@deleteTacVu')->name('setTacVu');
+        Route::post('/admin/danh-sach-tac-vu/set-quyen','PhanQuyenController@setQuyen')->name('setQuyen');
+        Route::post('/admin/danh-sach-tac-vu/delete-quyen','PhanQuyenController@deleteQuyen')->name('setTacVu');
+        Route::post('/admin/danh-sach-tac-vu/phan-quyen-role','PhanQuyenController@setQuyenRole')->name('setQuyenRole');
+
     });
 
 });

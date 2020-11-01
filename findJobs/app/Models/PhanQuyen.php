@@ -8,7 +8,7 @@ class PhanQuyen extends Model
 {
     protected $table = 'phan_quyen';
     protected $primaryKey  = 'id';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = ['name','mo_ta'];
     public function getTaiKhoan(){
         return $this->belongsToMany(TaiKhoan::class, 'phan_quyen_tai_khoan','phan_quyen_id','tai_khoan_id');

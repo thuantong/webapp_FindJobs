@@ -9940,8 +9940,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 32,
-											"top": -16,
+											"top": -32,
 											"height": 13
 										},
 										{
@@ -9951,8 +9950,8 @@
 												"$ref": "AAAAAAF0ghovJiphCKw="
 											},
 											"font": "Arial;13;1",
-											"left": 396,
-											"top": 43.5,
+											"left": 380,
+											"top": 35.5,
 											"width": 62,
 											"height": 13,
 											"text": "Tìm kiếm"
@@ -9965,8 +9964,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 32,
-											"top": -16,
+											"top": -32,
 											"width": 148.10986328125,
 											"height": 13,
 											"text": "(from UseCaseTongQuat)"
@@ -9979,15 +9977,14 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 32,
-											"top": -16,
+											"top": -32,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 391,
-									"top": 36.5,
+									"left": 375,
+									"top": 28.5,
 									"width": 72,
 									"height": 25,
 									"stereotypeLabel": {
@@ -10014,8 +10011,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 16,
-									"top": -8,
+									"top": -16,
 									"width": 10,
 									"height": 10
 								},
@@ -10030,8 +10026,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 16,
-									"top": -8,
+									"top": -16,
 									"width": 10,
 									"height": 10
 								},
@@ -10046,8 +10041,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 16,
-									"top": -8,
+									"top": -16,
 									"width": 10,
 									"height": 10
 								},
@@ -10062,8 +10056,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 16,
-									"top": -8,
+									"top": -16,
 									"width": 10,
 									"height": 10
 								},
@@ -10078,16 +10071,15 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 16,
-									"top": -8,
+									"top": -16,
 									"width": 10,
 									"height": 10
 								}
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 376,
-							"top": 32,
+							"left": 360,
+							"top": 24,
 							"width": 102,
 							"height": 35,
 							"nameCompartment": {
@@ -10195,7 +10187,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 350,
+									"left": 334,
 									"top": 48,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -10216,7 +10208,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 347,
+									"left": 331,
 									"top": 62,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -10237,7 +10229,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 354,
+									"left": 338,
 									"top": 21,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -10343,7 +10335,7 @@
 							"tail": {
 								"$ref": "AAAAAAF0ghovJipgsYo="
 							},
-							"points": "376:40;192:40;192:128;141:128",
+							"points": "360:40;192:40;192:128;141:128",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF0ghpuqSzbeLY="
@@ -53147,7 +53139,7 @@
 													"top": 87,
 													"width": 144.4853515625,
 													"height": 13,
-													"text": "Object: Khách vãn lai"
+													"text": "Object: Khách vãng lai"
 												},
 												{
 													"_type": "LabelView",
