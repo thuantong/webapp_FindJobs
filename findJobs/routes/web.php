@@ -68,7 +68,8 @@ Route::namespace('BaiViet')->group(function (){
         Route::get('/dang-bai-viet','BaiVietController@index')->name('index');
         Route::get('/tin-tuyen-dung', 'BaiVietController@layTatCaBaiViet');
         Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost');
-        Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet={detail}','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet');
+        Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=1','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet')->middleware('auth');
+        Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=0','BaiVietController@getThongTinBaiVietClick')->name('getThongTinBaiViet');
         Route::post('/bai-viet/like','BaiVietController@likePost')->name('likePost');
         Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon');
         Route::get('/bai-viet/tim-kiem','BaiVietController@timKiemBaiViet')->name('timKiemBaiViet');
@@ -141,6 +142,7 @@ Route::namespace('Admin')->group(function () {
 
         Route::get('/admin/danh-sach-tai-khoan','QuanLyTaiKhoanController@index')->name('danhSachTaiKhoan');
         Route::get('/admin/danh-sach-tai-khoan/get-data','QuanLyTaiKhoanController@getDanhSachTaiKhoan')->name('getDanhSachTaiKhoan');
+        Route::get('/admin/danh-sach-tai-khoan/get-phan-quyen','QuanLyTaiKhoanController@getTacVu')->name('getPhanQuyen');
 
         Route::get('/admin/danh-sach-tac-vu','PhanQuyenController@index')->name('danhSachTacVu');
         Route::get('/admin/danh-sach-tac-vu/get-chuc-vu','PhanQuyenController@getLoaiTaiKhoan')->name('getDanhSachTaiKhoan');
@@ -173,5 +175,11 @@ Route::namespace('NguoiTimViec')->group(function (){
     Route::name('nguoitimviec.')->group(function (){
         Route::get('/nguoi-tim-viet/danh-sach-bai-luu','LuuBaiController@index')->name('index');
         Route::get('/nguoi-tim-viet/get-danh-sach-bai-luu','LuuBaiController@getDanhSachBaiLuu')->name('getDanhSachBaiLuu');
+    });
+});
+Route::namespace('Mail')->group(function (){
+    Route::name('mail.')->group(function (){
+        Route::get('/thong-bao-xac-thuc-tai-khoan','MailController@xacThucTaiKhoan')->name('xacThucTaiKhoan');
+
     });
 });

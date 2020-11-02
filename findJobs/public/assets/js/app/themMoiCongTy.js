@@ -212,7 +212,7 @@ $(document).on('click', '#them-moi-cong-ty #save-cong-ty', function () {
         }
 
         sendAjaxNoFunc('post', '/danh-sach-cong-ty/tao-moi', dataSend, __this.attr('id')).done(res => {
-            // console.log('them moi',res)
+            console.log('them moi',res)
             getHtmlResponse(res);
             if (res.status == 200) {
                 $('#' + __this.attr('id')).attr('disabled', 'disabled');

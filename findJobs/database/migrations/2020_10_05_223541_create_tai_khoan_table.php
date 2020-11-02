@@ -16,7 +16,9 @@ class CreateTaiKhoanTable extends Migration
         Schema::create('tai_khoan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('ho_ten')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
+            $table->string('user_name')->unique()->nullable();
+            $table->string('email_confirmed')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('email_verify')->nullable();
             $table->text('password');

@@ -14,3 +14,8 @@ Trạng thái:
 		+ 1 : Nam
 		+ 2 : Nữ
 		+ 3 : Tất cả 
+
+- Tài Khoản[status]:
+		+ 0 : Ngoại tuyến
+		+ 1 : Đang hoạt động
+		+ 2 : Đã tạm khóa

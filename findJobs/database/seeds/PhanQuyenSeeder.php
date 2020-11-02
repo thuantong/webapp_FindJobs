@@ -24,14 +24,7 @@ class PhanQuyenSeeder extends Seeder
                 'name' => 'Admin',
                 'mo_ta' => 'Admin'
             ],
-            [
-                'name'=>'Người tìm việc dịch vụ',
-                'mo_ta' => 'Người tìm việc dịch vụ'
-            ],
-            [
-                'name'=>'Nhà tuyển dụng dịch vụ',
-                'mo_ta' => 'Người tìm việc dịch vụ'
-            ]
+
 //            [
 //                'name'=>'Đăng bài',
 //                'mo_ta'=>'Đăng bài viết'

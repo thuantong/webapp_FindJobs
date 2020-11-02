@@ -21,6 +21,8 @@ class TaiKhoan extends Authenticatable
     protected $fillable = [
         'ho_ten',
         'email',
+        'user_name',
+        'email_confirmed',
         'email_verify',
         'password',
         'phone',
@@ -46,7 +48,7 @@ class TaiKhoan extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     protected $attributes = [
-        'status' => 1,
+        'status' => 0,
     ];
 
     //lấy phân quyền

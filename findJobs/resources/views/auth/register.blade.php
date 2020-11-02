@@ -27,13 +27,27 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Địa chỉ E-Mail') }}</label>
+                            <label for="email-confirmed" class="col-md-4 col-form-label text-md-right">{{ __('Địa chỉ E-Mail') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="off">
+                                <input id="email-confirmed" type="email" class="form-control @error('email_confirmed') is-invalid @enderror" name="email_confirmed" value="{{ old('email_confirmed') }}" required autocomplete="off">
 
-                                @error('email')
+                                @error('email_confirmed')
                                     <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="user-name" class="col-md-4 col-form-label text-md-right">{{ __('Tên tài khoản') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="user-name" type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name" value="{{ old('user_name') }}" required autocomplete="off">
+
+                                @error('user_name')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

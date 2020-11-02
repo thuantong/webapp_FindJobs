@@ -50,17 +50,20 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+//        dd($data);
         if (array_key_exists('admin',$data)){
             return Validator::make($data, [
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'max:255', 'unique:tai_khoan'],
+                'user_name' => ['required', 'string', 'max:255', 'unique:tai_khoan'],
+                'email_confirmed' => ['required', 'string', 'email', 'max:255', 'unique:tai_khoan'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'phone' => ['required', 'max:10','min:10'],
             ]);
         }else{
             return Validator::make($data, [
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:tai_khoan'],
+                'user_name' => ['required', 'string', 'max:255', 'unique:tai_khoan'],
+                'email_confirmed' => ['required', 'string', 'email', 'max:255', 'unique:tai_khoan'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'phone' => ['required', 'max:10','min:10'],
             ]);
@@ -68,6 +71,12 @@ class RegisterController extends Controller
 
     }
 
+    protected function validatorAjax(array $data){
+        $emailCheck = TaiKhoan::query()->where('email',$data['email'])->get();
+        if ($emailCheck != null){
+            return false;
+        }
+    }
     /**
      * Create a new User instance after a valid registration.
      *
@@ -78,7 +87,8 @@ class RegisterController extends Controller
     {
         return TaiKhoan::create([
             'ho_ten' => $data['name'],
-            'email' => $data['email'],
+            'user_name' => $data['user_name'],
+            'email' => $data['email_confirmed'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
 //            'remember_token'=>Str::random(100)

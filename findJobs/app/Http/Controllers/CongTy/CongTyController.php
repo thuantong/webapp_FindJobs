@@ -70,7 +70,7 @@ class CongTyController extends Controller
 
     public function setDanhSach(Request $request)
     {
-
+//        return $request;
 //        return $request;?
 //        $congTyNew->ten_cong_ty = serialize($request->linh_vuc_hoat_dong);
         $title = 'Thêm mới';

@@ -688,3 +688,14 @@ const checkIsDeviceMedium = () =>{
         return false;
     }
 }
+
+const getTrangThaiTaiKhoan = (status)=>{
+    switch (parseInt(status)) {
+        case 0:
+            return '<span class="text-dark">Ngoại tuyến</span>';
+        case 1:
+            return '<span class="text-success">Đang hoạt động</span>';
+        case 2:
+            return '<span class="text-danger">Đã tạm khóa</span>';
+    }
+}

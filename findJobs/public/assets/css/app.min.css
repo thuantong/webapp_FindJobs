@@ -152,11 +152,12 @@ body {
     line-height: 1.5rem;
     font-size: 1.1rem;
     -webkit-transform: translate(0, 0);
-    transform: translate(0, 0)
+    transform: translate(0, 0) rotate(-90deg)
 }
 
 #sidebar-menu .menu-arrow:before {
-    content: "\F142"
+    content: attr(data-icon);
+    /*content: "\f01b"*/
 }
 
 #sidebar-menu .badge {
@@ -164,8 +165,8 @@ body {
 }
 
 #sidebar-menu li.mm-active > a > span.menu-arrow {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg)
+    -webkit-transform: rotate(1deg);
+    transform: rotate(1deg)
 }
 
 #sidebar-menu .menu-title {

@@ -64,6 +64,8 @@ class MyLoginController extends Controller
     {
         $request->session()->regenerate();
         $findUser = TaiKhoan::query()->find(Auth::user()->id);
+        $findUser->status = 1;
+        $findUser->save();
         $getPhanQuyen = PhanQuyen::query()->find($findUser->getPhanQuyenId())->first();
         Session::put('role', $getPhanQuyen->getTacVuId());
         Session::put('loai_tai_khoan', $getPhanQuyen['id']);
@@ -123,8 +125,12 @@ class MyLoginController extends Controller
 
     public function logout(Request $request)
     {
+        if (Auth::user() != null){
+            $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
+            $taiKhoan->status = 0;
+            $taiKhoan->save();
+        }
         $this->guard()->logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         Session::flush();

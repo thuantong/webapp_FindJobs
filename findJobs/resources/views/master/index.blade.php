@@ -71,6 +71,9 @@
                     Việc làm
                 </a>
             </li>
+            @if(Auth::user() != null)
+
+
 {{--            <li class="dropdown notification-list">--}}
 {{--                <a class="nav-link dropdown-toggle  waves-effect waves-light fab fa-rocketchat font-20 call-chat">--}}
 {{--                                        <i class="fe-bell noti-icon"></i>--}}
@@ -180,14 +183,14 @@
                         src="@if(Session::get('avatar') != null){{URL::asset(Session::get('avatar'))}}@elseif(Session::get('avatar') == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
                         alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1">
-                                {{ucwords(Auth::user()->ho_ten)}} <i class="icofont icofont-caret-down"></i>
+                                @if(Auth::user() != null){{ucwords(Auth::user()->ho_ten)}}@endif <i class="icofont icofont-caret-down"></i>
                             </span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
                     <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow text-center m-0">{{ucwords(Auth::user()->ho_ten)}}</h6>
+                        <h6 class="text-overflow text-center m-0">@if(Auth::user() != null){{ucwords(Auth::user()->ho_ten)}}@endif</h6>
                     </div>
 
                     <!-- item-->
@@ -235,7 +238,22 @@
 
                 </div>
             </li>
+            @else
 
+                @if(\Illuminate\Support\Facades\Request::exists('admin'))
+                <li>
+                    <a href="{{URL::asset('/dang-nhap?admin')}}" class="nav-link text-white">
+                        Đăng nhập
+                    </a>
+                </li>
+                    @else
+                    <li>
+                        <a href="{{URL::asset('/dang-nhap')}}" class="nav-link text-white">
+                            Đăng nhập
+                        </a>
+                    </li>
+                    @endif
+            @endif
 
         </ul>
 
@@ -263,107 +281,110 @@
 
             <li class="dropdown dropdown-mega d-block">
 
+{{--                {{Auth::user()}}--}}
+                @if(Auth::user() != null)
                 <a class="nav-link center-element search-field" data-search="search-field">
                     <span>Tìm kiếm</span>
                 </a>
-                <div class="dropdown-menu dropdown-megamenu">
-                    <div class="row">
-                        <div class="col-sm-6">
+                @endif
+{{--                <div class="dropdown-menu dropdown-megamenu">--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-sm-6">--}}
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5 class="text-dark mt-0">UI Components</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);">Widgets</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Nestable List</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Range Sliders</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Masonry Items</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Sweet Alerts</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Treeview Page</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Tour Page</a>
-                                        </li>
-                                    </ul>
-                                </div>
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-4">--}}
+{{--                                    <h5 class="text-dark mt-0">UI Components</h5>--}}
+{{--                                    <ul class="list-unstyled megamenu-list">--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Widgets</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Nestable List</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Range Sliders</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Masonry Items</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Sweet Alerts</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Treeview Page</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Tour Page</a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-4">
-                                    <h5 class="text-dark mt-0">Applications</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);">eCommerce Pages</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">CRM Pages</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Email</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Calendar</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Team Contacts</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Task Board</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Email Templates</a>
-                                        </li>
-                                    </ul>
-                                </div>
+{{--                                <div class="col-md-4">--}}
+{{--                                    <h5 class="text-dark mt-0">Applications</h5>--}}
+{{--                                    <ul class="list-unstyled megamenu-list">--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">eCommerce Pages</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">CRM Pages</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Email</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Calendar</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Team Contacts</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Task Board</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Email Templates</a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-4">
-                                    <h5 class="text-dark mt-0">Extra Pages</h5>
-                                    <ul class="list-unstyled megamenu-list">
-                                        <li>
-                                            <a href="javascript:void(0);">Left Sidebar with User</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Menu Collapsed</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Small Left Sidebar</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">New Header Style</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Search Result</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Gallery Pages</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);">Maintenance & Coming Soon</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="text-center mt-3">
-                                <h3 class="text-dark">Special Discount Sale!</h3>
-                                <h4>Save up to 70% off.</h4>
-                                <button class="btn btn-primary mt-3">Download Now <i
-                                        class="ml-1 mdi mdi-arrow-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
+{{--                                <div class="col-md-4">--}}
+{{--                                    <h5 class="text-dark mt-0">Extra Pages</h5>--}}
+{{--                                    <ul class="list-unstyled megamenu-list">--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Left Sidebar with User</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Menu Collapsed</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Small Left Sidebar</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">New Header Style</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Search Result</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Gallery Pages</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="javascript:void(0);">Maintenance & Coming Soon</a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-sm-4">--}}
+{{--                            <div class="text-center mt-3">--}}
+{{--                                <h3 class="text-dark">Special Discount Sale!</h3>--}}
+{{--                                <h4>Save up to 70% off.</h4>--}}
+{{--                                <button class="btn btn-primary mt-3">Download Now <i--}}
+{{--                                        class="ml-1 mdi mdi-arrow-right"></i></button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
             </li>
         </ul>
     </div>

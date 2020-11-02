@@ -237,10 +237,11 @@
                         <select class="form-control not-null" id="quy_mo_nhan_su" title="Quy mô nhân sự">
 
                             <option disabled selected value="">Quy mô nhân sự</option>
-                            <option value="1">Dưới 20 người</option>
-                            <option value="2">Từ 20 đến 50 người</option>
-                            <option value="3">Từ 50 đến 75 người</option>
-                            <option value="4">Trên 75 người</option>
+                            @if($data['quy_mo_nhan_su'] != null)
+                            @foreach($data['quy_mo_nhan_su'] as $row)
+                            <option value="{{$row['id']}}">{{$row['name']}}</option>
+                                @endforeach
+                            @endif
                         </select>
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>

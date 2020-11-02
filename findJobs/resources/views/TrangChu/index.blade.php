@@ -163,7 +163,12 @@
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Mức lương:</span>
                                         <p class="mb-0">
+                                            @if(Auth::user() != null)
                                             <label class="muc_luong">Đang tải...</label>
+                                                @else
+                                                <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a>
+
+                                            @endif
                                         </p></div>
                                 </div>
 

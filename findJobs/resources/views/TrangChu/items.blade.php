@@ -12,13 +12,13 @@
             </div>
             <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 text-center">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><h5 class="mb-0"><a class="xem-chi-tiet-post" href="{{route('baiviet.getThongTinBaiViet',[$row['id'],1])}}"><span title="{{$row['tieu_de']}}">{{$row['tieu_de']}}</span></a>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><h5 class="mb-0"><a class="xem-chi-tiet-post" href="{{route('baiviet.getThongTinBaiViet',[$row['id'],'chitiet'=>1])}}"><span title="{{$row['tieu_de']}}">{{$row['tieu_de']}}</span></a>
                         </h5></div>
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text"><i><span title="{{$row['cong_ty_name']}}">{{$row['cong_ty_name']}}</span></i>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="row">
-                            <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{unserialize($row['luong'])[0]}}{{' - '}}{{unserialize($row['luong'])[1]}}{{' Triệu'}}"><span class="icofont icofont-money"></span>{{unserialize($row['luong'])[0]}}{{' - '}}{{unserialize($row['luong'])[1]}}{{' Triệu'}}</span></div>
+                            <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{unserialize($row['luong'])[0]}}{{' - '}}{{unserialize($row['luong'])[1]}}{{' Triệu'}}"><span class="icofont icofont-money"></span>@if(Auth::user() != null){{unserialize($row['luong'])[0]}}{{' - '}}{{unserialize($row['luong'])[1]}}{{' Triệu'}}@else <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a> @endif</span></div>
                             <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{$row['dia_diem']}}"><span class="icofont icofont-location-pin"></span>{{$row['dia_diem']}}</span></div>
                             <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{\Illuminate\Support\Carbon::parse($row['han_tuyen'])->format('d/m/Y')}}"><span class="fa fa-calendar-plus-o"></span>{{\Illuminate\Support\Carbon::parse($row['han_tuyen'])->format('d/m/Y')}}</span></div>
 {{--                            <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{$row['han_tuyen']}}">{{$row['han_tuyen']}}</span></div>--}}

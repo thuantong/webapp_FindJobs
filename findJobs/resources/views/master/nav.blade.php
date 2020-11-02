@@ -133,11 +133,28 @@
                         </a>
                     </li>
 
+{{--                    <li>--}}
+{{--                        <a href="" class="waves-effect">--}}
+{{--                            <i class="fa fa-users"></i>--}}
+{{--                            <span>{{__('Quản lý tài khoản')}}</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
                     <li>
-                        <a href="" class="waves-effect">
+                        <a href="javascript: void(0);" class="waves-effect">
                             <i class="fa fa-users"></i>
                             <span>{{__('Quản lý tài khoản')}}</span>
+                            <span class="menu-arrow" data-icon="&#9699;"></span>
                         </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="{{route('admin.danhSachTacVu')}}">Phân quyền bộ phận</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.danhSachTaiKhoan')}}">Phân quyền tài khoản</a>
+                            </li>
+
+                        </ul>
                     </li>
                 @endif
                 @endif
