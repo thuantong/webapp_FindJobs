@@ -85,10 +85,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+//        $emailVerify_token = Str::random(25).date('d.m.Y');
         return TaiKhoan::create([
             'ho_ten' => $data['name'],
             'user_name' => $data['user_name'],
             'email' => $data['email_confirmed'],
+//            'email_verify_code' => $emailVerify_token,
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
 //            'remember_token'=>Str::random(100)

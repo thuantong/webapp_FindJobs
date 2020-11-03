@@ -115,5 +115,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="doan(5-8)" />
+    <orderEntry type="module" module-name="banhang" />
   </component>
 </module>

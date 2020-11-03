@@ -69,6 +69,9 @@ class MyLoginController extends Controller
         $getPhanQuyen = PhanQuyen::query()->find($findUser->getPhanQuyenId())->first();
         Session::put('role', $getPhanQuyen->getTacVuId());
         Session::put('loai_tai_khoan', $getPhanQuyen['id']);
+        if ($findUser->email_confirmed == null){
+            return redirect()->route('auth.confirmEmailView');
+        }
         switch ($getPhanQuyen['id']) {
             case 1:
                 $nguoiTimViec = $findUser->getNguoiTimViec;

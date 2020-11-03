@@ -2,38 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/Login/contentRegister.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/themMoiTaiKhoan.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/TaiKhoan/xacThucEmail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../doc/enum.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/enum.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/findJobs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/findJobs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/QuanLyTaiKhoanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/QuanLyTaiKhoanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CongTy/CongTyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CongTy/CongTyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/TaiKhoan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TaiKhoan.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_223541_create_tai_khoan_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_223541_create_tai_khoan_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PhanQuyenSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PhanQuyenSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/app/themMoiCongTy.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/themMoiCongTy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/87369239_148190649983978_7329649221504598016_o.jpg1" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/87369239_148190649983978_7329649221504598016_o.jpg1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.png1" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.png1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/Login/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/Login/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/Login/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/Login/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/PhanQuyen/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/PhanQuyen/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/CongTy/modal/themMoi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/CongTy/modal/themMoi.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/items.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/master/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,7 +170,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/xampp/htdocs/doan(5-8)" />
+    <property name="last_opened_file_path" value="C:/xampp/htdocs/banhang" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -272,6 +249,8 @@
       <workItem from="1604131708163" duration="23024000" />
       <workItem from="1604218532501" duration="30983000" />
       <workItem from="1604305119477" duration="29437000" />
+      <workItem from="1604385120568" duration="3825000" />
+      <workItem from="1604393343487" duration="4151000" />
     </task>
     <servers />
   </component>
@@ -295,10 +274,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1604051329594" />
-    <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1604250025792">
+    <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1604394296738">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="502" y="143" key="FileChooserDialogImpl/78.0.1288.768@78.0.1288.768" timestamp="1604250025792" />
+    <state x="502" y="143" key="FileChooserDialogImpl/78.0.1288.768@78.0.1288.768" timestamp="1604394296738" />
     <state width="1245" height="192" key="GridCell.Tab.0.bottom" timestamp="1603694931579">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -323,11 +302,11 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1604059242177" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1604305119316">
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1604393356429">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1604305119316" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1604393356429" />
     <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604042329365">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -336,14 +315,14 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="429" y="140" width="586" height="488" key="find.popup/78.0.1288.768@78.0.1288.768" timestamp="1602784075560" />
-    <state x="378" y="172" key="run.anything.popup" timestamp="1604259700043">
+    <state x="378" y="172" key="run.anything.popup" timestamp="1604395064938">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1604259700043" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1604343767092">
+    <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1604395064938" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1604397390027">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1604343767092" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1604397390027" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

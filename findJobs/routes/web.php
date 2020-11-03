@@ -23,6 +23,9 @@ Route::namespace('Auth')->group(function (){
 
         Route::get('/dang-ky','RegisterController@showRegistrationForm')->name('form.register');
         Route::post('/go-dang-ky','RegisterController@register')->name('register');
+
+        Route::get('/tai-khoan/confirm-email','VerificationEmailController@confirmEmailView')->name('confirmEmailView');
+
     });
 });
 

@@ -19,3 +19,4 @@ Trạng thái:
 		+ 0 : Ngoại tuyến
 		+ 1 : Đang hoạt động
 		+ 2 : Đã tạm khóa
+		+ 3 : Chưa xác nhận
