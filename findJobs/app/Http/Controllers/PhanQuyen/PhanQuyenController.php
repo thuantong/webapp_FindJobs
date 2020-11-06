@@ -13,7 +13,7 @@ class PhanQuyenController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','email.confirm','admin']);
     }
     public function index(){
 //       $taiKhoan = TaiKhoan::query()->find(Auth::user()->id)->phan_quyens()->attach([1,2,3]);

@@ -20,7 +20,7 @@ class CreateTaiKhoanTable extends Migration
             $table->string('user_name')->unique()->nullable();
             $table->string('email_confirmed')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('email_verify_code')->nullable();
+            $table->text('email_verify_code')->nullable();
             $table->text('password');
             $table->string('phone', 12)->nullable();
             $table->smallInteger('status')->nullable()->default(1);

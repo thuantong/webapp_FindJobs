@@ -33,11 +33,11 @@ Route::namespace('TrangChu')->group(function () {
     Route::name('trangchu.')->group(function () {
         Route::resource('/', 'TrangChuController');
 
-        Route::get('/search', 'TrangChuController@searchInput');
-        Route::get('/chi-tiet-tuyen-dung', 'TrangChuController@details')->name('chiTietBaiDang');
-        Route::get('/create-post', 'TrangChuController@create')->name('create');
-        Route::get('/update-post{id}', 'TrangChuController@update')->name('update');
-        Route::get('/delete-post{id}', 'TrangChuController@delete')->name('delete');
+//        Route::get('/search', 'TrangChuController@searchInput');
+//        Route::get('/chi-tiet-tuyen-dung', 'TrangChuController@details')->name('chiTietBaiDang');
+//        Route::get('/create-post', 'TrangChuController@create')->name('create');
+//        Route::get('/update-post{id}', 'TrangChuController@update')->name('update');
+//        Route::get('/delete-post{id}', 'TrangChuController@delete')->name('delete');
 //        Route::get('/logout', 'TrangChuController@logout')->name('logout');
     });
 
@@ -46,6 +46,7 @@ Route::namespace('TrangChu')->group(function () {
 Route::namespace('User')->group(function () {
     Route::name('user.')->group(function () {
         Route::resource('/user', 'UserController');
+//        Route::post('/tai-khoan/xac-nhan-email', 'UserController@sendVerifyEmail');
         Route::get('/nguoi-tim-viec', 'UserController@getEmployee')->name('nguoiTimViec');
 //        Route::get('/user-employer', 'UserController@getEmployer');
         Route::get('/user-set-employer', 'UserController@setEmployee');
@@ -66,15 +67,22 @@ Route::namespace('User')->group(function () {
     });
 });
 
+Route::namespace('TaiKhoan')->group(function (){
+    Route::name('taikhoan.')->group(function (){
+        Route::post('/tai-khoan/xac-nhan-email', 'ConfirmEmailController@sendVerifyEmail');
+        Route::get('/tai-khoan/kich-hoat-tai-khoan/{token}', 'ConfirmEmailController@kichHoatTaiKhoan')->name('kichHoatTaiKhoan');
+
+    });
+});
 Route::namespace('BaiViet')->group(function (){
     Route::name('baiviet.')->group(function (){
         Route::get('/dang-bai-viet','BaiVietController@index')->name('index');
         Route::get('/tin-tuyen-dung', 'BaiVietController@layTatCaBaiViet');
-        Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost');
-        Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=1','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet')->middleware('auth');
+        Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost')->middleware(['auth','email.confirm']);
+        Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=1','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=0','BaiVietController@getThongTinBaiVietClick')->name('getThongTinBaiViet');
-        Route::post('/bai-viet/like','BaiVietController@likePost')->name('likePost');
-        Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon');
+        Route::post('/bai-viet/like','BaiVietController@likePost')->name('likePost')->middleware(['auth','email.confirm']);
+        Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/tim-kiem','BaiVietController@timKiemBaiViet')->name('timKiemBaiViet');
 
     });

@@ -215,7 +215,7 @@ $(document).on('click', '#them-moi-cong-ty #save-cong-ty', function () {
             console.log('them moi',res)
             getHtmlResponse(res);
             if (res.status == 200) {
-                $('#' + __this.attr('id')).attr('disabled', 'disabled');
+                // $('#' + __this.attr('id')).attr('disabled', 'disabled');
                 if (getParents.data('type') == 'cong_ty_tuyen_dung') {
                     // alert('select')
                     sendAjaxNoFunc('get', '/danh-sach-cong-ty/data', {}, __this.attr('id')).done(e => {

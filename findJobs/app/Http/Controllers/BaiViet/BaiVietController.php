@@ -29,7 +29,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Cknow\Money\Money;
 
-class BaiVietController extends Controller
+class
+BaiVietController extends Controller
 {
     private $nhaTuyenDung;
     private $tienDangTin;
@@ -38,14 +39,16 @@ class BaiVietController extends Controller
 
     public function __construct()
     {
-//        $this->middleware('auth');
-//        $this->middleware(function ($request, $next) {
-//            $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
-//            $this->hangMucThanhToan = HangMucThanhToan::query()->find('1');
-//            $this->tienDangTin = $this->hangMucThanhToan->first()->gia;//1 xu 1 ngày
-//
-//            return $next($request);
-//        });
+//        $this->middleware(['auth','email.confirm']);
+        if (Auth::user() != null){
+            $this->middleware(function ($request, $next) {
+                $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
+                $this->hangMucThanhToan = HangMucThanhToan::query()->find('1');//đăng bài viết
+                $this->tienDangTin = $this->hangMucThanhToan->first()->gia;//1 xu 1 ngày
+                return $next($request);
+            });
+        }
+
 
     }
 
@@ -69,6 +72,7 @@ class BaiVietController extends Controller
         if ($checkSoDu['status'] == 400) {
             return view('SoDu.index', compact('checkSoDu'));
         }
+
         $data['kinh_nghiem'] = KinhNghiem::query()->orderBy('id', 'asc')->get();
         $data['nganh_nghe'] = NganhNghe::query()->orderBy('name', 'asc')->get();
         $data['cong_ty'] = $this->nhaTuyenDung->getCongTy()->orderBy('created_at', 'desc')->get();
@@ -287,6 +291,12 @@ class BaiVietController extends Controller
 //        return $data;
     }
 
+    /**
+     * Xem chi tiết nhanh
+     * @param $post
+     * @param Request $request
+     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getThongTinBaiVietClick($post, Request $request)
     {
 //        $data['nop_don_type'] = 0;
@@ -296,7 +306,7 @@ class BaiVietController extends Controller
         $data['tuoi'] = unserialize($data['tuoi']);
         $data['tieu_de'] = ucwords($data['tieu_de']);
         if (intval(Session::get('loai_tai_khoan')) == 1) {
-            $data['bai_da_thich']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getBaiThich->pluck('id')->toArray();
+            $data['bai_da_luu']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getLuuBai->pluck('id')->toArray();
             //lấy nhà tuyern dụng đã quan tâm
             $data['nha_tuyen_dung_da_quan_tam']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getNhaTuyenDungQuanTam->pluck('id')->toArray();
             $data['don_xin_viec']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getDonXinViec()->get()->pluck('id')->toArray();
@@ -306,7 +316,7 @@ class BaiVietController extends Controller
             $data['nguoi_tim_viec']['projects'] = unserialize($data['nguoi_tim_viec']['projects']);
         }
 
-        $data['bai_da_thich']['total'] = Thich::query()->where('bai_tuyen_dung_id', $post)->count();
+        $data['bai_da_luu']['total'] = LuuBai::query()->where('bai_tuyen_dung_id', $post)->count();
 
         $data['nha_tuyen_dung_da_quan_tam']['total'] = QuanTam::query()->where('nha_tuyen_dung_id', $data['get_nha_tuyen_dung']['id'])->count();
 
@@ -336,7 +346,7 @@ class BaiVietController extends Controller
     }
 
     /**
-     * Quan tâm nhà tuyển dụng
+     * Luu bài người tuyển dụng
      * @param Request $request
      * @return string
      */
@@ -346,7 +356,8 @@ class BaiVietController extends Controller
             $idPost = $request->id;
 //            dd($idPost);
             $status = intval($request->thich);
-            $nguoiLike = NguoiTimViec::query()->where('tai_khoan_id', Auth::user()->id)->get();
+            $nguoiLike = NguoiTimViec::query()->where('tai_khoan_id', Auth::user()->id)->first();
+//            return $nguoiLike;
             $baiTuyenDung = BaiTuyenDung::query()->find($idPost);
             switch ($status) {
                 case 0:

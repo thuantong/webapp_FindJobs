@@ -14,7 +14,7 @@ class NopDonController extends Controller
     private $nguoiTimViec;
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','email.confirm']);
         $this->middleware(function ($request, $next) {
             $this->nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
             return $next($request);

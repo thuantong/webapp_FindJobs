@@ -2,9 +2,9 @@
 @section('content')
     <head>
 {{--        <link href="assets\libs\clockpicker\bootstrap-clockpicker.min.css" rel="stylesheet" type="text/css">--}}
-        <link href="assets\libs\multiselect\multi-select.css" rel="stylesheet" type="text/css">
-        <link href="assets\libs\select2\select2.min.css" rel="stylesheet" type="text/css">
-        <link href="assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
 
     </head>
     @include('User.modal.doiMatKhau')
@@ -124,15 +124,18 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
-                        <label for="email_tuyen_dung"><abbr class="text-danger  font-15">* </abbr>{{__('Email: ')}}
+                        <label for="email"><abbr class="text-danger  font-15">* </abbr>{{__('Email: ')}}
                         </label>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">
-                        <input class="form-control not-null"
-                               placeholder="@if(Auth::user()->email == null){{"Nhập email"}}@endif"
-                               id="email_tuyen_dung" data-rule="email" title="Email người tuyển dụng"
-                               value="@if(Auth::user()->email != null){{Auth::user()->email}}@endif">
-
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 text-left">
+                        <div class="input-group">
+                            <input class="form-control email-not-null"
+                                   placeholder="@if(Auth::user()->email == null){{"Nhập email"}}@endif"
+                                   id="email" data-rule="email" title="Email người tuyển dụng"
+                                   value="@if(Auth::user()->email != null){{Auth::user()->email}}@endif">
+                            <button class="btn @if(Auth::user()->email != Auth::user()->email_confirmed){{__('btn-primary')}}@else{{__('btn-success')}}@endif" @if(Auth::user()->email != Auth::user()->email_confirmed) id="gui-xac-nhan-email" @endif>@if(Auth::user()->email != Auth::user()->email_confirmed){{__('Gửi xác thực email')}}@else{{__('Đã xác nhận')}}@endif</button>
+                        </div>
+                        <span class="text-success message-response"></span>
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
                         </span>
@@ -145,7 +148,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">
-                        <input class="form-control not-null" id="dia_chi" title="Địa chỉ" value="@if($nhaTuyenDung['dia_chi'] != null){{$nhaTuyenDung['dia_chi']}}@endif">
+                        <input class="form-control not-null" id="dia_chi" title="Địa chỉ" value="@if($data['nha_tuyen_dung']['dia_chi'] != null){{$data['nha_tuyen_dung']['dia_chi']}}@endif">
 
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -163,8 +166,8 @@
                         <select class="form-control not-null" id="gioi_tinh_tuyen_dung" title="Giới tính">
                             <option value="" disabled selected
                                     class="text-center">{{__('Chọn giới tính')}}</option>
-                            <option value="1" @if($nhaTuyenDung['gioi_tinh'] != null && $nhaTuyenDung['gioi_tinh'] == 1) selected @endif>{{__('Nam')}}</option>
-                            <option value="2" @if($nhaTuyenDung['gioi_tinh'] != null && $nhaTuyenDung['gioi_tinh'] == 2) selected @endif>{{__('Nữ')}}</option>
+                            <option value="1" @if($data['nha_tuyen_dung']['gioi_tinh'] != null && $data['nha_tuyen_dung']['gioi_tinh'] == 1) selected @endif>{{__('Nam')}}</option>
+                            <option value="2" @if($data['nha_tuyen_dung']['gioi_tinh'] != null && $data['nha_tuyen_dung']['gioi_tinh'] == 2) selected @endif>{{__('Nữ')}}</option>
                         </select>
 
                         <span class="invalid-feedback" role="alert">
@@ -181,7 +184,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">
-                        <input class="form-control not-null" id="ngay_sinh_tuyen_dung" title="Ngày sinh" value="@if($nhaTuyenDung['nam_sinh'] != null){{\Illuminate\Support\Carbon::createFromFormat('Y-m-d',$nhaTuyenDung['nam_sinh'])->format('d/m/Y')}}@else{{date('d/m/Y')}}@endif">
+                        <input class="form-control not-null" id="ngay_sinh_tuyen_dung" title="Ngày sinh" value="@if($data['nha_tuyen_dung']['nam_sinh'] != null){{\Illuminate\Support\Carbon::createFromFormat('Y-m-d',$data['nha_tuyen_dung']['nam_sinh'])->format('d/m/Y')}}@else{{date('d/m/Y')}}@endif">
 
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -240,7 +243,7 @@
                         <label>Giới thiệu bản thân:</label>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <textarea class="form-control break-custom" id="gioi_thieu">@if($nhaTuyenDung['gioi_thieu']){{$nhaTuyenDung['gioi_thieu']}}@endif</textarea>
+                        <textarea class="form-control break-custom" id="gioi_thieu">@if($data['nha_tuyen_dung']['gioi_thieu']){{$data['nha_tuyen_dung']['gioi_thieu']}}@endif</textarea>
                     </div>
                 </div>
                 <h5 class="mb-3 text-uppercase bg-light p-2 text-center text-md-left"><i class="mdi mdi-earth mr-1"></i>
@@ -255,7 +258,7 @@
                                                                 class="fa fa-facebook-official"></i></span>
                                 </div>
                                 {{--                                unserialize($nguoiTimViec['social'])[0]--}}
-                                <input type="text" class="form-control social-link" id="social-fb" value="@if($nhaTuyenDung['mang_xa_hoi'] != null){{unserialize($nhaTuyenDung['mang_xa_hoi'])[0]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-fb" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[0]}}@endif"
                                        placeholder="Url">
                             </div>
                         </div>
@@ -268,7 +271,7 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-twitter"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-tw" value="@if($nhaTuyenDung['mang_xa_hoi'] != null){{unserialize($nhaTuyenDung['mang_xa_hoi'])[1]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-tw" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[1]}}@endif"
                                        placeholder="Username">
                             </div>
                         </div>
@@ -283,7 +286,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-instagram"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-insta" value="@if($nhaTuyenDung['mang_xa_hoi'] != null){{unserialize($nhaTuyenDung['mang_xa_hoi'])[2]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-insta" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[2]}}@endif"
                                        placeholder="Url">
                             </div>
                         </div>
@@ -296,7 +299,7 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-linkedin"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-lin" value="@if($nhaTuyenDung['mang_xa_hoi'] != null){{unserialize($nhaTuyenDung['mang_xa_hoi'])[3]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-lin" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[3]}}@endif"
                                        placeholder="Url">
                             </div>
                         </div>
@@ -312,7 +315,7 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-skype"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-sky" value="@if($nhaTuyenDung['mang_xa_hoi'] != null){{unserialize($nhaTuyenDung['mang_xa_hoi'])[4]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-sky" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[4]}}@endif"
                                        placeholder="@username">
                             </div>
                         </div>
@@ -325,7 +328,7 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-github"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-gh" value="@if($nhaTuyenDung['mang_xa_hoi'] != null){{unserialize($nhaTuyenDung['mang_xa_hoi'])[5]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-gh" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[5]}}@endif"
                                        placeholder="Username">
                             </div>
                         </div>
@@ -338,21 +341,27 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="assets\libs\multiselect\jquery.multi-select.js"></script>
-    <script src="assets\libs\jquery-quicksearch\jquery.quicksearch.min.js"></script>
-    <script src="assets\libs\select2\select2.min.js"></script>
+    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
 
-    <script src="assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js"></script>
+    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
 
-    <link rel="stylesheet" type="text/css" href="{{asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
-    <script type="text/javascript" src="{{asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
+    <script type="text/javascript" src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
 
 
-    <script type="text/javascript" src="{{asset('assets\js\app\nhaTuyenDung.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets\js\app\doi_mat_khau.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assets\js\date-picker-vi.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\nhaTuyenDung.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\doi_mat_khau.js')}}"></script>
+{{--    init valiable of confirm email--}}
+    <script type="text/javascript">
+        let data_action_confifm = '{{Auth::user()->id}}';
+    </script>
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-gui-confirm-email.js')}}"></script>
+
+    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
     <script>
         $(function () {
             var fixedScroll = $('#scroll-fixed').offset();

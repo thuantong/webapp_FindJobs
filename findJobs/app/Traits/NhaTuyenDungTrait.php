@@ -28,10 +28,12 @@ trait NhaTuyenDungTrait
 //        $date = '1996-12-01';
 //        dd(substr(date('Ymd') - date('Ymd', strtotime($date)), 0));
         if (Session::get('loai_tai_khoan') == 2) {
-            $nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
-//            dd($nhaTuyenDung);
-            $nganhNghe = NganhNghe::all();
-            return view('User.nhaTuyenDung',compact('nhaTuyenDung','nganhNghe'));
+            $nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung->toArray();
+//            $nganhNghe = NganhNghe::all()->toArray();
+
+            $data['nha_tuyen_dung'] = $nhaTuyenDung;
+//            $data['nganh_nghe'] = $nganhNghe;
+            return view('User.nhaTuyenDung',compact('data'));
         } else {
             abort(404);
         }

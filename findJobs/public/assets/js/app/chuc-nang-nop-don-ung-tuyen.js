@@ -15,7 +15,7 @@ $(function () {
         error += parseInt(notNullMessage($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active .not-null')));
         if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').length > 0){
             if ($('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').is(':checked') == false){
-                $('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').addClass('is-invalid').parent().find('span.invalid-feedback').find('strong').text('Bạn phải đồng ý điều khoản này')
+                $('#modal-nop-don #tab-nop-don.tab-content .tab-pane.active').find('input#allow-see-infomation').addClass('is-invalid').parent().find('span.invalid-feedback').find('strong').text('Bạn phải đồng ý điều khoản này');
                 error += 1;
                 // return false;
             }
@@ -128,6 +128,14 @@ $(function () {
     $('#modal-nop-don #tab-nop-don-header.form-wizard-header li.nav-item:eq(2)').on('click',function () {
         return false;
     });
+
+    $('#modal-nop-don .modal-body #allow-see-infomation').on('change',function () {
+        // console.log($(this).is(":checked"))
+        if ($(this).is(":checked") ==  true){
+            $(this).removeClass('is-invalid');
+        }
+    });
+
     $('#modal-cap-nhat-exp').on('hidden.bs.modal',function () {
         $('#modal-nop-don .modal-footer').find('span').addClass('d-none').text('ok!!');
     });

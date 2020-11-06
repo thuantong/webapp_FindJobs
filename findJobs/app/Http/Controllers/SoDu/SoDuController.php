@@ -20,7 +20,7 @@ class SoDuController extends Controller
     private $loaiTaiKhoan;
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','email.confirm']);
         $this->middleware(function ($request, $next){
             $this->taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
             $this->loaiTaiKhoan = $this->taiKhoan->getPhanQuyen->first();

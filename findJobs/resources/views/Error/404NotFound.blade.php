@@ -29,7 +29,7 @@
                             <svg viewbox="0 0 600 200">
                                 <!-- Symbol-->
                                 <symbol id="s-text">
-                                    <text text-anchor="middle" x="50%" y="50%" dy=".35em">404!</text>
+                                    <text text-anchor="middle" x="50%" y="50%" dy=".35em">{{$data['code']}}!</text>
                                 </symbol>
                                 <!-- Duplicate symbols-->
                                 <use class="text" xlink:href="#s-text"></use>
@@ -40,8 +40,10 @@
                             </svg>
                         </div>
                         <div class="text-center">
-                            <h3 class="mt-0 mb-2">{{__('Không tìm thấy trang!')}}</h3>
-                            <p class="text-muted mb-3">{{__('Điều này có thể do bạn chưa được cấp quyền để vào trang này!')}}</p>
+                            <h3 class="mt-0 mb-2">{{$data['title']}}</h3>
+{{--                            <span>{{$data['message']}}</span>--}}
+{{--                            <p>--}}
+                            <p class="text-muted mb-3">{{$data['message']}}</p>
 
                             <a href="/" class="btn btn-success waves-effect waves-light">{{__('Trở về trang chủ')}}</a>
                         </div>

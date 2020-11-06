@@ -16,7 +16,7 @@ class SendEmail extends Mailable
      *
      * @return void
      */
-    public $data;
+    private $data;
     public function __construct(array $data)
     {
         $this->data = $data;
@@ -30,6 +30,7 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->data['subject'])->view($this->data['view']);
+        $dataobj = $this->data['data'];
+        return $this->subject($this->data['subject'])->view($this->data['view'],compact('dataobj'));
     }
 }

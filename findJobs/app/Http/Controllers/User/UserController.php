@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Mail\SendEmail;
 use App\Models\TaiKhoan;
 use App\Traits\NguoiTimViecTrait;
 use App\Http\Controllers\Controller;
@@ -9,6 +10,7 @@ use App\Models\NguoiTimViec;
 use App\Traits\NhaTuyenDungTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -16,7 +18,7 @@ class UserController extends Controller
     use NguoiTimViecTrait,NhaTuyenDungTrait;
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','email.confirm']);
     }
 
     public function index(){
@@ -57,9 +59,6 @@ class UserController extends Controller
     }
 
 
-    public function setEmployer(){
-
-    }
     public function setAvatar(Request $request){
         $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id',Auth::user()->id)->first();
         $res = $request->fileName;
@@ -78,5 +77,5 @@ class UserController extends Controller
         return response('images/'.$imageName);
 
     }
-    //
+
 }

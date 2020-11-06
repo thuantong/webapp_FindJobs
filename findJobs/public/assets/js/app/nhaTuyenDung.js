@@ -139,7 +139,7 @@ $(function () {
 
 
     //change email
-    $('#email_tuyen_dung').on('focusout',function () {
+    $('#email').on('focusout',function () {
         let _this = $(this);
         let data = {
             email_nha_tuyen_dung : $(this).val()
@@ -179,7 +179,7 @@ $(document).on('click','.save-profile',function () {
         let data = {
 
             ho_ten_nhatuyendung : $('#ho_ten').val(),
-            email_nhatuyendung : $('#email_tuyen_dung').val(),
+            email_nhatuyendung : $('#email').val(),
             gioi_tinh_nhatuyendung : $('#gioi_tinh_tuyen_dung').val(),
             dia_chi_nhatuyendung : $('#dia_chi').val(),
             ngay_sinh_nhatuyendung : $('#ngay_sinh_tuyen_dung').val(),

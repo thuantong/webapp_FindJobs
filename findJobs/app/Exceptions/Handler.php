@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\URL;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -53,14 +54,18 @@ class Handler extends ExceptionHandler
         if ($this->isHttpException($exception)) {
 
             $statusCode = $exception->getStatusCode();
-
+            $data['code'] = $statusCode;
+            $data['title'] = 'Rất tiếc… không thể truy cập trang này';
+//            dd($statusCode);
             switch ($statusCode) {
 
                 case '404':
-//                    return response()->view('layouts/index', [
-//                        'content' => view('errors/404')
-//                    ]);
-                    return response()->view('Error.404NotFound');
+//                    $data['message'] = $request->path() URL;
+                    $data['message'] = 'Không tìm thấy trang: '.URL::asset($request->path());
+                    return response()->view('Error.404NotFound',compact('data'));
+                case '401':
+                    $data['message'] = '- Tài khoản của bạn không có quyền để truy cập đường dẫn: '.URL::asset($request->path());
+                    return response()->view('Error.404NotFound',compact('data'));
             }
         }
         return parent::render($request, $exception);

@@ -254,7 +254,7 @@
             // console.log('con cac ne',e)
             if (e != null){
                 if (parseInt(loaiTaiKhoan) == 1){
-                    if (e.bai_da_thich.data.includes(e.id) == true){
+                    if (e.bai_da_luu.data.includes(e.id) == true){
                         $('#trang-chu-like-post').removeClass('btn-outline-primary');
                         $('#trang-chu-like-post').addClass('btn-primary');
                         $('#trang-chu-like-post').addClass('like-animation');
@@ -288,7 +288,7 @@
                 idBaiTuyenDung = $('.tieu-de-chi-tiet').data('id');
                 //lượt thích
                 // total_thich
-                $('.tong-luot-thich').text(e.bai_da_thich.total);
+                $('.tong-luot-thich').text(e.bai_da_luu.total);
                 $('.tong-ung-tuyen').text(e.don_xin_viec.total);
                 //end
 
@@ -401,6 +401,7 @@
                     };
                     sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'')
                         .done(e=>{
+                            console.log(e)
                             $('.tong-luot-thich').text(e.total_thich);
                         });
                 } else if (__this.hasClass('btn-primary') == true) {
@@ -418,6 +419,7 @@
                     };
                     sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'')
                         .done(e=>{
+                            console.log(e)
                             $('.tong-luot-thich').text(e.total_thich);
                         });
 

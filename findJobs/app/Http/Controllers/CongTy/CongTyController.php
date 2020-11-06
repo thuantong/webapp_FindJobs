@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CongTy;
 use App\Models\NganhNghe;
 use App\Models\NhaTuyenDung;
+use App\Models\QuyMoNhanSu;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class CongTyController extends Controller
     public function __construct()
     {
 
-        $this->middleware('auth');
+        $this->middleware(['auth','email.confirm']);
         $this->middleware(function ($request, $next) {
             $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
 
@@ -37,8 +38,10 @@ class CongTyController extends Controller
     public function index()
     {
 
-        $data['nganh_nghe'] = NganhNghe::all();
+        $data['nganh_nghe'] = NganhNghe::all()->toArray();
+        $data['quy_mo_nhan_su'] = QuyMoNhanSu::all()->toArray();
 //        dd(\GuzzleHttp\json_decode());
+//        dd($data);
         return view('CongTy.index', compact('data'));
     }
 

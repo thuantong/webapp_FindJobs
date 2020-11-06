@@ -5,11 +5,25 @@ namespace App\Http\Controllers\TheCao;
 use App\Http\Controllers\Controller;
 use App\Models\LoaiThe;
 use App\Models\NapThe;
+use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class TheCaoController extends Controller
 {
+    public function __construct()
+    {
+//        $this->middleware(function ($request, $next){
+//            if (Session::get('loai_tai_khoan') == 3){
+//                abort(401);
+//            }
+//            return $next($request);
+//        });
+        $this->middleware(['auth','admin','email.confirm']);
+    }
+
     public function index()
     {
         $data['loai_the'] = LoaiThe::all();

@@ -27,6 +27,7 @@ class TaiKhoan extends Authenticatable
         'password',
         'phone',
         'status',
+        'email_verify_code'
     ];
 
     /**
@@ -35,7 +36,7 @@ class TaiKhoan extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','email_verify_code'
+        'password', 'remember_token',
     ];
 
     /**

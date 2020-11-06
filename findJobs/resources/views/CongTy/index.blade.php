@@ -104,7 +104,7 @@
 
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
     <script>
-        let datatable_table = '';
+        let datatable_table = null;
 
         const getDanhSachCongTy = () => {
             let ajaxDSCongTy = {
@@ -321,9 +321,17 @@
         });
 
         $(document).on('click','.xoa-cong-ty',function () {
-            alertConfirm('Xóa').then(e =>{
+            // table.row(this).data();
+            let __this_parent = $(this).parents('tr');
+            let __this__data = datatable_table.row(__this_parent).data();
+            // console.log(__this__data)
+            let dataConfirm = {
+                title: 'Xóa công ty',
+                message: 'Bạn muốn xóa công ty '+__this__data.name+'?'
+            }
+            alertConfirm(dataConfirm).then(e =>{
                 if(e.value == true){
-                    sendAjaxNoFunc('post','/danh-sach-cong-ty/xoa',{id:$(this).data('id')},'').done(e=>{
+                    sendAjaxNoFunc('post','/danh-sach-cong-ty/xoa',{id:__this__data.id},'').done(e=>{
                         getHtmlResponse(e);
                         if(e.status == 200){
                             datatable_table.ajax.reload(null, false);

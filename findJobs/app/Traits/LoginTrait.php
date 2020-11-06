@@ -11,7 +11,7 @@ trait LoginTrait{
     }
     public function username()
     {
-        return 'email';
+        return 'user_name';
     }
 
     protected function credentials(Request $request)
