@@ -116,5 +116,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="doan(5-8)" />
     <orderEntry type="module" module-name="banhang" />
+    <orderEntry type="module" module-name="GK" />
   </component>
 </module>

@@ -28,7 +28,7 @@ Route::namespace('Auth')->group(function (){
 
     });
 });
-
+//Trang chủ
 Route::namespace('TrangChu')->group(function () {
     Route::name('trangchu.')->group(function () {
         Route::resource('/', 'TrangChuController');
@@ -76,11 +76,11 @@ Route::namespace('TaiKhoan')->group(function (){
 });
 Route::namespace('BaiViet')->group(function (){
     Route::name('baiviet.')->group(function (){
-        Route::get('/dang-bai-viet','BaiVietController@index')->name('index');
+        Route::get('/dang-bai-viet','BaiVietController@index')->name('index')->middleware(['auth','email.confirm']);
         Route::get('/tin-tuyen-dung', 'BaiVietController@layTatCaBaiViet');
         Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=1','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet')->middleware(['auth','email.confirm']);
-        Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=0','BaiVietController@getThongTinBaiVietClick')->name('getThongTinBaiViet');
+        Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=0','BaiVietController@getThongTinBaiVietClick')->name('getThongTinBaiVietClick');
         Route::post('/bai-viet/like','BaiVietController@likePost')->name('likePost')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/tim-kiem','BaiVietController@timKiemBaiViet')->name('timKiemBaiViet');
@@ -188,6 +188,13 @@ Route::namespace('NguoiTimViec')->group(function (){
         Route::get('/nguoi-tim-viet/get-danh-sach-bai-luu','LuuBaiController@getDanhSachBaiLuu')->name('getDanhSachBaiLuu');
     });
 });
+
+Route::namespace('BaoCao')->group(function (){
+    Route::name('baocao.')->group(function (){
+        Route::post('/bao-cao-nha-tuyen-dung','BaoCaoController@setBaoCao')->name('index');
+    });
+});
+
 Route::namespace('Mail')->group(function (){
     Route::name('mail.')->group(function (){
         Route::get('/thong-bao-xac-thuc-tai-khoan','MailController@xacThucTaiKhoan')->name('xacThucTaiKhoan');

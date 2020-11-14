@@ -11,6 +11,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
 
 class TrangChuController extends Controller
 {
@@ -24,7 +25,10 @@ class TrangChuController extends Controller
 //        if (Auth::user()->loai == 3){
 //            dd('trang admin');
 //        }
-        return view('TrangChu.index');
+        $data = $this->getBaiTuyenDung();
+//        dd($data);
+//        dd(Session::has('loai_tai_khoan'));
+        return view('TrangChu.index',compact('data'));
     }
     public function searchInput(Request $request){
         return view('TrangChu.items');
@@ -89,8 +93,8 @@ class TrangChuController extends Controller
         }
     }
 
-    public function getBaiTuyenDung(Request $request){
-        $page = $request->get('page');
+    public function getBaiTuyenDung(){
+//        $page = $request->get('page');
 //        $baiTuyenDung = BaiTuyenDung::query()->with('getCongTy','getDiaDiem')->paginate(1,'*','page',$page);
         $baiTuyenDung = BaiTuyenDung::query()->select(['bai_tuyen_dung.*','tai_khoan.ho_ten','don_hang.so_luong as so_ngay_bai_dang','dia_diem.name as dia_diem','cong_ty.name as cong_ty_name','cong_ty.logo as cong_ty_logo'])
             ->leftJoin('duyet_bai','bai_tuyen_dung.id','=','duyet_bai.bai_dang_id')
@@ -102,7 +106,9 @@ class TrangChuController extends Controller
             ->where('bai_tuyen_dung.status',1)
             ->orderBy('isHot','desc')
             ->orderBy('bai_tuyen_dung.created_at','desc')
-            ->paginate(10,'*','page',$page);
+//            ->paginate(10,'*','page',$page);
+            ->paginate(5);
+
 
         $data['bai_tuyen_dung'] = $baiTuyenDung;
         $data['trang_hien_tai'] = $baiTuyenDung->currentPage();
@@ -110,8 +116,8 @@ class TrangChuController extends Controller
 
 //        $data['bai_thich'] = BaiTuyenDung::with('getBaiThich')->get()->toArray();
 //        dd($data['bai_thich'][0]['get_bai_thich']);
-//        return $data;
-        return view('TrangChu.items',compact('data'));
+        return $data;
+//        return view('TrangChu.items',compact('data'));
 //        return $baiTuyenDung;
     }
 //    public function logout(){

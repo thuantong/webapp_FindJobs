@@ -80,7 +80,7 @@
                     <li class="menu-title">{{__('Quản lý tuyển dụng')}}</li>
 
                     <li>
-                        <a href="javascript: void(0);" class="waves-effect">
+                        <a href="{{route('quanlybaidang.index')}}" class="waves-effect">
                             <i class="fa fa-list-alt"></i>
                             <span>{{__('Quản lý bài đăng')}}</span>
                         </a>

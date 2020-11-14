@@ -6,16 +6,19 @@
         <!-- ION Slider -->
         <link href="{{URL::asset('assets\libs\ion-rangeslider\ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
         {{--        <link href="assets\libs\bootstrap-select\bootstrap-select.min.css" rel="stylesheet" type="text/css">--}}
-        <link href="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet">
+        <link href="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
+              rel="stylesheet">
         <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
 
         {{--        date picker--}}
-        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
+              type="text/css">
     </head>
     {{--                    <!-- start page title -->//header--}}
     @include('User.modal.capNhatExp')
     @include('User.modal.capNhatProject')
     @include('NopDon.modal.master')
+    @include('BaoCao.modalBaoCao')
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -32,12 +35,16 @@
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
             <div class="card overflow-auto-scroll">
                 <div class="card-body" id="container-items">
-                    <div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">
-                            Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
-                        </button></div>
-                    {{--                    <div class="processing-input d-none">Đang tìm kiếm...</div>--}}
-
+                    @include('TrangChu.items')
+{{--                    <div class="processing-input text-center">--}}
+{{--                        <button class="btn btn-white" type="button" disabled="">--}}
+{{--                            Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status"--}}
+{{--                                           aria-hidden="true"></span>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+                    {{$data['bai_tuyen_dung']->links()}}
                 </div>
+
             </div>
         </div>
         <div class="d-none d-md-block col-md-6 col-xl-6">
@@ -47,7 +54,9 @@
                         <div class="row text-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h4 class="m-0 tieu_de bg-light p-1 tieu-de-chi-tiet">Đang tải...</h4>
-                                <label class="float-left">Công ty: <span class="cong_ty">Đang tải...</span></label><label class="float-right">Nhà tuyển dụng: <span class="name_nguoi_dang">Đang tải...</span></label>
+                                <label class="float-left">Công ty: <span
+                                        class="cong_ty">Đang tải...</span></label><label class="float-right">Nhà tuyển
+                                    dụng: <span class="name_nguoi_dang">Đang tải...</span></label>
                             </div>
 
                         </div>
@@ -164,8 +173,8 @@
                                         <span>Mức lương:</span>
                                         <p class="mb-0">
                                             @if(Auth::user() != null)
-                                            <label class="muc_luong">Đang tải...</label>
-                                                @else
+                                                <label class="muc_luong">Đang tải...</label>
+                                            @else
                                                 <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a>
 
                                             @endif
@@ -177,7 +186,8 @@
                         <div class="row pt-1 pb-0">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
                                 <a class="btn btn-success float-left" id="xem-chi-tiet-rut-gon">Xem chi tiết</a>
-                                <button class="btn btn-outline-primary float-right"><i class="fa fa-exclamation"></i> Báo cáo
+                                <button class="btn btn-outline-primary float-right bao-cao-button-call"><i class="fa fa-exclamation">Báo cáo</i>
+
                                 </button>
                             </div>
 
@@ -185,42 +195,44 @@
 
                     </div>
                     @if(intval(Session::get('loai_tai_khoan')) == 1)
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
-                        <div class="row center-element">
-                            <small class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
-                                Thích: <small class="tong-luot-thich">100</small>
-                            </small>
-                            <small class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
-                                Ứng tuyển: <small class="tong-ung-tuyen">100</small>
-                            </small>
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
+                            <div class="row center-element">
+                                <small class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-left">
+                                    Thích: <small class="tong-luot-thich">100</small>
+                                </small>
+                                <small class="col-sm-6 col-md-6 col-lg-6 col-xl-6 text-right">
+                                    Ứng tuyển: <small class="tong-ung-tuyen">100</small>
+                                </small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
-                        <div class="row center-element text-center">
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <button class="btn btn-outline-primary waves-effect"
-                                        id="trang-chu-like-post">
-                                    <i class="icofont icofont-thumbs-up">Lưu bài</i>
-                                </button>
-                                <button class="btn btn-outline-info"
-                                        title="Chat với nhà tuyển dụng">
-                                    <i class="icofont icofont-ui-text-loading "></i> Chat
-                                </button>
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
+                            <div class="row center-element text-center">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <button class="btn btn-outline-primary waves-effect"
+                                            id="trang-chu-like-post">
+                                        <i class="icofont icofont-thumbs-up">Lưu bài</i>
+                                    </button>
+                                    <button class="btn btn-outline-info"
+                                            title="Chat với nhà tuyển dụng">
+                                        <i class="icofont icofont-ui-text-loading "></i> Chat
+                                    </button>
 
 
-{{--                                <div class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning @endif waves-effect position-relative" @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) id="call-modal-nop-don" @endif><i class="fa fa-send">@if(in_array($data['id'],$data['don_xin_viec']['data'])){{' Đã ứng tuyển'}}@else{{' Nộp đơn'}}@endif</i>--}}
-{{--                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
-{{----}}
-{{--                                </div>--}}
-                                <button class="btn btn-outline-warning waves-effect position-relative call-modal-nop-don"><i class="fa fa-send">{{' Nộp đơn'}}</i>
+                                    {{--                                <div class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning @endif waves-effect position-relative" @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) id="call-modal-nop-don" @endif><i class="fa fa-send">@if(in_array($data['id'],$data['don_xin_viec']['data'])){{' Đã ứng tuyển'}}@else{{' Nộp đơn'}}@endif</i>--}}
+                                    {{--                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
+                                    {{----}}
+                                    {{--                                </div>--}}
+                                    <button
+                                        class="btn btn-outline-warning waves-effect position-relative call-modal-nop-don">
+                                        <i class="fa fa-send">{{' Nộp đơn'}}</i>
 
-                                </button>
+                                    </button>
 
+
+                                </div>
 
                             </div>
-
                         </div>
-                    </div>
 
                 </div>
                 @endif
@@ -238,59 +250,81 @@
     </script>
     <script type="text/javascript">
         let loaiTaiKhoan = '{{Session::get('loai_tai_khoan')}}'
-        let idBaiTuyenDung='';
+        let idBaiTuyenDung = '';
         let currenPage = null;
         let nextPage = null;
         let next_page_check = null;
 
 
-        const getProcessing = () =>{
+        const getProcessing = () => {
             return '<div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">\n' +
                 '                 Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>\n' +
                 '    </button></div>';
         }
 
-        const getThongTinChiTietPost = (e) =>{
-            // console.log('con cac ne',e)
-            if (e != null){
-                if (parseInt(loaiTaiKhoan) == 1){
-                    if (e.bai_da_luu.data.includes(e.id) == true){
-                        $('#trang-chu-like-post').removeClass('btn-outline-primary');
-                        $('#trang-chu-like-post').addClass('btn-primary');
-                        $('#trang-chu-like-post').addClass('like-animation');
-                        $('#trang-chu-like-post').find('i').text(' Đã lưu');
+        const getThongTinChiTietPost = (e) => {
+            console.log('con cac ne',e)
+            if (e != null) {
+                if (parseInt(loaiTaiKhoan) == 1) {
+                    if (e.bai_da_luu.data !== undefined){
+                        if (e.bai_da_luu.data.includes(e.id) == true) {
+                            $('#trang-chu-like-post').removeClass('btn-outline-primary');
+                            $('#trang-chu-like-post').addClass('btn-primary');
+                            $('#trang-chu-like-post').addClass('like-animation');
+                            $('#trang-chu-like-post').find('i').text(' Đã lưu');
 
-                    }else{
-                        $('#trang-chu-like-post').removeClass('btn-primary');
-                        $('#trang-chu-like-post').removeClass('like-animation');
-                        $('#trang-chu-like-post').addClass('btn-outline-primary');
-                        $('#trang-chu-like-post').find('i').text(' Lưu bài');
+                        } else {
+                            $('#trang-chu-like-post').removeClass('btn-primary');
+                            $('#trang-chu-like-post').removeClass('like-animation');
+                            $('#trang-chu-like-post').addClass('btn-outline-primary');
+                            $('#trang-chu-like-post').find('i').text(' Lưu bài');
 
+                        }
                     }
 
-                    if (e.don_xin_viec.data.includes(e.id) == true){
-                        $('.call-modal-nop-don').removeClass('btn-outline-warning');
-                        $('.call-modal-nop-don').addClass('btn-warning');
-                        $('.call-modal-nop-don').addClass('like-animation');
-                        $('.call-modal-nop-don').find('i').text('Đã ứng tuyển');
-                        $('.call-modal-nop-don').removeAttr('id');
+                    if (e.don_xin_viec.data != null){
+                        if (e.don_xin_viec.data.includes(e.id) == true) {
+                            $('.call-modal-nop-don').removeClass('btn-outline-warning');
+                            $('.call-modal-nop-don').addClass('btn-warning');
+                            $('.call-modal-nop-don').addClass('like-animation');
+                            $('.call-modal-nop-don').find('i').text('Đã ứng tuyển');
+                            $('.call-modal-nop-don').removeAttr('id');
 
-                    }else{
-                        $('.call-modal-nop-don').removeClass('btn-warning');
-                        $('.call-modal-nop-don').removeClass('like-animation');
-                        $('.call-modal-nop-don').addClass('btn-outline-warning');
-                        $('.call-modal-nop-don').find('i').text('Nộp đơn');
-                        $('.call-modal-nop-don').attr('id','call-modal-nop-don');
+                        } else {
+                            $('.call-modal-nop-don').removeClass('btn-warning');
+                            $('.call-modal-nop-don').removeClass('like-animation');
+                            $('.call-modal-nop-don').addClass('btn-outline-warning');
+                            $('.call-modal-nop-don').find('i').text('Nộp đơn');
+                            $('.call-modal-nop-don').attr('id', 'call-modal-nop-don');
+                        }
                     }
+
                 }
 
-                $('.tieu-de-chi-tiet').data('id',e.id);
+                $('.tieu-de-chi-tiet').data('id', e.id);
                 idBaiTuyenDung = $('.tieu-de-chi-tiet').data('id');
                 //lượt thích
                 // total_thich
                 $('.tong-luot-thich').text(e.bai_da_luu.total);
                 $('.tong-ung-tuyen').text(e.don_xin_viec.total);
                 //end
+                // console.log(e.nha_tuyen_dung_da_bao_cao.data,e.nha_tuyen_dung_id,e.nha_tuyen_dung_da_bao_cao.data.includes(parseInt(e.nha_tuyen_dung_id)))
+                if (e.nha_tuyen_dung_da_bao_cao.data !== undefined){
+                    if (e.nha_tuyen_dung_da_bao_cao.data.includes(parseInt(e.nha_tuyen_dung_id)) == true){
+                        $('.bao-cao-button-call').removeClass('btn-outline-primary');
+                        $('.bao-cao-button-call').addClass('btn-primary');
+                        $('.bao-cao-button-call').addClass('like-animation');
+                        $('.bao-cao-button-call').find('i').text(' Đã báo cáo');
+                        $('.bao-cao-button-call').removeAttr('id');
+                    }else{
+                        $('.call-modal-nop-don').removeClass('btn-primary');
+                        $('.call-modal-nop-don').removeClass('like-animation');
+                        $('.call-modal-nop-don').addClass('btn-outline-primary');
+                        $('.call-modal-nop-don').find('i').text(' Báo cáo');
+                        $('.bao-cao-button-call').data('id',e.nha_tuyen_dung_id).attr('id','bao-cao-button-call');
+                    }
+                }
+
 
                 $('.tieu-de-chi-tiet').text(e.tieu_de);
                 $('.cong_ty').text(e.get_cong_ty.name);
@@ -300,7 +334,7 @@
                 $('.kinh_nghiem').text(e.get_kinh_nghiem.name);
                 $('.kieu_lam_viec').text(e.get_kieu_lam_viec.name);
                 $('.yc_bang_cap').text(e.get_bang_cap.name);
-                let gioi_tinh ='';
+                let gioi_tinh = '';
                 switch (parseInt(e.gioi_tinh_tuyen)) {
                     case 1:
                         gioi_tinh = 'Nam';
@@ -325,10 +359,10 @@
                 $('.nganh_nghe').text(array_nganh_nghe.join(' - '));
                 $('.muc_luong').text(e.luong.join(' - ') + ' Triệu');
 
-{{--                href="{{route('baiviet.getThongTinBaiViet',[$row['id']])}}--}}
-                $('#xem-chi-tiet-rut-gon').attr('href','/bai-viet/thong-tin&baiviet='+e.id+'&chitiet=1');
-                $('#xem-chi-tiet-rut-gon').attr('target','_blank');
-            }else if (e == null){
+                {{--                href="{{route('baiviet.getThongTinBaiViet',[$row['id']])}}--}}
+                $('#xem-chi-tiet-rut-gon').attr('href', '/bai-viet/thong-tin&baiviet=' + e.id + '&chitiet=1');
+                $('#xem-chi-tiet-rut-gon').attr('target', '_blank');
+            } else if (e == null) {
                 // init animation like
                 $('#trang-chu-like-post').removeClass('btn-primary');
                 $('#trang-chu-like-post').removeClass('like-animation');
@@ -359,28 +393,76 @@
             }
 
         };
-        $(document).on('click','#call-modal-nop-don',function () {
-            sendAjaxNoFunc('get','/bai-viet/get-view-nop-don',{id:idBaiTuyenDung},'').done(e=>{
+        $(document).on('click', '#call-modal-nop-don', function () {
+            sendAjaxNoFunc('get', '/bai-viet/get-view-nop-don', {id: idBaiTuyenDung}, '').done(e => {
                 $('#modal-nop-don .modal-content').html(e);
                 $('#modal-nop-don').modal('show')
             })
 
         });
-//main
-        $(function () {
-            let ajaxBaiViet = {
-                method:'get',
-                url :"/tin-tuyen-dung",
-                data : {
-                    getTin : 1,
-                    page : 1
-                }
-            }
-            //init lấy danh sách việc làm | lấy page 1
-            getItemsDefaults($('#container-items'), ajaxBaiViet.data.page,ajaxBaiViet);
-            //end init
+        let widthImage = $('#container-items .iteam-click').find('img').parent().width();
+        let heightImage = widthImage;
 
-            $('#container-items .iteam-click').eq(0).click();
+
+        const getDataThongTinBaiViet = (element) => {
+
+            let __this = element;
+            let ajax = {
+                method: 'get',
+                url: '/bai-viet/thong-tin&baiviet=' + __this.data('id') + '&chitiet=0',
+                data: {}
+            };
+            // console.log('checked',__this.hasClass('iteam-click-focus'))
+            // __this.Class('iteam-click-active');
+            if (__this.hasClass('iteam-click-focus') == true) {
+                if (__this.hasClass('iteam-click-active') == false) {
+                    getThongTinChiTietPost(null);
+
+                    sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '').done(r => {
+                        // console.log('thongtin', r);
+                        getThongTinChiTietPost(r);
+                        __this.addClass('iteam-click-active')
+                    });
+                }
+
+            }
+        }
+
+
+    </script>
+
+    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
+
+
+
+    {{--date picker--}}
+    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+    <script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
+
+
+    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-bao-cao.js')}}"></script>
+    <script type="text/javascript">
+        //main
+        $(function () {
+            $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
+            // let ajaxBaiViet = {
+            //     method:'get',
+            //     url :"/tin-tuyen-dung",
+            //     data : {
+            //         getTin : 1,
+            //         page : 1
+            //     }
+            // }
+            // //init lấy danh sách việc làm | lấy page 1
+            // getItemsDefaults($('#container-items'), ajaxBaiViet.data.page,ajaxBaiViet);
+            // //end init
+            setTimeout(function () {
+                $('#container-items .iteam-click').eq(0).trigger('click');
+            },500)
 
 //like || quan tâm bài viết
             $('#trang-chu-like-post').on('click', function () {
@@ -392,15 +474,15 @@
                     __this.addClass('like-animation');
                     __this.find('i').text('Đã lưu')
                     let ajax = {
-                        method:'post',
-                        url : '/bai-viet/like',
-                        data :{
-                            id :idPost,
-                            thich : 1
+                        method: 'post',
+                        url: '/bai-viet/like',
+                        data: {
+                            id: idPost,
+                            thich: 1
                         }
                     };
-                    sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'')
-                        .done(e=>{
+                    sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '')
+                        .done(e => {
                             console.log(e)
                             $('.tong-luot-thich').text(e.total_thich);
                         });
@@ -410,15 +492,15 @@
                     __this.addClass('btn-outline-primary');
                     __this.find('i').text('Lưu bài')
                     let ajax = {
-                        method:'post',
-                        url : '/bai-viet/like',
-                        data :{
-                            id :idPost,
-                            thich : 0
+                        method: 'post',
+                        url: '/bai-viet/like',
+                        data: {
+                            id: idPost,
+                            thich: 0
                         }
                     };
-                    sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'')
-                        .done(e=>{
+                    sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '')
+                        .done(e => {
                             console.log(e)
                             $('.tong-luot-thich').text(e.total_thich);
                         });
@@ -429,8 +511,8 @@
 
             //resize post
             $(window).resize(function () {
-                let widthImage = $('#container-items .iteam-click').find('img').parent().width();
-                let heightImage = widthImage;
+                widthImage = $('#container-items .iteam-click').find('img').parent().width();
+                heightImage = widthImage;
                 $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
 
             });
@@ -459,12 +541,12 @@
             // });
 
 
-            $(document).on('click','#container-items .iteam-click', function () {
+            $(document).on('click', '#container-items .iteam-click', function () {
                 // console.log($(this).height());
                 let __this = $(this);
-                let haflHeight = parseFloat(__this.height())*0.4;
-                __this.find('.arrow-item').css('top',haflHeight+'px');
-                if($(document).width() >= 576){
+                let haflHeight = parseFloat(__this.height()) * 0.4;
+                __this.find('.arrow-item').css('top', haflHeight + 'px');
+                if ($(document).width() >= 576) {
                     $('#container-items .iteam-click').removeClass('iteam-click-focus');
 
                     $('#container-items .iteam-click').not(__this).removeClass('iteam-click-active');
@@ -472,7 +554,7 @@
                     $('.arrow-item').addClass('d-none');
                     __this.find('.arrow-item').removeClass('d-none');
                     getDataThongTinBaiViet(__this);
-                }else if($(document).width() < 576){
+                } else if ($(document).width() < 576) {
                     $('.arrow-item').addClass('d-none');
                 }
             });
@@ -493,56 +575,16 @@
             // });
 
         });
-
-        const getDataThongTinBaiViet = (element) =>{
-
-            let __this = element;
-            let ajax ={
-                method:'get',
-                url:'/bai-viet/thong-tin&baiviet='+__this.data('id')+'&chitiet=0',
-                data:{
-
-                }
-            };
-            // console.log('checked',__this.hasClass('iteam-click-focus'))
-            // __this.Class('iteam-click-active');
-            if (__this.hasClass('iteam-click-focus') == true){
-                if (__this.hasClass('iteam-click-active') == false){
-                    getThongTinChiTietPost(null);
-
-                    sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(r =>{
-                        console.log('thongtin',r);
-                        getThongTinChiTietPost(r);
-                        __this.addClass('iteam-click-active')
-                    });
-                }
-
-            }
-        }
     </script>
-
-    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
-
-
-
-    {{--date picker--}}
-    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
-    <script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
-
-
-    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
     <!-- Plugins js-->
-{{--    <script src="{{URL::asset('assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>--}}
+    {{--    <script src="{{URL::asset('assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>--}}
 
-{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>--}}
-{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>--}}
 
 
     <!-- Init js-->
-{{--    <script src="{{URL::asset('assets\js\pages\form-wizard.init.js')}}"></script>--}}
-{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>--}}
+    {{--    <script src="{{URL::asset('assets\js\pages\form-wizard.init.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>--}}
 
 @endpush

@@ -1,17 +1,5 @@
 $(function () {
-    // let ajax = {
-    //     method:'get',
-    //     url:'/quan-ly-tuyen-dung/quan-ly-bai-dang/get-danh-sach'
-    // };
-    // datatableAjax($('#quan-ly-bai-dang'),ajax)
-    getDanhSach();
-    // $.ajax({
-    //     method : 'get',
-    //     url:'/quan-ly-tuyen-dung/quan-ly-bai-dang/get-danh-sach',
-    //     success : function (e) {
-    //         console.log(e)
-    //     }
-    // })
+    table = getDanhSach();
 });
 
 const getDanhSach = () => {
@@ -22,7 +10,7 @@ const getDanhSach = () => {
     let column = [
         {
             render: function (api, rowIdx, columns, meta) {
-                return meta.row;
+                return meta.row + 1;
             }
         },
         {
@@ -54,9 +42,23 @@ const getDanhSach = () => {
                 }
                 // return columns.status;
             }
-        }, {
+        },
+        {
             render: function (api, rowIdx, columns, meta) {
-                return columns.tieu_de;
+                let classHide = '';
+                switch (parseInt(columns.status)) {
+                    case 0:
+                        classHide = 'd-none';
+                        break;
+                    case 1:
+                        classHide = 'd-block';
+                        break;
+                }
+
+                return '<div class="d-flex center-element" data-id="' + columns.id + '">' +
+                    '<a class="waves-effect text-primary mr-1 xem_noi_dung" style="text-decoration: underline" target="_blank" href="/bai-viet/thong-tin&baiviet='+columns.id+'&chitiet=1">Xem Nội dung</a>' +
+                    '<button class="btn btn-sm btn-primary waves-effect chinh_sua ' + classHide + '">Chỉnh sửa</button>' +
+                    '</div>';
             }
         },
 

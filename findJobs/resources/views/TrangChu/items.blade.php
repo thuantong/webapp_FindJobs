@@ -34,10 +34,11 @@
         <div class="arrow-item d-none"></div>
     </div>
     @endforeach
+
 @endif
-    <div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">
-                 Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
-    </button></div>
+{{--    <div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">--}}
+{{--                 Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>--}}
+{{--    </button></div>--}}
 
 
 @push('scripts')
@@ -50,7 +51,7 @@
         $(window).resize(function () {
             widthImage_search = $('.left-search-content .iteam-click').find('img').parent().width();
             heightImage_search = widthImage_search;
-            console.log($('.iteam-click').find('img').parent().width());
+            // console.log($('.iteam-click').find('img').parent().width());
             $('.left-search-content .iteam-click').find('img').css('width', widthImage_search).css('height', heightImage_search);
 
         });

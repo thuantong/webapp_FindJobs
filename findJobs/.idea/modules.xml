@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://C:/xampp/htdocs/GK/.idea/GK.iml" filepath="C:/xampp/htdocs/GK/.idea/GK.iml" />
       <module fileurl="file://C:/xampp/htdocs/banhang/.idea/banhang.iml" filepath="C:/xampp/htdocs/banhang/.idea/banhang.iml" />
       <module fileurl="file://C:/xampp/htdocs/doan(5-8)/.idea/doan(5-8).iml" filepath="C:/xampp/htdocs/doan(5-8)/.idea/doan(5-8).iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/findJobs.iml" filepath="$PROJECT_DIR$/.idea/findJobs.iml" />

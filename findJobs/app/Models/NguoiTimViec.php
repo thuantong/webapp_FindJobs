@@ -80,4 +80,8 @@ class NguoiTimViec extends Model
     public function getLuuBai(){
         return $this->belongsToMany(BaiTuyenDung::class,'luu_bai','nguoi_tim_viec_id','bai_tuyen_dung_id');
     }
+    public function getBaoCao(){
+        return $this->belongsToMany(NhaTuyenDung::class,'bao_cao','nguoi_tim_viec_id','nha_tuyen_dung_id');
+
+    }
 }

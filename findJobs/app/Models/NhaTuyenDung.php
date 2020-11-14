@@ -95,5 +95,9 @@ class NhaTuyenDung extends Model
     public function getDonHang(){
         return $this->hasMany(DonHang::class,'nha_tuyen_dung_id');
     }
+    public function getBaoCao(){
+        return $this->belongsToMany(NguoiTimViec::class,'bao_cao','nha_tuyen_dung_id','nguoi_tim_viec_id');
+
+    }
 
 }

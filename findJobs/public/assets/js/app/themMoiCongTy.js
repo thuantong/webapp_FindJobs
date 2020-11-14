@@ -218,12 +218,12 @@ $(document).on('click', '#them-moi-cong-ty #save-cong-ty', function () {
                 // $('#' + __this.attr('id')).attr('disabled', 'disabled');
                 if (getParents.data('type') == 'cong_ty_tuyen_dung') {
                     // alert('select')
-                    sendAjaxNoFunc('get', '/danh-sach-cong-ty/data', {}, __this.attr('id')).done(e => {
+                    sendAjaxNoFunc('get', '/danh-sach-cong-ty/data', {}, __this.attr('id')).done(async e => {
                         const data = e.data;
                         let checked = null;
                         let count = 0;
-                        $('#' + getParents.data('type')).find('option').not(':first').remove();
-                        $.each(data, function (i, v) {
+                        await $('#' + getParents.data('type')).find('option').not(':first').remove();
+                        await $.each(data, function (i, v) {
                             switch (i) {
                                 case 0:
                                     checked = 'selected';
@@ -233,10 +233,10 @@ $(document).on('click', '#them-moi-cong-ty #save-cong-ty', function () {
                                     break;
                             }
 
-                            $('#' + getParents.data('type')).append('<option value="' + v.id + '" ' + checked + ' data-img="' + v.logo + '">' + v.name + '</option>');
-
+                            $('#' + getParents.data('type')).append('<option value="' + v.id + '" ' + checked + ' data-img="'+ getBaseURL + v.logo + '">' + v.name + '</option>');
+                            // getHTMLcongTy();
                         });
-
+                        // getHTMLcongTy();
                     });
                 } else {
                     // console.log('ccc',$('body').find('#danh-sach-cong-ty').length)

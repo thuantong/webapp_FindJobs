@@ -32,22 +32,24 @@ use Cknow\Money\Money;
 class
 BaiVietController extends Controller
 {
-    private $nhaTuyenDung;
-    private $tienDangTin;
-    private $hangMucThanhToan;
-    private $baiViet;
+    protected $nhaTuyenDung;
+    protected $tienDangTin;
+    protected $hangMucThanhToan;
+    protected $baiViet;
 
     public function __construct()
     {
 //        $this->middleware(['auth','email.confirm']);
-        if (Auth::user() != null){
-            $this->middleware(function ($request, $next) {
-                $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
-                $this->hangMucThanhToan = HangMucThanhToan::query()->find('1');//đăng bài viết
-                $this->tienDangTin = $this->hangMucThanhToan->first()->gia;//1 xu 1 ngày
-                return $next($request);
-            });
-        }
+//        dd(Auth::check());
+//        if (Auth::user() != null) {
+//        $this->middleware(function ($request, $next) {
+//                $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
+//                $this->hangMucThanhToan = HangMucThanhToan::query()->find('1');//đăng bài viết
+//                $this->tienDangTin = $this->hangMucThanhToan->first()->gia;//1 xu 1 ngày
+//                return $next($request);
+//
+//        });
+//        }
 
 
     }
@@ -62,6 +64,11 @@ BaiVietController extends Controller
         return $this->nhaTuyenDung->getSoDu;
     }
 
+    public function khoiTaoThongTin(){
+        $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
+        $this->hangMucThanhToan = HangMucThanhToan::query()->find('1');//đăng bài viết
+        $this->tienDangTin = $this->hangMucThanhToan->first()->gia;//1 xu 1 ngày
+    }
     /**
      * Form Chức năng đăng bài viết
      * @return view: BaiViet.index
@@ -72,6 +79,8 @@ BaiVietController extends Controller
         if ($checkSoDu['status'] == 400) {
             return view('SoDu.index', compact('checkSoDu'));
         }
+
+        $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
 
         $data['kinh_nghiem'] = KinhNghiem::query()->orderBy('id', 'asc')->get();
         $data['nganh_nghe'] = NganhNghe::query()->orderBy('name', 'asc')->get();
@@ -92,6 +101,7 @@ BaiVietController extends Controller
     {
 //        $nhaTuyenDung = NhaTuyenDung::query()->find(Auth::user()->id);
 //        return $request;
+        $this->khoiTaoThongTin();
         $title = "Thêm mới";
         try {
             $baiViet = new BaiTuyenDung();
@@ -128,14 +138,18 @@ BaiVietController extends Controller
             $this->nhaTuyenDung->getBaiViet()->save($baiViet);
 
             $this->baiViet = $baiViet;
-            $this->baiViet->getNganhNghe()->attach($nganh_nghe);
+            $baiViet->getNganhNghe()->attach($nganh_nghe);
 
+//            $duyetTin = new DuyetBai();
+//            $duyetTin->status = 0;//chưa đọc
+//            $this->baiViet->getDuyetTin()->save($duyetTin);
             $this->luuVaoDuyetTin($this->baiViet);
-            $this->ghiHoaDon($this->tienDangTin * $request->so_ngay_ton_tai, $request->so_ngay_ton_tai);
+            $tongTienLuuTin = floatval($this->tienDangTin) * floatval($request->so_ngay_ton_tai);
+            $this->ghiHoaDon($baiViet,$tongTienLuuTin, $request->so_ngay_ton_tai);
 //        $baiViet->yeu_cau_ho_so = $request->;
-//        $baiViet->ky_nang_basic = $request->;
-//        $baiViet->status = $request->;
-//        $baiViet->isHot = $request->;
+////        $baiViet->ky_nang_basic = $request->;
+////        $baiViet->status = $request->;
+////        $baiViet->isHot = $request->;
             return $this->getResponse($title, 200, 'Thêm mới bài viết thành công!');
 
         } catch (\Exception $e) {
@@ -191,7 +205,7 @@ BaiVietController extends Controller
      * @param $soNgayDangTin
      * @return array
      */
-    public function ghiHoaDon($tienDangTin, $soNgayDangTin)
+    public function ghiHoaDon($baiViet,$tienDangTin, $soNgayDangTin)
     {
         try {
             $donHang = new DonHang();
@@ -199,7 +213,7 @@ BaiVietController extends Controller
             $donHang->tong_tien = $tienDangTin;
             $this->hangMucThanhToan->getDonHang()->save($donHang);
             $this->nhaTuyenDung->getDonHang()->save($donHang);
-            $this->baiViet->getDonHang()->save($donHang);
+            $baiViet->getDonHang()->save($donHang);
         } catch (\Exception $e) {
             return $this->getResponse('Ghi hóa đơn', 400, $e->getMessage());
         }
@@ -211,6 +225,11 @@ BaiVietController extends Controller
         try {
             $duyetTin = new DuyetBai();
             $duyetTin->status = 0;//chưa đọc
+            $duyetTin->isReject = 0;//chưa từ chối
+//            $duyetTin->noi_dung = "";//chưa đọc
+//            $duyetTin->bai_dang_id = $baiVietId;
+//            $duyetTin->save();
+//            $baiViet = BaiTuyenDung::query()->find($baiVietID);
             $baiViet->getDuyetTin()->save($duyetTin);
         } catch (\Exception $e) {
             return $this->getResponse('Lưu duyệt tin', 400, $e->getMessage());
@@ -245,24 +264,27 @@ BaiVietController extends Controller
 
     public function getThongTinBaiViet($post, Request $request)
     {
-//        $data['nop_don_type'] = 0;
         $data = BaiTuyenDung::query()->with('getNhaTuyenDung', 'getNganhNghe', 'getCongTy', 'getChucVu', 'getKieuLamViec', 'getDiaDiem', 'getBangCap', 'getKinhNghiem')->find($post)->toArray();
         $data['get_nha_tuyen_dung']['ho_ten'] = NhaTuyenDung::query()->find($data['get_nha_tuyen_dung']['id'])->getTaiKhoan['ho_ten'];
+        $data['so_luong_ngay_dang_tin'] = DonHang::query()->select('so_luong')->where('bai_tuyen_dung_id',$data['id'])->where('hang_muc_thanh_toan_id',1)->first()->toArray();
         $data['luong'] = unserialize($data['luong']);
         $data['tuoi'] = unserialize($data['tuoi']);
         $data['tieu_de'] = ucwords($data['tieu_de']);
-        if (intval(Session::get('loai_tai_khoan')) == 1) {
-            $data['bai_da_thich']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getBaiThich->pluck('id')->toArray();
-            //lấy nhà tuyern dụng đã quan tâm
-            $data['nha_tuyen_dung_da_quan_tam']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getNhaTuyenDungQuanTam->pluck('id')->toArray();
-            $data['don_xin_viec']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getDonXinViec()->get()->pluck('id')->toArray();
-            $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id', Auth::user()->id)->get()->toArray();
-            $data['nguoi_tim_viec'] = $nguoiTimViec[0];
-            $data['nguoi_tim_viec']['exp_lam_viec'] = unserialize($data['nguoi_tim_viec']['exp_lam_viec']);
-            $data['nguoi_tim_viec']['projects'] = unserialize($data['nguoi_tim_viec']['projects']);
+
+        if (Session::get('loai_tai_khoan') != null){
+            if (intval(Session::get('loai_tai_khoan')) == 1) {
+                $data['bai_da_luu']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getLuuBai->pluck('id')->toArray();
+                //lấy nhà tuyern dụng đã quan tâm
+                $data['nha_tuyen_dung_da_quan_tam']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getNhaTuyenDungQuanTam->pluck('id')->toArray();
+                $data['don_xin_viec']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getDonXinViec()->get()->pluck('id')->toArray();
+                $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id', Auth::user()->id)->get()->toArray();
+                $data['nguoi_tim_viec'] = $nguoiTimViec[0];
+                $data['nguoi_tim_viec']['exp_lam_viec'] = unserialize($data['nguoi_tim_viec']['exp_lam_viec']);
+                $data['nguoi_tim_viec']['projects'] = unserialize($data['nguoi_tim_viec']['projects']);
+            }
         }
 
-        $data['bai_da_thich']['total'] = Thich::query()->where('bai_tuyen_dung_id', $post)->count();
+        $data['bai_da_luu']['total'] = LuuBai::query()->where('bai_tuyen_dung_id', $post)->count();
 
         $data['nha_tuyen_dung_da_quan_tam']['total'] = QuanTam::query()->where('nha_tuyen_dung_id', $data['get_nha_tuyen_dung']['id'])->count();
 
@@ -285,8 +307,9 @@ BaiVietController extends Controller
 //            case 1:
 //                dd($nguoiTimViec);
 //                dd($data);
-                $typeSend = 1;
-                return view('BaiViet.chiTiet', compact('data', 'nguoiTimViec', 'typeSend'));
+
+        $typeSend = 1;
+        return view('BaiViet.chiTiet', compact('data', 'nguoiTimViec', 'typeSend'));
 //        }
 //        return $data;
     }
@@ -299,22 +322,42 @@ BaiVietController extends Controller
      */
     public function getThongTinBaiVietClick($post, Request $request)
     {
-//        $data['nop_don_type'] = 0;
+//                dd(Session::get('loai_tai_khoan'));
+
         $data = BaiTuyenDung::query()->with('getNhaTuyenDung', 'getNganhNghe', 'getCongTy', 'getChucVu', 'getKieuLamViec', 'getDiaDiem', 'getBangCap', 'getKinhNghiem')->find($post)->toArray();
         $data['get_nha_tuyen_dung']['ho_ten'] = NhaTuyenDung::query()->find($data['get_nha_tuyen_dung']['id'])->getTaiKhoan['ho_ten'];
+        $data['so_luong_ngay_dang_tin'] = DonHang::query()->select('so_luong')->where('bai_tuyen_dung_id',$data['id'])->where('hang_muc_thanh_toan_id',1)->first()->toArray();
         $data['luong'] = unserialize($data['luong']);
         $data['tuoi'] = unserialize($data['tuoi']);
         $data['tieu_de'] = ucwords($data['tieu_de']);
-        if (intval(Session::get('loai_tai_khoan')) == 1) {
-            $data['bai_da_luu']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getLuuBai->pluck('id')->toArray();
-            //lấy nhà tuyern dụng đã quan tâm
-            $data['nha_tuyen_dung_da_quan_tam']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getNhaTuyenDungQuanTam->pluck('id')->toArray();
-            $data['don_xin_viec']['data'] = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec->getDonXinViec()->get()->pluck('id')->toArray();
-            $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id', Auth::user()->id)->get()->toArray();
-            $data['nguoi_tim_viec'] = $nguoiTimViec[0];
-            $data['nguoi_tim_viec']['exp_lam_viec'] = unserialize($data['nguoi_tim_viec']['exp_lam_viec']);
-            $data['nguoi_tim_viec']['projects'] = unserialize($data['nguoi_tim_viec']['projects']);
-        }
+//        return Session::get('loai_tai_khoan') != null;
+//        if (Auth::user() != null){
+            if (Session::has('loai_tai_khoan')){
+                if (intval(Session::get('loai_tai_khoan')) == 1) {
+                    $nguoiTimViecTim = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
+                    $data['bai_da_luu']['data'] = $nguoiTimViecTim->getLuuBai->pluck('id')->toArray();
+                    //lấy nhà tuyern dụng đã quan tâm
+                    $data['nha_tuyen_dung_da_quan_tam']['data'] = $nguoiTimViecTim->getNhaTuyenDungQuanTam->pluck('id')->toArray();
+                    $data['don_xin_viec']['data'] = $nguoiTimViecTim->getDonXinViec()->get()->pluck('id')->toArray();
+                    $nguoiTimViec = NguoiTimViec::query()->where('tai_khoan_id', Auth::user()->id)->get()->toArray();
+                    $data['nguoi_tim_viec'] = $nguoiTimViec[0];
+                    $data['nguoi_tim_viec']['exp_lam_viec'] = unserialize($data['nguoi_tim_viec']['exp_lam_viec']);
+                    $data['nguoi_tim_viec']['projects'] = unserialize($data['nguoi_tim_viec']['projects']);
+                    $data['nha_tuyen_dung_da_bao_cao']['data'] = $nguoiTimViecTim->getBaoCao->pluck('id')->toArray();
+                }
+            }else{
+                $data['bai_da_luu']['data'] = array();
+                //lấy nhà tuyern dụng đã quan tâm
+                $data['nha_tuyen_dung_da_quan_tam']['data'] = array();
+                $data['don_xin_viec']['data'] = array();
+//                $nguoiTimViec = array();
+                $data['nguoi_tim_viec'] = array();
+                $data['nguoi_tim_viec']['exp_lam_viec'] = array();
+                $data['nguoi_tim_viec']['projects'] = array();
+                $data['nha_tuyen_dung_da_bao_cao']['data'] = array();
+            }
+//        }
+
 
         $data['bai_da_luu']['total'] = LuuBai::query()->where('bai_tuyen_dung_id', $post)->count();
 
@@ -327,22 +370,13 @@ BaiVietController extends Controller
         $data['get_nha_tuyen_dung']['tai_khoan'] = TaiKhoan::query()->find($data['get_nha_tuyen_dung']['tai_khoan_id'])->toArray();
         $data['don_xin_viec']['total'] = DonXinViec::query()->where('bai_tuyen_dung_id', $post)->count();
 
-
-//        dd($nguoiTimViec);
-//        dd(Auth::user()->id);
-//        dd($nguoiTimViec);
-//        dd($data);
-
         switch (intval($request->get('chitiet'))) {
             case 0:
                 return $data;
             case 1:
-//                dd($nguoiTimViec);
-//                dd($data);
                 $typeSend = 1;
                 return view('BaiViet.chiTiet', compact('data', 'nguoiTimViec', 'typeSend'));
         }
-//        return $data;
     }
 
     /**
@@ -423,9 +457,9 @@ BaiVietController extends Controller
             ->leftJoin('bai_tuyen_dung_nganh_nghe', 'bai_tuyen_dung.id', '=', 'bai_tuyen_dung_nganh_nghe.bai_tuyen_dung_id')
             ->leftJoin('dia_diem', 'bai_tuyen_dung.dia_diem_id', '=', 'dia_diem.id')
             ->leftJoin('cong_ty', 'bai_tuyen_dung.cong_ty_id', '=', 'cong_ty.id')
-            ->where('bai_tuyen_dung.status',1)
-            ->where('bai_tuyen_dung.tieu_de', 'like', '%' . $tieuDe . '%')
-            ->orWhere('bai_tuyen_dung.ten_chuc_vu','like','%'.$tieuDe.'%');
+            ->where('bai_tuyen_dung.status', 1)
+            ->where('bai_tuyen_dung.tieu_de', 'like', '%'. $tieuDe .'%')
+            ->orWhere('bai_tuyen_dung.ten_chuc_vu', 'like', '%' . $tieuDe . '%');
 
         if ($nganhNghe != null) {
             $query->where('bai_tuyen_dung_nganh_nghe.nganh_nghe_id', $nganhNghe);
@@ -435,9 +469,9 @@ BaiVietController extends Controller
         }
         $data['bai_tuyen_dung'] = $query
             ->distinct('bai_tuyen_dung.id')
-            ->orderBy('bai_tuyen_dung.isHot','desc')
-            ->orderBy('bai_tuyen_dung.created_at','desc')
-            ->paginate(10,'*','page',$page);
+            ->orderBy('bai_tuyen_dung.isHot', 'desc')
+            ->orderBy('bai_tuyen_dung.created_at', 'desc')
+            ->paginate(10, '*', 'page', $page);
 
 
         $data['trang_hien_tai'] = $data['bai_tuyen_dung']->currentPage();
@@ -449,27 +483,28 @@ BaiVietController extends Controller
     }
 
     //
-    public function layTatCaBaiViet(Request $request){
-        $query = BaiTuyenDung::query()->select(['bai_tuyen_dung.*','tai_khoan.ho_ten','don_hang.so_luong as so_ngay_bai_dang','dia_diem.name as dia_diem','cong_ty.name as cong_ty_name','cong_ty.logo as cong_ty_logo'])
-            ->leftJoin('duyet_bai','bai_tuyen_dung.id','=','duyet_bai.bai_dang_id')
-            ->leftJoin('nha_tuyen_dung','bai_tuyen_dung.nha_tuyen_dung_id','=','nha_tuyen_dung.id')
-            ->leftJoin('tai_khoan','tai_khoan.id','=','nha_tuyen_dung.tai_khoan_id')
-            ->leftJoin('don_hang','bai_tuyen_dung.id','=','don_hang.bai_tuyen_dung_id')
-            ->leftJoin('dia_diem','bai_tuyen_dung.dia_diem_id','=','dia_diem.id')
-            ->leftJoin('cong_ty','bai_tuyen_dung.cong_ty_id','=','cong_ty.id')
-            ->where('bai_tuyen_dung.status',1)
-            ->orderBy('bai_tuyen_dung.isHot','desc')
-            ->orderBy('bai_tuyen_dung.created_at','desc');
+    public function layTatCaBaiViet(Request $request)
+    {
+        $query = BaiTuyenDung::query()->select(['bai_tuyen_dung.*', 'tai_khoan.ho_ten', 'don_hang.so_luong as so_ngay_bai_dang', 'dia_diem.name as dia_diem', 'cong_ty.name as cong_ty_name', 'cong_ty.logo as cong_ty_logo'])
+            ->leftJoin('duyet_bai', 'bai_tuyen_dung.id', '=', 'duyet_bai.bai_dang_id')
+            ->leftJoin('nha_tuyen_dung', 'bai_tuyen_dung.nha_tuyen_dung_id', '=', 'nha_tuyen_dung.id')
+            ->leftJoin('tai_khoan', 'tai_khoan.id', '=', 'nha_tuyen_dung.tai_khoan_id')
+            ->leftJoin('don_hang', 'bai_tuyen_dung.id', '=', 'don_hang.bai_tuyen_dung_id')
+            ->leftJoin('dia_diem', 'bai_tuyen_dung.dia_diem_id', '=', 'dia_diem.id')
+            ->leftJoin('cong_ty', 'bai_tuyen_dung.cong_ty_id', '=', 'cong_ty.id')
+            ->where('bai_tuyen_dung.status', 1)
+            ->orderBy('bai_tuyen_dung.isHot', 'desc')
+            ->orderBy('bai_tuyen_dung.created_at', 'desc');
 
 //            dd($request->has('getTin'));
         //tìm kiếm
-        if ($request->has('getTin') == false){
+        if ($request->has('getTin') == false) {
             $tieuDe = $request->get('tieu_de');
             $nganhNghe = $request->get('nganh_nghe_id') == null ? null : $request->get('nganh_nghe_id');
             $diaDiem = $request->get('dia_diem_id') == null ? null : $request->get('dia_diem_id');
 
             $query->where('bai_tuyen_dung.tieu_de', 'like', '%' . $tieuDe . '%')
-                ->where('bai_tuyen_dung.ten_chuc_vu','like','%'.$tieuDe.'%');
+                ->where('bai_tuyen_dung.ten_chuc_vu', 'like', '%' . $tieuDe . '%');
             if ($nganhNghe != null) {
                 $query->where('bai_tuyen_dung_nganh_nghe.nganh_nghe_id', $nganhNghe);
             }
@@ -481,9 +516,9 @@ BaiVietController extends Controller
         }
         $page = $request->get('page');
 
-        $data['bai_tuyen_dung'] = $query->distinct('bai_tuyen_dung.id')->paginate(10,'*','page',$page);
-        $data['trang_hien_tai'] =  $data['bai_tuyen_dung']->currentPage();
-        $data['check_trang'] =  $data['bai_tuyen_dung']->nextPageUrl();
+        $data['bai_tuyen_dung'] = $query->distinct('bai_tuyen_dung.id')->paginate(10, '*', 'page', $page);
+        $data['trang_hien_tai'] = $data['bai_tuyen_dung']->currentPage();
+        $data['check_trang'] = $data['bai_tuyen_dung']->nextPageUrl();
 
         return view('TrangChu.items', compact('data'));
 

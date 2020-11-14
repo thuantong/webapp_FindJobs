@@ -77,7 +77,7 @@ class ConfirmEmailController extends Controller
 //            }
 //dd($userID);
             if($taiKhoan != null){
-                if($taiKhoan->email_confirmed != null){
+                if($taiKhoan->email_confirmed == null || $taiKhoan->email_confirmed != $taiKhoan->email){
                     if ($taiKhoan->email_verify_code == null) {
                         switch (intval(Session::get('loai_tai_khoan'))) {
                             case 1:

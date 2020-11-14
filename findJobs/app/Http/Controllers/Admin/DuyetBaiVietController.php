@@ -64,7 +64,8 @@ class DuyetBaiVietController extends Controller
         $baiTuyenDung = BaiTuyenDung::query()->find($id);
         try {
             $baiTuyenDung->status = 1;//accept
-            $baiTuyenDung->save();
+            $baiTuyenDung->han_bai_viet = Carbon::now($this->tzHoChiMinh())->toDateTimeString();
+                $baiTuyenDung->save();
             return $this->getResponse($title,200,'Phê duyệt bài viết '.$baiTuyenDung->tieu_de.' Thành công!');
         }catch (\Exception $e){
             return $this->getResponse($title,400,'Phê duyệt bài viết '.$baiTuyenDung->tieu_de.' Thất bại!');

@@ -67,6 +67,7 @@
                                         <button type="submit" class="btn btn-primary">
                                             {{ __('Đăng nhập') }}
                                         </button>
+                                        <a href="{{route('auth.form.register',['admin'])}}" class="text-primary">{{ __('Tạo tài khoản') }}</a>
 
                                         @if (Route::has('password.request'))
                                             <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -75,7 +76,6 @@
                                         @endif
                                     </div>
                                 </div>
-
 
                             </form>
                             <div class="text-center">

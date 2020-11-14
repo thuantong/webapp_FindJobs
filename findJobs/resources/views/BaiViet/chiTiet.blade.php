@@ -66,11 +66,11 @@
                                         <div class="row center-element text-center">
                                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <div
-                                                    class="btn @if(in_array($data['id'],$data['bai_da_thich']['data']) == true) btn-primary like-animation @else btn-outline-primary @endif waves-effect position-relative"
+                                                    class="btn @if(in_array($data['id'],$data['bai_da_luu']['data']) == true) btn-primary like-animation @else btn-outline-primary @endif waves-effect position-relative"
                                                     id="trang-chu-like-post" data-id="{{$data['id']}}">
-                                                    <i class="icofont icofont-thumbs-up">@if(in_array($data['id'],$data['bai_da_thich']['data'])){{' Đã lưu'}}@else{{' Lưu bài'}}@endif</i>
+                                                    <i class="icofont icofont-thumbs-up">@if(in_array($data['id'],$data['bai_da_luu']['data'])){{' Đã lưu'}}@else{{' Lưu bài'}}@endif</i>
                                                     <span class="badge badge-danger noti-icon-badge position-absolute"
-                                                          style="right: 0px">{{$data['bai_da_thich']['total']}}</span>
+                                                          style="right: 0px">{{$data['bai_da_luu']['total']}}</span>
                                                 </div>
                                                 {{--                                                <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">--}}
                                                 {{--                                                    <i class="icofont icofont-bell-alt noti-icon"></i>--}}
@@ -462,7 +462,7 @@
                     sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '')
                         .done(e => {
                             console.log(e)
-                            __this.find('span').text(e.total_thich);
+                            __this.find('span').text(e.total_quan_tam);
 
                             // $('.tong-luot-thich').text(e.total_thich);
                         });
@@ -483,7 +483,7 @@
                         .done(e => {
                             // console.log(e)
 
-                            __this.find('span').text(e.total_thich);
+                            __this.find('span').text(e.total_quan_tam);
                         });
 
                 }
