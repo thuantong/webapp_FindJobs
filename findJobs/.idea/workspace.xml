@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -257,7 +258,9 @@
       <workItem from="1605623828260" duration="10820000" />
       <workItem from="1605690240833" duration="902000" />
       <workItem from="1605796293520" duration="4036000" />
-      <workItem from="1605868839322" duration="900000" />
+      <workItem from="1605868839322" duration="1495000" />
+      <workItem from="1605966314143" duration="1611000" />
+      <workItem from="1606027242394" duration="1801000" />
     </task>
     <servers />
   </component>
@@ -313,11 +316,11 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1604999203915" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1605868924632">
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1606027246232">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1605868924632" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1606027246232" />
     <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605090822913">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
