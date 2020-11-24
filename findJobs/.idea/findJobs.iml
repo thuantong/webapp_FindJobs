@@ -115,5 +115,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="testapi" />
+    <orderEntry type="module" module-name="untitled2" />
   </component>
 </module>

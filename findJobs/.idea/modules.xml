@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/findJobs.iml" filepath="$PROJECT_DIR$/.idea/findJobs.iml" />
       <module fileurl="file://C:/xampp/htdocs/testapi/.idea/testapi.iml" filepath="C:/xampp/htdocs/testapi/.idea/testapi.iml" />
+      <module fileurl="file://C:/xampp/htdocs/cnm/cnm/.idea/untitled2.iml" filepath="C:/xampp/htdocs/cnm/cnm/.idea/untitled2.iml" />
     </modules>
   </component>
 </project>

@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../diagram/picture/SQ_Báo cáo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/picture/SQ_Báo cáo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doc/timvieclam.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/timvieclam.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/findJobs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/findJobs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,21 +166,22 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/xampp/htdocs/testapi" />
+    <property name="last_opened_file_path" value="C:/xampp/htdocs/cnm" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\MTpc\Desktop\khoaluanTN\timvieclam\webapp_FindJobs\findJobs\public\assets\js\croppie\2_6_4" />
-      <recent name="C:\Users\MTpc\Desktop\khoaluanTN\timvieclam\webapp_FindJobs\findJobs\resources\views\BaiViet" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MTpc\Desktop\khoaluanTN\timvieclam\webapp_FindJobs\findJobs\resources\views\Admin\Login" />
       <recent name="C:\Users\MTpc\Desktop\khoaluanTN\timvieclam\webapp_FindJobs\findJobs\public\assets\js\croppie\2_6_4" />
       <recent name="C:\Users\MTpc\Desktop\khoaluanTN\timvieclam\webapp_FindJobs\findJobs\public\assets\js\vtoast" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\cnm" />
+      <recent name="C:\Users\MTpc\Desktop\khoaluanTN\timvieclam\webapp_FindJobs\findJobs\public\assets\js\croppie\2_6_4" />
+      <recent name="C:\Users\MTpc\Desktop\khoaluanTN\timvieclam\webapp_FindJobs\findJobs\resources\views\BaiViet" />
     </key>
   </component>
   <component name="RunManager">
@@ -261,6 +266,8 @@
       <workItem from="1605868839322" duration="1495000" />
       <workItem from="1605966314143" duration="1611000" />
       <workItem from="1606027242394" duration="1801000" />
+      <workItem from="1606120458054" duration="2039000" />
+      <workItem from="1606197656094" duration="4431000" />
     </task>
     <servers />
   </component>
@@ -284,10 +291,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1605010654418" />
-    <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1605625140713">
+    <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1606198000207">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="502" y="143" key="FileChooserDialogImpl/78.0.1288.768@78.0.1288.768" timestamp="1605625140713" />
+    <state x="502" y="143" key="FileChooserDialogImpl/78.0.1288.768@78.0.1288.768" timestamp="1606198000207" />
     <state width="1245" height="192" key="GridCell.Tab.0.bottom" timestamp="1603694931579">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -304,10 +311,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="1245" height="192" key="GridCell.Tab.0.right/78.0.1288.768@78.0.1288.768" timestamp="1603694931579" />
-    <state x="556" y="316" key="NewPhpFileDialog" timestamp="1605633671528">
+    <state x="556" y="316" key="NewPhpFileDialog" timestamp="1606198546085">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="556" y="316" key="NewPhpFileDialog/78.0.1288.768@78.0.1288.768" timestamp="1605633671528" />
+    <state x="556" y="316" key="NewPhpFileDialog/78.0.1288.768@78.0.1288.768" timestamp="1606198546085" />
     <state x="225" y="30" key="SettingsEditor" timestamp="1604315426010">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -316,11 +323,11 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1604999203915" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1606027246232">
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1606197721577">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1606027246232" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1606197721577" />
     <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605090822913">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -337,10 +344,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1605080342510" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1605799108560">
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1606140751018">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1605799108560" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1606140751018" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
