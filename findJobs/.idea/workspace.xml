@@ -3,11 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../diagram/picture/SQ_Báo cáo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/picture/SQ_Báo cáo.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../doc/timvieclam.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/timvieclam.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/findJobs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/findJobs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style-customs.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style-customs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/libs/switchery/switchery.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/switchery/switchery.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/libs/switchery/switchery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/switchery/switchery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/PhanQuyen/tacVu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/PhanQuyen/tacVu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,6 +273,7 @@
       <workItem from="1606027242394" duration="1801000" />
       <workItem from="1606120458054" duration="2039000" />
       <workItem from="1606197656094" duration="4431000" />
+      <workItem from="1606276565242" duration="9373000" />
     </task>
     <servers />
   </component>
@@ -323,11 +329,11 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1604999203915" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1606197721577">
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1606276564924">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1606197721577" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1606276564924" />
     <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605090822913">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -344,10 +350,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1605080342510" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1606140751018">
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1606332396311">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1606140751018" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1606332396311" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -399,7 +405,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/Admin/index.blade.php</url>
-          <line>745</line>
+          <line>750</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

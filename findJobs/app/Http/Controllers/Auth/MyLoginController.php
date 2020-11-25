@@ -139,6 +139,7 @@ class MyLoginController extends Controller
 
     public function logout(Request $request)
     {
+
         //Step 1: Cập nhật trạng thái
         if (Auth::user() != null){
             $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
@@ -151,7 +152,12 @@ class MyLoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         Session::flush();
-        return redirect()->route('auth.form.login');
+        if ($request->has('admin') == true){
+            return redirect()->route('auth.form.login',['admin']);
+        }else{
+            return redirect()->route('auth.form.login');
+        }
+
     }
 
 }

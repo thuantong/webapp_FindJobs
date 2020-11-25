@@ -1,6 +1,11 @@
 /*.right-bar-width-custom-520px{*/
 /*    width: 520px!important;*/
 /*}*/
+:root{
+    --normal: #3583f0;
+    --hover: #3975df;
+    --active: #385898;
+}
 .left-search {
     top: 0px;
     left: 0px;
@@ -299,21 +304,85 @@ select option {
         /*position: fixed;*/
     }
 }
-body.enlarged{
-    min-height: 0px!important;
+
+body.enlarged {
+    min-height: 0px !important;
 }
 
-.max-height-70vh{
+.max-height-70vh {
     max-height: 70vh;
 }
-.max-height-60vh{
+
+.max-height-60vh {
     max-height: 60vh;
 }
-.overflow-y-auto{
-    overflow-y: auto!important;
+
+.overflow-y-auto {
+    overflow-y: auto !important;
     overflow-x: hidden;
 }
-.overflow-y-scroll{
-    overflow-y: scroll!important;
+
+.overflow-y-scroll {
+    overflow-y: scroll !important;
     overflow-x: hidden;
+}
+
+/*Custom all source*/
+/*màu active #385898 đang dùng
+màu hover #3975df
+màu thường #3578E5
+màu thường #3583f0 đang dùng
+*/
+.page-item.active .page-link{
+      background-color: var(--active) !important;
+      border-color: var(--active) !important;
+}
+.btn-primary {
+    /*background-color: #3583f0 !important;*/
+    /*border-color: #3583f0 !important;*/
+    background-color: var(--normal) !important;
+    border-color: var(--normal) !important;
+}
+.btn{
+    border-radius: 0px!important;
+}
+.btn-primary:hover{
+    background-color: var(--hover) !important;
+    border-color: var(--hover) !important;
+}
+.btn-primary:active {
+    background-color: var(--active) !important;
+    border-color: var(--active) !important;
+}
+
+.bg-primary {
+    background-color: var(--normal) !important;
+}
+
+.navbar-custom {
+    background-color: var(--normal) !important;
+}
+
+a{
+    color: var(--normal) !important;
+}
+a.active{
+    color: var(--active) !important;
+}
+
+#sidebar-menu > ul > li > a.active {
+    color: var(--active) !important;
+}
+.nav-second-level li > a.active{
+/*#sidebar-menu > ul > .mm-active > .active{*/
+    border-right: 2px var(--active) solid!important;
+}
+#sidebar-menu > ul > li > a:hover {
+    color: white!important;
+
+}
+a:hover{
+    text-decoration: underline!important;
+    color: white!important;
+    background-color: var(--hover) !important;
 }

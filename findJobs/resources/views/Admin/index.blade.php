@@ -216,17 +216,22 @@
                     </a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item  notify-item"
-                       onclick="event.preventDefault();
-                     document.getElementById('logout-form').submit();">
+                    <a href="{{ route('auth.logout',['admin'=>true]) }}" class="dropdown-item  notify-item">
                         <i class="remixicon-logout-box-line"></i>
                         <span>Đăng xuất</span>
                         {{--                        {{ __('Logout') }}--}}
                     </a>
+{{--                    <a class="dropdown-item  notify-item"--}}
+{{--                       onclick="event.preventDefault();--}}
+{{--                     document.getElementById('logout-form').submit();">--}}
+{{--                        <i class="remixicon-logout-box-line"></i>--}}
+{{--                        <span>Đăng xuất</span>--}}
+{{--                        --}}{{--                        {{ __('Logout') }}--}}
+{{--                    </a>--}}
 
-                    <form id="logout-form" action="{{ route('auth.logout') }}" method="get" class="d-none">
-                        @csrf
-                    </form>
+{{--                    <form id="logout-form" action="{{ route('auth.logout',['admin'=>true]) }}" method="get" class="d-none">--}}
+{{--                        @csrf--}}
+{{--                    </form>--}}
                     <!-- item-->
                     {{--                    <a href=""  class="dropdown-item notify-item">--}}
                     {{--                        <i class="remixicon-logout-box-line"></i>--}}
