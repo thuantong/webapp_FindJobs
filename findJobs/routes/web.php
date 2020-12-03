@@ -31,7 +31,7 @@ Route::namespace('Auth')->group(function (){
 //Trang chủ
 Route::namespace('TrangChu')->group(function () {
     Route::name('trangchu.')->group(function () {
-        Route::resource('/', 'TrangChuController');
+        Route::get('/', 'TrangChuController@index')->name('index');
 
 //        Route::get('/search', 'TrangChuController@searchInput');
 //        Route::get('/chi-tiet-tuyen-dung', 'TrangChuController@details')->name('chiTietBaiDang');
@@ -186,6 +186,8 @@ Route::namespace('NguoiTimViec')->group(function (){
     Route::name('nguoitimviec.')->group(function (){
         Route::get('/nguoi-tim-viet/danh-sach-bai-luu','LuuBaiController@index')->name('index');
         Route::get('/nguoi-tim-viet/get-danh-sach-bai-luu','LuuBaiController@getDanhSachBaiLuu')->name('getDanhSachBaiLuu');
+
+        Route::get('/nguoi-tim-viet/chi-tiet','NguoiTimViecControler@chiTiet')->name('chiTiet');
     });
 });
 
@@ -195,9 +197,17 @@ Route::namespace('BaoCao')->group(function (){
     });
 });
 
+Route::namespace('QuanLyUngVien')->group(function (){
+    Route::name('quanlyungvien.')->group(function (){
+        Route::get('/nha-tuyen-dung/quan-ly-ung-vien','QuanLyUngVienController@index')->name('index');
+        Route::get('/nha-tuyen-dung/lay-danh-sach-ung-vien','QuanLyUngVienController@layDanhSachUngVien')->name('layDanhSachUngVien');
+        Route::get('/nha-tuyen-dung/lay-danh-sach-phong-van','QuanLyUngVienController@layDanhSachPhongVan')->name('layDanhSachPhongVan');
+        Route::get('/nha-tuyen-dung/quan-ly-ung-vien/confirm-danh-sach-phong-van','QuanLyUngVienController@confirmDanhSachPhongVan')->name('confirmDanhSachPhongVan');
+    });
+});
+
 Route::namespace('Mail')->group(function (){
     Route::name('mail.')->group(function (){
         Route::get('/thong-bao-xac-thuc-tai-khoan','MailController@xacThucTaiKhoan')->name('xacThucTaiKhoan');
-
     });
 });

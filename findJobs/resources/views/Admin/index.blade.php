@@ -49,12 +49,8 @@
 {{--@endif--}}
 <!-- Pre-loader -->
 <div id="preloader">
-    <div id="status">
-        <div class="bouncingLoader">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+    <div class="progress mb-0" style="border-radius: 0px!important;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="loadPage" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
     </div>
 </div>
 <!-- End Preloader-->

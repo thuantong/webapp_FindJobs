@@ -18,14 +18,16 @@
         @foreach($data['nguoi_tim_viec']['exp_lam_viec'] as $row)
             <li class="timeline-sm-item">
                 <span class="timeline-sm-date time-exp"><b>{{$row['from_date']}}</b><br>đến<br><b>{{$row['to_date']}}</b></span>
-                <div class="btn-group btn-group-sm mb-1" style="float: none;">
-{{----}}
-                    <button class="btn btn-sm btn-warning mr-1 cap-nhat-exp">{{__('Cập nhật')}}</button>
-                    <button class="btn btn-sm btn-danger ml-1 mr-1 xoa1-exp">{{__('Xóa')}}</button>
-                </div>
-{{----}}
-                <h5 class="mt-0 mb-1 company-name-exp">{{$row['tenCtyVaChucVu']}}</h5>
-{{----}}
+                @if(\Illuminate\Support\Arr::exists($data,'chi_tiet_nguoi_tim_viec') == true && $data['chi_tiet_nguoi_tim_viec'] == 1)
+                @else
+                    <div class="btn-group btn-group-sm mb-1" style="float: none;">
+                        <button class="btn btn-sm btn-warning mr-1 cap-nhat-exp">{{__('Cập nhật')}}</button>
+                        <button class="btn btn-sm btn-danger ml-1 mr-1 xoa1-exp">{{__('Xóa')}}</button>
+                    </div>
+                @endif
+
+                <h5 class="mt-0 mb-1 company-name-exp">{{ucwords($row['tenCtyVaChucVu'])}}</h5>
+
                 <p class="company-link-exp">{{$row['websites']}}</p>
                 <p class="text-muted mt-2 description-exp">{{$row['mo_ta']}}</p>
             </li>

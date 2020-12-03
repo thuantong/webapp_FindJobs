@@ -22,7 +22,7 @@
         @foreach($data['nguoi_tim_viec']['projects'] as $row)
             <tr>
                 <td class="text-primary">{{$row['id']}}</td>
-                <td class="project-name">{{$row['project_name']}}</td>
+                <td class="project-name">{{ucwords($row['project_name'])}}</td>
                 <td class="project-from text-center">{{$row['project_from']}}</td>
                 <td class="project-to text-center">{{$row['project_to']}}</td>
                 <td class="project-status text-center" data-id="{{$row['id']}}">
@@ -44,15 +44,20 @@
                     {{--                    @endif--}}
                 </td>
                 <td class="project-links">{{$row['project_links']}}</td>
-                <td>
-                    <div class="btn-group btn-group-sm" style="float: none;">
+                @if(\Illuminate\Support\Arr::exists($data,'chi_tiet_nguoi_tim_viec') == true && $data['chi_tiet_nguoi_tim_viec'] == 1)
+                @else
+                    <td>
+                        <div class="btn-group btn-group-sm" style="float: none;">
 
-                        <button class="btn btn-warning btn-sm cap-nhat-project"><span class="fa fa-edit"></span>
-                        </button>
-                        <button class="btn btn-danger btn-sm xoa1-project"><span class="fa fa-trash"></span></button>
-                    </div>
+                            <button class="btn btn-warning btn-sm cap-nhat-project"><span class="fa fa-edit"></span>
+                            </button>
+                            <button class="btn btn-danger btn-sm xoa1-project"><span class="fa fa-trash"></span></button>
+                        </div>
 
-                </td>
+                    </td>
+                @endif
+
+
             </tr>
         @endforeach
     @endif

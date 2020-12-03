@@ -5947,7 +5947,7 @@ a.badge-purple.focus, a.badge-purple:focus {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: .75rem;
+    height: .30rem;
     overflow: hidden;
     font-size: .75rem;
     background-color: #e9ecef;

@@ -129,6 +129,7 @@
           href="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
     <script type="text/javascript"
             src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
+
     <script type="text/javascript">
         let table = null;
         let HTMLcongTy = null;
@@ -144,7 +145,7 @@
         $(document).on('click', '#form-update-body button#call-them-moi-cong-ty', function () {
             $('div.modal#them-moi-cong-ty').modal('show');
             $('div.modal#them-moi-cong-ty').data('type', 'cong_ty_tuyen_dung');
-            // alert()
+
         });
 
         $(document).on('click','.them-moi-danh-sach',function () {
@@ -161,7 +162,7 @@
                 }
             }
             sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
-                console.log('dataa',e);
+                // console.log('dataa',e);
                 let data = e;
                 let __modalFormCapNhat = $('#cap-nhat-modal').find('#form-update-body');
 

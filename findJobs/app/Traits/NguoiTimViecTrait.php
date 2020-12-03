@@ -118,7 +118,9 @@ trait NguoiTimViecTrait
         if ($typeSend == 1){
             $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
 //            return $nguoiTimViec;
-            return view('User.nguoiTimViec.skillAppend',compact('typeSend','nguoiTimViec'));
+            $data['nguoi_tim_viec'] = $nguoiTimViec;
+            $data['nguoi_tim_viec']['ky_nang'] = unserialize($data['nguoi_tim_viec']['ky_nang']);
+            return view('User.nguoiTimViec.skillAppend',compact('typeSend','data'));
         }elseif ($typeSend == 0){
             return view('User.nguoiTimViec.skillAppend',compact('typeSend'));
         }

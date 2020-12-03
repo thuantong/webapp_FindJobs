@@ -74,7 +74,8 @@ class NguoiTimViec extends Model
         return $this->belongsToMany(BaiTuyenDung::class,'thich','nguoi_tim_viec_id','bai_tuyen_dung_id');
     }
     public function getDonXinViec(){
-        return $this->belongsToMany(BaiTuyenDung::class,'don_xin_viec','nguoi_tim_viec_id','bai_tuyen_dung_id')->withTimestamps();
+        return $this->hasMany(DonXinViec::class,'nguoi_tim_viec_id');
+//        return $this->belongsToMany(BaiTuyenDung::class,'don_xin_viec','nguoi_tim_viec_id','bai_tuyen_dung_id')->withTimestamps();
     }
 
     public function getLuuBai(){
@@ -83,5 +84,17 @@ class NguoiTimViec extends Model
     public function getBaoCao(){
         return $this->belongsToMany(NhaTuyenDung::class,'bao_cao','nguoi_tim_viec_id','nha_tuyen_dung_id');
 
+    }
+    //lấy địa điểm
+    public function getDiaDiem(){
+        return $this->belongsTo(DiaDiem::class,'dia_diem_id');
+    }
+    //lấy bằng cấp
+    public function getBangCap(){
+        return $this->belongsTo(BangCap::class,'bang_cap_id');
+    }
+    //lấy kiểu công việc
+    public function getKieuLamViec(){
+        return $this->belongsTo(KieuLamViec::class,'kieu_lam_viec_id');
     }
 }

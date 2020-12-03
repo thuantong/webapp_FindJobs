@@ -492,7 +492,7 @@ $(document).on('init.dt', function (e, settings, json) {
 });
 
 const datatableAjax = (element, ajax, column) => {
-    element.css('width', '100%')
+    // element.css('width', '100%')
     return element.DataTable({
         ajax: {
             url: ajax.url,
@@ -506,7 +506,6 @@ const datatableAjax = (element, ajax, column) => {
         scrollY: "55vh",
         autoWidth: true,
         searching: true,
-        // scrollX: true,
         scrollX: true,
         scrollCollapse: true,
         pagingType: "full_numbers",
@@ -637,7 +636,7 @@ $(document).on('show.bs.modal', '.modal', function (event) {
     }, 0);
 });
 
-const select2Single = (element,...parentNode) => {
+const select2Single = (element,parentNode) => {
     return element.select2({
         dropdownParent: parentNode
     }).data('select2').listeners['*'].push(function (name, target) {
@@ -698,4 +697,24 @@ const getTrangThaiTaiKhoan = (status)=>{
         case 2:
             return '<span class="text-danger">Đã tạm khóa</span>';
     }
+}
+
+$(document).on('click','.thong-bao-phan-quyen',function () {
+    let data = {
+        title:'Thông báo',
+        message:"Chức năng không khả dụng trên người dùng!",
+        status:400
+    }
+    getHtmlResponse(data)
+});
+
+const getDataRow_dt = (element,tr) =>{
+    return element.row(tr).data();
+}
+
+const db_ajax_reload_all = (e)=>{
+    e.ajax.reload();
+}
+const db_ajax_reload_page = (e)=>{
+    e.ajax.reload( null, false );
 }

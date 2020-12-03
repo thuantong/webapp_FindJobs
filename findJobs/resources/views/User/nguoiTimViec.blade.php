@@ -90,9 +90,6 @@
         </div>
     </div>
     <div class="row" id="nguoi-tim-viec-container">
-        {{--        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1">--}}
-
-        {{--        </div>--}}
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="row">
                 <div class="col-lg-4 col-xl-4">
@@ -536,9 +533,6 @@
                 </div> <!-- end col -->
             </div>
         </div>
-        {{--        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1">--}}
-
-        {{--        </div>--}}
     </div>
 @endsection
 
@@ -563,6 +557,7 @@
     <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>
 
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\doi_mat_khau.js')}}"></script>
     <script type="text/javascript">
         var $uploadCrop;
 
@@ -646,23 +641,23 @@
                 });
             });
         });
-        document.getElementById('save-doi-mat-khau').addEventListener('click', function () {
-            let arraySend = {
-                    password_old: $('.password-old').val(),
-                    password_new: $('.password-new').val(),
-                    re_password_new: $('.re-password-new').val(),
-                }
-            ;
-            let arrayCustom =
-                {
-                    beforeSendElement: $(this).attr('id'),
-                    resHeading: 'Đổi mật khẩu',
-                    password_old: $('.password-old'),
-                    password_new: $('.password-new'),
-                    re_password_new: $('.re-password-new'),
-                };
-            getResponseAjax('post', '/doi-mat-khau', arraySend, arrayCustom);
-        });
+        // document.getElementById('save-doi-mat-khau').addEventListener('click', function () {
+        //     let arraySend = {
+        //             password_old: $('.password-old').val(),
+        //             password_new: $('.password-new').val(),
+        //             re_password_new: $('.re-password-new').val(),
+        //         }
+        //     ;
+        //     let arrayCustom =
+        //         {
+        //             beforeSendElement: $(this).attr('id'),
+        //             resHeading: 'Đổi mật khẩu',
+        //             password_old: $('.password-old'),
+        //             password_new: $('.password-new'),
+        //             re_password_new: $('.re-password-new'),
+        //         };
+        //     getResponseAjax('post', '/doi-mat-khau', arraySend, arrayCustom);
+        // });
 
         var fixedScroll = $('#scroll-fixed').offset();
         const headerTop = fixedScroll.top;

@@ -14,5 +14,10 @@ class BangCap extends Model
     public function getBaiTuyenDung(){
         return $this->hasMany(BaiTuyenDung::class,'bang_cap_id');
     }
+
+    // lấy người tìm việc từ bằng cấp id
+    public function getNguoiTimViec(){
+        return $this->hasOne(NguoiTimViec::class,'bang_cal_id');
+    }
     //
 }

@@ -15,5 +15,10 @@ class KieuLamViec extends Model
     {
         return $this->hasMany(BaiTuyenDung::class, 'kieu_lam_viec_id');
     }
+
+    //lấy người tìm việc
+    public function getNguoiTimViec(){
+        return $this->hasOne(NguoiTimViec::class,'kieu_lam_viec_id');
+    }
     //
 }

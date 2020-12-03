@@ -2,17 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/timvieclam.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/timvieclam.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet/baiVietLienQuan.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/NguoiTimViec/chiTiet.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/QuanLyUngVien/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/findJobs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/findJobs.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DuyetBaiVietController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DuyetBaiVietController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BaiTuyenDung.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BaiTuyenDung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BangCap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BangCap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DiaDiem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DiaDiem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DonXinViec.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DonXinViec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/KieuLamViec.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/KieuLamViec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NguoiTimViec.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NguoiTimViec.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/NguoiTimViecTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/NguoiTimViecTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/app.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/app.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style-customs.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style-customs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/libs/switchery/switchery.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/switchery/switchery.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/libs/switchery/switchery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/switchery/switchery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/PhanQuyen/tacVu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/PhanQuyen/tacVu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/customs-js-mine.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/pages/range-sliders.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/pages/range-sliders.init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/libs/magnific-popup/jquery.magnific-popup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/magnific-popup/jquery.magnific-popup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/DuyetTin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/DuyetTin/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/QuanLyTuyenDung/QLBaiDang/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/QuanLyTuyenDung/QLBaiDang/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/items.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/danhSachDaUngTuyen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/danhSachDaUngTuyen.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlKinhNghiemLamViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlKinhNghiemLamViec.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/projectsAppend.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/projectsAppend.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/skillAppend.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/skillAppend.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/master/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/master/nav.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +197,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/xampp/htdocs/cnm" />
+    <property name="last_opened_file_path" value="C:/xampp/htdocs/doan(5-8)" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -274,6 +300,13 @@
       <workItem from="1606120458054" duration="2039000" />
       <workItem from="1606197656094" duration="4431000" />
       <workItem from="1606276565242" duration="9373000" />
+      <workItem from="1606402742580" duration="14909000" />
+      <workItem from="1606455426430" duration="43087000" />
+      <workItem from="1606549264979" duration="1719000" />
+      <workItem from="1606580240447" duration="3196000" />
+      <workItem from="1606643557507" duration="20735000" />
+      <workItem from="1606928120583" duration="4702000" />
+      <workItem from="1606989349603" duration="15554000" />
     </task>
     <servers />
   </component>
@@ -281,10 +314,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="328" y="195" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605625159494">
+    <state x="328" y="195" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606496558290">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="328" y="195" key="#com.intellij.fileTypes.FileTypeChooser/78.0.1288.768@78.0.1288.768" timestamp="1605625159494" />
+    <state x="328" y="195" key="#com.intellij.fileTypes.FileTypeChooser/78.0.1288.768@78.0.1288.768" timestamp="1606496558290" />
     <state x="527" y="71" key="#com.intellij.ide.util.MemberChooser" timestamp="1603980807659">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -293,14 +326,14 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="476" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/78.0.1288.768@78.0.1288.768" timestamp="1601925610950" />
-    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605010654418">
+    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606469867909">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1605010654418" />
-    <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1606198000207">
+    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1606469867909" />
+    <state x="502" y="143" key="FileChooserDialogImpl" timestamp="1606989389446">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="502" y="143" key="FileChooserDialogImpl/78.0.1288.768@78.0.1288.768" timestamp="1606198000207" />
+    <state x="502" y="143" key="FileChooserDialogImpl/78.0.1288.768@78.0.1288.768" timestamp="1606989389446" />
     <state width="1245" height="192" key="GridCell.Tab.0.bottom" timestamp="1603694931579">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -329,11 +362,11 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1604999203915" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1606276564924">
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1606989348320">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1606276564924" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1606989348320" />
     <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605090822913">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -346,14 +379,14 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="429" y="140" width="586" height="488" key="find.popup/78.0.1288.768@78.0.1288.768" timestamp="1602784075560" />
-    <state x="378" y="172" key="run.anything.popup" timestamp="1605080342510">
+    <state x="378" y="172" key="run.anything.popup" timestamp="1606503686364">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1605080342510" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1606332396311">
+    <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1606503686364" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1607024865862">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1606332396311" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1607024865862" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -375,7 +408,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
-          <line>393</line>
+          <line>403</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -405,17 +438,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/Admin/index.blade.php</url>
-          <line>750</line>
+          <line>746</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/Admin/DuyetTin/index.blade.php</url>
-          <line>234</line>
+          <line>240</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/TrangChu/items.blade.php</url>
-          <line>35</line>
+          <line>39</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -425,17 +458,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php</url>
-          <line>35</line>
+          <line>40</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php</url>
-          <line>97</line>
+          <line>94</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php</url>
-          <line>181</line>
+          <line>178</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -450,27 +483,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/TrangChu/index.blade.php</url>
-          <line>250</line>
+          <line>253</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
-          <line>473</line>
+          <line>483</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
-          <line>475</line>
+          <line>485</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
-          <line>478</line>
+          <line>488</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/master/index.blade.php</url>
-          <line>583</line>
+          <line>625</line>
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -484,13 +517,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/QuanLyTuyenDung/QLBaiDang/index.blade.php</url>
-          <line>196</line>
+          <line>197</line>
           <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/TrangChu/index.blade.php</url>
-          <line>327</line>
-          <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php</url>
@@ -516,6 +544,36 @@
           <url>file://C:/xampp/htdocs/testapi/connect_db.php</url>
           <line>2</line>
           <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php</url>
+          <line>361</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php</url>
+          <line>21</line>
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/NguoiTimViec/chiTiet.blade.php</url>
+          <line>109</line>
+          <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/NguoiTimViec/chiTiet.blade.php</url>
+          <line>110</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/NguoiTimViec/chiTiet.blade.php</url>
+          <line>72</line>
+          <option name="timeStamp" value="173" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/NguoiTimViec/chiTiet.blade.php</url>
+          <line>73</line>
+          <option name="timeStamp" value="174" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js</url>
@@ -554,7 +612,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php</url>
-          <line>222</line>
+          <line>224</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\BaiViet\BaiVietController" />
             <option name="methodName" value="luuVaoDuyetTin" />

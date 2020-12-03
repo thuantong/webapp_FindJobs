@@ -36,8 +36,9 @@ class DuyetBaiVietController extends Controller
             ->leftJoin('nha_tuyen_dung','bai_tuyen_dung.nha_tuyen_dung_id','=','nha_tuyen_dung.id')
             ->leftJoin('tai_khoan','tai_khoan.id','=','nha_tuyen_dung.tai_khoan_id')
             ->leftJoin('don_hang','bai_tuyen_dung.id','=','don_hang.bai_tuyen_dung_id')
-//            ->where('bai_tuyen_dung.status',0)
-            ->orderBy('bai_tuyen_dung.status','asc')
+            ->where('bai_tuyen_dung.status',0)
+//            ->orderBy('bai_tuyen_dung.status','desc')
+            ->orderBy('bai_tuyen_dung.created_at','desc')
 //            ->order
             ->get()->toArray();
 //        return $allBaiDuyet;

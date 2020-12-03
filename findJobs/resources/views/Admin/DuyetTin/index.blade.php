@@ -143,7 +143,13 @@
                 },
                 {
                     render: function (api, rowIdx, columns, meta) {
-                        return columns.so_ngay_bai_dang + ' Ngày';
+                        let soNgay = null;
+                        if (columns.so_ngay_bai_dang == null){
+                            soNgay = "Chưa được duyệt";
+                        }else{
+                            soNgay = columns.so_ngay_bai_dang + ' Ngày';
+                        }
+                        return soNgay;
                     },
                     className: 'text-center'
                 },

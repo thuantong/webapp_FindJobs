@@ -36,12 +36,12 @@
             <div class="card overflow-auto-scroll">
                 <div class="card-body" id="container-items">
                     @include('TrangChu.items')
-{{--                    <div class="processing-input text-center">--}}
-{{--                        <button class="btn btn-white" type="button" disabled="">--}}
-{{--                            Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status"--}}
-{{--                                           aria-hidden="true"></span>--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="processing-input text-center">--}}
+                    {{--                        <button class="btn btn-white" type="button" disabled="">--}}
+                    {{--                            Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status"--}}
+                    {{--                                           aria-hidden="true"></span>--}}
+                    {{--                        </button>--}}
+                    {{--                    </div>--}}
                     {{$data['bai_tuyen_dung']->links()}}
                 </div>
 
@@ -186,9 +186,12 @@
                         <div class="row pt-1 pb-0">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
                                 <a class="btn btn-success float-left" id="xem-chi-tiet-rut-gon">Xem chi tiết</a>
-                                <button class="btn btn-outline-primary float-right bao-cao-button-call"><i class="fa fa-exclamation">Báo cáo</i>
+                                @if(intval(Session::get('loai_tai_khoan')) == 1)
 
-                                </button>
+                                    <button class="btn btn-outline-primary float-right bao-cao-button-call"><i
+                                            class="fa fa-exclamation">Báo cáo</i>
+                                        @endif
+                                    </button>
                             </div>
 
                         </div>
@@ -263,11 +266,14 @@
         }
 
         const getThongTinChiTietPost = (e) => {
-            console.log('con cac ne',e)
+            console.log('con cac ne', e)
             if (e != null) {
                 if (parseInt(loaiTaiKhoan) == 1) {
-                    if (e.bai_da_luu.data !== undefined){
-                        if (e.bai_da_luu.data.includes(e.id) == true) {
+                    // console.log(e.bai_da_luu.data.findIndex(x=>x.id == e.id))
+
+                    if (e.bai_da_luu.data !== undefined) {
+                        // if (e.bai_da_luu.data.includes(e.id) == true) {
+                        if (e.bai_da_luu.data.findIndex(x => x.id == e.id) != -1) {
                             $('#trang-chu-like-post').removeClass('btn-outline-primary');
                             $('#trang-chu-like-post').addClass('btn-primary');
                             $('#trang-chu-like-post').addClass('like-animation');
@@ -281,9 +287,11 @@
 
                         }
                     }
-
-                    if (e.don_xin_viec.data != null){
-                        if (e.don_xin_viec.data.includes(e.id) == true) {
+                    //
+                    if (e.nguoi_tim_viec.get_don_xin_viec != null) {
+                        // get_don_xin_viec
+                        if (e.nguoi_tim_viec.get_don_xin_viec.findIndex(x => x.id == e.id) != -1) {
+                            // if (e.don_xin_viec.data.includes(e.id) == true) {
                             $('.call-modal-nop-don').removeClass('btn-outline-warning');
                             $('.call-modal-nop-don').addClass('btn-warning');
                             $('.call-modal-nop-don').addClass('like-animation');
@@ -307,33 +315,43 @@
                 // total_thich
                 $('.tong-luot-thich').text(e.bai_da_luu.total);
                 $('.tong-ung-tuyen').text(e.don_xin_viec.total);
+
+                // return;
+
                 //end
-                // console.log(e.nha_tuyen_dung_da_bao_cao.data,e.nha_tuyen_dung_id,e.nha_tuyen_dung_da_bao_cao.data.includes(parseInt(e.nha_tuyen_dung_id)))
-                if (e.nha_tuyen_dung_da_bao_cao.data !== undefined){
-                    if (e.nha_tuyen_dung_da_bao_cao.data.includes(parseInt(e.nha_tuyen_dung_id)) == true){
-                        $('.bao-cao-button-call').removeClass('btn-outline-primary');
-                        $('.bao-cao-button-call').addClass('btn-primary');
-                        $('.bao-cao-button-call').addClass('like-animation');
-                        $('.bao-cao-button-call').find('i').text(' Đã báo cáo');
-                        $('.bao-cao-button-call').removeAttr('id');
-                    }else{
-                        $('.call-modal-nop-don').removeClass('btn-primary');
-                        $('.call-modal-nop-don').removeClass('like-animation');
-                        $('.call-modal-nop-don').addClass('btn-outline-primary');
-                        $('.call-modal-nop-don').find('i').text(' Báo cáo');
-                        $('.bao-cao-button-call').data('id',e.nha_tuyen_dung_id).attr('id','bao-cao-button-call');
+                //case báo cáo
+                if (parseInt(loaiTaiKhoan) == 1) {
+                    if (e.nguoi_tim_viec.get_bao_cao != null) {
+                        if (e.nguoi_tim_viec.get_bao_cao.findIndex(x => x.id == e.id) != -1) {
+                            // if (e.nguoi_tim_viec.get_bao_cao.includes(parseInt(e.nha_tuyen_dung_id)) == true){
+                            $('.bao-cao-button-call').removeClass('btn-outline-primary');
+                            $('.bao-cao-button-call').addClass('btn-primary');
+                            $('.bao-cao-button-call').addClass('like-animation');
+                            $('.bao-cao-button-call').find('i').text(' Đã báo cáo');
+                            $('.bao-cao-button-call').removeAttr('id');
+                        } else {
+                            $('.bao-cao-button-call').removeClass('btn-primary');
+                            $('.bao-cao-button-call').removeClass('like-animation');
+                            $('.bao-cao-button-call').addClass('btn-outline-primary');
+                            $('.bao-cao-button-call').find('i').text(' Báo cáo');
+                            $('.bao-cao-button-call').data('id', e.nha_tuyen_dung_id).attr('id', 'bao-cao-button-call');
+                        }
                     }
+                } else {
+                    $('.bao-cao-button-call').addClass('thong-bao-phan-quyen')
                 }
 
 
                 $('.tieu-de-chi-tiet').text(e.tieu_de);
                 $('.cong_ty').text(e.get_cong_ty.name);
-                $('.name_nguoi_dang').text(e.get_nha_tuyen_dung.ho_ten);
+                $('.name_nguoi_dang').text(e.get_nha_tuyen_dung.get_tai_khoan.ho_ten);
                 $('.chuc_vu').text(e.get_chuc_vu.name);
                 $('.han_nop').text(e.han_tuyen);
                 $('.kinh_nghiem').text(e.get_kinh_nghiem.name);
                 $('.kieu_lam_viec').text(e.get_kieu_lam_viec.name);
                 $('.yc_bang_cap').text(e.get_bang_cap.name);
+
+                // return;
                 let gioi_tinh = '';
                 switch (parseInt(e.gioi_tinh_tuyen)) {
                     case 1:
@@ -346,8 +364,8 @@
                         gioi_tinh = 'Tất cả';
                         break;
                 }
-
                 $('.gioi_tinh_tuyen').text(gioi_tinh);
+
                 $('.so_luong_tuyen').text(e.so_luong_tuyen);
                 $('.dia_diem').text(e.get_dia_diem.name);
 
@@ -357,8 +375,10 @@
                 });
 
                 $('.nganh_nghe').text(array_nganh_nghe.join(' - '));
-                $('.muc_luong').text(e.luong.join(' - ') + ' Triệu');
 
+
+                $('.muc_luong').text(e.luong.join(' - ') + ' Triệu');
+                // return;
                 {{--                href="{{route('baiviet.getThongTinBaiViet',[$row['id']])}}--}}
                 $('#xem-chi-tiet-rut-gon').attr('href', '/bai-viet/thong-tin&baiviet=' + e.id + '&chitiet=1');
                 $('#xem-chi-tiet-rut-gon').attr('target', '_blank');
@@ -462,7 +482,7 @@
             // //end init
             setTimeout(function () {
                 $('#container-items .iteam-click').eq(0).trigger('click');
-            },500)
+            }, 500)
 
 //like || quan tâm bài viết
             $('#trang-chu-like-post').on('click', function () {

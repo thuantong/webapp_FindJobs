@@ -66,9 +66,10 @@ class BaiTuyenDung extends Model
     {
         return $this->belongsToMany(NganhNghe::class, 'bai_tuyen_dung_nganh_nghe', 'bai_tuyen_dung_id', 'nganh_nghe_id');
     }
-
+    //đơn xin việc
     public function getDonXinViec(){
-        return $this->belongsToMany(NguoiTimViec::class,'don_xin_viec','bai_tuyen_dung_id','nguoi_tim_viec_id')->withTimestamps();
+        return $this->hasMany(DonXinViec::class,'bai_tuyen_dung_id');
+//        return $this->belongsToMany(NguoiTimViec::class,'don_xin_viec','bai_tuyen_dung_id','nguoi_tim_viec_id')->withTimestamps();
     }
     public function getNganhNgheId()
     {

@@ -13,4 +13,9 @@ class DiaDiem extends Model
     public function getBaiTuyenDung(){
         return $this->hasMany(BaiTuyenDung::class,'dia_diem_id');
     }
+
+    //lấy người tìm việc từ địa điểm id
+    public function getNguoiTimViec(){
+        return $this->hasOne(NguoiTimViec::class,'dia_diem_id');
+    }
 }

@@ -17,5 +17,12 @@ class DonXinViec extends Model
         'status' => 0,
     ];
 
-    //
+    public function getBaiTuyenDung(){
+        return $this->belongsTo(BaiTuyenDung::class,'bai_tuyen_dung_id');
+    }
+    public function getNguoiTimViec(){
+        return $this->belongsTo(NguoiTimViec::class,'nguoi_tim_viec_id');
+
+    }
+
 }

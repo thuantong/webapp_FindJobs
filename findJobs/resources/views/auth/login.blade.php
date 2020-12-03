@@ -79,7 +79,7 @@
 
 
                             </form>
-                            <div class="text-center btn-primary">
+                            <div class="text-center">
                                 <h5 class="mt-3 text-muted">{{__('Đăng nhập với')}}</h5>
                                 <ul class="social-list list-inline mt-3 mb-0">
                                     <li class="list-inline-item">

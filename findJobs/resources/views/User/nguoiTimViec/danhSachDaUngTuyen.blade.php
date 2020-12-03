@@ -42,7 +42,7 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th class="text-center">STT</th>
-                                    <th class="text-center">Tiêu đề</th>
+                                    <th class="text-center">Bài tuyển dụng</th>
                                     <th class="text-center">Nhà tuyển dụng</th>
                                     <th class="text-center">Công ty tuyển dụng</th>
                                     <th class="text-center">Trạng thái</th>

@@ -74,5 +74,17 @@ $(document).ready(function () {
         hide_min_max: !0,
         hide_from_to: !0,
         grid: !0,
-    }), $('#range_13').ionRangeSlider({skin: 'modern'}), $('#range_14').ionRangeSlider({skin: 'sharp'}), $('#range_15').ionRangeSlider({skin: 'round'}), $('#range_16').ionRangeSlider({skin: 'square'});
+    }), $('#range_13').ionRangeSlider({
+        skin: 'modern'
+    }), $('#range_14').ionRangeSlider({
+        skin: 'sharp'
+    }), $('#range_15').ionRangeSlider({
+        skin: 'round'
+    }), $('#range_16').ionRangeSlider({
+        skin: 'square'
+    }),$('.skill-name').ionRangeSlider({
+        skin: 'round',
+        from_fixed: false,
+    })
+    ;
 });

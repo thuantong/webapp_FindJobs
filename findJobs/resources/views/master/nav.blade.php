@@ -39,6 +39,7 @@
                         @if(Session::get('loai_tai_khoan') != 3)
                             @if(Session::exists('so_du') == false)
                                 <a href="{{route('sodu.index')}}" class="waves-effect text-center">
+                                    <i class="fa fa-usd"></i>
                                     <span>{{__('Chưa đăng ký số dư')}}</span>
                                 </a>
                             @else
@@ -87,7 +88,7 @@
                     </li>
 
                     <li>
-                        <a href="javascript: void(0);" class="waves-effect">
+                        <a href="{{route('quanlyungvien.index')}}" class="waves-effect">
                             <i class="fa fa-users"></i>
                             <span>{{__('Quản lý ứng viên')}}</span>
                         </a>

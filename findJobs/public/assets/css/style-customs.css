@@ -2,10 +2,30 @@
 /*    width: 520px!important;*/
 /*}*/
 :root{
-    --normal: #3583f0;
-    --hover: #3975df;
-    --active: #385898;
+    /*--normal: #3583f0;*/
+    /*--hover: #3975df;*/
+    /*--active: #385898;*/
+    --normal: #209200;
+    --hover: #208200;
+    --active: #206e00;
+
 }
+@keyframes load-trang {
+    0%   {width: 5%;}
+    25%  {width: 25%;}
+    50%  {width: 75%;}
+    /*75%  {width: 75%;}*/
+    100% {width: 100%}
+}
+#loadPage{
+
+    animation: load-trang 2s;
+}
+/*#loadPage.done {*/
+/*    opacity: 0;*/
+/*    !*animation: load-trang 2s ease-out 0s normal;*!*/
+/*    !*animation: pulse 2s ease-out 0s infinite*!*/
+/*}*/
 .left-search {
     top: 0px;
     left: 0px;
@@ -13,7 +33,7 @@
     -moz-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.49);
     -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.49);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.49);
-    z-index: 10000;
+    z-index: 100;
     -webkit-transition: width 0.1s !important; /* For Safari 3.1 to 6.0 */
     transition: width 0.1s !important;
 }
@@ -62,15 +82,19 @@ div.overflow-auto-scroll {
 }
 
 .iteam-click:hover {
-    border: 1px #564aa3 solid;
+    border: 1px var(--active) solid;
     transition: 0.5s;
-    background-color: rgba(237, 253, 255, 0.4);
+    background-color: rgba(88,255,52,0.11)!important;
+    /*background-color: rgba(237, 253, 255, 0.4);*/
 }
 
 .iteam-click-focus {
-    border: 1px #564aa3 solid;
+    border: 1px var(--active) solid;
+    /*border: 1px #564aa3 solid;*/
     transition: 0.5s;
-    background-color: rgba(95, 152, 255, 0.4);
+    background-color: rgba(88,255,52,0.11);
+    /*background-color: var(--hover);*/
+    /*background-color: rgba(255, 255, 255, .1)!important;*/
 }
 
 .iteam-click .arrow-item {
@@ -81,19 +105,30 @@ div.overflow-auto-scroll {
     position: absolute;
     border-top: 15px solid white;
     border-bottom: 15px solid white;
-    border-left: 15px solid rgba(95, 152, 255, 0.4);
+    border-left: 15px solid var(--normal);
+    /*border-left: 15px solid rgba(95, 152, 255, 0.4);*/
 }
 
 .ribbon-box .ribbon-two.floats-right {
     position: absolute;
-    right: -5px;
+    /*right: -5px;*/
+    right: -1px;
     left: unset !important;
-    top: -5px;
+    top: 0px;
+    /*top: -5px;*/
     z-index: 1;
     overflow: hidden;
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
     text-align: right
+}
+.ribbon-box .ribbon-two-danger span:before{
+    border-left: 0px solid #e71332!important;
+    border-top: 0px solid #e71332!important;
+}
+.ribbon-box .ribbon-two-danger span:after {
+    border-right: 0px solid #e71332!important;
+    border-top: 0px solid #e71332!important;
 }
 
 .ribbon-box .ribbon-two span.right-custom {
@@ -101,14 +136,15 @@ div.overflow-auto-scroll {
     color: #fff;
     text-align: center;
     line-height: 20px;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+    transform: rotate(46deg);
+    -webkit-transform: rotate(46deg);
     width: 100px;
     display: block;
     -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, .06), 0 1px 0 0 rgba(0, 0, 0, .02);
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, .06), 0 1px 0 0 rgba(0, 0, 0, .02);
     position: absolute;
-    top: 17.5px;
+    /*top: 17.5px;*/
+    top: 9px;
     left: -3px;
     font-weight: 600
 }
@@ -333,15 +369,13 @@ màu hover #3975df
 màu thường #3578E5
 màu thường #3583f0 đang dùng
 */
-.page-item.active .page-link{
-      background-color: var(--active) !important;
-      border-color: var(--active) !important;
-}
+
 .btn-primary {
     /*background-color: #3583f0 !important;*/
     /*border-color: #3583f0 !important;*/
     background-color: var(--normal) !important;
     border-color: var(--normal) !important;
+    color: var(--white)!important;
 }
 .btn{
     border-radius: 0px!important;
@@ -357,6 +391,9 @@ màu thường #3583f0 đang dùng
 
 .bg-primary {
     background-color: var(--normal) !important;
+}
+.btn-info{
+    color: var(--white) !important;
 }
 
 .navbar-custom {
@@ -376,13 +413,48 @@ a.active{
 .nav-second-level li > a.active{
 /*#sidebar-menu > ul > .mm-active > .active{*/
     border-right: 2px var(--active) solid!important;
+    color: var(--white) !important;
 }
-#sidebar-menu > ul > li > a:hover {
-    color: white!important;
-
+#sidebar-menu .metismenu .mm-active{
+    border-right: 2px var(--active) solid!important;
+    color: var(--white) !important;
 }
-a:hover{
-    text-decoration: underline!important;
-    color: white!important;
+#sidebar-menu > ul > li > a:hover, #sidebar-menu > ul > li > a:focus{
+    color: var(--white) !important;
     background-color: var(--hover) !important;
+}
+
+/*a:focus,a:not(.btn):hover{*/
+/*    text-decoration: underline!important;*/
+/*    color: var(--white) !important;*/
+/*    !*background-color: var(--hover) !important;*!*/
+/*}*/
+a.btn-success{
+    color: white!important;
+}
+.page-item.active .page-link{
+    background-color: var(--active) !important;
+    border-color: var(--active) !important;
+    color: var(--white)!important;
+}
+.text-primary{
+    color: var(--active) !important;
+}
+.form-wizard-header .nav-item .nav-link.active{
+    background-color: var(--active) !important;
+    color: var(--white) !important;
+}
+.navbar-custom > ul > li:hover{
+    background-color: rgba(255, 255, 255, .1)!important;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: var(--normal) !important;
+    color: var(--white) !important;
+}
+.btn-secondary{
+    color: var(--white)!important;
+}
+
+.form-control{
+    border-radius: 0px !important;
 }

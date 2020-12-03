@@ -14,6 +14,7 @@
         <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
               type="text/css">
     </head>
+    @include('BaoCao.modalBaoCao')
 
 
     <div class="row">
@@ -26,6 +27,10 @@
                     </ol>
                 </div>
                 <h4 class="page-title">Xem chi tiết việc làm</h4>
+
+
+{{--                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>--}}
+
             </div>
         </div>
     </div>
@@ -60,43 +65,46 @@
 
                                 {{--                                </div>--}}
                                 @if(intval(Session::get('loai_tai_khoan')) == 1)
-                                <div class="form-group row">
+                                    <div class="form-group row">
 
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
-                                        <div class="row center-element text-center">
-                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <div
-                                                    class="btn @if(in_array($data['id'],$data['bai_da_luu']['data']) == true) btn-primary like-animation @else btn-outline-primary @endif waves-effect position-relative"
-                                                    id="trang-chu-like-post" data-id="{{$data['id']}}">
-                                                    <i class="icofont icofont-thumbs-up">@if(in_array($data['id'],$data['bai_da_luu']['data'])){{' Đã lưu'}}@else{{' Lưu bài'}}@endif</i>
-                                                    <span class="badge badge-danger noti-icon-badge position-absolute"
-                                                          style="right: 0px">{{$data['bai_da_luu']['total']}}</span>
+                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-1 pb-1">
+                                            <div class="row center-element text-center">
+                                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                    <div
+                                                        class="btn @if(in_array($data['id'],$data['bai_da_luu']['data']) == true) btn-primary like-animation @else btn-outline-primary @endif waves-effect position-relative"
+                                                        id="trang-chu-like-post" data-id="{{$data['id']}}">
+                                                        <i class="icofont icofont-thumbs-up">@if(in_array($data['id'],$data['bai_da_luu']['data'])){{' Đã lưu'}}@else{{' Lưu bài'}}@endif</i>
+                                                        <span
+                                                            class="badge badge-danger noti-icon-badge position-absolute"
+                                                            style="right: 0px">{{$data['bai_da_luu']['total']}}</span>
+                                                    </div>
+                                                    {{--                                                <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">--}}
+                                                    {{--                                                    <i class="icofont icofont-bell-alt noti-icon"></i>--}}
+                                                    {{--                                                    <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>--}}
+                                                    {{--                                                </a>--}}
+                                                    <button class="btn btn-outline-info"
+                                                            title="Chat với nhà tuyển dụng">
+                                                        <i class="icofont icofont-ui-text-loading "></i> Chat
+                                                    </button>
+
+                                                    <div
+                                                        class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning like-animation @endif waves-effect position-relative"
+                                                        @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) id="call-modal-nop-don" @endif>
+                                                        <i class="fa fa-send">@if(in_array($data['id'],$data['don_xin_viec']['data'])){{' Đã ứng tuyển'}}@else{{' Nộp đơn'}}@endif</i>
+                                                        {{--                                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
+
+                                                    </div>
+                                                    <button class="btn @if(in_array($data['id'],$data['bao_cao']['data']) == false) btn-outline-primary @else btn-primary like-animation @endif waves-effect bao-cao-button-call"
+                                                    @if(in_array($data['id'],$data['bao_cao']['data']) == false) id="bao-cao-button-call" @endif
+                                                    ><i
+                                                            class="fa fa-exclamation"></i>@if(in_array($data['id'],$data['bao_cao']['data'])){{__(' Đã báo cáo')}}@else{{__(' Báo cáo')}}@endif
+                                                    </button>
+
                                                 </div>
-                                                {{--                                                <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">--}}
-                                                {{--                                                    <i class="icofont icofont-bell-alt noti-icon"></i>--}}
-                                                {{--                                                    <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>--}}
-                                                {{--                                                </a>--}}
-                                                <button class="btn btn-outline-info"
-                                                        title="Chat với nhà tuyển dụng">
-                                                    <i class="icofont icofont-ui-text-loading "></i> Chat
-                                                </button>
-
-                                                <div
-                                                    class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning @endif waves-effect position-relative"
-                                                    @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) id="call-modal-nop-don" @endif>
-                                                    <i class="fa fa-send">@if(in_array($data['id'],$data['don_xin_viec']['data'])){{' Đã ứng tuyển'}}@else{{' Nộp đơn'}}@endif</i>
-                                                    {{--                                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
-
-                                                </div>
-                                                <button class="btn btn-outline-primary"><i
-                                                        class="fa fa-exclamation"></i> Báo cáo
-                                                </button>
 
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
                                 @endif
 
                                 <div class="row">
@@ -133,8 +141,8 @@
                                                 chỉ</label>
                                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="dia_chi">
                                                 <span>@if($data['dia_chi'] != null){{$data['dia_chi']}}@endif</span> -
-                                                <a
-                                                    class="text-primary">@if($data['get_dia_diem'] != null)
+                                                <a href="{{route('trangchu.index',['dia_diem_id'=>$data['get_dia_diem']['id']])}}"
+                                                   class="text-primary">@if($data['get_dia_diem'] != null)
                                                         ({{$data['get_dia_diem']['name']}})@endif</a>
                                             </div>
                                         </div>
@@ -147,9 +155,26 @@
                                                 {{--                                        kiểu làm việc--}}
                                                 @if($data['get_chuc_vu'] != null)
                                                     <div
-                                                        class="btn btn-white border waves-effect">{{$data['get_chuc_vu']['name']}}</div>@endif
+                                                        class="btn btn-white border waves-effect"><a class="text-dark"
+                                                                                                     href="{{route('trangchu.index',['chuc_vu'=>$data['get_chuc_vu']['id']])}}">{{$data['get_chuc_vu']['name']}}</a>
+                                                    </div>@endif
                                             </div>
                                         </div>
+
+                                        <div class="form-group row">
+                                            <label
+                                                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">Chức
+                                                vụ</label>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 chuc_vu">
+                                                {{--                                        kiểu làm việc--}}
+                                                @if($data['get_kieu_lam_viec'] != null)
+                                                    <div
+                                                        class="btn btn-white border waves-effect"><a class="text-dark"
+                                                                                                     href="{{route('trangchu.index',['kieu_lam_viec'=>$data['get_kieu_lam_viec']['id']])}}">{{$data['get_kieu_lam_viec']['name']}}</a>
+                                                    </div>@endif
+                                            </div>
+                                        </div>
+
                                         <div class="form-group row">
                                             <label
                                                 class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">Ngành
@@ -158,7 +183,7 @@
                                                  id="nganh_nghe">
                                                 @if($data['get_nganh_nghe'] != null)
                                                     {{implode('', array_map(function($c) {
-            echo '<button class="btn btn-white waves-effect border loc-nganh-nghe" data-id="'.$c['id'].'">'.$c['name'].'</button> ';
+            echo '<a class="btn btn-white waves-effect border text-dark loc-nganh-nghe" href="'.route('trangchu.index',['nganh_nghe_id'=>$c['id']]).'" data-id="'.$c['id'].'">'.$c['name'].'</a> ';
                                                         }, $data['get_nganh_nghe']))}}
                                                 @endif
                                             </div>
@@ -299,7 +324,8 @@
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
                                             <div
                                                 class="btn quan-tam-nha-tuyen-dung @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"
-                                                id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">
+                                                id="quan-tam-nha-tuyen-dung"
+                                                data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">
                                                 <i class="icofont icofont-thumbs-up">@if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true){{' Đã quan tâm'}}@else{{' Quan tâm'}}@endif</i>
                                                 <span class="badge badge-danger noti-icon-badge position-absolute"
                                                       style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>
@@ -351,13 +377,32 @@
 
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card-box  p-1 mb-1">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <h5 class="bg-light text-center p-1">{{__('Việc làm tương tự')}}</h5>
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 0;margin-right: 0">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-light">
+{{--                        <div class="row" id="viec-lam-tuong-tu-render">--}}
+                        <div class="row" id="container-items">
+                            @include('BaiViet.chiTiet.baiVietLienQuan')
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @if(intval(Session::get('loai_tai_khoan')) == 1)
 
-    @include('NopDon.NopDonModal.index')
-    @include('User.modal.capNhatProject')
-    @include('User.modal.capNhatExp')
+        @include('NopDon.NopDonModal.index')
+        @include('User.modal.capNhatProject')
+        @include('User.modal.capNhatExp')
     @endif
 
 @endsection
@@ -368,7 +413,7 @@
             fullSizePage();
             let size_parent_of_right_side = $('#container-section').height();
             console.log(size_parent_of_right_side)
-            $('#noi-dung-right-side').css('height',size_parent_of_right_side+'px')
+            $('#noi-dung-right-side').css('height', size_parent_of_right_side + 'px')
         })
     </script>
     <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
@@ -393,6 +438,8 @@
 
     <script type="text/javascript">
         $(function () {
+            // viec-lam-tuong-tu-render
+            getViecLamTuongTu();
             $('#trang-chu-like-post').on('click', function () {
                 let __this = $(this);
                 let idPost = __this.data('id');
@@ -403,7 +450,7 @@
                     __this.addClass('like-animation');
                     __this.find('i').text(' Đã lưu');
                     let ajax = {
-                        method: 'get',
+                        method: 'post',
                         url: '/bai-viet/like',
                         data: {
                             id: idPost,
@@ -423,7 +470,7 @@
                     __this.addClass('btn-outline-primary');
                     __this.find('i').text(' Lưu bài');
                     let ajax = {
-                        method: 'get',
+                        method: 'post',
                         url: '/bai-viet/like',
                         data: {
                             id: idPost,
@@ -492,8 +539,19 @@
 
         });
 
+        let getViecLamTuongTu = ()=>{
+            {{--let ajax = {--}}
+            {{--    method :"get",--}}
+            {{--    url:"/tim-tin-tuyen-dung?kieu_lam_viec="+'{{$data['get_kieu_lam_viec']['id']}}',--}}
+            {{--    data:{}--}}
+            {{--}--}}
+            {{--sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{--}}
+            {{--    $('#viec-lam-tuong-tu-render').html(e)--}}
+            {{--})--}}
+        }
     </script>
     <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-bao-cao.js')}}"></script>
 
     <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>
 @endpush

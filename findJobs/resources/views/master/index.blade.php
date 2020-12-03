@@ -48,14 +48,24 @@
 <body>
 {{--@endif--}}
 <!-- Pre-loader -->
+{{--<div class="progress mb-0">--}}
+{{--    <div class="progress-bar progress-bar-striped progress-bar-animated" id="loadPage" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>--}}
+{{--</div>--}}
+{{----}}
 <div id="preloader">
-    <div id="status">
-        <div class="bouncingLoader">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+    <div class="progress mb-0" style="border-radius: 0px!important;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="loadPage" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
     </div>
+{{--    <div id="status">--}}
+{{--        <div class="progress mb-0">--}}
+{{--            <div class="progress-bar progress-bar-striped progress-bar-animated" id="loadPage" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>--}}
+{{--        </div>--}}
+{{--        <div class="bouncingLoader">--}}
+{{--            <div></div>--}}
+{{--            <div></div>--}}
+{{--            <div></div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
 <!-- End Preloader-->
 
@@ -83,7 +93,7 @@
 {{--            </li>--}}
 
             <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#"
+                <a class="nav-link dropdown-toggle  waves-effect waves-light text-white" data-toggle="dropdown" href="#"
                    role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="icofont icofont-bell-alt noti-icon"></i>
                     <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>
@@ -177,7 +187,7 @@
             </li>
 
             <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light text-white" data-toggle="dropdown"
                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img
                         src="@if(Session::get('avatar') != null){{URL::asset(Session::get('avatar'))}}@elseif(Session::get('avatar') == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
@@ -284,7 +294,7 @@
 {{--                {{Auth::user()}}--}}
                 @if(Auth::user() != null)
                 <a class="nav-link center-element search-field" data-search="search-field">
-                    <span>Tìm kiếm</span>
+                    <span class="text-white">Tìm kiếm</span>
                 </a>
                 @endif
 {{--                <div class="dropdown-menu dropdown-megamenu">--}}
@@ -472,7 +482,7 @@
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">
             <select class="form-control" id="dia-diem-master-search">
-                <option selected value="-1">Chọn địa điểm</option>
+                <option selected value="-1">Tất cả</option>
                 @foreach($dia_diem as $row)
                     <option value="{{$row['id']}}">{{$row['name']}}</option>
                 @endforeach
@@ -491,7 +501,7 @@
 
         </div>
     </div>
-    <div class="left-search-content overflow-y-auto p-2" id="left-search-content">
+    <div class="left-search-content overflow-y-auto p-2 bg-light" id="left-search-content">
         {{--        @include('TrangChu.items')--}}
     </div>
 </div>
@@ -536,6 +546,29 @@
 @stack('scripts')
 <script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 <script type="text/javascript">
+    // $(window).on('load',function () {
+        // $('body').removeClass('loadPage')
+        // $('#loadPage').parent().fadeOut('slow')
+        // $("#loadPage").removeClass("done");
+        // $({property: 0}).animate({property: 105}, {
+        //     duration: 4000,
+        //     step: function() {
+        //         var _percent = Math.round(this.property);
+        //
+        //
+        //         if(_percent == 105) {
+        //             $('#loadPage').hide(); //make it invisible
+        //             $('#loadPage').css('width', "0%"); //Reset to 0
+        //         }else{
+        //             $('#loadPage').show(); //show it.
+        //             $('#loadPage').css('width',  _percent+"%"); //progress
+        //         }
+        //     },
+        //     complete: function() {
+        //         $("#loadPage").parent().fadeOut('slow');
+        //     }
+        // });
+    // })
     // var currenPage = null;
     // var nextPage = null;
     // var next_page_check = null;
@@ -581,16 +614,31 @@
         }
     });
     $(function () {
-        select2Single($('#dia-diem-master-search'), $('.left-search-header'));
-        select2Single($('#nganh-nghe-master-search'), $('.left-search-header'));
+        $('#loadPage').css('with','80%');
+        $(window).on('load',function () {
+            $('#loadPage').parent().fadeOut('slow')
+        });
+        // select2Default($('#dia-diem-master-search')).select2({
+        //     dropdownParent : $('.left-search-header')
+        // }
+        // );
+        // select2Default($('#nganh-nghe-master-search'));
+        select2Single($('#dia-diem-master-search',$('.left-search-header')));
+        select2Single($('#nganh-nghe-master-search',$('.left-search-header')));
         $('.left-search').css('width', '0px');
         $('.left-search-content').css('max-height', ($(document).height() * 0.8) + 'px');
         $('.left-search-header').css('min-height', $('.navbar-custom').height() + 'px');
 
+        // $('#nganh-nghe-master-search').on('select2:close',function () {
+        //     // alert()
+        //     $('.select2-container-active').removeClass('select2-container-active');
+        //     // $(':focus').blur();
+        //     $('#value-master-search').focus();
+        // });
 //exit search container
         $('.exit-search').on('click', function () {
             $('.left-search').addClass('d-none').fadeOut().css('width', '0px');
-            $('.value-search').val('');
+            // $('.value-search').val('');
 
         });
 
@@ -605,6 +653,14 @@
             }
         });
 
+    });
+    $(document).on('keyup',function (e) {
+        if ($('.left-search').hasClass('d-none') == false){
+            if (e.keyCode == 13){
+                $('#button-master-search').trigger('click');
+            }
+            // console.log(e)
+        }
     });
 </script>
 </body>
