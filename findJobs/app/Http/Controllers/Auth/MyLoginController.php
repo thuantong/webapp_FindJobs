@@ -7,6 +7,7 @@ use App\Models\PhanQuyen;
 use App\Models\TaiKhoan;
 use App\Traits\LoginTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 
 //use Illuminate\Http\JsonResponse;
@@ -102,8 +103,16 @@ class MyLoginController extends Controller
                 if ($findUser->email_confirmed == null){
                     return redirect()->route('auth.confirmEmailView');
                 }
+
+
                 //pass all step
-                return redirect('/');
+                if (Session::exists('url_previos') == true && Session::get('url_previos') != null){
+                    return redirect(Session::get('url_previos'));
+                }else{
+                    return redirect('/');
+                }
+//                return redirect()->back();
+//                return back();
             case 2:
                 $nhaTuyenDung = $findUser->getNhaTuyenDung;
                 $soDu = $nhaTuyenDung->getSoDu;
@@ -122,7 +131,17 @@ class MyLoginController extends Controller
                 }
 
                 //pass all step
-                return redirect()->route('user.nhaTuyenDung');
+                if (Session::exists('url_previos') == true && Session::get('url_previos') != null){
+                    return redirect(Session::get('url_previos'));
+                }else{
+                    return redirect()->route('user.nhaTuyenDung');
+
+                }
+//                return redirect()->back();
+//            dd(URL::previous());
+//            dd(redirect()->back());
+//                return redirect()->back();
+
             case 3:
                 $quanTriVien = $findUser->getQuanTriVien;
 
@@ -139,7 +158,7 @@ class MyLoginController extends Controller
 
     public function logout(Request $request)
     {
-
+//        dd(URL::previous());
         //Step 1: Cập nhật trạng thái
         if (Auth::user() != null){
             $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
@@ -155,6 +174,7 @@ class MyLoginController extends Controller
         if ($request->has('admin') == true){
             return redirect()->route('auth.form.login',['admin']);
         }else{
+            Session::put('url_previos',URL::previous());
             return redirect()->route('auth.form.login');
         }
 

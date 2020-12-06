@@ -20,7 +20,7 @@ class QuanLyBaiDangController extends Controller
     private $nhaTuyenDung;
     public function __construct()
     {
-        $this->middleware(['auth','email.confirm']);
+        $this->middleware(['auth','email.confirm','nha_tuyen_dung']);
         $this->middleware(function ($request, $next) {
             $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
             return $next($request);
