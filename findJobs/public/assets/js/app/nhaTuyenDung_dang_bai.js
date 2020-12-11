@@ -6,28 +6,29 @@ const getInitHtml = () => {
         select2Default($('#form-body .gioi_tinh'));
         select2Default($('#form-body .dia_diem_lam_viec'));
         select2Default($('#form-body .hinh_thuc'));
+        select2Default($('#form-body .nganh_nghe'));
 
-        $('#form-body .nganh_nghe').select2({
-            placeholder: ' Chọn Ngành nghề',
-            allowClear: false
-        }).data('select2').listeners['*'].push(function (name, target) {
-            if (name == 'focus') {
-                $(this.$element).select2("open");
-            }
-        });
-        $('#form-body .cong_ty_tuyen_dung').select2({
-            templateResult: function (data) {
-                var span = data.text;
-                if ($(data.element).data('img') != null) {
-                    span = $("<span><img src='" + $(data.element).data('img') + "' style='width: 50px;height: 50px'/> " + data.text + "</span>");
-                }
-                return span;
-            }
-        }).data('select2').listeners['*'].push(function (name, target) {
-            if (name == 'focus') {
-                $(this.$element).select2("open");
-            }
-        });
+        // $('#form-body .nganh_nghe').select2({
+        //     placeholder: ' Chọn Ngành nghề',
+        //     allowClear: false
+        // }).data('select2').listeners['*'].push(function (name, target) {
+        //     if (name == 'focus') {
+        //         $(this.$element).select2("open");
+        //     }
+        // });
+        // $('#form-body .cong_ty_tuyen_dung').select2({
+        //     templateResult: function (data) {
+        //         var span = data.text;
+        //         if ($(data.element).data('img') != null) {
+        //             span = $("<span><img src='" + $(data.element).data('img') + "' style='width: 50px;height: 50px'/> " + data.text + "</span>");
+        //         }
+        //         return span;
+        //     }
+        // }).data('select2').listeners['*'].push(function (name, target) {
+        //     if (name == 'focus') {
+        //         $(this.$element).select2("open");
+        //     }
+        // });
         $("#form-body .muc_luong_from").TouchSpin({
             prefix: 'Từ<span style="color: #e9ecef!important;">...</span>',
             postfix: 'Triệu(đ)',
@@ -72,19 +73,19 @@ const getInitHtml = () => {
         });
 
 
-        $('#form-update-body .cong_ty_tuyen_dung').select2({
-            templateResult: function (data) {
-                var span = data.text;
-                if ($(data.element).data('img') != null) {
-                    span = $("<span><img src='" + $(data.element).data('img') + "' style='width: 50px;height: 50px'/> " + data.text + "</span>");
-                }
-                return span;
-            }
-        }).data('select2').listeners['*'].push(function (name, target) {
-            if (name == 'focus') {
-                $(this.$element).select2("open");
-            }
-        });
+        // $('#form-update-body .cong_ty_tuyen_dung').select2({
+        //     templateResult: function (data) {
+        //         var span = data.text;
+        //         if ($(data.element).data('img') != null) {
+        //             span = $("<span><img src='" + $(data.element).data('img') + "' style='width: 50px;height: 50px'/> " + data.text + "</span>");
+        //         }
+        //         return span;
+        //     }
+        // }).data('select2').listeners['*'].push(function (name, target) {
+        //     if (name == 'focus') {
+        //         $(this.$element).select2("open");
+        //     }
+        // });
 
 
         $("#form-update-body .muc_luong_from").TouchSpin({
@@ -149,7 +150,7 @@ $(function () {
                 quyen_loi_cong_viec: __parent.find('#quyen_loi_cong_viec').val(),
                 dia_chi_cong_viec: __parent.find('#dia_chi_cong_viec').val(),
                 do_tuoi: do_tuoi_array,
-                cong_ty_tuyen_dung: __parent.find('#cong_ty_tuyen_dung').find('option:checked').val(),
+                cong_ty_tuyen_dung: __parent.find('#cong_ty_tuyen_dung').val(),
                 so_ngay_ton_tai: __parent.find('#so_ngay_ton_tai').val(),
                 nganh_nghe: __parent.find('#nganh_nghe').val(),
             };
@@ -187,7 +188,18 @@ $(function () {
 
     $(document).on('click', '#form-body button#call-them-moi-cong-ty', function () {
         $('div.modal#them-moi-cong-ty').modal('show');
-        $('div.modal#them-moi-cong-ty').data('type', 'cong_ty_tuyen_dung');
+        let ajax = {
+            url:'/danh-sach-cong-ty/get-content',
+            method:'get',
+            data:{}
+        };
+        sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
+             $('div.modal#them-moi-cong-ty').find('.modal-body').html(e);
+             $('div.modal#them-moi-cong-ty').find('.modal-body').find('#save-cong-ty').addClass('d-none');
+            initEventCapNhatCongTy()
+            // hoverEventLogo();
+        })
+        // $('div.modal#them-moi-cong-ty').data('type', 'cong_ty_tuyen_dung');
         // alert()
     });
 

@@ -62,6 +62,10 @@ class BaiTuyenDung extends Model
         return $this->getNhaTuyenDung->pluck('id');
     }
 
+//    public function getNganhNghe()
+//    {
+//        return $this->belongsToMany(NganhNghe::class, 'bai_tuyen_dung_nganh_nghe', 'bai_tuyen_dung_id', 'nganh_nghe_id');
+//    }
     public function getNganhNghe()
     {
         return $this->belongsToMany(NganhNghe::class, 'bai_tuyen_dung_nganh_nghe', 'bai_tuyen_dung_id', 'nganh_nghe_id');

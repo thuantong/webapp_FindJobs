@@ -5,10 +5,13 @@
               rel="stylesheet">
         <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
+              type="text/css">
         <!-- third party css -->
-        <link href="{{URL::asset('assets\libs\datatables\dataTables.bootstrap4.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\datatables\responsive.bootstrap4.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\datatables\dataTables.bootstrap4.css')}}" rel="stylesheet"
+              type="text/css">
+        <link href="{{URL::asset('assets\libs\datatables\responsive.bootstrap4.css')}}" rel="stylesheet"
+              type="text/css">
         <link href="{{URL::asset('assets\libs\datatables\buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('assets\libs\datatables\select.bootstrap4.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
@@ -23,7 +26,7 @@
             </div>
         </div>
     </div>
-    @include('CongTy.modal.themMoi')
+    @include('CongTy.modal.anh_dai_dien')
     @include('CongTy.modal.xemAnhDaiDien')
 
     <div class="row">
@@ -32,47 +35,52 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a>Thông tin tuyển dụng</a></li>
-                        <li class="breadcrumb-item active">Danh sách công ty</li>
+                        <li class="breadcrumb-item active">Công ty tuyển dụng</li>
                     </ol>
                 </div>
-                <h4 class="page-title">{{__('Danh sách công ty của nhà tuyển dụng')}}</h4>
+                <h4 class="page-title">{{__('Công ty tuyển dụng')}}</h4>
             </div>
         </div>
     </div>
 
 
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="card-box p-1 mb-1 text-right">
-                {{--                <div class="row">--}}
-                {{--                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left">--}}
-                {{--                        <button class="btn btn-primary" id="them-moi">Thêm mới</button>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
+{{--    <div class="row center-element">--}}
 
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover mb-0" id="danh-sach-cong-ty">
-                                <thead class="thead-light">
-                                <tr>
-                                    <th class="text-center">Logo</th>
-                                    <th class="text-center">Tên</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">Số điện thoại</th>
-                                    <th class="text-center">Websites</th>
-{{--                                    <th class="text-center">Giới thiệu công ty</th>--}}
-                                    <th class="text-center">Chức năng</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+        @include('CongTy.content')
+{{--    </div>--}}
 
-            </div>
-        </div>
-    </div>
+
+
+
+
+
+    {{--    <div class="row">--}}
+    {{--        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+    {{--            <div class="card-box p-1 mb-1 text-right">--}}
+
+    {{--                <div class="row">--}}
+    {{--                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+    {{--                        <div class="table-responsive">--}}
+    {{--                            <table class="table table-bordered table-hover mb-0" id="danh-sach-cong-ty">--}}
+    {{--                                <thead class="thead-light">--}}
+    {{--                                <tr>--}}
+    {{--                                    <th class="text-center">Logo</th>--}}
+    {{--                                    <th class="text-center">Tên</th>--}}
+    {{--                                    <th class="text-center">Email</th>--}}
+    {{--                                    <th class="text-center">Số điện thoại</th>--}}
+    {{--                                    <th class="text-center">Websites</th>--}}
+    {{--                                    <th class="text-center">Giới thiệu công ty</th>--}}
+    {{--                                    <th class="text-center">Chức năng</th>--}}
+    {{--                                </tr>--}}
+    {{--                                </thead>--}}
+    {{--                            </table>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
 @endsection
 @push('scripts')
     <script src="{{URL::asset('assets\libs\datatables\jquery.dataTables.min.js')}}"></script>
@@ -92,7 +100,8 @@
 
     <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
+    <script type="text/javascript"
+            src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
 
@@ -105,7 +114,44 @@
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
     <script>
         let datatable_table = null;
+        const initEventCapNhatCongTy = ()=>{
+            $('#doi_anh_dai_dien').data('type','them-moi-cong-ty')
+            select2Default($('select#from_day'));
+            select2Default($('select#to_day'));
+            select2Default($('select#quy_mo_nhan_su'));
+            select2MultipleDefault($('select#linh_vuc_hoat_dong'),'Chọn Ngành nghề')
+            // $('select#from_day,select#to_day,select#quy_mo_nhan_su').select2({
+            //     dropdownParent: $('div#cap-nhat-cong-ty ')
+            // });
+            // $('select#linh_vuc_hoat_dong').select2({
+            //     placeholder: ' Chọn Ngành nghề',
+            //     allowClear: false
+            // });
 
+            $("#so_luong_chi_nhanh").TouchSpin({
+                min: 0,
+                buttondown_class: "btn btn-primary waves-effect",
+                buttonup_class: "btn btn-primary waves-effect"
+            });
+            lichNam($('#nam_thanh_lap'));
+
+            $('#from_time,#to_time').datetimepicker({
+                format: 'HH:mm',
+                widgetPositioning: {
+                    vertical: 'bottom',
+                    horizontal: 'right'
+                },
+                icons: {
+                    time: "icofont icofont-clock-time",
+                    date: "icofont icofont-ui-calendar",
+                    up: "icofont icofont-rounded-up",
+                    down: "icofont icofont-rounded-down",
+                    next: "icofont icofont-rounded-right",
+                    previous: "icofont icofont-rounded-left"
+                },
+            });
+            hoverEventLogo();
+        }
         const getDanhSachCongTy = () => {
             let ajaxDSCongTy = {
                 method: 'get',
@@ -165,8 +211,9 @@
             return datatableAjax($('#danh-sach-cong-ty'), ajaxDSCongTy, columnDSCongTy);
 
         }
+        //main
         $(function () {
-
+            initEventCapNhatCongTy();
             lichNam($('#them-moi-cong-ty #nam_thanh_lap'));
             $('.modal').on('hidden.bs.modal', function () {
                 // $('.modal').css('opacity', '1')
@@ -174,14 +221,11 @@
             });
 
             datatable_table = getDanhSachCongTy();
-            // $.ajax({
-            //     method: 'get',
-            //     url: '/danh-sach-cong-ty/data',
-            //     success: function (res) {
-            //         console.log(res)
-            //     }
-            // })
-            $(document).on('input change','div#cap-nhat-cong-ty #so_luong_chi_nhanh', function () {
+
+            $('#gioi_thieu_cong_ty').on('focusout',function () {
+                    $('#ten_cong_ty').focus().select();
+            });
+            $(document).on('input change', 'div#cap-nhat-cong-ty #so_luong_chi_nhanh', function () {
 
                 let __this = $(this);
                 let value = __this.val();
@@ -222,6 +266,7 @@
                 $('div#cap-nhat-cong-ty').modal('show');
                 //
                 $('div#cap-nhat-cong-ty').find('.modal-content').html(res);
+
                 $('div#cap-nhat-cong-ty select#from_day,div#cap-nhat-cong-ty select#to_day,div#cap-nhat-cong-ty  select#quy_mo_nhan_su').select2({
                     dropdownParent: $('div#cap-nhat-cong-ty ')
                 });
@@ -253,31 +298,34 @@
                         previous: "icofont icofont-rounded-left"
                     },
                 });
+                hoverEventLogo();
 
-                $("div#cap-nhat-cong-ty #logo_cong_ty").hover(function () {
-                    if ($(window).width() >= 576) {
-                        $(this).find('div.hover-me').fadeIn('fast');
-                    }
-                }, function () {
-                    if ($(window).width() >= 576) {
-                        $(this).find('div.hover-me').fadeOut('fast');
-                    }
-                });
             })
         });
+        const hoverEventLogo = () => {
+            $("div#logo_cong_ty").hover(function () {
+                if ($(window).width() >= 576) {
+                    $(this).find('div.hover-me').fadeIn('fast');
+                }
+            }, function () {
+                if ($(window).width() >= 576) {
+                    $(this).find('div.hover-me').fadeOut('fast');
+                }
+            });
+        }
 
         $(document).on('click', 'div#cap-nhat-cong-ty #save-cong-ty', function () {
             let __this = $(this);
             let gio_lam_viec = [];
             let ngay_lam_viec = [];
             let error = 0;
-            let getParents = $('#'+$(this).parents('.modal').attr('id'));
+            let getParents = $('#' + $(this).parents('.modal').attr('id'));
             let array_dia_chi_chi_nhanh = [];
             let dia_chi_chi_nhanh = getParents.find('.dia_chi_chi_nhanh');
             let so_luong_chi_nhanh = getParents.find('#so_luong_chi_nhanh');
 
             error += notNullMessage(getParents.find('.not-null'));
-            if(so_luong_chi_nhanh.hasClass('ready')){
+            if (so_luong_chi_nhanh.hasClass('ready')) {
                 dia_chi_chi_nhanh.each(function () {
                     array_dia_chi_chi_nhanh.push($(this).val());
                 });
@@ -320,20 +368,20 @@
 
         });
 
-        $(document).on('click','.xoa-cong-ty',function () {
+        $(document).on('click', '.xoa-cong-ty', function () {
             // table.row(this).data();
             let __this_parent = $(this).parents('tr');
             let __this__data = datatable_table.row(__this_parent).data();
             // console.log(__this__data)
             let dataConfirm = {
                 title: 'Xóa công ty',
-                message: 'Bạn muốn xóa công ty '+__this__data.name+'?'
+                message: 'Bạn muốn xóa công ty ' + __this__data.name + '?'
             }
-            alertConfirm(dataConfirm).then(e =>{
-                if(e.value == true){
-                    sendAjaxNoFunc('post','/danh-sach-cong-ty/xoa',{id:__this__data.id},'').done(e=>{
+            alertConfirm(dataConfirm).then(e => {
+                if (e.value == true) {
+                    sendAjaxNoFunc('post', '/danh-sach-cong-ty/xoa', {id: __this__data.id}, '').done(e => {
                         getHtmlResponse(e);
-                        if(e.status == 200){
+                        if (e.status == 200) {
                             datatable_table.ajax.reload(null, false);
                         }
                     })

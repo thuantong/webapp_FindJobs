@@ -486,6 +486,17 @@ $(document).on('focus', 'textarea.break-custom', function () {
     }
 });
 
+$(document).on('focusout', 'textarea.break-custom', function () {
+    let value = $(this).val();
+    let count = $.trim(value);
+    console.log(count)
+    if (count.length == 1) {
+        $(this).val(function (i, value) {
+            return '';
+        });
+    }
+});
+
 $(document).on('init.dt', function (e, settings, json) {
     $($.fn.dataTable.tables(true)).DataTable()
         .columns.adjust();
@@ -652,7 +663,16 @@ const select2Default = (element) => {
         }
     });
 };
-
+const select2MultipleDefault = (element,placeHolder) => {
+    return element.select2({
+        placeholder: ' '+placeHolder+'',
+        allowClear: false
+    }).data('select2').listeners['*'].push(function (name, target) {
+        if (name == 'focus') {
+            $(this.$element).select2("open");
+        }
+    });
+};
 /**
  * Ex: changeSwitchery($('#'),false)
  * @param element

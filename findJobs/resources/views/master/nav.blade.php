@@ -79,6 +79,12 @@
                         </a>
                     </li>
                     <li class="menu-title">{{__('Quản lý tuyển dụng')}}</li>
+                    <li>
+                        <a href="{{route('congty.index')}}" class="waves-effect">
+                            <i class="fa fa-users"></i>
+                            <span>{{__('Quản lý Công Ty')}}</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="{{route('quanlybaidang.index')}}" class="waves-effect">
@@ -115,12 +121,7 @@
                 @if(Session::get('loai_tai_khoan') == 2)
                     <li class="menu-title">{{__('Thông tin tuyển dụng')}}</li>
 
-                    <li>
-                        <a href="{{route('congty.index')}}" class="waves-effect">
-                            <i class="fa fa-users"></i>
-                            <span>{{__('Danh sách công ty')}}</span>
-                        </a>
-                    </li>
+
 
                 @endif
 

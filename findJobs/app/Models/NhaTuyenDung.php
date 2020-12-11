@@ -62,7 +62,7 @@ class NhaTuyenDung extends Model
     //lấy công ty
     public function getCongTy()
     {
-        return $this->hasMany(CongTy::class, 'nha_tuyen_dung_id');
+        return $this->hasOne(CongTy::class, 'nha_tuyen_dung_id');
     }
 
     public function getCongTyId()

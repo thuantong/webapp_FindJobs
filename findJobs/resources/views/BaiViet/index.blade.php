@@ -38,6 +38,8 @@
     <div class="row">
         @include('BaiViet.buttonDangBai')
     </div>
+    @include('CongTy.modal.anh_dai_dien')
+
 @endsection
 @push('scripts')
     <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
@@ -54,6 +56,7 @@
     <script type="text/javascript"
             src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\themMoiCongTy.js')}}"></script>--}}
 
     <script type="text/javascript"
             src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
@@ -62,6 +65,55 @@
         let table = null;
         let HTMLcongTy = null;
         let getBaseURL = '{{URL::asset('/')}}';
+        const initEventCapNhatCongTy = ()=>{
+            $('#doi_anh_dai_dien').data('type','them-moi-cong-ty')
+            select2Default($('select#from_day'));
+            select2Default($('select#to_day'));
+            select2Default($('select#quy_mo_nhan_su'));
+            select2MultipleDefault($('select#linh_vuc_hoat_dong'),'Chọn Ngành nghề')
+            // $('select#from_day,select#to_day,select#quy_mo_nhan_su').select2({
+            //     dropdownParent: $('div#cap-nhat-cong-ty ')
+            // });
+            // $('select#linh_vuc_hoat_dong').select2({
+            //     placeholder: ' Chọn Ngành nghề',
+            //     allowClear: false
+            // });
+
+            $("#so_luong_chi_nhanh").TouchSpin({
+                min: 0,
+                buttondown_class: "btn btn-primary waves-effect",
+                buttonup_class: "btn btn-primary waves-effect"
+            });
+            lichNam($('#nam_thanh_lap'));
+
+            $('#from_time,#to_time').datetimepicker({
+                format: 'HH:mm',
+                widgetPositioning: {
+                    vertical: 'bottom',
+                    horizontal: 'right'
+                },
+                icons: {
+                    time: "icofont icofont-clock-time",
+                    date: "icofont icofont-ui-calendar",
+                    up: "icofont icofont-rounded-up",
+                    down: "icofont icofont-rounded-down",
+                    next: "icofont icofont-rounded-right",
+                    previous: "icofont icofont-rounded-left"
+                },
+            });
+            hoverEventLogo();
+        }
+        const hoverEventLogo = () => {
+            $("div#logo_cong_ty").hover(function () {
+                if ($(window).width() >= 576) {
+                    $(this).find('div.hover-me').fadeIn('fast');
+                }
+            }, function () {
+                if ($(window).width() >= 576) {
+                    $(this).find('div.hover-me').fadeOut('fast');
+                }
+            });
+        }
     </script>
 {{--    <script type="text/javascript">--}}
 {{--        let HTMLcongTy = null;--}}

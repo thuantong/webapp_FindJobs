@@ -24,21 +24,17 @@
                 <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                     <div class="row">
                         <div class="col-sm-9 col-md-10 col-lg-10 col-xl-10 pr-0">
-                            <select class="form-control not-null cong_ty_tuyen_dung" id="cong_ty_tuyen_dung_update"
-                                    title="Công ty tuyển dụng">
-                                <option value="" disabled selected>Công ty</option>
-
-                                @if($data['cong_ty'] != null)
-                                    @foreach($data['cong_ty'] as $row)
-                                        <option value="{{$row['id']}}"
-                                                data-img="{{URL::asset($row['logo'])}}">{{$row['name']}}</option>
-                                    @endforeach
-                                @endif
-
-                            </select>
-                            <span class="invalid-feedback" role="alert">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <img src="@if(isset($data['cong_ty']) && $data['cong_ty']['logo'] != null){{URL::asset(''.$data['cong_ty']['logo'].'')}}@else{{URL::asset('images/default-company-logo.jpg')}}@endif" width="100" height="100">
+                                    <input id="cong_ty_tuyen_dung_update" class="not-null" type="hidden" title="Công ty" value="@if(isset($data['cong_ty']) && $data['cong_ty']['id'] != null){{$data['cong_ty']['id']}}@endif">
+                                    <span class="invalid-feedback" role="alert">
                             <strong></strong>
                         </span>
+                                </div>
+                                <div class="col-sm-12 col-md-8" id="cong_ty_tuyen_dung_name">@if(isset($data['cong_ty']) && $data['cong_ty']['name'] != null)<h5>{{ucwords($data['cong_ty']['name'])}}</h5>@else{{'Chưa thêm công ty tuyển dụng'}}@endif</div>
+                            </div>
+
                         </div>
                         <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 pl-0">
                             <button class="btn waves-effect btn-primary call-them-moi-cong-ty" id="call-them-moi-cong-ty">Thêm</button>

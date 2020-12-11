@@ -57,7 +57,7 @@ const getDanhSach = () => {
 
                 return '<div class="d-flex center-element" data-id="' + columns.id + '">' +
                     '<a class="waves-effect text-primary mr-1 xem_noi_dung" style="text-decoration: underline" target="_blank" href="/bai-viet/thong-tin&baiviet='+columns.id+'&chitiet=1">Xem Nội dung</a>' +
-                    '<button class="btn btn-sm btn-primary waves-effect chinh_sua ' + classHide + '">Chỉnh sửa</button>' +
+                    '<button class="btn btn-sm btn-primary waves-effect chinh_sua ' + classHide + '" data-id="' + columns.id + '">Chỉnh sửa</button>' +
                     '</div>';
             }
         },

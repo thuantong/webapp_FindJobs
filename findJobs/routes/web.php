@@ -82,6 +82,7 @@ Route::namespace('BaiViet')->group(function (){
         Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=1','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=0','BaiVietController@getThongTinBaiVietClick')->name('getThongTinBaiVietClick');
         Route::post('/bai-viet/like','BaiVietController@likePost')->name('likePost')->middleware(['auth','email.confirm']);
+        Route::get('/bai-viet/chinh-sua','BaiVietController@chinhSua')->name('chinhSua')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/tim-kiem','BaiVietController@timKiemBaiViet')->name('timKiemBaiViet');
 
@@ -91,6 +92,7 @@ Route::namespace('BaiViet')->group(function (){
 Route::namespace('CongTy')->group(function (){
     Route::name('congty.')->group(function (){
         Route::get('/danh-sach-cong-ty','CongTyController@index')->name('index');
+        Route::get('/danh-sach-cong-ty/get-content','CongTyController@getContent')->name('getContent');
         Route::get('/danh-sach-cong-ty/data','CongTyController@getDanhSach')->name('getdanhsach');
         Route::post('/danh-sach-cong-ty/tao-moi','CongTyController@setDanhSach')->name('setdanhsach');
         Route::post('/danh-sach-cong-ty/cap-nhat','CongTyController@updateDanhSach')->name('updatedanhsach');

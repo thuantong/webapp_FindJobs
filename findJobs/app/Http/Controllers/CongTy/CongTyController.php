@@ -21,10 +21,11 @@ class CongTyController extends Controller
 
         $this->middleware(['auth','email.confirm']);
         $this->middleware(function ($request, $next) {
-            $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
+//            abort(404);
+        $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
 
-            return $next($request);
-        });
+        return $next($request);
+    });
 
 //        function getNhaTuyenDung()
 //        {
@@ -34,12 +35,27 @@ class CongTyController extends Controller
 //        $nhaTuyenDung = ;
 //        dd($nhaTuyenDung);
     }
+    public function getData(){
+        $data['nganh_nghe'] = NganhNghe::all()->toArray();
+        $data['quy_mo_nhan_su'] = QuyMoNhanSu::all()->toArray();
+        $data['data'] = $this->nhaTuyenDung->getCongTy()->first();
+        if ($data['data'] != null){
+            $getNganhNghe = $data['data']->getNganhNgheId()->toArray();
+            $data['data'] = $data['data']->toArray();
+            $data['data']['nganh_nghe_ids'] = $getNganhNghe;
+        }
 
+
+        $data['data']['dia_chi_chi_nhanh'] = unserialize($data['data']['dia_chi_chi_nhanh']);
+        $data['data']['gio_lam_viec'] = unserialize($data['data']['gio_lam_viec']);
+        $data['data']['ngay_lam_viec'] = unserialize($data['data']['ngay_lam_viec']);
+        return $data;
+    }
     public function index()
     {
 
-        $data['nganh_nghe'] = NganhNghe::all()->toArray();
-        $data['quy_mo_nhan_su'] = QuyMoNhanSu::all()->toArray();
+        $data = $this->getData();
+//        dd($data);
 //        dd(\GuzzleHttp\json_decode());
 //        dd($data);
         return view('CongTy.index', compact('data'));
@@ -73,12 +89,17 @@ class CongTyController extends Controller
 
     public function setDanhSach(Request $request)
     {
-//        return $request;
-//        return $request;?
+//        echo $request->logo_cong_ty;
+//        dd($request);
 //        $congTyNew->ten_cong_ty = serialize($request->linh_vuc_hoat_dong);
-        $title = 'Thêm mới';
+        $title = 'Cập nhật';
         try {
-            $congTyNew = new CongTy();
+            if ($request->get('id') == null){
+                $congTyNew = new CongTy();
+            }else{
+                $congTyNew = CongTy::query()->find($request->id)->first();
+            }
+
             $congTyNew->name = $request->ten_cong_ty;
             $congTyNew->websites = $request->link_website;
             $congTyNew->email = $request->email_cong_ty;
@@ -94,18 +115,18 @@ class CongTyController extends Controller
             $congTyNew->dia_chi_chi_nhanh = serialize($request->dia_chi_chi_nhanh);
             $congTyNew->nam_thanh_lap = $request->nam_thanh_lap;
 
-
             $congTyNew->save();
 
             $nganhNghe = $request->linh_vuc_hoat_dong;
             $nhaTuyenDung = $this->nhaTuyenDung;
             $nhaTuyenDung->getCongTy()->save($congTyNew);
+            $congTyNew->getNganhNghe()->detach();
             $congTyNew->getNganhNghe()->attach($nganhNghe);
 
-            $message = 'Thêm mới công ty thành công!';
-            return $this->getResponse($title, 200, $message, 0);
+            $message = 'Cập nhật công ty thành công!';
+            return $this->getResponse($title, 200, $message, $congTyNew);
         } catch (\Exception $e) {
-            $message = 'Thêm mới công ty thất bại! Kiểm tra lại dữ liệu!';
+            $message = 'Cập nhật công ty thất bại! Kiểm tra lại dữ liệu!';
             return $this->getResponse($title, 400, $e . $message, 0);
         }
 
@@ -185,8 +206,12 @@ class CongTyController extends Controller
             return $this->getResponse($title, 400, $message);
         }
 
-
         return $id;
     }
     //
+    public function getContent(){
+        $data = $this->getData();
+
+        return view('CongTy.content',compact('data'));
+    }
 }

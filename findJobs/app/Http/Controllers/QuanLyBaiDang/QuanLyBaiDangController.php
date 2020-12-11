@@ -30,12 +30,13 @@ class QuanLyBaiDangController extends Controller
     public function index(){
         $data['kinh_nghiem'] = KinhNghiem::query()->orderBy('id', 'asc')->get();
         $data['nganh_nghe'] = NganhNghe::query()->orderBy('name', 'asc')->get();
-        $data['cong_ty'] = $this->nhaTuyenDung->getCongTy()->orderBy('created_at', 'desc')->get();
+        $data['cong_ty'] = $this->nhaTuyenDung->getCongTy()->orderBy('created_at', 'desc')->first()->toArray();
         $data['chuc_vu'] = ChucVu::query()->orderBy('name', 'asc')->get();
         $data['dia_diem'] = DiaDiem::query()->orderBy('name', 'asc')->get();
         $data['kieu_lam_viec'] = KieuLamViec::query()->orderBy('name', 'asc')->get();
         $data['bang_cap'] = BangCap::query()->orderBy('name', 'asc')->get();
         $data['quy_mo_nhan_su'] = QuyMoNhanSu::query()->orderBy('id', 'asc')->get();
+//        dd($data);
         return view('QuanLyTuyenDung.QLBaiDang.index',compact('data'));
     }
     public function getDanhSach(){

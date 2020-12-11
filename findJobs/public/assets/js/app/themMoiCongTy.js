@@ -1,3 +1,4 @@
+
 $(function () {
     $("div#them-moi-cong-ty #logo_cong_ty").hover(function () {
         if ($(window).width() >= 576) {
@@ -20,10 +21,18 @@ $(function () {
         buttonup_class: "btn btn-primary waves-effect"
     });
 
-    $('div#them-moi-cong-ty #so_luong_chi_nhanh').on('input change', function () {
+    $(document).on('input change','#so_luong_chi_nhanh',function () {
         let __this = $(this);
+        let getParents = null;
+        if (__this.parents('.modal').length > 0){
+            getParents = __this.parents('.modal');
+        }else{
+            getParents = $('body');
+        }
         let value = __this.val();
-        let inputCount = $('div#them-moi-cong-ty #dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('input').length + 1;
+        let inputCount = getParents.find('#dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('input').length + 1;
+
+        // console.log(inputCount);
         if (value > 0) {
             __this.addClass('ready');
         } else if (value <= 0) {
@@ -31,20 +40,46 @@ $(function () {
             __this.removeClass('ready');
         }
         if (__this.hasClass('ready')) {
-            $('div#them-moi-cong-ty #dia_chi_chi_nhanh').removeClass('d-none');
+            getParents.find('#dia_chi_chi_nhanh').removeClass('d-none');
 
             if (value == inputCount && value != 0) {
-                $('div#them-moi-cong-ty #dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').append('<div class="xoa-element">Địa chỉ chi nhánh ' + value + ':<input class="form-control dia_chi_chi_nhanh child-not-null" title="Địa chỉ chi nhánh" value=""></div>');
+                getParents.find('#dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').append('<div class="xoa-element">Địa chỉ chi nhánh số ' + value + ':<input class="form-control dia_chi_chi_nhanh child-not-null" title="Địa chỉ chi nhánh" value=""></div>');
             } else if (value < inputCount) {
-                $('div#them-moi-cong-ty #dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('.xoa-element:last').remove();
+                getParents.find('#dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('.xoa-element:last').remove();
             }
 
         } else {
-            $('div#them-moi-cong-ty #dia_chi_chi_nhanh').addClass('d-none');
-            $('div#them-moi-cong-ty #dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('.xoa-element').remove();
+            getParents.find('#dia_chi_chi_nhanh').addClass('d-none');
+            getParents.find('#dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('.xoa-element').remove();
 
         }
     });
+    // $('#so_luong_chi_nhanh').on('input change', function () {
+    //     let __this = $(this);
+    //     let value = __this.val();
+    //     let inputCount = $('#dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('input').length + 1;
+    //     // console.log(value)
+    //     if (value > 0) {
+    //         __this.addClass('ready');
+    //     } else if (value <= 0) {
+    //         __this.val(0).select();
+    //         __this.removeClass('ready');
+    //     }
+    //     if (__this.hasClass('ready')) {
+    //         $('#dia_chi_chi_nhanh').removeClass('d-none');
+    //
+    //         if (value == inputCount && value != 0) {
+    //             $('#dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').append('<div class="xoa-element">Địa chỉ chi nhánh số ' + value + ':<input class="form-control dia_chi_chi_nhanh child-not-null" title="Địa chỉ chi nhánh" value=""></div>');
+    //         } else if (value < inputCount) {
+    //             $('#dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('.xoa-element:last').remove();
+    //         }
+    //
+    //     } else {
+    //         $('#dia_chi_chi_nhanh').addClass('d-none');
+    //         $('#dia_chi_chi_nhanh').find('#dia_chi_chi_nhanh_append').find('.xoa-element').remove();
+    //
+    //     }
+    // });
     var $uploadCrop;
 
     function readFile(input) {
@@ -133,17 +168,18 @@ $(function () {
     $('#doi_anh_dai_dien').find('.modal-footer').find('button:eq(1)#save').on('click', function () {
         let __this = $(this);
         let type = $(this).parents('.modal').data('type');
-        // console.log('modal nè', type)
+        console.log('modal nè', type)
 
         // console.log(type)
         let elementID = '';
         switch (type) {
             case 'them-moi-cong-ty':
-                // elementID = ('#' + $('#logo_cong_ty').attr('id'));
-                elementID = $('#' + type).find('#logo_cong_ty');
+                // elementID = $('#' + type).find('#logo_cong_ty');
+                elementID = $('body').find('#logo_cong_ty');
                 break;
             case 'cap-nhat-cong-ty':
-                elementID = $('#' + type).find('#logo_cong_ty');
+
+                elementID = $('#them-moi-cong-ty').find('#logo_cong_ty');
                 break;
         }
         let namePicture = elementID.find('input[type="file"]')[0].files[0].name;
@@ -158,8 +194,8 @@ $(function () {
                 name: namePicture,
             };
             sendAjaxNoFunc(method, url, data, __this.attr('id')).done(function (e) {
-                // console.log('data', e)
-                elementID.find('img').attr('src', e.reset[0]).data('data', e.reset[0]);
+                // console.log('data', e.reset[0])
+                elementID.find('img').attr('src', getBaseURL+e.reset[0]).data('data', e.reset[0]);
                 getHtmlResponse(e);
 
                 if (e.status == 200) {
@@ -172,12 +208,19 @@ $(function () {
     });
 });
 
-$(document).on('click', '#them-moi-cong-ty #save-cong-ty', function () {
+$(document).on('click', 'button#save-cong-ty', function () {
     let __this = $(this);
     let gio_lam_viec = [];
     let ngay_lam_viec = [];
     let error = 0;
-    let getParents = $('#' + $(this).parents('.modal').attr('id'));
+    // let getParents = $('#' + $(this).parents('.modal').attr('id'));
+    let getParents = null;
+    if (__this.parents('.modal').length > 0){
+        getParents = __this.parents('.modal');
+    }else{
+        getParents = $('body');
+    }
+    // let getParents = $('body');
     let array_dia_chi_chi_nhanh = [];
     let dia_chi_chi_nhanh = getParents.find('.dia_chi_chi_nhanh');
     let so_luong_chi_nhanh = getParents.find('#so_luong_chi_nhanh');
@@ -194,6 +237,7 @@ $(document).on('click', '#them-moi-cong-ty #save-cong-ty', function () {
         ngay_lam_viec.push(getParents.find('#from_day').find('option:checked').val(), getParents.find('#to_day').find('option:checked').val());
 
         let dataSend = {
+            id : getParents.find('#object-fillter').val(),
             ten_cong_ty: getParents.find('#ten_cong_ty').val(),
             link_website: getParents.find('#link_website').val(),
             email_cong_ty: getParents.find('#email_cong_ty').val(),
@@ -210,42 +254,54 @@ $(document).on('click', '#them-moi-cong-ty #save-cong-ty', function () {
             dia_chi_chi_nhanh: array_dia_chi_chi_nhanh,
             nam_thanh_lap: getParents.find('#nam_thanh_lap').val(),
         }
-
+        // console.log(dataSend);
+        // return;
         sendAjaxNoFunc('post', '/danh-sach-cong-ty/tao-moi', dataSend, __this.attr('id')).done(res => {
-            console.log('them moi',res)
+            // console.log('them moi',res);
             getHtmlResponse(res);
             if (res.status == 200) {
-                // $('#' + __this.attr('id')).attr('disabled', 'disabled');
-                if (getParents.data('type') == 'cong_ty_tuyen_dung') {
-                    // alert('select')
-                    sendAjaxNoFunc('get', '/danh-sach-cong-ty/data', {}, __this.attr('id')).done(async e => {
-                        const data = e.data;
-                        let checked = null;
-                        let count = 0;
-                        await $('#' + getParents.data('type')).find('option').not(':first').remove();
-                        await $.each(data, function (i, v) {
-                            switch (i) {
-                                case 0:
-                                    checked = 'selected';
-                                    break;
-                                default:
-                                    checked = null;
-                                    break;
-                            }
-
-                            $('#' + getParents.data('type')).append('<option value="' + v.id + '" ' + checked + ' data-img="'+ getBaseURL + v.logo + '">' + v.name + '</option>');
-                            // getHTMLcongTy();
-                        });
-                        // getHTMLcongTy();
-                    });
-                } else {
-                    // console.log('ccc',$('body').find('#danh-sach-cong-ty').length)
-                    if ($('body').find('#danh-sach-cong-ty').length != 0){
-                        datatable_table.ajax.reload();
-                    }
-
+                if (__this.parents('.modal').length > 0){
+                    let dataRespose = res.reset[0];
+                    console.log(dataRespose)
+                    __this.parents('.modal').modal('hide');
+                    $('body').find('#cong_ty_tuyen_dung').val(dataRespose.id);
+                    $('body').find('#cong_ty_tuyen_dung').parent().find('img').attr('src',getBaseURL+dataRespose.logo);
+                    $('body').find('#cong_ty_tuyen_dung_name').find('h5').text(dataRespose.name);
+                }else{
+                    window.location.href = '/danh-sach-cong-ty';
                 }
-                getParents.modal('hide');
+
+                // $('#' + __this.attr('id')).attr('disabled', 'disabled');
+                // if (getParents.data('type') == 'cong_ty_tuyen_dung') {
+                //     // alert('select')
+                //     sendAjaxNoFunc('get', '/danh-sach-cong-ty/data', {}, __this.attr('id')).done(async e => {
+                //         const data = e.data;
+                //         let checked = null;
+                //         let count = 0;
+                //         await $('#' + getParents.data('type')).find('option').not(':first').remove();
+                //         await $.each(data, function (i, v) {
+                //             switch (i) {
+                //                 case 0:
+                //                     checked = 'selected';
+                //                     break;
+                //                 default:
+                //                     checked = null;
+                //                     break;
+                //             }
+                //
+                //             $('#' + getParents.data('type')).append('<option value="' + v.id + '" ' + checked + ' data-img="'+ getBaseURL + v.logo + '">' + v.name + '</option>');
+                //             // getHTMLcongTy();
+                //         });
+                //         // getHTMLcongTy();
+                //     });
+                // } else {
+                //     // console.log('ccc',$('body').find('#danh-sach-cong-ty').length)
+                //     if ($('body').find('#danh-sach-cong-ty').length != 0){
+                //         datatable_table.ajax.reload();
+                //     }
+                //
+                // }
+                // getParents.modal('hide');
 
             }
         })

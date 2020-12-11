@@ -15,7 +15,10 @@
     </head>
     {{--    Thêm mới công ty - modal--}}
     @include('CongTy.modal.themMoi')
-{{--    modal thêm mới --}}
+    @include('CongTy.modal.xemAnhDaiDien')
+    @include('CongTy.modal.anh_dai_dien')
+    @include('BaiViet.modal.chinh_sua.modal')
+    {{--    modal thêm mới --}}
     <div class="modal fade bs-example-modal-lg" id="them-moi-modal" tabindex="-1" role="dialog"
          aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -134,6 +137,55 @@
         let table = null;
         let HTMLcongTy = null;
         let getBaseURL = '{{URL::asset('/')}}';
+        const initEventCapNhatCongTy = ()=>{
+            $('#doi_anh_dai_dien').data('type','them-moi-cong-ty')
+            select2Default($('select#from_day'));
+            select2Default($('select#to_day'));
+            select2Default($('select#quy_mo_nhan_su'));
+            select2MultipleDefault($('select#linh_vuc_hoat_dong'),'Chọn Ngành nghề')
+            // $('select#from_day,select#to_day,select#quy_mo_nhan_su').select2({
+            //     dropdownParent: $('div#cap-nhat-cong-ty ')
+            // });
+            // $('select#linh_vuc_hoat_dong').select2({
+            //     placeholder: ' Chọn Ngành nghề',
+            //     allowClear: false
+            // });
+
+            $("#so_luong_chi_nhanh").TouchSpin({
+                min: 0,
+                buttondown_class: "btn btn-primary waves-effect",
+                buttonup_class: "btn btn-primary waves-effect"
+            });
+            lichNam($('#nam_thanh_lap'));
+
+            $('#from_time,#to_time').datetimepicker({
+                format: 'HH:mm',
+                widgetPositioning: {
+                    vertical: 'bottom',
+                    horizontal: 'right'
+                },
+                icons: {
+                    time: "icofont icofont-clock-time",
+                    date: "icofont icofont-ui-calendar",
+                    up: "icofont icofont-rounded-up",
+                    down: "icofont icofont-rounded-down",
+                    next: "icofont icofont-rounded-right",
+                    previous: "icofont icofont-rounded-left"
+                },
+            });
+            hoverEventLogo();
+        }
+        const hoverEventLogo = () => {
+            $("div#logo_cong_ty").hover(function () {
+                if ($(window).width() >= 576) {
+                    $(this).find('div.hover-me').fadeIn('fast');
+                }
+            }, function () {
+                if ($(window).width() >= 576) {
+                    $(this).find('div.hover-me').fadeOut('fast');
+                }
+            });
+        }
     </script>
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\js\app\quanLyBaiDang.js')}}"></script>
@@ -145,64 +197,65 @@
         $(document).on('click', '#form-update-body button#call-them-moi-cong-ty', function () {
             $('div.modal#them-moi-cong-ty').modal('show');
             $('div.modal#them-moi-cong-ty').data('type', 'cong_ty_tuyen_dung');
+            $('div.modal#doi_anh_dai_dien').data('type', 'cap-nhat-cong-ty');
 
         });
 
         $(document).on('click','.them-moi-danh-sach',function () {
             $('#them-moi-modal').modal('show');
         });
-        $(document).on('click','#quan-ly-bai-dang .chinh_sua',function () {
-            let __this = $(this);
-            let id = __this.parent().data('id');
-            let ajax = {
-                method: 'get',
-                url : '/bai-viet/thong-tin&baiviet='+id+'&chitiet=0',
-                data : {
-                    action : id
-                }
-            }
-            sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
-                // console.log('dataa',e);
-                let data = e;
-                let __modalFormCapNhat = $('#cap-nhat-modal').find('#form-update-body');
-
-                __modalFormCapNhat.find('#tieu_de_bai_dang_update').val(data.tieu_de);
-                __modalFormCapNhat.find('#cong_ty_tuyen_dung_update').val(data.cong_ty_id).trigger('change.select2');
-                __modalFormCapNhat.find('#chuc_vu_tuyen_update').val(data.chuc_vu_id).trigger('change.select2');
-
-                __modalFormCapNhat.find('#ten_chuc_vu_update').val(data.ten_chuc_vu);
-                __modalFormCapNhat.find('#so_luong_tuyen_update').val(data.so_luong_tuyen);
-                __modalFormCapNhat.find('#so_kinh_nghiem_update').val(data.kinh_nghiem_id).trigger('change.select2');
-
-                __modalFormCapNhat.find('#do_tuoi_from_update').val(data.tuoi[0]);
-                __modalFormCapNhat.find('#do_tuoi_to_update').val(data.tuoi[1]);
-                __modalFormCapNhat.find('#han_tuyen_dung_update').val(data.han_tuyen);
-
-                let arrayNganhNghe = [];
-
-                $.each(data.get_nganh_nghe,function (i,v) {
-                    arrayNganhNghe.push(v.id);
-                });
-                __modalFormCapNhat.find('#nganh_nghe_update').val(arrayNganhNghe).trigger('change.select2');
-                __modalFormCapNhat.find('#muc_luong_from_update').val(data.luong[0]);
-                __modalFormCapNhat.find('#muc_luong_to_update').val(data.luong[1]);
-
-                __modalFormCapNhat.find('#bang_cap_update').val(data.bang_cap_id).trigger('change.select2');
-                __modalFormCapNhat.find('#gioi_tinh_update').val(data.gioi_tinh_tuyen).trigger('change.select2');
-                __modalFormCapNhat.find('#dia_diem_lam_viec_update').val(data.dia_diem_id).trigger('change.select2');
-                __modalFormCapNhat.find('#hinh_thuc_update').val(data.kieu_lam_viec_id).trigger('change.select2');
-                __modalFormCapNhat.find('#mo_ta_cong_viec_update').val(data.mo_ta);
-                __modalFormCapNhat.find('#yeu_cau_cong_viec_update').val(data.yeu_cau_cong_viec);
-                __modalFormCapNhat.find('#quyen_loi_cong_viec_update').val(data.quyen_loi);
-                __modalFormCapNhat.find('#dia_chi_cong_viec_update').val(data.dia_chi);
-                __modalFormCapNhat.find('#so_ngay_ton_tai_update').val(data.so_luong_ngay_dang_tin.so_luong);
-                __modalFormCapNhat.find('#dang_ky_bai_viet_hot_update').val(data.isHot);
-
-                $('#cap-nhat-modal').modal('show');
-
-            })
-
-        });
+        // $(document).on('click','#quan-ly-bai-dang .chinh_sua',function () {
+        //     let __this = $(this);
+        //     let id = __this.parent().data('id');
+        //     let ajax = {
+        //         method: 'get',
+        //         url : '/bai-viet/thong-tin&baiviet='+id+'&chitiet=0',
+        //         data : {
+        //             action : id
+        //         }
+        //     }
+        //     sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
+        //         // console.log('dataa',e);
+        //         let data = e;
+        //         let __modalFormCapNhat = $('#cap-nhat-modal').find('#form-update-body');
+        //
+        //         __modalFormCapNhat.find('#tieu_de_bai_dang_update').val(data.tieu_de);
+        //         __modalFormCapNhat.find('#cong_ty_tuyen_dung_update').val(data.cong_ty_id).trigger('change.select2');
+        //         __modalFormCapNhat.find('#chuc_vu_tuyen_update').val(data.chuc_vu_id).trigger('change.select2');
+        //
+        //         __modalFormCapNhat.find('#ten_chuc_vu_update').val(data.ten_chuc_vu);
+        //         __modalFormCapNhat.find('#so_luong_tuyen_update').val(data.so_luong_tuyen);
+        //         __modalFormCapNhat.find('#so_kinh_nghiem_update').val(data.kinh_nghiem_id).trigger('change.select2');
+        //
+        //         __modalFormCapNhat.find('#do_tuoi_from_update').val(data.tuoi[0]);
+        //         __modalFormCapNhat.find('#do_tuoi_to_update').val(data.tuoi[1]);
+        //         __modalFormCapNhat.find('#han_tuyen_dung_update').val(data.han_tuyen);
+        //
+        //         let arrayNganhNghe = [];
+        //
+        //         $.each(data.get_nganh_nghe,function (i,v) {
+        //             arrayNganhNghe.push(v.id);
+        //         });
+        //         __modalFormCapNhat.find('#nganh_nghe_update').val(arrayNganhNghe).trigger('change.select2');
+        //         __modalFormCapNhat.find('#muc_luong_from_update').val(data.luong[0]);
+        //         __modalFormCapNhat.find('#muc_luong_to_update').val(data.luong[1]);
+        //
+        //         __modalFormCapNhat.find('#bang_cap_update').val(data.bang_cap_id).trigger('change.select2');
+        //         __modalFormCapNhat.find('#gioi_tinh_update').val(data.gioi_tinh_tuyen).trigger('change.select2');
+        //         __modalFormCapNhat.find('#dia_diem_lam_viec_update').val(data.dia_diem_id).trigger('change.select2');
+        //         __modalFormCapNhat.find('#hinh_thuc_update').val(data.kieu_lam_viec_id).trigger('change.select2');
+        //         __modalFormCapNhat.find('#mo_ta_cong_viec_update').val(data.mo_ta);
+        //         __modalFormCapNhat.find('#yeu_cau_cong_viec_update').val(data.yeu_cau_cong_viec);
+        //         __modalFormCapNhat.find('#quyen_loi_cong_viec_update').val(data.quyen_loi);
+        //         __modalFormCapNhat.find('#dia_chi_cong_viec_update').val(data.dia_chi);
+        //         __modalFormCapNhat.find('#so_ngay_ton_tai_update').val(data.so_luong_ngay_dang_tin.so_luong);
+        //         __modalFormCapNhat.find('#dang_ky_bai_viet_hot_update').val(data.isHot);
+        //
+        //         $('#cap-nhat-modal').modal('show');
+        //
+        //     })
+        //
+        // });
     </script>
-
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\chinh_sua_bai_tuyen_dung.js')}}"></script>
 @endpush
