@@ -128,10 +128,16 @@
                                 return '<span class="text-warning">Mới ứng cử</span>';
                             // break;
                             case 1:
-                                return '<span class="text-success">Đã bị từ chối</span>';
+                                return '<span class="text-warning">Cần xác nhận phỏng vấn</span>';
                             // break;
                             case 2:
-                                return '<span class="text-success">Chấp nhận hồ sơ</span>';
+                                return '<span class="text-success">Phỏng vấn</span>';
+                            case 3:
+                                return '<span class="text-danger">Đã bị từ chối</span>';
+                            case 4:
+                                return '<span class="text-success">Trúng tuyển</span>';
+                            case 5:
+                                return '<span class="text-danger">Rớt</span>';
                             // break;
                         }
                     },

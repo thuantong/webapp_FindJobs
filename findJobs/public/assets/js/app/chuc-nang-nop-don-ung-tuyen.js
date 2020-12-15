@@ -74,12 +74,10 @@ $(function () {
                     alertConfirm({title:'Xác nhận ứng tuyển', message:'Bạn muốn ứng tuyển công việc này?'}).then(value=>{
 
                         if (value.value == true){
-                            // console.log('dđ')
-
-                            console.log('data sen',ajax);
+                            // console.log('data sen',ajax);
                             // return;
                             sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(function (r) {
-                                console.log(r);
+                                // console.log('datares',r);
                                 getHtmlResponse(r);
                                 if (r.status == 200){
                                     $('#progressbarwizard').bootstrapWizard('next');
@@ -93,7 +91,7 @@ $(function () {
                                     }
                                     setTimeout(function () {
                                         $('#modal-nop-don').modal('hide');
-                                    },5000)
+                                    },4000)
                                 }else if (r.status == 401){
                                     vtoast.show(r.title, r.message, {
                                         width: 250,

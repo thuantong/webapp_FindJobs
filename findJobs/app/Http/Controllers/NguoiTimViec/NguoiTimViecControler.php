@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class NguoiTimViecControler extends Controller
 {
+    public function __construct()
+    {
+    }
+
     public function chiTiet(Request $request)
     {
         $idNguoiTimViec = $request->get('id');

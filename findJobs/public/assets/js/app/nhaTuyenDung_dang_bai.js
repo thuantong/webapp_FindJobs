@@ -156,7 +156,7 @@ $(function () {
             };
             // console.log(data)
 
-            sendAjaxNoFunc('post', '/dang-bai-viet/luu-tin', data, __this.attr('id')).done(e => {
+            sendAjaxNoFunc('post', '/bai-viet/chinh-sua/luu-tin', data, __this.attr('id')).done(e => {
                 // console.log(e)
                 getHtmlResponse(e);
                 if (e.status == 405) {

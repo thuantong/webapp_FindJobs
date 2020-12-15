@@ -52,7 +52,7 @@ class CongTy extends Model
         return $this->getNhaTuyenDung->pluck('id');
     }
     public  function getBaiTuyenDung(){
-        return $this->hasMany(BaiTuyenDung::class,'cong_ty_id');
+        return $this->hasOne(BaiTuyenDung::class,'cong_ty_id');
     }
     public function getQuyMoNhanSu(){
         return $this->belongsTo(QuyMoNhanSu::class,'so_nhan_vien');

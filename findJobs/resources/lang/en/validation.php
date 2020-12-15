@@ -120,6 +120,7 @@ return [
     'timezone' => 'The :attribute must be a valid zone.',
 //    'unique' => ucfirst(':attribute has already been taken.'),
 //    'unique' => ':Attribute đã tồn tại.',
+
     'unique' => 'Đã tồn tại! Vui lòng nhập tên khác.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',

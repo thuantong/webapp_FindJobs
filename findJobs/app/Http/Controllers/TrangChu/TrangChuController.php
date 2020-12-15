@@ -5,6 +5,7 @@ namespace App\Http\Controllers\TrangChu;
 use App\Http\Controllers\Controller;
 use App\Models\BaiTuyenDung;
 use App\Models\NganhNghe;
+use App\Models\TaiKhoan;
 use App\Traits\StoredJobsTrait;
 use Illuminate\Http\Request;
 use App\Models\JobsModel;
@@ -29,6 +30,11 @@ class TrangChuController extends Controller
 //            dd('trang admin');
 //        }
 //        dd('c');
+//        dd(TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec()->first()->with([
+//            'getDonXinViec'=>function($q){
+//                $q->select('id','nguoi_tim_viec_id');
+//            }
+//        ])->get()->toArray());
         $data = $this->getBaiTuyenDung($request);
 //        dd($data);
 //        dd($data);

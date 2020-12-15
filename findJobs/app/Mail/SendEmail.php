@@ -31,6 +31,14 @@ class SendEmail extends Mailable
     public function build()
     {
         $dataobj = $this->data['data'];
-        return $this->subject($this->data['subject'])->view($this->data['view'],compact('dataobj'));
+        $sendMail = $this->subject($this->data['subject'])->view($this->data['view'],compact('dataobj'));
+        if (array_key_exists('cc',$this->data)){
+            $sendMail->cc($this->data['cc']);
+        }
+        if (array_key_exists('bcc',$this->data)){
+            $sendMail->bcc($this->data['bcc']);
+        }
+
+        return $sendMail;
     }
 }

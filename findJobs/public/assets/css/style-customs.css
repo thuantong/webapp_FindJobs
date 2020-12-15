@@ -5,9 +5,9 @@
     /*--normal: #3583f0;*/
     /*--hover: #3975df;*/
     /*--active: #385898;*/
-    --normal: #209200;
-    --hover: #208200;
-    --active: #206e00;
+    --normal: #8D2226;
+    --hover: #922327;
+    --active: #581519;
 
 }
 @keyframes load-trang {
@@ -18,7 +18,7 @@
     100% {width: 100%}
 }
 #loadPage{
-
+/*color: ;*/
     animation: load-trang 2s;
 }
 /*#loadPage.done {*/

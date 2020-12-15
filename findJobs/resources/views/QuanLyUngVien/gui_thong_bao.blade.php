@@ -109,29 +109,29 @@
             /*display: block;*/
         }
 
-                .p-1 {
-                    padding: .375rem !important
-                }
+        .p-1 {
+            padding: .375rem !important
+        }
         {{--        .mb-1, .my-1 {--}}
         {{--            margin-bottom: .375rem !important--}}
         {{--        }--}}
                 .bg-primary {
-                    background-color: #0a6aa1 !important;
-                    color: white;
-                }
+            background-color: #8D2226 !important;
+            color: white;
+        }
         /**/
-                a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-primary:hover {
-                    background-color: #0a6aa1 !important;
-                    color: white;
+        a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-primary:hover {
+            background-color: #922327 !important;
+            color: white;
 
-                }
+        }
 
         .text-info {
             color: #37cde6 !important
         }
 
         a.text-info:focus, a.text-info:hover {
-            color: #17a2b9 !important
+            color: #922327 !important
         }
         .w-100{
             width: 100%;
@@ -147,38 +147,55 @@
 
 <div id="wrapper">
     <div class="content-page">
-{{--        <div class="content">--}}
+    {{--        <div class="content">--}}
 
-            <!-- Start Content-->
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <div class="card-box p-1 mb-1">
-                            <div class="row p-1 bg-primary text-right text-center">
-                                <div class="col-sm-12 col-md-12">
-                                    <label style="font-size: 18px">{{env('APP_NAME')}}</label>
-                                </div>
-
+    <!-- Start Content-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="card-box p-1 mb-1">
+                        <div class="row p-1 bg-primary text-right text-center">
+                            <div class="col-sm-12 col-md-12">
+                                <label style="font-size: 18px">{{env('APP_NAME')}}</label>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 p-1">
-{{--                                    <button class="btn-primary">ádasd</button>--}}
-                                    <h4>Chào mừng {{ucwords($dataobj['ho_ten'])}} đến với {{env('APP_NAME')}}</h4>
-                                    <p>Để sử dụng các dịch vụ của {{env('APP_NAME')}} bạn cần kích hoạt tài khoản! Nhấn
-                                        vào đường dẫn phía dưới:</p>
-                                    {{--                                    <form action="{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}" method="post">--}}
-                                    {{--                                    </form>--}}
-                                    <p>
-                                        <a href="{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}">{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}</a>
-                                    </p>
-                                </div>
 
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 p-1">
+                                <p>Chào {{ucwords($dataobj['nguoi_tim_viec']['get_tai_khoan']['ho_ten'])}},</p>
+                                <p>Chúc mừng Bạn đã vượt qua vòng sơ tuyển của công ty <span style="color: #0D0A0A">{{ucwords($dataobj['data']['get_cong_ty']['name'])}}</span></p>
+                                <p>Để xác nhận buổi tham gia phỏng vấn, {{env('APP_NAME')}} cần Bạn xác thực thông tin phỏng vấn.</p>
+                                <p>Bạn vui lòng vào <a href="{{URL::asset('/')}}">(bấm tại đây)</a> để hoàn thành.</p>
+
+
+{{--                                Chào Bạn,--}}
+
+{{--                                Chúc mừng Bạn đã vượt qua vòng sơ tuyển!--}}
+
+
+
+{{--                                Đề nghị Bạn lưu ý đọc thật kỹ các câu hỏi dưới đây. Bạn sẽ mất khoảng 15 phút để hoàn thành tất cả các câu hỏi. Môi trường làm việc của The Coffee House rất thách thức & thường chỉ dành cho những ứng viên quyết tâm & có định hướng nghề nghiệp rõ ràng. Nếu không thật sự chắc chắn về các điều kiện dành cho vị trí này, mong Bạn vui lòng bỏ qua.--}}
+
+{{--                                Bạn vui lòng vào (bấm tại đây) -> LINK để hoàn thành.--}}
+
+{{--                                Link sẽ đóng vào 23h59 ngày 24/03/2018. Đề nghị Bạn hoàn thành trước thời gian này--}}
+
+{{--                                Cám ơn Bạn rất nhiều,--}}
+{{--                                Phòng Nhân sự The Coffee House.--}}
+
+                                {{--                                    <form action="{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}" method="post">--}}
+                                {{--                                    </form>--}}
+{{--                                <p>--}}
+{{--                                    <a href="{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}">{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}</a>--}}
+{{--                                </p>--}}
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-{{--        </div>--}}
+        </div>
+        {{--        </div>--}}
     </div>
 </div>
 </body>

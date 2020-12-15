@@ -28,7 +28,7 @@ class ConfirmEmailController extends Controller
     {
         $dataAjax = $request->toArray();
         $title = 'Gửi xác thực';
-//        return $dataAjax;
+
         try {
             $__stringRandom = Str::random('200') . date('d') . Str::random('20') . date('m') . Str::random('20') . date('Y') . Str::random('40');
             $__token = $__stringRandom;
@@ -38,13 +38,12 @@ class ConfirmEmailController extends Controller
             $taiKhoan->save();
             $__data = $taiKhoan->toArray();
             $__data['token'] = $__stringRandom;
-//            return $__data;
             $dataEmail = array(
                 'subject' => ucwords('Xác thực tài khoản'),
                 'view' => 'TaiKhoan.xacThucEmail',
                 'data' => $__data
             );
-//            return $__data;
+
             Mail::to($taiKhoan->email)->send(new SendEmail($dataEmail));
             return $this->getResponse($title, 200, 'Vui lòng kiểm tra hộp thư email: ' . $taiKhoan->email);
         } catch (\Exception $exception) {

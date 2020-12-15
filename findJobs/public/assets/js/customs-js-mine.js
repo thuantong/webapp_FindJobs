@@ -378,6 +378,21 @@ const lichNam = (element) => {
     });
 }
 
+const lichGio = (element) => {
+    return element.datetimepicker({
+        format: 'HH:mm',
+        // pickDate: false,
+        // pickSeconds: false,
+        // pick12HourFormat: false
+    });
+    // return element.datepicker({
+    //     viewMode: "years",
+    //     minViewMode: "years",
+    //     format: 'yyyy',
+    //     autoclose: true,
+    //     language: 'vi'
+    // });
+}
 // $(document).on('focus', 'input,textarea', function () {
 //     $(this).focus();
 // });
@@ -489,7 +504,7 @@ $(document).on('focus', 'textarea.break-custom', function () {
 $(document).on('focusout', 'textarea.break-custom', function () {
     let value = $(this).val();
     let count = $.trim(value);
-    console.log(count)
+    // console.log(count)
     if (count.length == 1) {
         $(this).val(function (i, value) {
             return '';
@@ -503,12 +518,13 @@ $(document).on('init.dt', function (e, settings, json) {
 });
 
 const datatableAjax = (element, ajax, column) => {
-    // element.css('width', '100%')
+    element.css('width', '100%');
     return element.DataTable({
         ajax: {
             url: ajax.url,
             type: ajax.method,
-            dataSrc: 'data'
+            data: ajax.data != undefined ? ajax.data : {},
+            dataSrc: 'data',
         },
         columns: column,
         lengthChange: false,

@@ -513,9 +513,8 @@
 
 <!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
-
-<!-- Vendor js -->
 <script src="{{URL::asset('assets\js\vendor.min.js')}}"></script>
+
 
 <script src="{{URL::asset('assets\libs\apexcharts\apexcharts.min.js')}}"></script>
 <script src="{{URL::asset('assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>
@@ -543,7 +542,10 @@
 <script src="{{URL::asset('assets\js\app.min.js')}}"></script>
 <script src="{{URL::asset('assets\js\customs-js-mine.js')}}"></script>
 {{--<script src="{{asset('assets\js\date-picker-vi.js')}}"></script>--}}
+
 @stack('scripts')
+<!-- Vendor js -->
+
 <script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 <script type="text/javascript">
     // $(window).on('load',function () {

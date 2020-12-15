@@ -266,7 +266,7 @@
         }
 
         const getThongTinChiTietPost = (e) => {
-            console.log('con cac ne', e)
+            console.log('con cac ne', e);
             if (e != null) {
                 if (parseInt(loaiTaiKhoan) == 1) {
                     // console.log(e.bai_da_luu.data.findIndex(x=>x.id == e.id))
@@ -290,8 +290,7 @@
                     //
                     if (e.nguoi_tim_viec.get_don_xin_viec != null) {
                         // get_don_xin_viec
-                        if (e.nguoi_tim_viec.get_don_xin_viec.findIndex(x => x.id == e.id) != -1) {
-                            // if (e.don_xin_viec.data.includes(e.id) == true) {
+                        if (e.nguoi_tim_viec.get_don_xin_viec.findIndex(x => x.bai_tuyen_dung_id == e.id) != -1) {
                             $('.call-modal-nop-don').removeClass('btn-outline-warning');
                             $('.call-modal-nop-don').addClass('btn-warning');
                             $('.call-modal-nop-don').addClass('like-animation');

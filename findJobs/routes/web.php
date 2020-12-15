@@ -83,6 +83,7 @@ Route::namespace('BaiViet')->group(function (){
         Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=0','BaiVietController@getThongTinBaiVietClick')->name('getThongTinBaiVietClick');
         Route::post('/bai-viet/like','BaiVietController@likePost')->name('likePost')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/chinh-sua','BaiVietController@chinhSua')->name('chinhSua')->middleware(['auth','email.confirm']);
+        Route::post('/bai-viet/chinh-sua/luu-tin','BaiVietController@luuChinhSua')->name('luuChinhSua')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/tim-kiem','BaiVietController@timKiemBaiViet')->name('timKiemBaiViet');
 
@@ -205,6 +206,9 @@ Route::namespace('QuanLyUngVien')->group(function (){
         Route::get('/nha-tuyen-dung/lay-danh-sach-ung-vien','QuanLyUngVienController@layDanhSachUngVien')->name('layDanhSachUngVien');
         Route::get('/nha-tuyen-dung/lay-danh-sach-phong-van','QuanLyUngVienController@layDanhSachPhongVan')->name('layDanhSachPhongVan');
         Route::get('/nha-tuyen-dung/quan-ly-ung-vien/confirm-danh-sach-phong-van','QuanLyUngVienController@confirmDanhSachPhongVan')->name('confirmDanhSachPhongVan');
+        Route::get('/nha-tuyen-dung/quan-ly-ung-vien/tu-choi-danh-sach-phong-van','QuanLyUngVienController@tuChoiDanhSachPhongVan')->name('tuChoiDanhSachPhongVan');
+        Route::get('/nha-tuyen-dung/quan-ly-ung-vien/trung-tuyen-phong-van','QuanLyUngVienController@trungTuyenPhongVan')->name('trungTuyenPhongVan');
+        Route::post('/nha-tuyen-dung/quan-ly-ung-vien/dat-lich-phong-van','QuanLyUngVienController@datLichPhongVan')->name('datLichPhongVan');
     });
 });
 

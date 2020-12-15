@@ -18,7 +18,7 @@ class CheckNhaTuyenDung
     {
         $getPhanQuyen = Session::get('loai_tai_khoan');
         if ($getPhanQuyen != 2){
-            abort(401);
+            return redirect('/');
         }
         return $next($request);
     }
