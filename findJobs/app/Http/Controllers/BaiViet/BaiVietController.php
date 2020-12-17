@@ -411,7 +411,7 @@ BaiVietController extends Controller
                         $subquery->select('nha_tuyen_dung.id')->withPivot('nguoi_tim_viec_id', 'nha_tuyen_dung_id');
                     },
                     'getDonXinViec' => function ($subquery) {
-                        $subquery->select('id','nguoi_tim_viec_id','bai_tuyen_dung_id');
+                        $subquery->select('id', 'nguoi_tim_viec_id', 'bai_tuyen_dung_id');
                     },
                     'getLuuBai' => function ($subquery) {
                         $subquery->select('bai_tuyen_dung.id')->withPivot('nguoi_tim_viec_id', 'bai_tuyen_dung_id');
@@ -532,6 +532,10 @@ BaiVietController extends Controller
     //
     public function layTatCaBaiViet(Request $request)
     {
+        $nguoiTimViecALL = NguoiTimViec::query()->with([
+            'getTaiKhoan'
+        ])->get()->toArray();
+        dd($nguoiTimViecALL);
         $trangThaiDaDuyet = 1;
         $page = $request->get('page');
 //        dd($request->has('getTin'));
@@ -601,10 +605,31 @@ BaiVietController extends Controller
                     if ($request->has('getTin') == false) {
                         //init value
                         $tieuDe = $request->get('tieu_de');
+//                        $countSpace = substr_count($tieuDe, ' ');
+//                        for ($i = 0;$i<$countSpace;$i++){
+//                            echo trim(substr($tieuDe, 0, strrpos($tieuDe," ")));
+//                            $tieuDe = trim(substr($tieuDe, strrpos($tieuDe," ")));
+//                            if ($countSpace-1 == $i){
+//                                echo $tieuDe;
+//                            }
+//                        }
+//                        echo $tieuDe;
+//                        dd(substr($tieuDe, strrpos($tieuDe," ")));
 //                    $nganhNghe = $request->get('nganh_nghe_id') == null ? null : $request->get('nganh_nghe_id');
                         $diaDiem = $request->get('dia_diem_id') == null ? null : $request->get('dia_diem_id');
 
                         $query->where('tieu_de', 'like', '%' . $tieuDe . '%');
+//                        if ($countSpace > 0) {
+//                            for ($i = 0; $i < $countSpace; $i++) {
+//                                $query->orWhere('tieu_de', 'like', '%' . trim(substr($tieuDe, 0, strrpos($tieuDe, " "))) . '%');
+//                                $tieuDe = trim(substr($tieuDe, strrpos($tieuDe, " ")));
+//                                if ($countSpace - 1 == $i) {
+//                                    $query->orWhere('tieu_de', 'like', '%' . trim(substr($tieuDe, 0, strrpos($tieuDe, " "))) . '%');
+//
+////                                echo $tieuDe;
+//                                }
+//                            }
+//                        }
 
 //                    $query->orWhere('ten_chuc_vu', 'like', '%' . $tieuDe . '%');
                         if ($diaDiem != null) {
@@ -688,7 +713,7 @@ BaiVietController extends Controller
             $quyen_loi_cong_viec = $request->quyen_loi_cong_viec;
             $dia_chi_cong_viec = $request->dia_chi_cong_viec;
 
-            if ($timBaiTuyenDung = BaiTuyenDung::query()->find($id)){
+            if ($timBaiTuyenDung = BaiTuyenDung::query()->find($id)) {
 
                 $timBaiTuyenDung->tieu_de = $tieu_de_bai_dang;
                 $timBaiTuyenDung->ten_chuc_vu = $ten_chuc_vu;
@@ -713,11 +738,11 @@ BaiVietController extends Controller
                 $timBaiTuyenDung->getNganhNghe()->detach();
                 $timBaiTuyenDung->getNganhNghe()->attach($nganh_nghe);
                 $timBaiTuyenDung->save();
-                return $this->getResponse($title,200,"Chỉnh sửa bài tuyển dụng thành công!");
+                return $this->getResponse($title, 200, "Chỉnh sửa bài tuyển dụng thành công!");
             }
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
 //            return $exception->getMessage();
-            return $this->getResponse($title,400,"Chỉnh sửa bài tuyển dụng thất bại!");
+            return $this->getResponse($title, 400, "Chỉnh sửa bài tuyển dụng thất bại!");
         }
 
         return $timBaiTuyenDung == null;

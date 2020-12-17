@@ -20,7 +20,7 @@ function remove_vietnamese_string(str) {
 }
 
 const refreshTimeOut = () => {
-    setTimeout("location.reload(true);", 1000 * 60 * 60);//1 tiếng
+    setTimeout("location.reload(true);", 1000 * 60 * 30);//1 tiếng
 };
 const switcheryInit = () =>{
     $('[data-plugin="switchery"]').each(function (t, e) {
@@ -436,17 +436,7 @@ const getHtmlResponse = (data) => {
             timeOut = 3200;
             break;
     }
-    // return toast.success('We do have the Kapua suite available.', 'Turtle Bay Resort', {timeOut: 5000});
-    // return $.toast({
-    //     heading: data.title + ' ' + data.status_text.toLowerCase(),
-    //     hideAfter: timeOut,
-    //     icon: type,
-    //     loaderBg: backgroudLoad,
-    //     position: 'top-right',
-    //     stack: 1,
-    //     text: data.message.toUpperCase() + '!',
-    // });
-    // return
+
     return getNotificationAjax(data);
 }
 
@@ -485,7 +475,7 @@ const getNotificationAjax = (message) => {
 $(document).on('keypress', 'textarea.break-custom', function (e) {
     if (e.keyCode === 13) {
         $(this).val(function (i, val) {
-            return val + "\n- ";
+            return val + ".\n- ";
         });
     }
 }).on('keypress', 'textarea.break-custom', function (e) {
@@ -632,29 +622,6 @@ const fullSizePage = () => {
     $('body').addClass('sidebar-enable enlarged')
 }
 
-// $(document).on('click','#trang-chu-like-post',function () {
-//
-//     let __this = $(this);
-//     __this.toggleClass('like-animation');
-// //     const mywidth = __this.width();
-// //     const myheight = __this.height();
-// //     // console.log(mywidth)
-// //     // console.log('now',(parseFloat(__this.width())*1.5))
-// //     __this.animate({
-// //             'width' : '+='+(parseFloat(mywidth)*parseFloat(1.2))+'px',
-// //             'height' : '+='+(parseFloat(myheight)*parseFloat(1.2))+'px'
-// //     });
-// //     __this.animate({
-// //         'width' : mywidth+'px',
-// //         'height' : mywidth+'px'
-// //     });
-// });
-// $(document).on("shown.bs.modal",".modal", function () {
-//     if ($(".modal-backdrop").length > 1) {
-//         // $(".modal.show:first").css('opacity',0.5);
-//         $("modal-backdrop:first").css('z-index',1051);
-//     }
-// });
 $(document).on('show.bs.modal', '.modal', function (event) {
     var zIndex = 1040 + (10 * $('.modal:visible').length);
     $(this).css('z-index', zIndex);
@@ -699,21 +666,6 @@ function changeSwitchery(element, checked) {
         element.parent().find('.switchery').trigger('click');
     }
 }
-// // on first focus (bubbles up to document), open the menu
-// $(document).on('focus', '.select2-selection.select2-selection--single', function (e) {
-//     $(this).closest(".select2-container").siblings('select:enabled').select2('open');
-// });
-//
-// // steal focus during close - only capture once and stop propogation
-// $(document).on('select2:closing','select.select2', function (e) {
-//     $(e.target).data("select2").$selection.one('focus focusin', function (e) {
-//         e.stopPropagation();
-//     });
-// });
-
-// $("select.form-control").next("select.form-control").find(".select2-selection").focus(function() {
-//     $("#my_id").select2("open");
-// });
 
 const checkIsDeviceMedium = () =>{
     let width = $(window).width();

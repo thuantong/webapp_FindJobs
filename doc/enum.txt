@@ -1,4 +1,8 @@
 Trạng thái:
+- Tài khoản : 
+		+ 0 : Ngoại tuyến
+		+ 1 : Đang hoạt động
+		+ 2 : Tạm khóa
 - Bài tuyển dụng:
 		+ 0 : Chờ duyệt
 		+ 1 : Đã được duyệt

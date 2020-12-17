@@ -413,12 +413,12 @@ a.active{
 .nav-second-level li > a.active{
 /*#sidebar-menu > ul > .mm-active > .active{*/
     border-right: 2px var(--active) solid!important;
-    color: var(--white) !important;
+    /*color: var(--white) !important;*/
 }
-#sidebar-menu .metismenu .mm-active{
-    border-right: 2px var(--active) solid!important;
-    color: var(--white) !important;
-}
+/*#sidebar-menu .metismenu .mm-active:hover{*/
+/*    border-right: 2px var(--active) solid!important;*/
+/*    color: var(--white) !important;*/
+/*}*/
 #sidebar-menu > ul > li > a:hover, #sidebar-menu > ul > li > a:focus{
     color: var(--white) !important;
     background-color: var(--hover) !important;
@@ -458,3 +458,8 @@ a.btn-success{
 .form-control{
     border-radius: 0px !important;
 }
+/*span.switchery{*/
+/*    box-shadow: var(--normal) 0px 0px 0px 11px inset!important;*/
+/*    border-color: var(--normal)!important;*/
+/*    background-color: var(--normal)!important;*/
+/*}*/

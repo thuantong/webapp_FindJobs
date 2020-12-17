@@ -69,11 +69,11 @@
                                             {{ __('Đăng nhập') }}
                                         </button>
 
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">
+{{--                                        @if (Route::has('password.request'))--}}
+                                            <a class="btn btn-link" href="{{ route('password.quenMatKhau') }}">
                                                 {{ __('Bạn quên mật khẩu?') }}
                                             </a>
-                                        @endif
+{{--                                        @endif--}}
                                     </div>
                                 </div>
 

@@ -36,7 +36,7 @@
 {{--                {{Session::has('so_du') == true}}--}}
                 @if(Auth::user() != null)
                     <li class="">
-                        @if(Session::get('loai_tai_khoan') != 3)
+                        @if(Session::get('loai_tai_khoan') != 3 && Session::get('loai_tai_khoan') != 1)
                             @if(Session::exists('so_du') == false)
                                 <a href="{{route('sodu.index')}}" class="waves-effect text-center">
                                     <i class="fa fa-usd"></i>
@@ -100,23 +100,23 @@
                         </a>
                     </li>
                 @endif
-                <li class="menu-title">{{__('Dịch vụ')}}</li>
+{{--                <li class="menu-title">{{__('Dịch vụ')}}</li>--}}
 
-                @if(Session::get('loai_tai_khoan') == 2)
-                    <li>
-                        <a href="javascript: void(0);" class="waves-effect">
-                            <i class="fa fa-list-alt"></i>
-                            <span>{{__('Đăng ký bài hot')}}</span>
-                        </a>
-                    </li>
+{{--                @if(Session::get('loai_tai_khoan') == 2)--}}
+{{--                    <li>--}}
+{{--                        <a href="javascript: void(0);" class="waves-effect">--}}
+{{--                            <i class="fa fa-list-alt"></i>--}}
+{{--                            <span>{{__('Đăng ký bài hot')}}</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
-                    <li>
-                        <a href="javascript: void(0);" class="waves-effect">
-                            <i class="fa fa-users"></i>
-                            <span>{{__('Đăng ký bài viết tin cậy')}}</span>
-                        </a>
-                    </li>
-                @endif
+{{--                    <li>--}}
+{{--                        <a href="javascript: void(0);" class="waves-effect">--}}
+{{--                            <i class="fa fa-users"></i>--}}
+{{--                            <span>{{__('Đăng ký bài viết tin cậy')}}</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
 
                 @if(Session::get('loai_tai_khoan') == 2)
                     <li class="menu-title">{{__('Thông tin tuyển dụng')}}</li>

@@ -118,4 +118,7 @@ class ConfirmEmailController extends Controller
         }
 
     }
+    public function thongBaoKhoaTaiKhoan(){
+        return view('TaiKhoan.thongBaoKhoaTaiKhoan');
+    }
 }

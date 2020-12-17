@@ -71,6 +71,7 @@ Route::namespace('TaiKhoan')->group(function (){
     Route::name('taikhoan.')->group(function (){
         Route::post('/tai-khoan/xac-nhan-email', 'ConfirmEmailController@sendVerifyEmail');
         Route::get('/tai-khoan/kich-hoat-tai-khoan/{token}', 'ConfirmEmailController@kichHoatTaiKhoan')->name('kichHoatTaiKhoan');
+        Route::get('/tai-khoan/thong-bao-khoa-tai-khoan', 'ConfirmEmailController@thongBaoKhoaTaiKhoan')->name('thongBaoKhoaTaiKhoan');
 
     });
 });
@@ -157,6 +158,8 @@ Route::namespace('Admin')->group(function () {
         Route::get('/admin/danh-sach-tai-khoan','QuanLyTaiKhoanController@index')->name('danhSachTaiKhoan');
         Route::get('/admin/danh-sach-tai-khoan/get-data','QuanLyTaiKhoanController@getDanhSachTaiKhoan')->name('getDanhSachTaiKhoan');
         Route::get('/admin/danh-sach-tai-khoan/get-phan-quyen','QuanLyTaiKhoanController@getTacVu')->name('getPhanQuyen');
+        Route::post('/admin/danh-sach-tai-khoan/khoa-tai-khoan','QuanLyTaiKhoanController@khoaTaiKhoan')->name('khoaTaiKhoan');
+        Route::post('/admin/danh-sach-tai-khoan/mo-khoa-tai-khoan','QuanLyTaiKhoanController@moKhoaTaiKhoan')->name('moKhoaTaiKhoan');
 
         Route::get('/admin/danh-sach-tac-vu','PhanQuyenController@index')->name('danhSachTacVu');
         Route::get('/admin/danh-sach-tac-vu/get-chuc-vu','PhanQuyenController@getLoaiTaiKhoan')->name('getDanhSachTaiKhoan');
@@ -208,12 +211,26 @@ Route::namespace('QuanLyUngVien')->group(function (){
         Route::get('/nha-tuyen-dung/quan-ly-ung-vien/confirm-danh-sach-phong-van','QuanLyUngVienController@confirmDanhSachPhongVan')->name('confirmDanhSachPhongVan');
         Route::get('/nha-tuyen-dung/quan-ly-ung-vien/tu-choi-danh-sach-phong-van','QuanLyUngVienController@tuChoiDanhSachPhongVan')->name('tuChoiDanhSachPhongVan');
         Route::get('/nha-tuyen-dung/quan-ly-ung-vien/trung-tuyen-phong-van','QuanLyUngVienController@trungTuyenPhongVan')->name('trungTuyenPhongVan');
+        Route::get('/nha-tuyen-dung/quan-ly-ung-vien/cham-rot-phong-van','QuanLyUngVienController@chamRotPhongVan')->name('chamRotPhongVan');
+        Route::get('/nha-tuyen-dung/quan-ly-ung-vien/get-ghi-chu','QuanLyUngVienController@getGhiChu')->name('getGhiChu');
+        Route::post('/nha-tuyen-dung/quan-ly-ung-vien/luu-ghi-chu','QuanLyUngVienController@luuGhiChu')->name('luuGhiChu');
         Route::post('/nha-tuyen-dung/quan-ly-ung-vien/dat-lich-phong-van','QuanLyUngVienController@datLichPhongVan')->name('datLichPhongVan');
     });
 });
 
+Route::namespace('Password')->group(function (){
+    Route::name('password.')->group(function (){
+        Route::get('/quen-mat-khau','PasswordController@quenMatKhau')->name('quenMatKhau');
+        Route::get('/quen-mat-khau/gui-ma-xac-nhan','PasswordController@guiMaXacNhan')->name('guiMaXacNhan');
+        Route::get('/thay-doi-mat-khau','PasswordController@thayDoiMatKhau')->name('thayDoiMatKhau');
+
+    });
+});
+
+
 Route::namespace('Mail')->group(function (){
     Route::name('mail.')->group(function (){
         Route::get('/thong-bao-xac-thuc-tai-khoan','MailController@xacThucTaiKhoan')->name('xacThucTaiKhoan');
+        Route::get('/xac-thuc-phong-van','MailController@xacThucPhongVan')->name('xacThucPhongVan');
     });
 });

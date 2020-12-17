@@ -116,12 +116,12 @@
         {{--            margin-bottom: .375rem !important--}}
         {{--        }--}}
                 .bg-primary {
-            background-color: #8D2226 !important;
+            background-color: #0a6aa1 !important;
             color: white;
         }
         /**/
         a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-primary:hover {
-            background-color: #922327 !important;
+            background-color: #0a6aa1 !important;
             color: white;
 
         }
@@ -131,7 +131,7 @@
         }
 
         a.text-info:focus, a.text-info:hover {
-            color: #922327 !important
+            color: #17a2b9 !important
         }
         .w-100{
             width: 100%;
@@ -162,27 +162,13 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-md-12 p-1">
-                                <p>Chào {{ucwords($dataobj['nguoi_tim_viec']['get_tai_khoan']['ho_ten'])}},</p>
-                                <p>Chúc mừng Bạn đã vượt qua vòng sơ tuyển của công ty <span style="color: #0D0A0A">{{ucwords($dataobj['data']['get_cong_ty']['name'])}}</span></p>
-                                <p>Để xác nhận buổi tham gia phỏng vấn, {{env('APP_NAME')}} cần Bạn xác thực thông tin phỏng vấn.</p>
-                                <p>Bạn vui lòng vào <a href="{{route('mail.xacThucPhongVan',['token'=>$dataobj['token']])}}">(bấm tại đây)</a> để hoàn thành.</p>
-
-
-{{--                                Chào Bạn,--}}
-
-{{--                                Chúc mừng Bạn đã vượt qua vòng sơ tuyển!--}}
-
-
-
-{{--                                Đề nghị Bạn lưu ý đọc thật kỹ các câu hỏi dưới đây. Bạn sẽ mất khoảng 15 phút để hoàn thành tất cả các câu hỏi. Môi trường làm việc của The Coffee House rất thách thức & thường chỉ dành cho những ứng viên quyết tâm & có định hướng nghề nghiệp rõ ràng. Nếu không thật sự chắc chắn về các điều kiện dành cho vị trí này, mong Bạn vui lòng bỏ qua.--}}
-
-{{--                                Bạn vui lòng vào (bấm tại đây) -> LINK để hoàn thành.--}}
-
-{{--                                Link sẽ đóng vào 23h59 ngày 24/03/2018. Đề nghị Bạn hoàn thành trước thời gian này--}}
-
-{{--                                Cám ơn Bạn rất nhiều,--}}
-{{--                                Phòng Nhân sự The Coffee House.--}}
-
+                                <p>Tài Khoản đã bị tạm khóa!</p>
+                                <p>Hiện tại chúng tôi nhận thấy tài khoản của bạn của một số hành động quy phạm tiêu chuẩn của ứng dụng chúng tôi nên đã tạm khóa tài khoản.</p>
+                                <p>Mọi thắc mắc xin liên hệ vào Hotline: 1900123456</p>
+                                {{--                                    <button class="btn-primary">ádasd</button>--}}
+{{--                                <h4>Chào mừng {{ucwords($dataobj['ho_ten'])}} đến với {{env('APP_NAME')}}</h4>--}}
+{{--                                <p>Để sử dụng các dịch vụ của {{env('APP_NAME')}} bạn cần kích hoạt tài khoản! Nhấn--}}
+{{--                                    vào đường dẫn phía dưới:</p>--}}
                                 {{--                                    <form action="{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}" method="post">--}}
                                 {{--                                    </form>--}}
 {{--                                <p>--}}

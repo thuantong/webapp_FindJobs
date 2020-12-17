@@ -78,6 +78,12 @@ class MyLoginController extends Controller
         $request->session()->regenerate();
         //B1: Lưu trạng thái tài khoản
         $findUser = TaiKhoan::query()->find(Auth::user()->id);
+//        dd($findUser->status);
+        if ($findUser->status == 2){
+            Session::flush();
+            return redirect()->route('taikhoan.thongBaoKhoaTaiKhoan');
+        }
+
         $findUser->status = 1;
         $findUser->save();
         //enb - B1
@@ -162,8 +168,11 @@ class MyLoginController extends Controller
         //Step 1: Cập nhật trạng thái
         if (Auth::user() != null){
             $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
-            $taiKhoan->status = 0;
-            $taiKhoan->save();
+            if (Auth::user()->status != 2){
+                $taiKhoan->status = 0;
+                $taiKhoan->save();
+            }
+
         }
 
         //Step 2: Logout

@@ -55,6 +55,26 @@
     </div><!-- /.modal -->
 
 
+    <div id="ghi-chu-phong-van-modal" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false"
+         aria-labelledby="full-width-modalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="full-width-modalLabel">{{__('Ghi chú phỏng vấn')}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body" style="min-height: 30vh">
+
+                </div>
+
+                <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light" id="save">Lưu lại</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
     <div id="chi-tiet-ung-cu-vien-modal" class="modal fade" tabindex="-1" role="dialog"
          aria-labelledby="full-width-modalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-full modal-dialog-scrollable">
@@ -274,6 +294,14 @@
                 });
 
             });
+            //đặt lịch phỏng vấn
+            $('#ung-vien-cho-xu-ly tbody').on('click', '.dat-lich-phong-van-ung-vien', function () {
+                let table_row = $(this).parents('tr');
+                let data = getDataRow_dt(table, table_row);
+                let idRecord = data.id;
+                $('#dat-lich-phong-van-modal').modal('show');
+                $('#dat-lich-phong-van-modal').data('id',idRecord);
+            });
 
             $('#ung-vien-cho-xu-ly tbody').on('click', '.tu-choi-ung-vien', function () {
                 let table_row = $(this).parents('tr');
@@ -302,7 +330,7 @@
                             if (r.status == 200) {
                                 // $('#dat-lich-phong-van-modal').modal('show');
                                 // $('#dat-lich-phong-van-modal').data('id',idRecord);
-                                db_ajax_reload_page(table);
+                                db_ajax_reload_all(table);
                                 db_ajax_reload_all(table2);
                             }
                         });
@@ -340,7 +368,8 @@
                             if (r.status == 200) {
                                 // $('#dat-lich-phong-van-modal').modal('show');
                                 // $('#dat-lich-phong-van-modal').data('id',idRecord);
-                                db_ajax_reload_page(table2);
+
+                                db_ajax_reload_all(table2);
                                 // db_ajax_reload_all(table2);
                             }
                         });
@@ -352,19 +381,19 @@
             //chấm rớt adhjksadjhashdakjshdaskjdas
             $('#ung-vien-phong-van tbody').on('click', '.tu-choi-ung-vien', function () {
                 let table_row = $(this).parents('tr');
-                let data = getDataRow_dt(table, table_row);
+                let data = getDataRow_dt(table2, table_row);
                 // let idNguoiTimViec = data.get_nguoi_tim_viec.id;
                 let idRecord = data.id;
                 let nameNguoiTimViec = data.get_nguoi_tim_viec.get_tai_khoan.ho_ten;
                 let alertNotify = {
-                    title: 'Từ chối hồ sơ ứng viên ứng viên ' + nameNguoiTimViec,
-                    message: 'Chọn từ chối ứng viên khỏi danh sách phỏng vấn?'
+                    title: 'Chấm rớt cho ứng viên ' + nameNguoiTimViec,
+                    message: 'Chấm rớt cho ứng viên khỏi danh sách phỏng vấn?'
                 }
                 alertConfirm(alertNotify).then(res => {
                     if (res.value == true) {
                         let ajax = {
                             method: 'get',
-                            url: '/nha-tuyen-dung/quan-ly-ung-vien/tu-choi-danh-sach-phong-van',
+                            url: '/nha-tuyen-dung/quan-ly-ung-vien/cham-rot-phong-van',
                             data: {
                                 id: idRecord,
                                 name: nameNguoiTimViec
@@ -377,7 +406,7 @@
                             if (r.status == 200) {
                                 // $('#dat-lich-phong-van-modal').modal('show');
                                 // $('#dat-lich-phong-van-modal').data('id',idRecord);
-                                db_ajax_reload_page(table);
+                                db_ajax_reload_all(table);
                                 db_ajax_reload_all(table2);
                             }
                         });
@@ -386,14 +415,75 @@
                 });
 
             });
+            //ghi chú
+            $('#ung-vien-phong-van tbody').on('click', '.ghi-chu-ung-vien', function () {
+
+                let table_row = $(this).parents('tr');
+                let data = getDataRow_dt(table2, table_row);
+                // let idNguoiTimViec = data.get_nguoi_tim_viec.id;
+                let idRecord = data.id;
+                let nameNguoiTimViec = data.get_nguoi_tim_viec.get_tai_khoan.ho_ten;
+
+                $('#ghi-chu-phong-van-modal').modal('show');
+                let ajax = {
+                    url:"/nha-tuyen-dung/quan-ly-ung-vien/get-ghi-chu",
+                    method:"get",
+                    data:{
+                        id : idRecord
+                    },
+                }
+                sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
+                    $('#ghi-chu-phong-van-modal').find('.modal-body').html(e);
+                    $(document).on('change', 'select', function () {
+                        if ($(this).hasClass('is-invalid')) {
+                            $(this).removeClass('is-invalid');
+                        }
+                    });
+                    $('textarea').each(function () {
+                        if ($(this).val() == '') {
+                            this.setAttribute('style', 'overflow-y:hidden;');
+                        } else {
+                            this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+                        }
+                    }).on('input', function () {
+
+                        this.style.height = 'auto';
+                        this.style.height = (this.scrollHeight) + 10 + 'px';
+                    }).on('keypress', function () {
+                        this.style.height = 'auto';
+                        this.style.height = (this.scrollHeight) + 15 + 'px';
+                    });
+                });
+
+            });
+            $('#ghi-chu-phong-van-modal .modal-footer #save').on('click',function () {
+                let __this = $(this);
+                let __parent = __this.parents('.modal');
+                let __body = __parent.find('.modal-body');
+                let error = 0;
+                // error += notNullMessage(__body.find('not-null'));
+                let ajax = {
+                    method : 'post',
+                    url : '/nha-tuyen-dung/quan-ly-ung-vien/luu-ghi-chu',
+                    data : {
+                        id : __body.find('input#id-action').val(),
+                        ghi_chu : __body.find('textarea#ghi-chu-text').val(),
+                    },
+                }
+                sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
+                    getHtmlResponse(e);
+                    if (e.status == 200){
+                        __parent.modal('hide');
+                    }
+                })
+            });
+
+
 
             $('.them-moi-danh-sach').text('Lọc');
 
-            // $('#ung-vien-cho-xu-ly_wrapper').find('.them-moi-danh-sach').addClass('d-none');
             locDanhSach($('#ung-vien-cho-xu-ly_wrapper'));
             locDanhSachPhongVan($('#ung-vien-phong-van_wrapper'))
-            // $('#ung-vien-cho-xu-ly_wrapper')
-
 
             $('#ung-vien-cho-xu-ly_wrapper .dropdown-menu .dropdown-item').on('click',function () {
                 let id = $(this).data('value');
@@ -415,17 +505,6 @@
                 // table.draw();
                 // table = getDanhSachUngVien(id);
             })
-            // $('#ung-vien-cho-xu-ly_wrapper #loc-danh-sach').on('change',function () {
-            //     let id = $(this).find('option:checked').val();
-            //     // let __this = $(this);
-            //     // $('.dropdown-item').removeClass('active');
-            //     // __this.addClass('active');
-            //     // console.log(id);
-            //     table.ajax.url('/nha-tuyen-dung/lay-danh-sach-ung-vien?type='+id).load();
-            //     // db_ajax_reload_all(table);
-            //     // table.draw();
-            //     // table = getDanhSachUngVien(id);
-            // });
 
             $('#dat-lich-phong-van-modal').find('.modal-footer #save').on('click',function () {
                 let __this = $(this);
@@ -445,7 +524,7 @@
                     getHtmlResponse(e);
                     if (e.status == 200) {
                         __parent.modal('hide');
-                        db_ajax_reload_page(table);
+                        db_ajax_reload_all(table);
                         db_ajax_reload_all(table2);
                     }
 
@@ -481,21 +560,14 @@
             });
         }
         const getDanhSachUngVien = () => {
-            // let newType = type != undefined ? type : '';
-            // console.log(newType)
+
             let ajax = null;
             let newType = $('#ung-vien-cho-xu-ly_wrapper #loc-danh-sach').find('option:checked').val();
                 ajax = {
                     method: 'get',
                     url: '/nha-tuyen-dung/lay-danh-sach-ung-vien',
-                    // data:{
-                    //     type : function () {
-                    //         console.log(newType != undefined ? newType:'')
-                    //         return newType != undefined ? newType:'';
-                    //     }
-                    // }
-                }
 
+                }
 
             let column = [
                 {
@@ -544,8 +616,12 @@
                 {
                     render: function (api, rowIdx, columns, meta) {
                         let displayNone = null;
+                        let displayNoneDatLich = 'd-none';
                         if (columns.status != 0){
                             displayNone = 'd-none';
+                        }
+                        if (columns.status == 1 && columns.thoi_gian_phong_van == null  && columns.ngay_phong_van == null){
+                            displayNoneDatLich = null;
                         }
                         return '<div class="" style="display: block">' +
                             '<button class="btn btn-warning btn-sm waves-effect xem-ung-vien">Xem chi tiết' +
@@ -553,6 +629,8 @@
                             '<button class="btn btn-primary btn-sm waves-effect chon-ung-vien text-center '+displayNone+'"><span>Chọn</span>' +
                             '</button>' +
                             '<button class="btn btn-light btn-sm waves-effect tu-choi-ung-vien '+displayNone+'">Từ chối' +
+                            '</button>' +
+                            '<button class="btn btn-light btn-sm waves-effect dat-lich-phong-van-ung-vien '+displayNoneDatLich+'">Đặt lịch phỏng vấn' +
                             '</button>' +
                             '</div>'
                     },
@@ -562,20 +640,18 @@
             return datatableAjax($('#ung-vien-cho-xu-ly'), ajax, column);
         }
         const locDanhSach = (e)=>{
-
             let parentNUT =  e.find('.them-moi-danh-sach').parent();
             e.find('.them-moi-danh-sach').addClass('dropdown-toggle waves-effect waves-light').data('toggle','dropdown');
             parentNUT.html(ungVienChoXuLy());
         }
         const locDanhSachPhongVan = (e)=>{
-
             let parentNUT =  e.find('.them-moi-danh-sach').parent();
             e.find('.them-moi-danh-sach').addClass('dropdown-toggle waves-effect waves-light').data('toggle','dropdown');
             parentNUT.html(ungVienPhongVan());
         }
         const ungVienChoXuLy = ()=>{
             // return '<select id="loc-danh-sach"><option value="0">Chờ xử lý</option><option value="-1">Tất cả</option></select>'
-            return '<div class="btn btn-primary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Lọc danh sách <i class="mdi mdi-chevron-down"></i></div>' +
+            return '<div class="btn btn-primary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Lọc danh sách <i class="fa fa-th"></i></div>' +
                 '<div class="dropdown-menu">\n' +
                 '                                            <a class="dropdown-item" data-value="0">Chờ xử lý</a>\n' +
                 '                                            <a class="dropdown-item" data-value="-1">Tất cả</a>\n' +
@@ -583,7 +659,7 @@
         }
         const ungVienPhongVan= ()=>{
             // return '<select id="loc-danh-sach"><option value="0">Chờ xử lý</option><option value="-1">Tất cả</option></select>'
-            return '<div class="btn btn-primary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Lọc danh sách <i class="mdi mdi-chevron-down"></i></div>' +
+            return '<div class="btn btn-primary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">Lọc danh sách <i class="fa fa-th"></i></div>' +
                 '<div class="dropdown-menu">\n' +
                 '                                            <a class="dropdown-item" data-value="2">Phỏng vấn</a>\n' +
                 '                                            <a class="dropdown-item" data-value="-1">Tất cả</a>\n' +

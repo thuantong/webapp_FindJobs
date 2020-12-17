@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CheckNhaTuyenDung
@@ -19,6 +20,10 @@ class CheckNhaTuyenDung
         $getPhanQuyen = Session::get('loai_tai_khoan');
         if ($getPhanQuyen != 2){
             return redirect('/');
+        }
+        if (Auth::user()->status == 2){
+            Session::flush();
+            return redirect()->route('taikhoan.thongBaoKhoaTaiKhoan');
         }
         return $next($request);
     }

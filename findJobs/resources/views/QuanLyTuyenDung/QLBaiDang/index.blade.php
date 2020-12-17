@@ -68,7 +68,7 @@
 
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-sm-12 col-md-12">
             <div class="page-title-box mb-1">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
@@ -83,11 +83,11 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-sm-12 col-md-12">
             <div class="card-box p-1 mb-1 text-center">
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover mb-0" id="quan-ly-bai-dang">
+                    <table class="table table-bordered datatable-check table-hover mb-0" id="quan-ly-bai-dang">
                         <thead  class="thead-light">
                         <tr>
                             <th>STT</th>

@@ -157,7 +157,14 @@
                 },
                 {
                     render: function (api, rowIdx, columns, meta) {
-                        return '<button class="btn btn-sm btn-danger xoa" data-action="'+columns.id+'">Xóa</button>'
+                        let khoaTaiKhoanD = 'd-none';
+                        let moKhoaTaiKhoanD = 'd-none';
+                        if (columns.status == 2){
+                            moKhoaTaiKhoanD = '';
+                        }else{
+                            khoaTaiKhoanD = ''
+                        }
+                        return '<button class="btn btn-sm btn-danger khoa-tai-khoan '+khoaTaiKhoanD+'" data-action="'+columns.id+'">Khóa tài khoản</button><button class="btn btn-sm btn-light mo-khoa-tai-khoan '+moKhoaTaiKhoanD+'" data-action="'+columns.id+'">Mở khóa</button>'
                     },
                     className: 'text-center'
                 }
@@ -225,7 +232,7 @@
                 console.log(r)
             })
         });
-
+//main
         $(function () {
             table = getDataTaiKhoan();
 
@@ -239,6 +246,81 @@
                 $('#danh-sach-tai-khoan tbody').find('tr').removeClass('bg-light');
                 __this.addClass('bg-light');
                 getPhanQuyen(data);
+
+            });
+
+            $('#danh-sach-tai-khoan tbody').on('click', '.khoa-tai-khoan', function () {
+                // alert('cc');
+                let table_row = $(this).parents('tr');
+                let data = getDataRow_dt(table, table_row);
+                // console.log(data)
+                // return;
+                // let idNguoiTimViec = data.get_nguoi_tim_viec.id;
+                let idRecord = data.id;
+                let nameUSER = data.ho_ten;
+                let alertNotify = {
+                    title: 'Khóa tài khoản ' + nameUSER,
+                    message: 'Chọn tạm khóa tài khoản này?'
+                }
+                alertConfirm(alertNotify).then(res => {
+                    if (res.value == true) {
+                        let ajax = {
+                            method: 'post',
+                            url: '/admin/danh-sach-tai-khoan/khoa-tai-khoan',
+                            data: {
+                                id: idRecord,
+                                name: nameUSER
+                            }
+                        }
+                        sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '').done(r => {
+                            // console.log(r.reset[0])
+
+                            getHtmlResponse(r);
+                            if (r.status == 200) {
+                                db_ajax_reload_all(table);
+
+                            }
+                        });
+
+                    }
+                });
+
+            });
+            $('#danh-sach-tai-khoan tbody').on('click', '.mo-khoa-tai-khoan', function () {
+                // alert('cc');
+                let table_row = $(this).parents('tr');
+                let data = getDataRow_dt(table, table_row);
+                // console.log(data)
+                // return;
+                // let idNguoiTimViec = data.get_nguoi_tim_viec.id;
+                let idRecord = data.id;
+                let nameUSER = data.ho_ten;
+                let alertNotify = {
+                    title: 'Mở khóa tài khoản ' + nameUSER,
+                    message: 'Chọn mở khóa tài khoản này?'
+                }
+                alertConfirm(alertNotify).then(res => {
+                    if (res.value == true) {
+                        let ajax = {
+                            method: 'post',
+                            url: '/admin/danh-sach-tai-khoan/mo-khoa-tai-khoan',
+                            data: {
+                                id: idRecord,
+                                name: nameUSER
+                            }
+                        }
+                        sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '').done(r => {
+                            // console.log(r.reset[0])
+
+                            getHtmlResponse(r);
+                            if (r.status == 200) {
+                                db_ajax_reload_all(table);
+
+                            }
+                        });
+
+                    }
+                });
 
             });
         })
