@@ -76,10 +76,10 @@
             {{--            </li>--}}
 
             <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#"
+                <a class="nav-link dropdown-toggle  waves-effect waves-light text-white" data-toggle="dropdown" href="#"
                    role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="icofont icofont-bell-alt noti-icon"></i>
-                    <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>
+                    <span class="badge badge-danger rounded-circle noti-icon-badge" id="so-luong-thong-bao"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
@@ -87,24 +87,15 @@
                     <div class="dropdown-item noti-title">
                         <h5 class="m-0">
                                     <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Notification
+{{--                                        <a href="" class="text-dark">--}}
+{{--                                            <small>Clear All</small>--}}
+{{--                                        </a>--}}
+                                    </span>Thông báo
                         </h5>
                     </div>
 
-                    <div class="slimscroll noti-scroll">
+                    <div class="slimscroll noti-scroll" id="danh-sach-thong-bao" >
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                            <div class="notify-icon bg-soft-primary text-primary">
-                                <i class="mdi mdi-comment-account-outline"></i>
-                            </div>
-                            <p class="notify-details">Doug Dukes commented on Admin Dashboard
-                                <small class="text-muted">1 min ago</small>
-                            </p>
-                        </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
@@ -161,16 +152,16 @@
                     </div>
 
                     <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                        View all
-                        <i class="fi-arrow-right"></i>
-                    </a>
+{{--                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">--}}
+{{--                        View all--}}
+{{--                        <i class="fi-arrow-right"></i>--}}
+{{--                    </a>--}}
 
                 </div>
             </li>
 
             <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light text-white" data-toggle="dropdown"
                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img
                         src="@if(Session::get('avatar') != null){{URL::asset(Session::get('avatar'))}}@elseif(Session::get('avatar') == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
@@ -194,22 +185,22 @@
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="remixicon-settings-3-line"></i>
-                        <span>Settings</span>
-                    </a>
+{{--                    <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
+{{--                        <i class="remixicon-settings-3-line"></i>--}}
+{{--                        <span>Settings</span>--}}
+{{--                    </a>--}}
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="remixicon-wallet-line"></i>
-                        <span>My Wallet <span class="badge badge-success float-right">3</span> </span>
-                    </a>
+{{--                    <!-- item-->--}}
+{{--                    <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
+{{--                        <i class="remixicon-wallet-line"></i>--}}
+{{--                        <span>My Wallet <span class="badge badge-success float-right">3</span> </span>--}}
+{{--                    </a>--}}
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="remixicon-lock-line"></i>
-                        <span>Lock Screen</span>
-                    </a>
+{{--                    <!-- item-->--}}
+{{--                    <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
+{{--                        <i class="remixicon-lock-line"></i>--}}
+{{--                        <span>Lock Screen</span>--}}
+{{--                    </a>--}}
 
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('auth.logout',['admin'=>true]) }}" class="dropdown-item  notify-item">
@@ -516,9 +507,60 @@
 @stack('scripts')
 <script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 <script type="text/javascript">
+    let getBaseURL = '{{URL::asset('/')}}';
+    let avatarDefault = '{{URL::asset('images/default-company-logo.jpg')}}';
     // var currenPage = null;
     // var nextPage = null;
-    // var next_page_check = null;
+    const locationThongBao = () =>{
+        let ajax = {
+            method:'get',
+            url:"/admin/thong-bao/cap-nhat-tin-rong",
+            data:{}
+        }
+        sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
+            if (e == true){
+                location.href = "/admin/danh-sach-bai-duyet";
+            }
+        })
+
+    }
+    const htmlThongBao = (avatar,ho_ten,noi_dung)=>{
+        let avatarNew = avatar == null ? avatarDefault : avatar;
+        return ' <a onclick="locationThongBao()" class="dropdown-item notify-item">\n' +
+            '                            <div class="notify-icon">\n' +
+            '                                <img src="'+avatarNew+'" class="img-fluid rounded-circle" alt="">\n' +
+            '                            </div>\n' +
+            '                            <p class="notify-details">'+ho_ten+'</p>\n' +
+            '                            <p class="text-muted mb-0 user-msg">\n' +
+            '                                <small>'+noi_dung+'</small>\n' +
+            '                            </p>\n' +
+            '                        </a>';
+    }
+    const getDanhSachThongBao = ()=>{
+        // so-luong-thong-b/**/ao
+        // danh-sach-thong-bao
+        let ajax = {
+            method:'get',
+            url:"/admin/get-thong-bao",
+            data: {
+            }
+        }
+        sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
+            console.log(e);
+            let count = 0;
+            let html = '';
+            $.each(e,function (i,v) {
+                if (v.status == 0){
+                    count++;
+                }
+                html += htmlThongBao(v.get_nguoi_gui.avatar,v.get_nguoi_gui.ho_ten,v.name);
+
+            })
+
+            $('#so-luong-thong-bao').html(count);
+            $('#danh-sach-thong-bao').html(html);
+        })
+    }
     $(document).on('click', '#button-master-search', function () {
         let tieu_de = $('#value-master-search').val();
         let nganh_nghe = $('#nganh-nghe-master-search').val();
@@ -561,6 +603,7 @@
         }
     });
     $(function () {
+        getDanhSachThongBao()
         select2Single($('#dia-diem-master-search'), $('.left-search-header'));
         select2Single($('#nganh-nghe-master-search'), $('.left-search-header'));
         $('.left-search').css('width', '0px');
@@ -584,6 +627,7 @@
                 }
             }
         });
+
 
     });
 </script>

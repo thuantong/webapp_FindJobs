@@ -1,4 +1,4 @@
-<div class="modal fade bs-example-modal-center" id="doi_anh_dai_dien" tabindex="-1" role="dialog"
+<div class="modal fade bs-example-modal-center congty" id="doi_anh_dai_dien" tabindex="-1" role="dialog"
      aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

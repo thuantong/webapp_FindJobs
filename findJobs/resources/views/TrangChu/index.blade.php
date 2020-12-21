@@ -54,8 +54,8 @@
                         <div class="row text-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h4 class="m-0 tieu_de bg-light p-1 tieu-de-chi-tiet">Đang tải...</h4>
-                                <label class="float-left">Công ty: <span
-                                        class="cong_ty">Đang tải...</span></label><label class="float-right">Nhà tuyển
+                                <label class="float-left"><span
+                                        class="cong_ty text-uppercase">Đang tải...</span></label><label class="float-right d-none">Nhà tuyển
                                     dụng: <span class="name_nguoi_dang">Đang tải...</span></label>
                             </div>
 
@@ -184,8 +184,15 @@
                             </div>
                         </div>
                         <div class="row pt-1 pb-0">
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center p-0">
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center p-0">
                                 <a class="btn btn-success float-left" id="xem-chi-tiet-rut-gon">Xem chi tiết</a>
+
+
+                            </div>
+                            <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5 text-right p-0">
+{{--                                <b>Báo cáo Nhà tuyển dụng:</b>--}}
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center p-0">
                                 @if(intval(Session::get('loai_tai_khoan')) == 1)
 
                                     <button class="btn btn-outline-primary float-right bao-cao-button-call"><i
@@ -194,7 +201,7 @@
                                     </button>
                             </div>
 
-                        </div>
+                            </div>
 
                     </div>
                     @if(intval(Session::get('loai_tai_khoan')) == 1)
@@ -247,7 +254,8 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-        $(function () {
+
+        $(window).on("load", function(){
             fullSizePage();
         });
     </script>
@@ -266,7 +274,7 @@
         }
 
         const getThongTinChiTietPost = (e) => {
-            console.log('con cac ne', e);
+            // console.log('con cac ne', e);
             if (e != null) {
                 if (parseInt(loaiTaiKhoan) == 1) {
                     // console.log(e.bai_da_luu.data.findIndex(x=>x.id == e.id))
@@ -321,7 +329,7 @@
                 //case báo cáo
                 if (parseInt(loaiTaiKhoan) == 1) {
                     if (e.nguoi_tim_viec.get_bao_cao != null) {
-                        if (e.nguoi_tim_viec.get_bao_cao.findIndex(x => x.id == e.id) != -1) {
+                        if (e.nguoi_tim_viec.get_bao_cao.findIndex(x => x.id == e.get_nha_tuyen_dung.id) != -1) {
                             // if (e.nguoi_tim_viec.get_bao_cao.includes(parseInt(e.nha_tuyen_dung_id)) == true){
                             $('.bao-cao-button-call').removeClass('btn-outline-primary');
                             $('.bao-cao-button-call').addClass('btn-primary');
@@ -376,7 +384,7 @@
                 $('.nganh_nghe').text(array_nganh_nghe.join(' - '));
 
 
-                $('.muc_luong').text(e.luong.join(' - ') + ' Triệu');
+                $('.muc_luong').text(e.luong_from+' - '+e.luong_to+ ' Triệu');
                 // return;
                 {{--                href="{{route('baiviet.getThongTinBaiViet',[$row['id']])}}--}}
                 $('#xem-chi-tiet-rut-gon').attr('href', '/bai-viet/thong-tin&baiviet=' + e.id + '&chitiet=1');
@@ -529,12 +537,12 @@
             });
 
             //resize post
-            $(window).resize(function () {
-                widthImage = $('#container-items .iteam-click').find('img').parent().width();
-                heightImage = widthImage;
-                $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
-
-            });
+            // $(window).resize(function () {
+            //     widthImage = $('#container-items .iteam-click').find('img').parent().width();
+            //     heightImage = widthImage;
+            //     $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
+            //
+            // });
 
             //call ajax
             // $(document).on('click','#container-items .iteam-click', function () {

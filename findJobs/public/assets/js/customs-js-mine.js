@@ -22,7 +22,7 @@ function remove_vietnamese_string(str) {
 const refreshTimeOut = () => {
     setTimeout("location.reload(true);", 1000 * 60 * 30);//1 tiếng
 };
-const switcheryInit = () =>{
+const switcheryInit = () => {
     $('[data-plugin="switchery"]').each(function (t, e) {
         new Switchery($(this)[0], $(this).data())
     });
@@ -326,16 +326,28 @@ const sendAjaxNoFunc = (method, url, data, ...button) => {
 const notNullMessage = (element) => {
     let error = 0;
     element.each(function () {
-        if ($(this).prop("tagName").toLowerCase() == 'select') {
+        if ($(this).parent().find('#cong_ty_tuyen_dung_name').length > 0) {
+            if ($(this).val() == ''){
+                $(this).addClass('is-invalid');
+                $(this).parent().find('#cong_ty_tuyen_dung_name').addClass('form-control is-invalid');
+                $(this).parent().find('.invalid-feedback').addClass('text-left').find('strong').text($(this).attr('title') + ' không được để trống');
+                error++;
+            }
+
+        } else if ($(this).prop("tagName").toLowerCase() == 'select') {
             if ($(this).find('option:checked').val() == '') {
                 $(this).addClass('is-invalid').parent().find('.select2-container').find('.select2-selection').css('border', '#f1556c 1px solid');
                 $(this).parent().find('.invalid-feedback').addClass('text-left').find('strong').text($(this).attr('title') + ' không được để trống');
+                // console.log('select')
+
+
                 error++;
             }
         } else {
             if ($(this).val() == '') {
                 $(this).addClass('is-invalid');
                 $(this).parent().find('.invalid-feedback').addClass('text-left').find('strong').text($(this).attr('title') + ' không được để trống');
+                // console.log($(this).attr('class'))
                 error++;
             } else {
                 $(this).removeClass('is-invalid');
@@ -630,7 +642,7 @@ $(document).on('show.bs.modal', '.modal', function (event) {
     }, 0);
 });
 
-const select2Single = (element,parentNode) => {
+const select2Single = (element, parentNode) => {
     return element.select2({
         dropdownParent: parentNode
     }).data('select2').listeners['*'].push(function (name, target) {
@@ -646,9 +658,9 @@ const select2Default = (element) => {
         }
     });
 };
-const select2MultipleDefault = (element,placeHolder) => {
+const select2MultipleDefault = (element, placeHolder) => {
     return element.select2({
-        placeholder: ' '+placeHolder+'',
+        placeholder: ' ' + placeHolder + '',
         allowClear: false
     }).data('select2').listeners['*'].push(function (name, target) {
         if (name == 'focus') {
@@ -656,27 +668,28 @@ const select2MultipleDefault = (element,placeHolder) => {
         }
     });
 };
+
 /**
  * Ex: changeSwitchery($('#'),false)
  * @param element
  * @param checked
  */
 function changeSwitchery(element, checked) {
-    if ( ( element.is(':checked') && checked == false ) || ( !element.is(':checked') && checked == true ) ) {
+    if ((element.is(':checked') && checked == false) || (!element.is(':checked') && checked == true)) {
         element.parent().find('.switchery').trigger('click');
     }
 }
 
-const checkIsDeviceMedium = () =>{
+const checkIsDeviceMedium = () => {
     let width = $(window).width();
-    if (width >= 768){
+    if (width >= 768) {
         return true;
-    }else if (width <= 768){
+    } else if (width <= 768) {
         return false;
     }
 }
 
-const getTrangThaiTaiKhoan = (status)=>{
+const getTrangThaiTaiKhoan = (status) => {
     switch (parseInt(status)) {
         case 0:
             return '<span class="text-dark">Ngoại tuyến</span>';
@@ -687,22 +700,28 @@ const getTrangThaiTaiKhoan = (status)=>{
     }
 }
 
-$(document).on('click','.thong-bao-phan-quyen',function () {
+$(document).on('click', '.thong-bao-phan-quyen', function () {
     let data = {
-        title:'Thông báo',
-        message:"Chức năng không khả dụng trên người dùng!",
-        status:400
+        title: 'Thông báo',
+        message: "Chức năng không khả dụng trên người dùng!",
+        status: 400
     }
     getHtmlResponse(data)
 });
 
-const getDataRow_dt = (element,tr) =>{
+const getDataRow_dt = (element, tr) => {
     return element.row(tr).data();
 }
 
-const db_ajax_reload_all = (e)=>{
+const db_ajax_reload_all = (e) => {
     e.ajax.reload();
 }
-const db_ajax_reload_page = (e)=>{
-    e.ajax.reload( null, false );
+const db_ajax_reload_page = (e) => {
+    e.ajax.reload(null, false);
 }
+if($("body").find('.ql-bold').length > 0){
+    $(document).on('click','button.ql-bold',function () {
+        alert()
+    })
+}
+

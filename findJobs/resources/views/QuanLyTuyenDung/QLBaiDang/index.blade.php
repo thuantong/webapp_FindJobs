@@ -1,6 +1,9 @@
 @extends('master.index')
 @section('content')
     <head>
+        <link href="{{URL::asset('assets\libs\quill\quill.core.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\quill\quill.bubble.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\quill\quill.snow.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
               rel="stylesheet">
         <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
@@ -19,6 +22,38 @@
     @include('CongTy.modal.anh_dai_dien')
     @include('BaiViet.modal.chinh_sua.modal')
     {{--    modal thêm mới --}}
+    <div class="modal fade bs-example-modal-lg" id="ly-do-tu-choi-modal" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false"
+         aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Lý do từ chối bài tuyển dụng</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <textarea class="form-control" readonly></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <b>Bạn hãy chỉnh lại bài tuyển dụng để được phê duyệt nhé!</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+{{--                    @include('BaiViet.buttonDangBai')--}}
+{{--                    <button type="button" class="btn btn-primary" id="save-cong-ty">Lưu lại</button>--}}
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade bs-example-modal-lg" id="them-moi-modal" tabindex="-1" role="dialog"
          aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -36,12 +71,11 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                     @include('BaiViet.buttonDangBai')
-{{--                    <button type="button" class="btn btn-primary" id="save-cong-ty">Lưu lại</button>--}}
+                    {{--                    <button type="button" class="btn btn-primary" id="save-cong-ty">Lưu lại</button>--}}
                 </div>
             </div>
         </div>
     </div>
-
     {{--    modal update --}}
     <div class="modal fade bs-example-modal-lg" id="cap-nhat-modal" tabindex="-1" role="dialog"
          aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -127,6 +161,7 @@
     <script type="text/javascript" src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\quill\quill.min.js')}}"></script>
 
     <link rel="stylesheet" type="text/css"
           href="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
@@ -203,6 +238,39 @@
 
         $(document).on('click','.them-moi-danh-sach',function () {
             $('#them-moi-modal').modal('show');
+        });
+
+        var quill = new Quill("#them-moi-modal #mo-ta-editor", {
+            theme: "snow",
+            // placeholder: 'Compose an epic...',
+            modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+        });
+        var quill2 = new Quill("#them-moi-modal #yeu-cau-editor", {
+            theme: "snow",
+            // placeholder: 'Compose an epic...',
+            modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+        });
+        var quill3 = new Quill("#them-moi-modal #quyen-loi-editor", {
+            theme: "snow",
+            // placeholder: 'Compose an epic...',
+            modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+        });
+
+        $(document).on('focusout','.custom-editor .ql-editor',function () {
+            let __this = $(this);
+            let value = $(this).html();
+            let __parent = $(this).parents('.custom-editor').parent();
+
+            if ($.trim(__this.text()).length == 0){
+                __this.html("");
+            }
+            if ($.trim(__this.text()).length == 0){
+                __parent.find('textarea').addClass('is-invalid');
+                __parent.find('textarea').parent().find('.invalid-feedback').addClass('text-left').find('strong').text(__parent.find('textarea').attr('title') + ' không được để trống');
+            }else{
+                __parent.find('textarea').removeClass('is-invalid');
+            }
+            __parent.find('textarea').val(""+value+"");
         });
         // $(document).on('click','#quan-ly-bai-dang .chinh_sua',function () {
         //     let __this = $(this);

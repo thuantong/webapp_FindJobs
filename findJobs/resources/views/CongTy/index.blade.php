@@ -109,6 +109,9 @@
           href="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
     <script type="text/javascript"
             src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
+    <script>
+        let getBaseURL = '{{URL::asset('/')}}';
+    </script>
     <script type="text/javascript" src="{{URL::asset('assets\js\app\themMoiCongTy.js')}}"></script>
 
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
@@ -119,6 +122,7 @@
             select2Default($('select#from_day'));
             select2Default($('select#to_day'));
             select2Default($('select#quy_mo_nhan_su'));
+            select2Default($('select#dia_diem'));
             select2MultipleDefault($('select#linh_vuc_hoat_dong'),'Chọn Ngành nghề')
             // $('select#from_day,select#to_day,select#quy_mo_nhan_su').select2({
             //     dropdownParent: $('div#cap-nhat-cong-ty ')
@@ -222,9 +226,9 @@
 
             datatable_table = getDanhSachCongTy();
 
-            $('#gioi_thieu_cong_ty').on('focusout',function () {
-                    $('#ten_cong_ty').focus().select();
-            });
+            // $('#gioi_thieu_cong_ty').on('focusout',function () {
+            //         $('#ten_cong_ty').focus().select();
+            // });
             $(document).on('input change', 'div#cap-nhat-cong-ty #so_luong_chi_nhanh', function () {
 
                 let __this = $(this);

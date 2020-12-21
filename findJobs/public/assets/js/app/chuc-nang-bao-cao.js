@@ -34,10 +34,15 @@ $(document).on('click', '#bao-cao-modal .modal-footer #save',function () {
         };
         // console.log('asdasd',ajax);
         sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,__this.attr('id')).done(e=> {
-            console.log('asdasd',e);
+            // console.log('asdasd',e);
             getHtmlResponse(e);
             if (e.status == 200){
                 $('#bao-cao-modal').modal('hide');
+                $('.bao-cao-button-call').removeClass('btn-outline-primary');
+                $('.bao-cao-button-call').addClass('btn-primary');
+                $('.bao-cao-button-call').addClass('like-animation');
+                $('.bao-cao-button-call').find('i').text(' Đã báo cáo');
+                $('.bao-cao-button-call').removeAttr('id');
             }
         });
     }

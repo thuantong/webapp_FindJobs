@@ -80,7 +80,7 @@ $(function () {
     //
     //     }
     // });
-    var $uploadCrop;
+    var $uploadCrop_congty;
 
     function readFile(input) {
         if (input.files && input.files[0]) {
@@ -88,7 +88,7 @@ $(function () {
 
             reader.onload = function (e) {
                 $('.upload-demo').addClass('ready');
-                $uploadCrop.croppie('bind', {
+                $uploadCrop_congty.croppie('bind', {
                     url: e.target.result,
                 }).then(function () {
                     console.log('jQuery bind complete');
@@ -101,7 +101,7 @@ $(function () {
         }
     }
 
-    $uploadCrop = $('#upload-demo').croppie({
+    $uploadCrop_congty = $('#doi_anh_dai_dien.congty').find('#upload-demo').croppie({
         viewport: {
             width: 350,
             height: 350,
@@ -114,7 +114,7 @@ $(function () {
     });
     $(document).on('change', '#logo_cong_ty .logo_cong_ty_file', function () {
         let getModal = $(this).parents('.modal').attr('id');
-        $('#doi_anh_dai_dien').data('type', getModal).modal('show');
+        $('#doi_anh_dai_dien.congty').data('type', getModal).modal('show');
         readFile(this);
     });
     $('div.modal#them-moi-cong-ty').on('hidden.bs.modal', function () {
@@ -153,7 +153,7 @@ $(function () {
         });
         $('.form-control').eq(0).select();
     })
-    $('#doi_anh_dai_dien').on('hidden.bs.modal', function () {
+    $('#doi_anh_dai_dien.congty').on('hidden.bs.modal', function () {
         let type = $(this).data('type');
 
         switch (type) {
@@ -165,10 +165,10 @@ $(function () {
             //     break;
         }
     });
-    $('#doi_anh_dai_dien').find('.modal-footer').find('button:eq(1)#save').on('click', function () {
+    $('#doi_anh_dai_dien.congty').find('.modal-footer').find('button:eq(1)#save').on('click', function () {
         let __this = $(this);
         let type = $(this).parents('.modal').data('type');
-        console.log('modal nè', type)
+        console.log('modal nè', type);
 
         // console.log(type)
         let elementID = '';
@@ -183,7 +183,7 @@ $(function () {
                 break;
         }
         let namePicture = elementID.find('input[type="file"]')[0].files[0].name;
-        $uploadCrop.croppie('result', {
+        $uploadCrop_congty.croppie('result', {
             type: 'canvas',
             size: 'viewport',
         }).then(function (resp) {
@@ -199,7 +199,7 @@ $(function () {
                 getHtmlResponse(e);
 
                 if (e.status == 200) {
-                    $('#doi_anh_dai_dien').modal('hide');
+                    $('#doi_anh_dai_dien.congty').modal('hide');
 
                 }
             })
@@ -209,6 +209,7 @@ $(function () {
 });
 
 $(document).on('click', 'button#save-cong-ty', function () {
+    // alert()
     let __this = $(this);
     let gio_lam_viec = [];
     let ngay_lam_viec = [];
@@ -225,13 +226,15 @@ $(document).on('click', 'button#save-cong-ty', function () {
     let dia_chi_chi_nhanh = getParents.find('.dia_chi_chi_nhanh');
     let so_luong_chi_nhanh = getParents.find('#so_luong_chi_nhanh');
     error += notNullMessage(getParents.find('.not-null'));
-
+    // console.log(notNullMessage(getParents.find('.not-null')))
+    // return;
     if(so_luong_chi_nhanh.hasClass('ready')){
         dia_chi_chi_nhanh.each(function () {
             array_dia_chi_chi_nhanh.push($(this).val());
         });
     }
 
+    // console.log(error);
     if (error == 0) {
         gio_lam_viec.push(getParents.find('#from_time').val(), getParents.find('#to_time').val());
         ngay_lam_viec.push(getParents.find('#from_day').find('option:checked').val(), getParents.find('#to_day').find('option:checked').val());
@@ -253,6 +256,7 @@ $(document).on('click', 'button#save-cong-ty', function () {
             so_luong_chi_nhanh: so_luong_chi_nhanh.val(),
             dia_chi_chi_nhanh: array_dia_chi_chi_nhanh,
             nam_thanh_lap: getParents.find('#nam_thanh_lap').val(),
+            dia_diem_id: getParents.find('#dia_diem').val(),
         }
         // console.log(dataSend);
         // return;
@@ -262,11 +266,13 @@ $(document).on('click', 'button#save-cong-ty', function () {
             if (res.status == 200) {
                 if (__this.parents('.modal').length > 0){
                     let dataRespose = res.reset[0];
-                    console.log(dataRespose)
+                    // console.log(dataRespose)
                     __this.parents('.modal').modal('hide');
                     $('body').find('#cong_ty_tuyen_dung').val(dataRespose.id);
+                    // if ($('body').find('')
                     $('body').find('#cong_ty_tuyen_dung').parent().find('img').attr('src',getBaseURL+dataRespose.logo);
                     $('body').find('#cong_ty_tuyen_dung_name').find('h5').text(dataRespose.name);
+                    $('body').find('#cong_ty_tuyen_dung_name').removeClass('form-control is-invalid')
                 }else{
                     window.location.href = '/danh-sach-cong-ty';
                 }

@@ -7,6 +7,7 @@ use App\Models\TaiKhoan;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class CheckSoDu

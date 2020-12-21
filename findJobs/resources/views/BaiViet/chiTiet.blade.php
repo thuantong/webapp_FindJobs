@@ -29,8 +29,116 @@
                 <h4 class="page-title">Xem chi tiết việc làm</h4>
 
 
-{{--                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>--}}
+                {{--                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>--}}
 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card-box  p-1 mb-1" >
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <h4 class="tieu_de p-1 m-0 text-center bg-light text-uppercase"
+                            id="ten_cong_ty">@if($data['get_cong_ty'] != null) @if($data['get_cong_ty']['name'] != null){{$data['get_cong_ty']['name']}}@endif @endif</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-md-2">
+                        <img
+                            src="@if($data['get_cong_ty']['logo'] != null){{URL::asset(''.$data['get_cong_ty']['logo'].'')}}@endif"
+                            class="border" style="width: calc(100%)">
+
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <i>
+                                    @if($data['cong_ty_nganh_nghe'] != null)
+                                        {{implode(' - ', array_map(function($c) {
+                                                return $c['name'];
+                                            }, $data['cong_ty_nganh_nghe']))}}
+                                    @endif
+                                </i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <span class="fa fa-globe"></span><span>
+                                        @if($data['get_cong_ty'] != null)
+                                        {{$data['get_cong_ty']['websites']}}
+                                    @endif
+                                    </span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <span class="icofont icofont-location-pin"></span><span>
+                                        @if($data['get_cong_ty'] != null)
+                                        {{$data['get_cong_ty']['dia_chi']}}
+                                    @endif
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <span class="fa fa-group"></span><span>
+                                @if($data['get_cong_ty'] != null)
+                                        {{$data['quy_mo_nhan_su']['name']}}
+                                    @endif
+                                 </span>
+                            </div>
+                        </div>
+
+                        @if(intval(Session::get('loai_tai_khoan')) == 1)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 text-left">
+                                    <div
+                                        class="btn quan-tam-nha-tuyen-dung mt-2  @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"
+                                        id="quan-tam-nha-tuyen-dung"
+                                        data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">
+                                        <i class="icofont icofont-thumbs-up">@if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true){{' Đã quan tâm'}}@else{{' Quan tâm'}}@endif</i>
+                                        <span class="badge badge-danger noti-icon-badge position-absolute"
+                                              style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>
+                                    </div>
+                                    {{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
+                                    {{--                                    <button class="btn btn-info btn-sm"></button>--}}
+                                </div>
+                            </div>
+                        @endif
+
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <label class="mb-0">Giới thiệu:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 overflow-hidden" style="max-height: 20vh">
+                                <span class="">
+                                        @if($data['get_cong_ty'] != null)
+                                        {{--                                            @for($i = 0 ; $i < 200; $i++)--}}
+                                        {{$data['get_cong_ty']['gioi_thieu']}}
+                                        {{--                                                @endfor--}}
+
+                                    @endif
+                                    </span>
+                                {{--                                <button class="btn-sm btn btn-primary">đấ</button>--}}
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 text-left">
+
+                                <button class="btn-sm btn btn-default text-primary p-0">[Xem chi tiết]</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -45,7 +153,7 @@
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <div class="form-group row">
                                     <label class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-center">
-                                        <h4 class="tieu_de bg-light p-1 m-0"
+                                        <h4 class="tieu_de bg-light p-1 m-0 text-capitalize"
                                             id="tieu_de">@if($data['tieu_de'] != null){{$data['tieu_de']}}@endif</h4>
                                     </label>
 
@@ -94,10 +202,11 @@
                                                         {{--                                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
 
                                                     </div>
-                                                    <button class="btn @if(in_array($data['id'],$data['bao_cao']['data']) == false) btn-outline-primary @else btn-primary like-animation @endif waves-effect bao-cao-button-call"
-                                                    @if(in_array($data['id'],$data['bao_cao']['data']) == false) id="bao-cao-button-call" @endif
+                                                    <button
+                                                        class="btn @if(in_array($data['id'],$data['bao_cao']['data']) == false) btn-outline-primary @else btn-primary like-animation @endif waves-effect bao-cao-button-call"
+                                                        @if(in_array($data['id'],$data['bao_cao']['data']) == false) id="bao-cao-button-call" @endif
                                                     ><i
-                                                            class="fa fa-exclamation"></i>@if(in_array($data['id'],$data['bao_cao']['data'])){{__(' Đã báo cáo')}}@else{{__(' Báo cáo')}}@endif
+                                                            class="fa fa-exclamation"></i>@if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data'])){{__(' Đã báo cáo')}}@else{{__(' Báo cáo')}}@endif
                                                     </button>
 
                                                 </div>
@@ -110,29 +219,32 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-3 pr-3">
                                         <div class="form-group row">
-                                            <label
-                                                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">Mô
-                                                tả công việc</label>
+                                            <h4
+                                                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">
+                                                <u>Mô
+                                                    tả công việc:</u></h4>
                                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="mo_ta_cong_viec">
-                                                @if($data['mo_ta'] != null){{$data['mo_ta']}}@endif
+                                                @if($data['mo_ta'] != null){!! $data['mo_ta'] !!}@endif
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label
-                                                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">Yêu
-                                                cầu công việc</label>
+                                            <h4
+                                                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">
+                                                <u>Yêu
+                                                    cầu công việc</u></h4>
                                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="yeu_cau_cong_viec">
-                                                @if($data['yeu_cau_cong_viec'] != null){{$data['yeu_cau_cong_viec']}}@endif
+                                                @if($data['yeu_cau_cong_viec'] != null){!! $data['yeu_cau_cong_viec'] !!}@endif
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label
-                                                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">Quyền
-                                                lợi được hưởng</label>
+                                            <h4
+                                                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">
+                                                <u>Quyền
+                                                    lợi được hưởng</u></h4>
                                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12"
                                                  id="quyen_loi_cong_viec">
-                                                @if($data['quyen_loi'] != null){{$data['quyen_loi']}}@endif
+                                                @if($data['quyen_loi'] != null){!! $data['quyen_loi'] !!}@endif
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -183,7 +295,7 @@
                                                  id="nganh_nghe">
                                                 @if($data['get_nganh_nghe'] != null)
                                                     {{implode('', array_map(function($c) {
-            echo '<a class="btn btn-white waves-effect border text-dark loc-nganh-nghe" href="'.route('trangchu.index',['nganh_nghe_id'=>$c['id']]).'" data-id="'.$c['id'].'">'.$c['name'].'</a> ';
+            echo '<a class="btn btn-white waves-effect border text-dark loc-nganh-nghe" href="'.route('trangchu.index',['nganh_nghe'=>$c['id']]).'" data-id="'.$c['id'].'">'.$c['name'].'</a> ';
                                                         }, $data['get_nganh_nghe']))}}
                                                 @endif
                                             </div>
@@ -217,157 +329,216 @@
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 border-left">
                         <div class="w-100 position-relative overflow-y-auto">
-                            <div class="w-100" id="noi-dung-right-side" style="height: 300px">
+                            <div class="w-100" id="noi-dung-right-side" style="height: 50px">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <h4 class="tieu_de bg-light p-1 m-0 text-center">Công ty tuyển dụng</h4>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <h4 class="tieu_de p-1 m-0 text-center"
-                                            id="ten_cong_ty">@if($data['get_cong_ty'] != null) @if($data['get_cong_ty']['name'] != null){{$data['get_cong_ty']['name']}}@endif @endif</h4>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <i>
-                                            @if($data['cong_ty_nganh_nghe'] != null)
-                                                {{implode(' - ', array_map(function($c) {
-                                                        return $c['name'];
-                                                    }, $data['cong_ty_nganh_nghe']))}}
-                                            @endif
-                                        </i>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <span class="fa fa-globe"></span><span>
-                                        @if($data['get_cong_ty'] != null)
-                                                {{$data['get_cong_ty']['websites']}}
-                                            @endif
-                                    </span>
+                                        <h4 class="tieu_de bg-light p-1 m-0 text-center">Việc làm gợi ý<a class="float-right" href="{{route('trangchu.index',array('kieu_lam_viec'=>$data['kieu_lam_viec_id']))}}">[Xem thêm]</a></h4>
 
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <span class="icofont icofont-location-pin"></span><span>
-                                        @if($data['get_cong_ty'] != null)
-                                                {{$data['get_cong_ty']['dia_chi']}}
-                                            @endif
-                                    </span>
+                                    @if($data['bai_tuyen_dung']->count() != 0)
+{{--                                        @dd($data['bai_tuyen_dung'][0]['get_cong_ty']['cong_ty_logo'])--}}
+                                        @foreach($data['bai_tuyen_dung'] as $row)
+                                            <a class="col-sm-12 col-md-12 ribbon-box iteam-click" href="{{route('baiviet.getThongTinBaiViet',[$row['id'],'chitiet'=>1])}}">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <img src="{{URL::asset($row['getCongTy']->cong_ty_logo)}}"
+                                                             class="border" style="width: calc(100%)">
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="row">
+                                                            <h5 class="col-sm-12 col-md-12 mt-1 mb-1 overflow-hidden text-capitalize">
+                                                                {{$row['tieu_de']}}
+                                                            </h5>
+                                                        </div>
+                                                        <div class="row">
+                                                            <small class="col-sm-12 col-md-12 overflow-hidden text-dark text-uppercase">
+                                                                {{$row['getCongTy']->cong_ty_name}}
+                                                            </small>
+                                                        </div>
+                                                        <div class="row">
+                                                            <small class="col-sm-12 col-md-12">
+                                                                <span class="icofont icofont-money mr-1">
+                                                                    {{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}
+                                                                </span>
+{{--                                                                @if(Auth::user() != null){{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}@else <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a> @endif--}}
+                                                            </small>
+                                                        </div>
+                                                        <div class="row">
+                                                            <small class="col-sm-12 col-md-12">
+                                                                <span class="icofont icofont-location-pin mr-1"></span>{{$row['getDiaDiem']->dia_diem}}
+                                                            </small>
+                                                        </div>
+                                                        <div class="row">
+                                                            <small class="col-sm-12 col-md-12">
+                                                                <span class="fa fa-calendar-plus-o mr-1"></span>{{\Illuminate\Support\Carbon::parse($row['han_tuyen'])->format('d/m/Y')}}
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @if(intval($row['isHot']) == 1)
+                                                    <div class="ribbon-two ribbon-two-danger floats-right"><span class="right-custom" style="top: 7px;left: -14px;">Hot</span>
+                                                    </div>
+                                                @endif
+                                            </a>
 
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <span class="fa fa-group"></span><span>
-                                        @if($data['get_cong_ty'] != null)
-                                                {{$data['quy_mo_nhan_su']['name']}}
-                                            @endif
-                                    </span>
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <span>
-                                        @if($data['get_cong_ty'] != null)
-                                            {{$data['get_cong_ty']['gioi_thieu']}}
-                                        @endif
-                                    </span>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-2">
-                                        <img
-                                            src="@if($data['get_cong_ty']['logo'] != null){{URL::asset(''.$data['get_cong_ty']['logo'].'')}}@endif"
-                                            style="width: calc(90%)">
-                                        {{--                                        @if($data['get_cong_ty'] != null)--}}
-                                        {{--                                            {{$data['get_cong_ty']['gioi_thieu']}}--}}
-                                        {{--                                        @endif--}}
-                                        {{--                                    </img>--}}
-
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <h4 class="tieu_de bg-light p-1 m-0 text-center">Nhà tuyển dụng</h4>
-                                    </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-2">
-                                        <img
-                                            src="@if($data['get_nha_tuyen_dung']['avatar'] != null){{URL::asset(''.$data['get_nha_tuyen_dung']['avatar'].'')}}@endif"
-                                            style="width: calc(90%)">
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <h4 class="ten_nha_tuyen_dung p-1 m-0 text-center"
-                                            id="ten_nha_tuyen_dung">@if($data['get_nha_tuyen_dung'] != null) @if($data['get_nha_tuyen_dung']['ho_ten'] != null){{$data['get_nha_tuyen_dung']['ho_ten']}}@endif @endif</h4>
-                                    </div>
-                                </div>
-                                @if(intval(Session::get('loai_tai_khoan')) == 1)
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
-                                            <div
-                                                class="btn quan-tam-nha-tuyen-dung @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"
-                                                id="quan-tam-nha-tuyen-dung"
-                                                data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">
-                                                <i class="icofont icofont-thumbs-up">@if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true){{' Đã quan tâm'}}@else{{' Quan tâm'}}@endif</i>
-                                                <span class="badge badge-danger noti-icon-badge position-absolute"
-                                                      style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>
+                                        @endforeach
+                                    @else
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 bg-primary text-white text-center">
+                                                {{__('Không tìm thấy việc làm')}}
                                             </div>
-                                            {{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
-                                            {{--                                    <button class="btn btn-info btn-sm"></button>--}}
                                         </div>
-                                    </div>
-                                @endif
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <span class="fa fa-envelope"></span><span>
-                                        @if($data['get_nha_tuyen_dung'] != null)
-                                                {{$data['get_nha_tuyen_dung']['tai_khoan']['email']}}
-                                            @endif
-                                    </span>
+                                    @endif
 
-                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <span class="icofont icofont-location-pin"></span><span>
-                                        @if($data['get_nha_tuyen_dung'] != null)
-                                                {{$data['get_nha_tuyen_dung']['dia_chi']}}
-                                            @endif
-                                    </span>
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <h4 class="tieu_de p-1 m-0 text-center"--}}
+                                {{--                                            id="ten_cong_ty">@if($data['get_cong_ty'] != null) @if($data['get_cong_ty']['name'] != null){{$data['get_cong_ty']['name']}}@endif @endif</h4>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
 
-                                    </div>
-                                </div>
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <i>--}}
+                                {{--                                            @if($data['cong_ty_nganh_nghe'] != null)--}}
+                                {{--                                                {{implode(' - ', array_map(function($c) {--}}
+                                {{--                                                        return $c['name'];--}}
+                                {{--                                                    }, $data['cong_ty_nganh_nghe']))}}--}}
+                                {{--                                            @endif--}}
+                                {{--                                        </i>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
 
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <span class="fa fa-globe"></span><span>--}}
+                                {{--                                        @if($data['get_cong_ty'] != null)--}}
+                                {{--                                                {{$data['get_cong_ty']['websites']}}--}}
+                                {{--                                            @endif--}}
+                                {{--                                    </span>--}}
 
-                                    <span>
-                                        @if($data['get_nha_tuyen_dung'] != null)
-                                            {{$data['get_nha_tuyen_dung']['gioi_thieu']}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <span class="icofont icofont-location-pin"></span><span>--}}
+                                {{--                                        @if($data['get_cong_ty'] != null)--}}
+                                {{--                                                {{$data['get_cong_ty']['dia_chi']}}--}}
+                                {{--                                            @endif--}}
+                                {{--                                    </span>--}}
 
-                                        @endif
-                                    </span>
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
 
-                                    </div>
-                                </div>
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <span class="fa fa-group"></span><span>--}}
+                                {{--                                        @if($data['get_cong_ty'] != null)--}}
+                                {{--                                                {{$data['quy_mo_nhan_su']['name']}}--}}
+                                {{--                                            @endif--}}
+                                {{--                                    </span>--}}
+
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                    <span>--}}
+                                {{--                                        @if($data['get_cong_ty'] != null)--}}
+                                {{--                                            {{$data['get_cong_ty']['gioi_thieu']}}--}}
+                                {{--                                        @endif--}}
+                                {{--                                    </span>--}}
+
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-2">--}}
+                                {{--                                        <img--}}
+                                {{--                                            src="@if($data['get_cong_ty']['logo'] != null){{URL::asset(''.$data['get_cong_ty']['logo'].'')}}@endif"--}}
+                                {{--                                            style="width: calc(90%)">--}}
+                                {{--                                        --}}{{--                                        @if($data['get_cong_ty'] != null)--}}
+                                {{--                                        --}}{{--                                            {{$data['get_cong_ty']['gioi_thieu']}}--}}
+                                {{--                                        --}}{{--                                        @endif--}}
+                                {{--                                        --}}{{--                                    </img>--}}
+
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                <hr>--}}
+
+
+                                {{--                                <div class="row d-none">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <h4 class="tieu_de bg-light p-1 m-0 text-center">Nhà tuyển dụng</h4>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+
+
+                                {{--                                <div class="row  d-none">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center pt-2">--}}
+                                {{--                                        <img--}}
+                                {{--                                            src="@if($data['get_nha_tuyen_dung']['get_tai_khoan']['avatar'] != null){{URL::asset($data['get_nha_tuyen_dung']['get_tai_khoan']['avatar'])}}@else{{URL::asset('images/default-user-icon-8.jpg')}}@endif"--}}
+                                {{--                                            style="width: calc(90%)">--}}
+
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="row  d-none">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <h4 class="ten_nha_tuyen_dung p-1 m-0 text-center"--}}
+                                {{--                                            id="ten_nha_tuyen_dung">@if($data['get_nha_tuyen_dung'] != null) @if($data['get_nha_tuyen_dung']['get_tai_khoan']['ho_ten'] != null){{$data['get_nha_tuyen_dung']['get_tai_khoan']['ho_ten']}}@endif @endif</h4>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                @if(intval(Session::get('loai_tai_khoan')) == 1)--}}
+                                {{--                                    <div class="row">--}}
+                                {{--                                        <div class="col-sm-12 col-md-12 text-center">--}}
+                                {{--                                            <div--}}
+                                {{--                                                class="btn quan-tam-nha-tuyen-dung @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"--}}
+                                {{--                                                id="quan-tam-nha-tuyen-dung"--}}
+                                {{--                                                data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">--}}
+                                {{--                                                <i class="icofont icofont-thumbs-up">@if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true){{' Đã quan tâm'}}@else{{' Quan tâm'}}@endif</i>--}}
+                                {{--                                                <span class="badge badge-danger noti-icon-badge position-absolute"--}}
+                                {{--                                                      style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>--}}
+                                {{--                                            </div>--}}
+                                {{--                                            --}}{{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
+                                {{--                                            --}}{{--                                    <button class="btn btn-info btn-sm"></button>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                @endif--}}
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <span class="fa fa-envelope"></span><span>--}}
+                                {{--                                        @if($data['get_nha_tuyen_dung'] != null)--}}
+                                {{--                                                {{$data['get_nha_tuyen_dung']['tai_khoan']['email']}}--}}
+                                {{--                                            @endif--}}
+                                {{--                                    </span>--}}
+
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+                                {{--                                        <span class="icofont icofont-location-pin"></span><span>--}}
+                                {{--                                        @if($data['get_nha_tuyen_dung'] != null)--}}
+                                {{--                                                {{$data['get_nha_tuyen_dung']['dia_chi']}}--}}
+                                {{--                                            @endif--}}
+                                {{--                                    </span>--}}
+
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+
+                                {{--                                <div class="row">--}}
+                                {{--                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+
+                                {{--                                    <span>--}}
+                                {{--                                        @if($data['get_nha_tuyen_dung'] != null)--}}
+                                {{--                                            {{$data['get_nha_tuyen_dung']['gioi_thieu']}}--}}
+
+                                {{--                                        @endif--}}
+                                {{--                                    </span>--}}
+
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
                             </div>
 
 
@@ -378,26 +549,27 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="card-box  p-1 mb-1">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <h5 class="bg-light text-center p-1">{{__('Việc làm tương tự')}}</h5>
-                    </div>
-                </div>
-                <div class="row" style="margin-left: 0;margin-right: 0">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-light">
-{{--                        <div class="row" id="viec-lam-tuong-tu-render">--}}
-                        <div class="row" id="container-items">
-                            @include('BaiViet.chiTiet.baiVietLienQuan')
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="row">--}}
+{{--        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+{{--            <div class="card-box  p-1 mb-1">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-sm-12 col-md-12">--}}
+{{--                        <h5 class="bg-light text-center p-1">{{__('Việc làm tương tự')}}</h5>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="row" style="margin-left: 0;margin-right: 0">--}}
+{{--                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-light">--}}
+{{--                        --}}{{--                        <div class="row" id="viec-lam-tuong-tu-render">--}}
+{{--                        <div class="row" id="container-items">--}}
+{{--                            @include('BaiViet.chiTiet.baiVietLienQuan')--}}
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     @if(intval(Session::get('loai_tai_khoan')) == 1)
 
         @include('NopDon.NopDonModal.index')
@@ -539,7 +711,7 @@
 
         });
 
-        let getViecLamTuongTu = ()=>{
+        let getViecLamTuongTu = () => {
             {{--let ajax = {--}}
             {{--    method :"get",--}}
             {{--    url:"/tim-tin-tuyen-dung?kieu_lam_viec="+'{{$data['get_kieu_lam_viec']['id']}}',--}}

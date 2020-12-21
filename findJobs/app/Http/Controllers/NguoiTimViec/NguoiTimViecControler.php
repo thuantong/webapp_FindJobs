@@ -6,13 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\BangCap;
 use App\Models\DiaDiem;
 use App\Models\KieuLamViec;
+use App\Models\NganhNghe;
 use App\Models\NguoiTimViec;
+use App\Models\NhaTuyenDung;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 
 class NguoiTimViecControler extends Controller
 {
     public function __construct()
     {
+        $this->middleware(['auth']);
     }
 
     public function chiTiet(Request $request)
@@ -23,14 +29,14 @@ class NguoiTimViecControler extends Controller
             'getTaiKhoan' => function ($q1) {
                 $q1->select('id', 'ho_ten', 'email', 'phone');
             },
-            'getDiaDiem'=>function($q1){
-            $q1->select('id','name');
+            'getDiaDiem' => function ($q1) {
+                $q1->select('id', 'name');
             },
-            'getBangCap'=>function($q1){
-            $q1->select('id','name');
+            'getBangCap' => function ($q1) {
+                $q1->select('id', 'name');
             },
-            'getKieuLamViec'=>function($q1){
-            $q1->select('id','name');
+            'getKieuLamViec' => function ($q1) {
+                $q1->select('id', 'name');
             }
         ])->first()->toArray();
 //        dd($data);
@@ -50,4 +56,159 @@ class NguoiTimViecControler extends Controller
 //        }
         return view('NguoiTimViec.chiTiet', compact('data', 'typeSend'));
     }
+
+    public function timKiemNhaTuyenDung(Request $request)
+    {
+        $nganhNghe = NganhNghe::all()->toArray();
+        $diadiem = DiaDiem::all()->toArray();
+        $data['nganh_nghe'] = $nganhNghe;
+        $data['dia_diem'] = $diadiem;
+        if ($request->has('dia_diem') && $request->get('dia_diem') == "") {
+            $request->request->remove('dia_diem');
+        }
+        if ($request->has('nganh_nghe') && $request->get('nganh_nghe') == "") {
+            $request->request->remove('nganh_nghe');
+        }
+
+        $newRequets = $request;
+//        dd($newRequets->has('dia_diem'));
+//        dd($newRequets->all());
+//        if ($request->has('dia_diem') && $request->get('dia_diem') == ""){
+//            $request->request->remove('_token');
+//        }
+//        dd($request->all());
+//        $nhaTuyenDung = NhaTuyenDung::query();
+        $nhaTuyenDung = NhaTuyenDung::query()->with([
+            'getCongTy' => function ($q) use ($newRequets) {
+                if ($newRequets->has('dia_diem') && $newRequets->has('nganh_nghe')) {
+                    $q->where('dia_diem_id', $newRequets->get('dia_diem'))->with([
+                        'getNganhNghe' => function ($q2) use ($newRequets) {
+                            $q2->where('nganh_nghe_id', $newRequets->get('nganh_nghe'));
+                        }
+                    ]);
+                } else if ($newRequets->has('dia_diem')) {
+                    $q->where('dia_diem_id', $newRequets->get('dia_diem'));
+                } else if ($newRequets->has('nganh_nghe')) {
+                    $q->with([
+                        'getNganhNghe' => function ($q2) use ($newRequets) {
+                            $q2->where('nganh_nghe_id', $newRequets->get('nganh_nghe'));
+                        }
+                    ]);
+                } else {
+                    $q->with([
+                        'getNganhNghe'
+                    ]);
+                }
+
+            },
+//            }
+            'getTaiKhoan',
+            'getBaiViet' => function ($q) {
+                $q->select('id', 'nha_tuyen_dung_id');
+            }
+        ])->get()->toArray();
+//        if ($request->exists('tieu_de') && $request->get('tieu_de') != ""){
+//            $nhaTuyenDung->where('')
+//        }
+        $index = 0;
+//dd($nhaTuyenDung);
+        if ($newRequets->has('dia_diem') && $newRequets->has('nganh_nghe')) {
+//            dd('cc');
+//            dd($nhaTuyenDung);
+            if (count($nhaTuyenDung) > 0) {
+                foreach ($nhaTuyenDung as $row) {
+                    if ($row['get_cong_ty'] != null || ($row['get_cong_ty'] != null &&  array_key_exists('get_nganh_nghe',$row['get_cong_ty']) && count($row['get_cong_ty']['get_nganh_nghe'])) > 0) {
+//                    $data['nha_tuyen_dung'] = array();
+//                } else {
+                        $data['nha_tuyen_dung'][$index] = $row;
+                        $index++;
+                    }
+
+                }
+                if (array_key_exists('nha_tuyen_dung',$data) == false){
+                    $data['nha_tuyen_dung'] = array();
+                }
+//                dd($data['nha_tuyen_dung']);
+            } else {
+                $data['nha_tuyen_dung'] = array();
+
+            }
+
+        } else if ($newRequets->has('dia_diem')) {
+//            dd($nhaTuyenDung);
+            if (count($nhaTuyenDung) > 0) {
+                foreach ($nhaTuyenDung as $row) {
+                    if ($row['get_cong_ty'] != null) {
+//                    $data['nha_tuyen_dung'] = array();
+//                } else {
+                        $data['nha_tuyen_dung'][$index] = $row;
+                        $index++;
+                    }
+                    ;
+                }
+                if (array_key_exists('nha_tuyen_dung',$data) == false){
+                    $data['nha_tuyen_dung'] = array();
+                }
+            } else {
+                $data['nha_tuyen_dung'] = array();
+
+            }
+
+        } else if ($newRequets->has('nganh_nghe')) {
+//            dd($nhaTuyenDung);
+            if (count($nhaTuyenDung) > 0) {
+                foreach ($nhaTuyenDung as $row) {
+                    if (count($row['get_cong_ty']['get_nganh_nghe']) > 0) {
+//                    echo $index;
+                        $data['nha_tuyen_dung'][$index] = $row;
+                        $index++;
+                    }
+
+                }
+//                dd(array_key_exists('nha_tuyen_dung',$data));
+                if (array_key_exists('nha_tuyen_dung',$data) == false){
+                    $data['nha_tuyen_dung'] = array();
+                }
+            } else {
+                $data['nha_tuyen_dung'] = array();
+            }
+//            return;
+//dd($data['nha_tuyen_dung']);
+        } else {
+//            dd('cc');
+            if (count($nhaTuyenDung) > 0) {
+                $data['nha_tuyen_dung'] = $nhaTuyenDung;
+            } else {
+                $data['nha_tuyen_dung'] = array();
+            }
+
+        }
+
+//        dd($data['nha_tuyen_dung']);
+//        if ()
+        $page = $request->get('page') != "" ? $request->get('page') : 1;
+        $perpage = 10;
+        $colection = collect($data['nha_tuyen_dung']);
+        $dataNhaTuyenDung = new LengthAwarePaginator(
+            $colection->forPage($page, $perpage),
+            $colection->count(),
+            $perpage,
+            $page,
+            ['path' => route($request->route()->getName())]
+        );
+
+//        dd($request->route()->getDomain());
+//        dd($dataNhaTuyenDung);
+//        dd($phanTrang);
+//        dd($data['data']);
+//        dd($data['nha_tuyen_dung']);
+//        dd($request);
+        return view('TimKiemNhaTuyenDung.index', compact('dataNhaTuyenDung', 'data'));
+    }
+//    public function paginate($items, $perPage = 10, $page = null, $options = ['path'=>url('/')])
+//    {
+//        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+//        $items = $items instanceof Collection ? $items : Collection::make($items);
+//        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+//    }
 }

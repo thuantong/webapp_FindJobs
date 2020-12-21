@@ -18,7 +18,7 @@ class CheckAdmin
     {
 //        dd(Session::get('loai_tai_khoan'));
         if (Session::get('loai_tai_khoan') != 3){
-            abort(401);
+            return redirect('/');
         }
         return $next($request);
     }

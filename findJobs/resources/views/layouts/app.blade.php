@@ -58,6 +58,11 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li>
+                            <a href="/" class="nav-link text-white">
+                                Việc làm
+                            </a>
+                        </li>
                         @guest
                             <li class="nav-item">
                             @if (strtolower(Route::currentRouteName()) != 'auth.form.login')
@@ -73,6 +78,7 @@
                                 </li>
                             @endif
                         @else
+
 {{--                            <li class="nav-item dropdown">--}}
 {{--                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
 {{--                                    {{ Auth::user()->name }}--}}

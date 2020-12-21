@@ -7,8 +7,9 @@
             </div>
 
             <div class="row form-group">
-                <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 text-center text-md-right">
-                    <label><abbr class="text-danger font-15">* </abbr>{{__('Tiêu đề bài viết:')}}</label>
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 text-center text-md-right">
+                    <label>{{__('Chức danh tuyển dụng:')}}<abbr class="text-danger  font-15">* </abbr></label>
+
                 </div>
                 <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                     <input class="form-control not-null tieu_de_bai_dang" id="tieu_de_bai_dang_update" title="Tiêu đề bài viết">
@@ -18,7 +19,7 @@
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 text-center text-md-right">
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 text-center text-md-right">
                     <label><abbr class="text-danger  font-15">* </abbr>{{__('Công ty tuyển dụng:')}}</label>
                 </div>
                 <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">

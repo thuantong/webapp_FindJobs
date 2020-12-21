@@ -17,6 +17,87 @@
         <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
     </head>
     @include('BaiViet.modal.xemTruoc')
+
+    <div class="modal fade bs-example-modal-lg" id="phe-duyet-rule-modal" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false"
+         aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Quy tắc duyệt bài viết</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                </div>
+
+                <div class="modal-body">
+                    <p>- Người đăng tin(tức nhà tuyển dụng) phải có ảnh đại diện</p>
+                    <p>- Bài tuyển dụng phải trình bày đầy đủ các thông tin cơ bản.</p>
+                    <p>- Bài tuyển dụng phải trình bày đầy đủ các thông tin cơ bản.</p>
+                    <p>- Các mô tả bài tuyển dụng phải được mô tả rõ ràng, đặc biệt phải đúng với chuyên ngành của bài tuyển dụng</p>
+                    <p>Nếu không đủ các yêu cầu trên bài tuyển dụng sẽ bị từ chối!</p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade bs-example-modal-lg" id="noi-dung-tu-choi-modal" tabindex="-1" role="dialog"  data-backdrop="static" data-keyboard="false"
+         aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Nội dung từ chối</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __(' ') }}</label>
+
+                        <div class="col-sm-6 col-md-6">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio1" name="loai_tu_choi" class="custom-control-input" value="1">
+                                <label class="custom-control-label" for="customRadio1">{{__('Người đăng tin chưa cập nhật ảnh đại diện')}}</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio2" name="loai_tu_choi" class="custom-control-input" value="2">
+                                <label class="custom-control-label" for="customRadio2">{{__('Bài tuyển dụng không đủ các nội dung cơ bản')}} </label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio3" name="loai_tu_choi" class="custom-control-input" value="3">
+                                <label class="custom-control-label" for="customRadio3">{{__('Mô tả bài tuyển dụng không rõ ràng')}} </label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio4" name="loai_tu_choi" class="custom-control-input" value="4">
+                                <label class="custom-control-label" for="customRadio4">{{__('Mô tả bài tuyển dụng không đúng với ngành nghề')}} </label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio5" name="loai_tu_choi" class="custom-control-input" value="5">
+                                <label class="custom-control-label" for="customRadio5">{{__('Khác')}} </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 col-md-8">
+                            <input type="hidden" id="id-record">
+                            <textarea class="form-control not-null" id="noi-dung" readonly title="Nội dung từ chối"></textarea>
+                            <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" id="save">Lưu lại</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
     <div class="row">
         <div class="col-12">
             <div class="page-title-box mb-1">
@@ -95,6 +176,7 @@
         let table = '';
 
         $(function () {
+            $('#phe-duyet-rule-modal').modal('show')
             // $(window).resize()
             let widthImage_search = 80;
             let heightImage_search = widthImage_search;
@@ -116,7 +198,12 @@
             // });
             table = getDanhSachDuyetTin();
             $('#danh-sach-duyet-tin').on('init.dt', function () {
-                $('button.them-moi-danh-sach').addClass('d-none');
+                $('button.them-moi-danh-sach').text('Xem quy tắc duyệt bài tuyển dụng');
+            });
+
+            $(document).on('click','button.them-moi-danh-sach',function () {
+                $('#phe-duyet-rule-modal').modal('show')
+
             })
         });
         const getDanhSachDuyetTin = () => {
@@ -285,6 +372,86 @@
 
                 }
             })
+        });
+        $(document).on('click', '.duyet-tin-container .tu_choi_duyet_tin', function () {
+            let __this = $(this);
+            let __thisRow = $(this).parents('tr');
+            let ten_bai_viet = $(this).parents('tr').find('td').eq(1).text();
+            let dataTable = getDataRow_dt(table,__thisRow);
+            console.log(dataTable)
+            // return;
+            let data = {
+                title: 'Từ chối bài tuyển dụng',
+                message: 'Bạn muốn từ chối bài tuyển dụng: ' + ten_bai_viet,
+            }
+            alertConfirm(data).then(r => {
+                // let idPost = __this.parent().data('id');
+                // console.log(idPost)
+                // let ajax = {
+                //     method: 'post',
+                //     url: '/admin/duyet-tin/confirm',
+                //     data: {id: dataTable.id}
+                // };
+                //
+                if (r.value == true) {
+$('#noi-dung-tu-choi-modal').modal('show');
+                    $('#noi-dung-tu-choi-modal').find('input#id-record').val(dataTable.id);
+                //     sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '').done(e => {
+                //         // console.log(e);
+                //         // getResponseAjax()
+                //         getHtmlResponse(e);
+                //
+                //         if (e.status == 200) {
+                //             table.ajax.reload(null, false);
+                //         }
+                //     });
+                //
+                }
+            });
+
+            $(document).on('change','[name="loai_tu_choi"]',function () {
+                let __this = $(this);
+                let value = __this.parent().find('label').text();
+                let valueInput = __this.val();
+                if (valueInput == 5){
+                    $('#noi-dung').val('').trigger('input');
+                    $('#noi-dung').focus();
+
+                    $('#noi-dung').removeAttr('readonly');
+                }else{
+                    $('#noi-dung').val(value).trigger('input');
+                    $('#noi-dung').attr('readonly','readonly')
+                }
+                // console.log(value)
+            });
+            $(document).on('click','#noi-dung-tu-choi-modal .modal-footer #save',function () {
+                let __this =$(this);
+                let __modal = __this.parents('.modal');
+                let id = __modal.find('input#id-record').val();
+                let error = 0;
+                error += notNullMessage(__modal.find('#noi-dung'))
+                if (error == 0){
+                    let ajax = {
+                        method:'post',
+                        url : "/admin/duyet-tin/tu-choi",
+                        data : {
+                            id:id,
+                            noi_dung: __modal.find('#noi-dung').val()
+                        }
+                    }
+                    // console.log(ajax)
+                    sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
+                        // console.log(e)
+                        getHtmlResponse(e);
+                        if(e.status == 200){
+                            __modal.modal('hide');
+                            db_ajax_reload_all(table);
+                        }
+                    })
+                }
+
+            });
+
         });
     </script>
 @endpush

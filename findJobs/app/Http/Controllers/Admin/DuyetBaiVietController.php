@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\BaiTuyenDung;
 use App\Models\DuyetBai;
 use App\Models\NhaTuyenDung;
+use App\Models\QuanTriVien;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class DuyetBaiVietController extends Controller
@@ -22,6 +24,7 @@ class DuyetBaiVietController extends Controller
         if (Session::get('loai_tai_khoan') != 3){
             abort(404);
         }
+//        dd(QuanTriVien::query()->where('tai_khoan_id',1)->get());
 //        dd(Carbon::now($this->tzHoChiMinh())->toDateTimeString());
 
 //        dd(date('H:i'));
@@ -72,4 +75,32 @@ class DuyetBaiVietController extends Controller
             return $this->getResponse($title,400,'Phê duyệt bài viết '.$baiTuyenDung->tieu_de.' Thất bại!');
         }
     }
+    //từ chối
+    public function rejectBaiTuyenDung(Request $request){
+        $title = "Thông báo";
+        $id = $request->id;//id btd
+        $baiTuyenDung = BaiTuyenDung::query()->find($id);
+//        return $baiTuyenDung;
+        $baiDuyet = DuyetBai::query()->where('bai_dang_id',$id)->first();
+//        return $baiDuyet;
+        try {
+            $baiTuyenDung->status = 2;
+            $baiDuyet->status = 3;//từ chối
+            $baiDuyet->noi_dung = $request->noi_dung;
+
+            $quanTriVien = QuanTriVien::query()->where('tai_khoan_id',Auth::user()->id)->first();
+            $baiDuyet->quan_tri_vien_id = $quanTriVien->id;
+            $baiDuyet->save();
+//            $baiTuyenDung->noi_dung =
+//            $baiTuyenDung->han_bai_viet = Carbon::now($this->tzHoChiMinh())->toDateTimeString();
+             $baiTuyenDung->save();
+            return $this->getResponse($title,200,'Phê duyệt bài viết '.$baiTuyenDung->tieu_de.' Thành công!');
+        }catch (\Exception $e){
+//            return $e->getMessage();
+            return $this->getResponse($title,400,$e->getMessage());
+            return $this->getResponse($title,400,'Phê duyệt bài viết '.$baiTuyenDung->tieu_de.' Thất bại!');
+        }
+    }
+
+
 }

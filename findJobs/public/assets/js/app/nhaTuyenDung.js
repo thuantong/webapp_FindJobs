@@ -63,7 +63,7 @@ $(function () {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('.upload-demo').addClass('ready');
+                $('#doi_anh_dai_dien.thong-tin').find('.upload-demo').addClass('ready');
                 $uploadCrop.croppie('bind', {
                     url: e.target.result,
                 }).then(function () {
@@ -77,7 +77,7 @@ $(function () {
         }
     }
 
-    $uploadCrop = $('#upload-demo').croppie({
+    $uploadCrop = $('#doi_anh_dai_dien.thong-tin').find('#upload-demo').croppie({
         viewport: {
             width: 400,
             height: 400,
@@ -91,10 +91,10 @@ $(function () {
 
     });
     $('#logo_cong_ty').parent().find('input[type="file"]').on('change', function () {
-        $('#doi_anh_dai_dien').data('type','congty').modal('show');
+        $('#doi_anh_dai_dien.thong-tin').data('type','congty').modal('show');
         readFile(this);
     });
-    $('#doi_anh_dai_dien').on('hidden.bs.modal',function () {
+    $('#doi_anh_dai_dien.thong-tin').on('hidden.bs.modal',function () {
         let type = $(this).data('type');
         switch (type) {
             case 'congty':
@@ -105,10 +105,10 @@ $(function () {
                 break;
         }
     });
-    $('#doi_anh_dai_dien').find('.modal-footer').find('button:eq(1)#save').on('click',function () {
+    $('#doi_anh_dai_dien.thong-tin').find('.modal-footer').find('button:eq(1)#save').on('click',function () {
         let __this = $(this);
         let elementID = '';
-        switch ($('#doi_anh_dai_dien').data('type')) {
+        switch ($('#doi_anh_dai_dien.thong-tin').data('type')) {
             case 'congty': elementID = '#'+ $('#logo_cong_ty').attr('id');
                 break;
             case 'tuyendung': elementID = '#'+ $('#avatar_tuyen_dung').attr('id');
@@ -125,13 +125,10 @@ $(function () {
                     fileName: resp,
                     name: namePicture,
             };
-            // console.log('anh moi',data)
             sendAjaxNoFunc(method,url,data,__this.attr('id')).done(function (e) {
-                // console.log('anh moi',$(elementID).find('img'))
-
                 $(elementID).find('img').attr('src', e.reset[0]).data('data',e.reset[0]);
                 getHtmlResponse(e);
-                $('#doi_anh_dai_dien').modal('hide');
+                $('#doi_anh_dai_dien.thong-tin').modal('hide');
             })
 
         });
@@ -157,7 +154,7 @@ $(function () {
 
     });
     $('#avatar_tuyen_dung').parent().find('input[type="file"]').on('change', function () {
-        $('#doi_anh_dai_dien').data('type','tuyendung').modal('show');
+        $('#doi_anh_dai_dien.thong-tin').data('type','tuyendung').modal('show');
         readFile(this);
     });
 });

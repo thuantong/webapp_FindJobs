@@ -103,7 +103,8 @@
         </div>
         <div class="row form-group">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
-                <label for="dia_chi_chinh">{{__('Địa chỉ chính: ')}}</label>
+                <label for="dia_chi_chinh"><abbr
+                        class="text-danger  font-15">* </abbr>{{__('Địa chỉ chính: ')}}</label>
             </div>
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 text-left">
                 <input class="form-control not-null" id="dia_chi_chinh" title="Địa chỉ chính"
@@ -116,10 +117,30 @@
 
         <div class="row form-group">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
+                <label for="dia_chi_chinh"><abbr
+                        class="text-danger  font-15">* </abbr>{{__('Địa điểm: ')}}</label>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 text-left">
+                <select class="form-control not-null" id="dia_diem" title="Địa điểm">
+                    <option disabled selected value="">Chọn địa điểm</option>
+                    @if($data['dia_diem'] != null)
+                        @foreach($data['dia_diem'] as $row)
+                            <option value="{{$row['id']}}" @if(isset($data['data']['dia_diem_id']) && $data['data']['dia_diem_id'] != null) @if($row['id'] == $data['data']['dia_diem_id']){{'selected'}}@endif @endif>{{$row['name']}}</option>
+                        @endforeach
+                    @endif
+                </select>
+                <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
                 <label for="so_luong_chi_nhanh">{{__('Số lượng chi nhánh: ')}}</label>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-left">
-                <input class="form-control not-null" id="so_luong_chi_nhanh" title="Số lượng chi nhánh" readonly
+                <input class="form-control" id="so_luong_chi_nhanh" title="Số lượng chi nhánh" readonly
                        value="@if(isset($data['data']) && $data['data']['dia_chi_chi_nhanh'] != null){{count($data['data']['dia_chi_chi_nhanh'])}}@else{{0}}@endif">
 
                 <span class="invalid-feedback" role="alert">
@@ -155,7 +176,8 @@
 
         <div class="row form-group">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
-                <label>{{__('Giờ làm việc: ')}}</label>
+                <label><abbr
+                        class="text-danger  font-15">* </abbr>{{__('Giờ làm việc: ')}}</label>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 pr-md-0">
                 <div class="input-group">
@@ -188,7 +210,8 @@
         </div>
         <div class="row form-group">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
-                <label>{{__('Ngày làm việc: ')}}</label>
+                <label><abbr
+                        class="text-danger  font-15">* </abbr>{{__('Ngày làm việc: ')}}</label>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 pr-md-0 text-center">
                 <div class="input-group">
@@ -240,7 +263,8 @@
         </div>
         <div class="row form-group">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
-                <label for="quy_mo_nhan_su">{{__('Quy mô nhân sự: ')}}</label>
+                <label for="quy_mo_nhan_su"><abbr
+                        class="text-danger  font-15">* </abbr>{{__('Quy mô nhân sự: ')}}</label>
             </div>
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 text-left">
                 <select class="form-control not-null" id="quy_mo_nhan_su" title="Quy mô nhân sự">
@@ -294,19 +318,27 @@
 
         <div class="row form-group">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
-                <label for="nam_thanh_lap">{{__('Năm thành lập: ')}}</label>
+                <label for="nam_thanh_lap"><abbr
+                        class="text-danger  font-15">* </abbr>{{__('Năm thành lập: ')}}</label>
             </div>
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                <input class="form-control" id="nam_thanh_lap" value="@if(isset($data['data']) && $data['data']['nam_thanh_lap'] != null){{$data['data']['nam_thanh_lap']}}@else{{date('Y')}}@endif">
+                <input class="form-control not-null" id="nam_thanh_lap" value="@if(isset($data['data']) && $data['data']['nam_thanh_lap'] != null){{$data['data']['nam_thanh_lap']}}@else{{date('Y')}}@endif">
+                <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
             </div>
         </div>
 
         <div class="row form-group">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
-                <label for="logo_cong_ty">{{__('Giới thiệu công ty: ')}}</label>
+                <label for="logo_cong_ty"><abbr
+                        class="text-danger  font-15">* </abbr>{{__('Giới thiệu công ty: ')}}</label>
             </div>
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 center-element position-relative">
                 <textarea class="form-control not-null break-custom" id="gioi_thieu_cong_ty">@if(isset($data['data']) && $data['data']['gioi_thieu'] != null){{$data['data']['gioi_thieu']}}@endif</textarea>
+                <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
             </div>
         </div>
         <div class="row form-group">

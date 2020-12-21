@@ -19,7 +19,8 @@ class CheckNguoiTimViec
     {
         $getPhanQuyen = Session::get('loai_tai_khoan');
         if ($getPhanQuyen != 1){
-            abort(401);
+//            abort(401);
+            return redirect('/');
         }
         if (Auth::user()->status == 2){
             Session::flush();

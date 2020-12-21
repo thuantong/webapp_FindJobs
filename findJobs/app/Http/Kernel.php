@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'admin'=>\App\Http\Middleware\CheckAdmin::class,
         'nha_tuyen_dung'=>\App\Http\Middleware\CheckNhaTuyenDung::class,
         'nguoi_tim_viec'=>\App\Http\Middleware\CheckNguoiTimViec::class,
+        'auth.admin'=>\App\Http\Middleware\authAdmin::class,
     ];
 }

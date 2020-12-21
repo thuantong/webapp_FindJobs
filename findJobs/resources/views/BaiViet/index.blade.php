@@ -1,6 +1,10 @@
 @extends('master.index')
 @section('content')
     <head>
+        <link href="{{URL::asset('assets\libs\quill\quill.core.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\quill\quill.bubble.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\quill\quill.snow.css')}}" rel="stylesheet" type="text/css">
+
         <link href="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
               rel="stylesheet">
 
@@ -9,6 +13,9 @@
         <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
               type="text/css">
         <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+{{--        <link href="{{URL::asset('assets\libs\quill\quill.snow.css')}}" rel="stylesheet" type="text/css">--}}
+{{--        <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">--}}
+{{--        <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">--}}
 
 
     </head>
@@ -36,7 +43,10 @@
 {{--    Body bài viết--}}
     @include('BaiViet.contentBaiDang')
     <div class="row">
-        @include('BaiViet.buttonDangBai')
+        <div class="col-sm-12 col-md-12">
+            @include('BaiViet.buttonDangBai')
+        </div>
+
     </div>
     @include('CongTy.modal.anh_dai_dien')
 
@@ -56,12 +66,100 @@
     <script type="text/javascript"
             src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
     <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
-{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\themMoiCongTy.js')}}"></script>--}}
 
+    <!-- Plugins js -->
+{{--    <script src="{{URL::asset('assets\libs\katex\katex.min.js')}}"></script>--}}
+    <script src="{{URL::asset('assets\libs\quill\quill.min.js')}}"></script>
+{{--    <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>--}}
+{{--    <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>--}}
+{{----}}
+{{--    <!-- Theme included stylesheets -->--}}
+{{--    <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">--}}
+{{--    <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">--}}
+
+    <!-- Core build with no theme, formatting, non-essential modules -->
+{{--    <link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet">--}}
+{{--    <script src="//cdn.quilljs.com/1.0.0/quill.core.js"></script>--}}
+
+    <!-- Init js-->
+{{--    <script src="{{URL::asset('assets\js\pages\form-quilljs.init.js')}}"></script>--}}
+{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\themMoiCongTy.js')}}"></script>--}}
+{{--    <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>--}}
+{{--    <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>--}}
+{{--    <script src="{{URL::asset('assets\libs\quill\quill.min.js')}}"></script>--}}
+{{--    <script src="{{URL::asset('assets\libs\katex\katex.min.js')}}"></script>--}}
+    <!-- Init js-->
+{{--    <script src="{{URL::asset('assets\js\pages\form-quilljs.init.js')}}"></script>--}}
     <script type="text/javascript"
             src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
     <script type="text/javascript">
+
+        var quill = new Quill("#mo-ta-editor", {
+            theme: "snow",
+            // placeholder: 'Compose an epic...',
+            modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+        });
+        var quill2 = new Quill("#yeu-cau-editor", {
+            theme: "snow",
+            // placeholder: 'Compose an epic...',
+            modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+        });
+        var quill3 = new Quill("#quyen-loi-editor", {
+            theme: "snow",
+            // placeholder: 'Compose an epic...',
+            modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+        });
+
+        $(document).on('focusout','.custom-editor .ql-editor',function () {
+            let __this = $(this);
+            let value = $(this).html();
+            let __parent = $(this).parents('.custom-editor').parent();
+
+            if ($.trim(__this.text()).length == 0){
+                __this.html("");
+            }
+            if ($.trim(__this.text()).length == 0){
+                __parent.find('textarea').addClass('is-invalid');
+                __parent.find('textarea').parent().find('.invalid-feedback').addClass('text-left').find('strong').text(__parent.find('textarea').attr('title') + ' không được để trống');
+            }else{
+                __parent.find('textarea').removeClass('is-invalid');
+            }
+            __parent.find('textarea').val(""+value+"");
+        });
+        // let customeditor =$('body').find('.custom-editor');
+        // if (customeditor != undefined && customeditor.length > 0){
+        //     customeditor.each(function () {
+        //         new Quill('#'+$(this).attr(), {
+        //             theme: "snow",
+        //             // placeholder: 'Compose an epic...',
+        //             modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+        //         });            })
+        // }
+        // console.log($('body').find('.custom-editor').length)
+        // mo_ta_cong_viec
+        //
+        // var quill = new Quill("#snow-editor", {
+        //     theme: "snow",
+        //     modules: {toolbar: [[{font: []}, {size: []}], ["bold", "italic", "underline", "strike"], [{color: []}, {background: []}], [{script: "super"}, {script: "sub"}], [{header: [!1, 1, 2, 3, 4, 5, 6]}, "blockquote", "code-block"], [{list: "ordered"}, {list: "bullet"}, {indent: "-1"}, {indent: "+1"}], ["direction", {align: []}], ["link", "image", "video", "formula"], ["clean"]]}
+        // });
+        // var editor = new Quill('#editor', {
+        // //     modules: { toolbar: '#toolbar' },
+        //     theme: 'bubble'
+        // });\
+        // var quill = new Quill('#editor', {
+        //     modules: {
+        //         toolbar: [
+        //             // [{ header: [2, 2, false] }],
+        //             ['bold', 'italic', 'underline'],
+        //             ['align']
+        //         ]
+        //     },
+        //     placeholder: 'Compose an epic...',
+        //     theme: 'snow'  // or 'bubble'
+        // });
+        // quill = new Quill("#bubble-editor", {theme: "bubble"});
+        // new Quill('#' + uid, options);
         let table = null;
         let HTMLcongTy = null;
         let getBaseURL = '{{URL::asset('/')}}';
@@ -70,6 +168,7 @@
             select2Default($('select#from_day'));
             select2Default($('select#to_day'));
             select2Default($('select#quy_mo_nhan_su'));
+            select2Default($('select#dia_diem'));
             select2MultipleDefault($('select#linh_vuc_hoat_dong'),'Chọn Ngành nghề')
             // $('select#from_day,select#to_day,select#quy_mo_nhan_su').select2({
             //     dropdownParent: $('div#cap-nhat-cong-ty ')

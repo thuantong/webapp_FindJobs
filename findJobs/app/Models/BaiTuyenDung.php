@@ -10,10 +10,12 @@ class BaiTuyenDung extends Model
     protected $table = 'bai_tuyen_dung';
     protected $primaryKey = 'id';
 //    protected $dateFormat = 'Y-m-d H+7:i:sO';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'tieu_de',
         'luong',
+        'luong_from',
+        'luong_to',
         'ten_chuc_vu',
         'dia_chi',
         'tuoi',
@@ -29,7 +31,10 @@ class BaiTuyenDung extends Model
         'ky_nang_basic',
         'han_bai_viet',
         'status',
-        'isHot'];
+        'isHot',
+        'created_at',
+        'update_at'
+    ];
 
     protected $attributes = [
         'isHot' => 0,

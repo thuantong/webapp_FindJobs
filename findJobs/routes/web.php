@@ -87,6 +87,7 @@ Route::namespace('BaiViet')->group(function (){
         Route::post('/bai-viet/chinh-sua/luu-tin','BaiVietController@luuChinhSua')->name('luuChinhSua')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/get-view-nop-don','BaiVietController@getViewNopDon')->name('getViewNopDon')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/tim-kiem','BaiVietController@timKiemBaiViet')->name('timKiemBaiViet');
+        Route::post('/bai-viet/gui-lai-xac-nhan','BaiVietController@guiLaiXacNhan')->name('guiLaiXacNhan');
 
     });
 });
@@ -102,6 +103,7 @@ Route::namespace('CongTy')->group(function (){
         Route::get('/danh-sach-cong-ty/du-lieu-cap-nhat','CongTyController@getCapNhat')->name('getcapnhat');
     });
 });
+
 
 //Auth::routes();
 
@@ -144,7 +146,7 @@ Route::namespace('QuanLyBaiDang')->group(function (){
 Route::namespace('Admin')->group(function () {
     Route::name('admin.')->group(function (){
         Route::get('/admin','AdminTrangChuController@index')->name('index');
-        Route::get('/admin/get-thong-bao','AdminTrangChuController@getThongbao')->name('getThongbao');
+//        Route::get('/admin/get-thong-bao','AdminTrangChuController@getThongbao')->name('getThongbao');
         Route::post('/admin/thong-bao/chuyen-trang-thai','AdminTrangChuController@chuyenTrangThaiDaXem')->name('chuyenTrangThaiDaXem');
 //        Route::get('/admin/login')->name('index');
 //        Route::get('/admin/login')->name('index');
@@ -154,6 +156,7 @@ Route::namespace('Admin')->group(function () {
         Route::get('/admin/danh-sach-bai-duyet/get','DuyetBaiVietController@getDanhSachDuyetTin')->name('getDanhSachDuyetTin');
         Route::get('/admin/duyet-tin/xem-bai-dang','DuyetBaiVietController@getBaiTuyenDung')->name('getBaiTuyenDung');
         Route::post('/admin/duyet-tin/confirm','DuyetBaiVietController@confirmBaiTuyenDung')->name('confirmBaiTuyenDung');
+        Route::post('/admin/duyet-tin/tu-choi','DuyetBaiVietController@rejectBaiTuyenDung')->name('rejectBaiTuyenDung');
 
         Route::get('/admin/danh-sach-tai-khoan','QuanLyTaiKhoanController@index')->name('danhSachTaiKhoan');
         Route::get('/admin/danh-sach-tai-khoan/get-data','QuanLyTaiKhoanController@getDanhSachTaiKhoan')->name('getDanhSachTaiKhoan');
@@ -169,6 +172,9 @@ Route::namespace('Admin')->group(function () {
         Route::post('/admin/danh-sach-tac-vu/set-quyen','PhanQuyenController@setQuyen')->name('setQuyen');
         Route::post('/admin/danh-sach-tac-vu/delete-quyen','PhanQuyenController@deleteQuyen')->name('setTacVu');
         Route::post('/admin/danh-sach-tac-vu/phan-quyen-role','PhanQuyenController@setQuyenRole')->name('setQuyenRole');
+
+        Route::get('/admin/get-thong-bao','ThongBaoController@getThongBao')->name('getThongBao');
+        Route::get('/admin/thong-bao/cap-nhat-tin-rong','ThongBaoController@capNhatTinRong')->name('capNhatTinRong');
 
     });
 
@@ -194,6 +200,7 @@ Route::namespace('NguoiTimViec')->group(function (){
         Route::get('/nguoi-tim-viet/get-danh-sach-bai-luu','LuuBaiController@getDanhSachBaiLuu')->name('getDanhSachBaiLuu');
 
         Route::get('/nguoi-tim-viet/chi-tiet','NguoiTimViecControler@chiTiet')->name('chiTiet');
+        Route::get('/nguoi-tim-viet/tim-kiem-nha-tuyen-dung','NguoiTimViecControler@timKiemNhaTuyenDung')->name('timKiemNhaTuyenDung');
     });
 });
 
@@ -232,5 +239,12 @@ Route::namespace('Mail')->group(function (){
     Route::name('mail.')->group(function (){
         Route::get('/thong-bao-xac-thuc-tai-khoan','MailController@xacThucTaiKhoan')->name('xacThucTaiKhoan');
         Route::get('/xac-thuc-phong-van','MailController@xacThucPhongVan')->name('xacThucPhongVan');
+    });
+});
+Route::namespace('NhaTuyenDung')->group(function (){
+    Route::name('nhatuyendung.')->group(function (){
+        Route::get('/tim-kiem-ung-vien','NhaTuyenDungController@index')->name('index');
+        Route::get('/nha-tuyen-dung/chi-tiet','ChiTietNhaTuyenDungController@chiTietNhaTuyenDung')->name('chiTietNhaTuyenDung');
+
     });
 });

@@ -1,13 +1,19 @@
 @extends('master.index')
 @section('content')
     <head>
-{{--        <link href="assets\libs\clockpicker\bootstrap-clockpicker.min.css" rel="stylesheet" type="text/css">--}}
+        {{--        <link href="assets\libs\clockpicker\bootstrap-clockpicker.min.css" rel="stylesheet" type="text/css">--}}
         <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
         <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
+              type="text/css">
 
     </head>
     @include('User.modal.doiMatKhau')
+    {{--    Thêm mới công ty - modal--}}
+    @include('CongTy.modal.themMoi')
+    {{--    Xem ảnh đại diện modal--}}
+    @include('CongTy.modal.xemAnhDaiDien')
+    @include('CongTy.modal.anh_dai_dien')
 
     <div class="modal fade bs-example-modal-center" id="xem_anh_dai_dien" tabindex="-1" role="dialog"
          aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
@@ -18,7 +24,8 @@
                 {{--                    --}}
                 {{--                </div>--}}
                 <div class="modal-body p-0">
-                    <button type="button" class="close position-absolute text-danger" style="right: 1rem" data-dismiss="modal"
+                    <button type="button" class="close position-absolute text-danger" style="right: 1rem"
+                            data-dismiss="modal"
                             aria-hidden="true">×
                     </button>
                     <img src="" style="width: 100%">
@@ -27,7 +34,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade bs-example-modal-center" id="doi_anh_dai_dien" tabindex="-1" role="dialog"
+    <div class="modal fade bs-example-modal-center thong-tin" id="doi_anh_dai_dien" tabindex="-1" role="dialog"
          aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -133,7 +140,9 @@
                                    placeholder="@if(Auth::user()->email == null){{"Nhập email"}}@endif"
                                    id="email" data-rule="email" title="Email người tuyển dụng"
                                    value="@if(Auth::user()->email != null){{Auth::user()->email}}@endif">
-                            <button class="btn @if(Auth::user()->email != Auth::user()->email_confirmed){{__('btn-primary')}}@else{{__('btn-success')}}@endif" @if(Auth::user()->email != Auth::user()->email_confirmed) id="gui-xac-nhan-email" @endif>@if(Auth::user()->email != Auth::user()->email_confirmed){{__('Gửi xác thực email')}}@else{{__('Đã xác nhận')}}@endif</button>
+                            <button
+                                class="btn @if(Auth::user()->email != Auth::user()->email_confirmed){{__('btn-primary')}}@else{{__('btn-success')}}@endif"
+                                @if(Auth::user()->email != Auth::user()->email_confirmed) id="gui-xac-nhan-email" @endif>@if(Auth::user()->email != Auth::user()->email_confirmed){{__('Gửi xác thực email')}}@else{{__('Đã xác nhận')}}@endif</button>
                         </div>
                         <span class="text-success message-response"></span>
                         <span class="invalid-feedback" role="alert">
@@ -148,7 +157,8 @@
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">
-                        <input class="form-control not-null" id="dia_chi" title="Địa chỉ" value="@if($data['nha_tuyen_dung']['dia_chi'] != null){{$data['nha_tuyen_dung']['dia_chi']}}@endif">
+                        <input class="form-control not-null" id="dia_chi" title="Địa chỉ"
+                               value="@if($data['nha_tuyen_dung']['dia_chi'] != null){{$data['nha_tuyen_dung']['dia_chi']}}@endif">
 
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -166,8 +176,10 @@
                         <select class="form-control not-null" id="gioi_tinh_tuyen_dung" title="Giới tính">
                             <option value="" disabled selected
                                     class="text-center">{{__('Chọn giới tính')}}</option>
-                            <option value="1" @if($data['nha_tuyen_dung']['gioi_tinh'] != null && $data['nha_tuyen_dung']['gioi_tinh'] == 1) selected @endif>{{__('Nam')}}</option>
-                            <option value="2" @if($data['nha_tuyen_dung']['gioi_tinh'] != null && $data['nha_tuyen_dung']['gioi_tinh'] == 2) selected @endif>{{__('Nữ')}}</option>
+                            <option value="1"
+                                    @if($data['nha_tuyen_dung']['gioi_tinh'] != null && $data['nha_tuyen_dung']['gioi_tinh'] == 1) selected @endif>{{__('Nam')}}</option>
+                            <option value="2"
+                                    @if($data['nha_tuyen_dung']['gioi_tinh'] != null && $data['nha_tuyen_dung']['gioi_tinh'] == 2) selected @endif>{{__('Nữ')}}</option>
                         </select>
 
                         <span class="invalid-feedback" role="alert">
@@ -184,7 +196,8 @@
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-left">
-                        <input class="form-control not-null" id="ngay_sinh_tuyen_dung" title="Ngày sinh" value="@if($data['nha_tuyen_dung']['nam_sinh'] != null){{\Illuminate\Support\Carbon::createFromFormat('Y-m-d',$data['nha_tuyen_dung']['nam_sinh'])->format('d/m/Y')}}@else{{date('d/m/Y')}}@endif">
+                        <input class="form-control not-null" id="ngay_sinh_tuyen_dung" title="Ngày sinh"
+                               value="@if($data['nha_tuyen_dung']['nam_sinh'] != null){{\Illuminate\Support\Carbon::createFromFormat('Y-m-d',$data['nha_tuyen_dung']['nam_sinh'])->format('d/m/Y')}}@else{{date('d/m/Y')}}@endif">
 
                         <span class="invalid-feedback" role="alert">
                             <strong></strong>
@@ -208,15 +221,63 @@
                         </span>
                     </div>
                 </div>
+                <div class="row form-group">
+                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
+                        <label><abbr class="text-danger  font-15">* </abbr>{{__('Công ty tuyển dụng:')}}</label>
+                    </div>
+                    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                        <div class="row">
+                            <div class="col-sm-9 col-md-10 col-lg-10 col-xl-10 pr-0">
+                                <div class="row">
+                                    {{--                                    <div class="col-sm-12 col-md-4">--}}
+                                    {{--                                        <img src="@if(isset($data['cong_ty']) && $data['cong_ty']['logo'] != null){{URL::asset(''.$data['cong_ty']['logo'].'')}}@else{{URL::asset('images/default-company-logo.jpg')}}@endif" width="100" height="100">--}}
+                                    <input id="cong_ty_tuyen_dung" class="not-null" title="Công ty tuyển dụng"
+                                           type="hidden" title="Công ty"
+                                           value="@if(isset($data['cong_ty']) && $data['cong_ty']['id'] != null){{$data['cong_ty']['id']}}@endif">
 
+                                    {{--                                    </div>--}}
+                                    <div class="col-sm-12 col-md-12 text-center"
+                                         id="cong_ty_tuyen_dung_name">@if(isset($data['cong_ty']) && $data['cong_ty']['name'] != null)
+                                            <h5>{{ucwords($data['cong_ty']['name'])}}</h5>@else <h5>{{'Chưa thêm công ty tuyển dụng'}}</h5> @endif
+                                    </div>
+                                    <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
+                                </div>
+                                {{--                            <select class="form-control not-null cong_ty_tuyen_dung" id="cong_ty_tuyen_dung"--}}
+                                {{--                                    title="Công ty tuyển dụng">--}}
+                                {{--                                <option value="" disabled selected>Công ty</option>--}}
+
+                                {{--                                @if($data['cong_ty'] != null)--}}
+                                {{--                                    @foreach($data['cong_ty'] as $row)--}}
+                                {{--                                        <option value="{{$row['id']}}"--}}
+                                {{--                                                data-img="{{URL::asset($row['logo'])}}">{{$row['name']}}</option>--}}
+                                {{--                                    @endforeach--}}
+                                {{--                                @endif--}}
+
+                                {{--                            </select>--}}
+
+                            </div>
+                            <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 pl-0">
+                                <button class="btn waves-effect btn-primary call-them-moi-cong-ty"
+                                        id="call-them-moi-cong-ty">Chỉnh sửa
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                 <div class="row form-group">
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
                         <label for="avatar_tuyen_dung">{{__('Ảnh đại diện: ')}}</label>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 center-element position-relative">
                         <div style="width: 8rem;height: 8rem;" id="avatar_tuyen_dung">
-                            <img src="{{asset(Session::get('avatar'))}}" class="avatar-xl img-thumbnail" data-data="{{Session::get('avatar')}}"
-                                 alt="profile-image" tabindex="-1" style="width: 100%;height: 100%">
+                            {{--                            <img src="{{URL::asset(Session::get('avatar'))}}" class="avatar-xl img-thumbnail" data-data="{{Session::get('avatar')}}"--}}
+                            <img
+                                src="@if(Auth::user()->avatar != null){{URL::asset(Auth::user()->avatar)}}@else{{URL::asset('images\default-user-icon-8.jpg')}}@endif"
+                                class="avatar-xl img-thumbnail" data-data="{{Auth::user()->avatar}}"
+                                alt="profile-image" tabindex="-1" style="width: 100%;height: 100%">
                             <div class="position-absolute center-element"
                                  style="display:none;width: 8rem;height: 8rem;background-color: rgba(50, 58, 70, .55);top:0">
                                 <div>
@@ -243,7 +304,8 @@
                         <label>Giới thiệu bản thân:</label>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <textarea class="form-control break-custom" id="gioi_thieu">@if($data['nha_tuyen_dung']['gioi_thieu']){{$data['nha_tuyen_dung']['gioi_thieu']}}@endif</textarea>
+                        <textarea class="form-control break-custom"
+                                  id="gioi_thieu">@if($data['nha_tuyen_dung']['gioi_thieu']){{$data['nha_tuyen_dung']['gioi_thieu']}}@endif</textarea>
                     </div>
                 </div>
                 <h5 class="mb-3 text-uppercase bg-light p-2 text-center text-md-left"><i class="mdi mdi-earth mr-1"></i>
@@ -258,7 +320,8 @@
                                                                 class="fa fa-facebook-official"></i></span>
                                 </div>
                                 {{--                                unserialize($nguoiTimViec['social'])[0]--}}
-                                <input type="text" class="form-control social-link" id="social-fb" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[0]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-fb"
+                                       value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[0]}}@endif"
                                        placeholder="Url">
                             </div>
                         </div>
@@ -271,7 +334,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-twitter"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-tw" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[1]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-tw"
+                                       value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[1]}}@endif"
                                        placeholder="Username">
                             </div>
                         </div>
@@ -286,7 +350,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-instagram"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-insta" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[2]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-insta"
+                                       value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[2]}}@endif"
                                        placeholder="Url">
                             </div>
                         </div>
@@ -299,7 +364,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-linkedin"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-lin" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[3]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-lin"
+                                       value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[3]}}@endif"
                                        placeholder="Url">
                             </div>
                         </div>
@@ -315,7 +381,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-skype"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-sky" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[4]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-sky"
+                                       value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[4]}}@endif"
                                        placeholder="@username">
                             </div>
                         </div>
@@ -328,7 +395,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-github"></i></span>
                                 </div>
-                                <input type="text" class="form-control social-link" id="social-gh" value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[5]}}@endif"
+                                <input type="text" class="form-control social-link" id="social-gh"
+                                       value="@if($data['nha_tuyen_dung']['mang_xa_hoi'] != null){{unserialize($data['nha_tuyen_dung']['mang_xa_hoi'])[5]}}@endif"
                                        placeholder="Username">
                             </div>
                         </div>
@@ -347,15 +415,18 @@
 
     <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
+    <script type="text/javascript"
+            src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
 
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
-    <script type="text/javascript" src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
-
+    <link rel="stylesheet" type="text/css"
+          href="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
+    <script type="text/javascript"
+            src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
 
     <script type="text/javascript" src="{{URL::asset('assets\js\app\nhaTuyenDung.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\js\app\doi_mat_khau.js')}}"></script>
-{{--    init valiable of confirm email--}}
+    {{--    init valiable of confirm email--}}
     <script type="text/javascript">
         let data_action_confifm = '{{Auth::user()->id}}';
     </script>
@@ -375,6 +446,77 @@
                     $('#scroll-fixed').removeClass('scroll-fixed-top');
                 }
             });
+        });
+        let HTMLcongTy = null;
+        let getBaseURL = '{{URL::asset('/')}}';
+        const initEventCapNhatCongTy = () => {
+            $('#doi_anh_dai_dien.congty').data('type', 'them-moi-cong-ty')
+            select2Default($('select#from_day'));
+            select2Default($('select#to_day'));
+            select2Default($('select#quy_mo_nhan_su'));
+            select2MultipleDefault($('select#linh_vuc_hoat_dong'), 'Chọn Ngành nghề')
+            // $('select#from_day,select#to_day,select#quy_mo_nhan_su').select2({
+            //     dropdownParent: $('div#cap-nhat-cong-ty ')
+            // });
+            // $('select#linh_vuc_hoat_dong').select2({
+            //     placeholder: ' Chọn Ngành nghề',
+            //     allowClear: false
+            // });
+
+            $("#so_luong_chi_nhanh").TouchSpin({
+                min: 0,
+                buttondown_class: "btn btn-primary waves-effect",
+                buttonup_class: "btn btn-primary waves-effect"
+            });
+            lichNam($('#nam_thanh_lap'));
+
+            $('#from_time,#to_time').datetimepicker({
+                format: 'HH:mm',
+                widgetPositioning: {
+                    vertical: 'bottom',
+                    horizontal: 'right'
+                },
+                icons: {
+                    time: "icofont icofont-clock-time",
+                    date: "icofont icofont-ui-calendar",
+                    up: "icofont icofont-rounded-up",
+                    down: "icofont icofont-rounded-down",
+                    next: "icofont icofont-rounded-right",
+                    previous: "icofont icofont-rounded-left"
+                },
+            });
+            hoverEventLogo();
+        }
+        const hoverEventLogo = () => {
+            $("div#logo_cong_ty").hover(function () {
+                if ($(window).width() >= 576) {
+                    $(this).find('div.hover-me').fadeIn('fast');
+                }
+            }, function () {
+                if ($(window).width() >= 576) {
+                    $(this).find('div.hover-me').fadeOut('fast');
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript" src="{{URL::asset('assets\js\app\themMoiCongTy.js')}}"></script>
+    <script>
+        $(document).on('click', 'button#call-them-moi-cong-ty', function () {
+            $('div.modal#them-moi-cong-ty').modal('show');
+            let ajax = {
+                url: '/danh-sach-cong-ty/get-content',
+                method: 'get',
+                data: {}
+            };
+            sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '').done(e => {
+                $('div.modal#them-moi-cong-ty').find('.modal-body').html(e);
+                $('div.modal#them-moi-cong-ty').find('.modal-body').find('#save-cong-ty').addClass('d-none');
+                initEventCapNhatCongTy()
+                // hoverEventLogo();
+            })
+            // $('div.modal#them-moi-cong-ty').data('type', 'cong_ty_tuyen_dung');
+            // alert()
         });
     </script>
 @endpush

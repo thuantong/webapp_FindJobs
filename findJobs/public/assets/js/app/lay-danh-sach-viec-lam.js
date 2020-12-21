@@ -41,17 +41,17 @@ $(function () {
     /**
      * @scroll lấy danh sách việc làm next page
      */
-    $('#container-items').parents().on('scroll', function (e) {
-        let x = $(this).prop('scrollHeight');
-        let vitri = parseFloat(x) - parseFloat(Math.abs($(this).height()));
-
-        if (parseInt(vitri) == $(this).scrollTop()) {
-            console.log(next_page_check)
-            if (next_page_check != ''){
-                getItemsDefaults($('#container-items'),nextPage);// append bài viết
-
-            }
-        }
-    });
+    // $('#container-items').parents().on('scroll', function (e) {
+    //     let x = $(this).prop('scrollHeight');
+    //     let vitri = parseFloat(x) - parseFloat(Math.abs($(this).height()));
+    //
+    //     if (parseInt(vitri) == $(this).scrollTop()) {
+    //         console.log(next_page_check)
+    //         if (next_page_check != ''){
+    //             getItemsDefaults($('#container-items'),nextPage);// append bài viết
+    //
+    //         }
+    //     }
+    // });
     //end @scroll
 });

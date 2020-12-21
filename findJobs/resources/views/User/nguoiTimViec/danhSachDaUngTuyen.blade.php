@@ -42,8 +42,8 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th class="text-center">STT</th>
-                                    <th class="text-center">Bài tuyển dụng</th>
-                                    <th class="text-center">Nhà tuyển dụng</th>
+                                    <th class="text-center">Công việc ứng tuyển</th>
+{{--                                    <th class="text-center">Nhà tuyển dụng</th>--}}
                                     <th class="text-center">Công ty tuyển dụng</th>
                                     <th class="text-center">Trạng thái</th>
                                     <th class="text-center">Chức năng</th>
@@ -110,15 +110,15 @@
                 },
                 {
                     data: 'tieu_de',
-                    className: 'text-center'
+                    className: 'text-center text-capitalize'
                 },
-                {
-                    data: 'nha_tuyen_dung_name',
-                    className: 'text-center'
-                },
+                // {
+                //     data: 'nha_tuyen_dung_name',
+                //     className: 'text-center'
+                // },
                 {
                     data: 'cong_ty_name',
-                    className: 'text-center'
+                    className: 'text-center text-uppercase'
                 },
                 {
                     render: function (api, rowIdx, columns, meta) {
@@ -145,7 +145,13 @@
                 },
                 {
                     render: function (api, rowIdx, columns, meta) {
-                        return '<a class="btn btn-sm btn-info waves-effect" href = "/bai-viet/thong-tin&baiviet='+columns.id+'&chitiet=1" target="_blank">Đi tới</a>';
+                        let displayNone = 'd-none';
+                        if (columns.status == 3){
+                            displayNone = '';
+                        }
+                        return '<a class="btn btn-sm btn-info waves-effect mr-1" href = "/bai-viet/thong-tin&baiviet='+columns.id+'&chitiet=1" target="_blank">Đi tới</a>' +
+                            '<a class="btn btn-sm btn-primary waves-effect" href = "https://mail.google.com" target="_blank">Xác nhận</a>'
+                            ;
                     },
                     className: 'text-center'
                 },

@@ -27,7 +27,8 @@ class TaiKhoan extends Authenticatable
         'password',
         'phone',
         'status',
-        'email_verify_code'
+        'email_verify_code',
+        'avatar'
     ];
 
     /**

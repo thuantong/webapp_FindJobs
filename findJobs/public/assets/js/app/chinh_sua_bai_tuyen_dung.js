@@ -29,6 +29,22 @@ const eventModalChinhSua = ()=>{
     select2Single($('select.gioi_tinh_update'),parentNode);
     select2Single($('select.dia_diem_lam_viec_update'),parentNode);
     select2Single($('select.hinh_thuc_update'),parentNode);
+    var quill_update = new Quill("#chinh-sua-bai-tuyen-dung-modal #mo-ta-update-editor", {
+        theme: "snow",
+        // placeholder: 'Compose an epic...',
+        modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+    });
+    var quill2_update = new Quill("#chinh-sua-bai-tuyen-dung-modal #yeu-cau-update-editor", {
+        theme: "snow",
+        // placeholder: 'Compose an epic...',
+        modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+    });
+    var quill3_update = new Quill("#chinh-sua-bai-tuyen-dung-modal #quyen-loi-update-editor", {
+        theme: "snow",
+        // placeholder: 'Compose an epic...',
+        modules: {toolbar: [ ["bold", "italic", "underline"], [{list: "ordered"}, {list: "bullet"}], [{align: []}], [], ["clean"]]}
+    });
+
     parentNode.find('textarea').each(function () {
         // if ($(this).val() == '') {
         // console.log((this.scrollHeight))
@@ -62,19 +78,26 @@ const eventModalChinhSua = ()=>{
         buttondown_class: "btn btn-primary waves-effect",
         buttonup_class: "btn btn-primary waves-effect"
     });
-    lichNam($('.han_tuyen_dung_update'));
+    lichNgay($('.han_tuyen_dung_update'));
 
 }
 $(document).on('click','#chinh-sua-bai-tuyen-dung-modal #save',function () {
+    // alert('')
     let __this = $(this);
     let __parent = __this.parents('.modal');
     let muc_luong_array = [];
     muc_luong_array.push(__parent.find('.muc_luong_from_update').val(), __parent.find('.muc_luong_to_update').val());
     let do_tuoi_array = [];
     do_tuoi_array.push(__parent.find('.do_tuoi_from_update').val(), __parent.find('.do_tuoi_from_update').val());
-
+    let array_ho_so_yey_cau = [];
+    if ($('[name="ban_cap_yeu_cau_update"]:checked').length > 0){
+        $('[name="ban_cap_yeu_cau_update"]:checked').each(function () {
+            array_ho_so_yey_cau.push($(this).val());
+        });
+    }
     let error = 0;
     error += notNullMessage(__parent.find('.not-null'));
+    // console.log(error)
     if (error == 0){
         let data = {
             id : __parent.find('#bai_viet_action').val(),
@@ -95,8 +118,10 @@ $(document).on('click','#chinh-sua-bai-tuyen-dung-modal #save',function () {
             yeu_cau_cong_viec: __parent.find('.yeu_cau_cong_viec_update').val(),
             quyen_loi_cong_viec: __parent.find('.quyen_loi_cong_viec_update').val(),
             dia_chi_cong_viec: __parent.find('.dia_chi_cong_viec_update').val(),
+            yeu_cau_ho_so :array_ho_so_yey_cau,
         };
-
+        // console.log(data)
+        // return;
         sendAjaxNoFunc('post', '/bai-viet/chinh-sua/luu-tin', data, __this.attr('id')).done(e => {
             // console.log(e)
             getHtmlResponse(e);

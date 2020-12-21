@@ -122,19 +122,49 @@ $(function () {
 
     $('button.save-bai-tuyen-dung').on('click', function () {
         // alert();
+        // return;
         let __parent = $('#form-body');
         let __this = $(this);
         let error = 0;
         error += notNullMessage(__parent.find('.not-null'));
+
+        if (__parent.find('#do_tuoi_from').val() <= 15){
+            __parent.find('#do_tuoi_from').addClass('is-invalid');
+            __parent.find('#do_tuoi_from').parent().find('.invalid-feedback').addClass('text-left').find('strong').text(__parent.find('#do_tuoi_to').attr('title') + ' không được thấp hơn số tuổi lao động(15 đến 60 tuổi)');
+            __parent.find('#do_tuoi_from').val(15);
+            error += 1;
+        }else if (__parent.find('#do_tuoi_from').val() >= 60){
+            __parent.find('#do_tuoi_from').addClass('is-invalid');
+            __parent.find('#do_tuoi_from').parent().find('.invalid-feedback').addClass('text-left').find('strong').text(__parent.find('#do_tuoi_to').attr('title') + ' vượt quá số tuổi lao động(15 đến 60 tuổi)');
+            __parent.find('#do_tuoi_from').val(60);
+            error += 1;
+        }
+        if (__parent.find('#do_tuoi_to').val() <= 15){
+            __parent.find('#do_tuoi_to').addClass('is-invalid');
+            __parent.find('#do_tuoi_to').parent().find('.invalid-feedback').addClass('text-left').find('strong').text(__parent.find('#do_tuoi_to').attr('title') + ' không được thấp hơn số tuổi lao động(15 đến 60 tuổi)');
+            __parent.find('#do_tuoi_to').val(15);
+            error += 1;
+        }else if (__parent.find('#do_tuoi_to').val() >= 60){
+            __parent.find('#do_tuoi_to').addClass('is-invalid');
+            __parent.find('#do_tuoi_to').parent().find('.invalid-feedback').addClass('text-left').find('strong').text(__parent.find('#do_tuoi_to').attr('title') + ' vượt quá số tuổi lao động(15 đến 60 tuổi)');
+            __parent.find('#do_tuoi_to').val(60);
+            error += 1;
+        }
         let muc_luong_array = [];
         muc_luong_array.push(__parent.find('#muc_luong_from').val(), __parent.find('#muc_luong_to').val());
         let do_tuoi_array = [];
         do_tuoi_array.push(__parent.find('#do_tuoi_from').val(), __parent.find('#do_tuoi_to').val());
+        let array_ho_so_yey_cau = [];
+        if ($('[name="ban_cap_yeu_cau"]:checked').length > 0){
+            $('[name="ban_cap_yeu_cau"]:checked').each(function () {
+                array_ho_so_yey_cau.push($(this).val());
+            });
+        }
 
         // console.log('eroer',error)
         if (error == 0) {
             let data = {
-                tieu_de_bai_dang: __parent.find('#tieu_de_bai_dang').val(),
+                tieu_de_bai_dang: __parent.find('#tieu_de_bai_dang').val().toLowerCase(),
                 chuc_vu_tuyen: __parent.find('#chuc_vu_tuyen').find('option:checked').val(),
                 ten_chuc_vu: __parent.find('#ten_chuc_vu').val(),
                 han_tuyen_dung: __parent.find('#han_tuyen_dung').val(),
@@ -153,11 +183,13 @@ $(function () {
                 cong_ty_tuyen_dung: __parent.find('#cong_ty_tuyen_dung').val(),
                 so_ngay_ton_tai: __parent.find('#so_ngay_ton_tai').val(),
                 nganh_nghe: __parent.find('#nganh_nghe').val(),
+                yeu_cau_ho_so: array_ho_so_yey_cau,
+                is_hot: __parent.find('[name="dang_ky_bai_viet_hot"]:checked').val(),
             };
-            // console.log(data)
-
-            sendAjaxNoFunc('post', '/bai-viet/chinh-sua/luu-tin', data, __this.attr('id')).done(e => {
-                // console.log(e)
+            // console.log(data);
+        // return;
+            sendAjaxNoFunc('post', '/dang-bai-viet/luu-tin', data, __this.attr('id')).done(e => {
+                console.log(e)
                 getHtmlResponse(e);
                 if (e.status == 405) {
                     alertConfirm(e).then(result => {

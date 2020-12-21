@@ -77,13 +77,33 @@
 
         <ul class="list-unstyled topnav-menu float-right mb-0">
             <li>
+
                 <a href="/" class="nav-link text-white">
                     Việc làm
                 </a>
             </li>
+            <li>
+                <a class="nav-link center-element search-field-new-query" id="search-field-new-query"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <span class="text-white">Tìm kiếm</span>
+                </a>
+            </li>
+
             @if(Auth::user() != null)
 
-
+                @if(Session::exists('loai_tai_khoan') && Session::get('loai_tai_khoan') == 1)
+                    <li>
+                        <a href="{{route('nguoitimviec.timKiemNhaTuyenDung')}}" class="nav-link text-white">
+                            Tìm kiếm nhà tuyển dụng
+                        </a>
+                    </li>
+                @endif
+                @if(Session::exists('loai_tai_khoan') && Session::get('loai_tai_khoan') == 2)
+{{--                    <li>--}}
+{{--                        <a href="{{route('nhatuyendung.index')}}" class="nav-link text-white">--}}
+{{--                            Tìm kiếm ứng viên--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+                @endif
 {{--            <li class="dropdown notification-list">--}}
 {{--                <a class="nav-link dropdown-toggle  waves-effect waves-light fab fa-rocketchat font-20 call-chat">--}}
 {{--                                        <i class="fe-bell noti-icon"></i>--}}
@@ -94,9 +114,9 @@
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle  waves-effect waves-light text-white" data-toggle="dropdown" href="#"
-                   role="button" aria-haspopup="false" aria-expanded="false">
+                   role="button" aria-haspopup="false" aria-expanded="false" id="goi-danh-sach-thong-bao">
                     <i class="icofont icofont-bell-alt noti-icon"></i>
-                    <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>
+                    <span class="badge badge-danger rounded-circle noti-icon-badge">0</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-lg">
 
@@ -104,14 +124,14 @@
                     <div class="dropdown-item noti-title">
                         <h5 class="m-0">
                                     <span class="float-right">
-                                        <a href="" class="text-dark">
-                                            <small>Clear All</small>
-                                        </a>
-                                    </span>Notification
+{{--                                        <a href="" class="text-dark">--}}
+{{--                                            <small>Clear All</small>--}}
+{{--                                        </a>--}}
+                                    </span>Thông báo
                         </h5>
                     </div>
 
-                    <div class="slimscroll noti-scroll">
+                    <div class="slimscroll noti-scroll" id="danh-sach-thong-bao">
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item active">
@@ -178,10 +198,10 @@
                     </div>
 
                     <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                        View all
-                        <i class="fi-arrow-right"></i>
-                    </a>
+{{--                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">--}}
+{{--                        View all--}}
+{{--                        <i class="fi-arrow-right"></i>--}}
+{{--                    </a>--}}
 
                 </div>
             </li>
@@ -190,7 +210,7 @@
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light text-white" data-toggle="dropdown"
                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img
-                        src="@if(Session::get('avatar') != null){{URL::asset(Session::get('avatar'))}}@elseif(Session::get('avatar') == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
+                        src="@if(Auth::user()->avatar != null){{URL::asset(Auth::user()->avatar)}}@elseif(Auth::user()->avatar == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
                         alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1">
                                 @if(Auth::user() != null){{ucwords(Auth::user()->ho_ten)}}@endif <i class="icofont icofont-caret-down"></i>
@@ -211,22 +231,22 @@
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="remixicon-settings-3-line"></i>
-                        <span>Settings</span>
-                    </a>
+{{--                    <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
+{{--                        <i class="remixicon-settings-3-line"></i>--}}
+{{--                        <span>Settings</span>--}}
+{{--                    </a>--}}
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="remixicon-wallet-line"></i>
-                        <span>My Wallet <span class="badge badge-success float-right">3</span> </span>
-                    </a>
+{{--                    <!-- item-->--}}
+{{--                    <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
+{{--                        <i class="remixicon-wallet-line"></i>--}}
+{{--                        <span>My Wallet <span class="badge badge-success float-right">3</span> </span>--}}
+{{--                    </a>--}}
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="remixicon-lock-line"></i>
-                        <span>Lock Screen</span>
-                    </a>
+{{--                    <!-- item-->--}}
+{{--                    <a href="javascript:void(0);" class="dropdown-item notify-item">--}}
+{{--                        <i class="remixicon-lock-line"></i>--}}
+{{--                        <span>Lock Screen</span>--}}
+{{--                    </a>--}}
 
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item  notify-item"
@@ -272,13 +292,17 @@
             <li>
                 <a href="/" class="nav-link logo text-center">
                         <span class="logo-lg">
-                            <img src="assets\images\logo-sm.png" alt="" height="24">
+                            <span class="logo-lg-text-light text-white">{{env('APP_NAME')}}</span>
+{{--                            <img src="assets\images\logo-sm.png" alt="" height="24">--}}
 {{--                            <img src="assets\images\logo-light.png" alt="" height="20">--}}
                         <!-- <span class="logo-lg-text-light">Xeria</span> -->
                         </span>
                     <span class="logo-sm">
+{{--                                                    <span class="logo-sm-text-dark text-white">{{env('APP_NAME')}}</span>--}}
+
+                        <span class="logo-sm-text-dark text-white">TMJ</span>
                             <!-- <span class="logo-sm-text-dark">X</span> -->
-                            <img src="assets\images\logo-sm.png" alt="" height="24">
+{{--                            <img src="assets\images\logo-sm.png" alt="" height="24">--}}
                         </span>
                 </a>
             </li>
@@ -292,11 +316,17 @@
             <li class="dropdown dropdown-mega d-block">
 
 {{--                {{Auth::user()}}--}}
-                @if(Auth::user() != null)
-                <a class="nav-link center-element search-field" data-search="search-field">
-                    <span class="text-white">Tìm kiếm</span>
-                </a>
-                @endif
+{{--                @if(Auth::user() != null)--}}
+{{--                <a class="nav-link center-element search-field" data-search="search-field">--}}
+{{--                    <span class="text-white">Tìm kiếm</span>--}}
+{{--                </a>--}}
+
+{{--                <a class="nav-link center-element search-field-new-query" id="search-field-new-query">--}}
+{{--                    <span class="text-white">Tìm kiếm</span>--}}
+{{--                </a>--}}
+
+
+{{--                @endif--}}
 {{--                <div class="dropdown-menu dropdown-megamenu">--}}
 {{--                    <div class="row">--}}
 {{--                        <div class="col-sm-6">--}}
@@ -397,6 +427,7 @@
 {{--                </div>--}}
             </li>
         </ul>
+
     </div>
     <!-- end Topbar -->
 
@@ -429,6 +460,50 @@
             {{--                        </div>--}}
             {{--                    </div>--}}
             {{--                </div>--}}
+                <div class="collapse position-fixed bg-primary" id="collapseExample" style="z-index: 2;width: calc(70%)">
+                    <div class="card-box m-1 p-1 bg-primary border-primary" style="border-radius: 0px">
+                        {{--                        <div class="row">--}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 ">
+                                <form class="row" method="get" action="/" id="tim-kiem-bai-tuyen-dung-master">
+                                    @csrf
+                                    <div class="col-sm-12 col-md-4 center-element">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control value-search" id="value-master-search" name="tieu_de"
+                                                   placeholder="Nhập từ khóa..." value="@if(Request::exists('tieu_de') && Request::get('tieu_de') != ""){{Request::get('tieu_de')}}@endif">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-12 col-md-3 center-element">
+                                        <select class="form-control" id="dia-diem-master-search" name="dia_diem">
+                                            <option selected value="">Tất cả địa điểm</option>
+                                            @foreach($dia_diem as $row)
+                                                <option value="{{$row['id']}}" @if(Request::exists('dia_diem') && Request::get('dia_diem') != "" && Request::get('dia_diem') == $row['id']){{'selected'}}@endif>{{$row['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3 center-element">
+                                        <select class="form-control" id="nganh-nghe-master-search" name="nganh_nghe">
+                                            <option selected value="">Tất cả ngành nghề</option>
+                                            @foreach($nganh_nghe as $row)
+                                                <option value="{{$row['id']}}" @if(Request::exists('nganh_nghe') && Request::get('nganh_nghe') != "" && Request::get('nganh_nghe') == $row['id']){{'selected'}}@endif>{{$row['name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2  center-element">
+{{--                                        <button type="submit" class="btn btn-warning waves-effect waves-light text-left" id="nang-cao-button-master-search">ff</button>--}}
+                                        <button type="button" class="btn btn-white waves-effect waves-light text-left" id="button-master-search"><i class="fa fa-search"></i></button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                        {{--                        </div>--}}
+                    </div>
+
+                </div>
             <!-- end page title -->
             @yield('content')
 
@@ -468,43 +543,43 @@
 
 {{--Chức năng tìm kiếm--}}
 <!-- END wrapper -->
-<div class="left-search d-none position-absolute bg-white border">
-    <div class="left-search-header border" style="display: flex">
-        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 center-element">
-            <button class="btn btn-white border text-left text-dark exit-search fa fa-times"></button>
-        </div>
-        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">
-            <div class="input-group">
-                <input type="search" class="form-control value-search" id="value-master-search"
-                       placeholder="Nhập từ khóa...">
-            </div>
+{{--<div class="left-search d-none position-absolute bg-white border">--}}
+{{--    <div class="left-search-header border" style="display: flex">--}}
+{{--        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1 center-element">--}}
+{{--            <button class="btn btn-white border text-left text-dark exit-search fa fa-times"></button>--}}
+{{--        </div>--}}
+{{--        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">--}}
+{{--            <div class="input-group">--}}
+{{--                <input type="search" class="form-control value-search" id="value-master-search"--}}
+{{--                       placeholder="Nhập từ khóa...">--}}
+{{--            </div>--}}
 
-        </div>
-        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">
-            <select class="form-control" id="dia-diem-master-search">
-                <option selected value="-1">Tất cả</option>
-                @foreach($dia_diem as $row)
-                    <option value="{{$row['id']}}">{{$row['name']}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">
-            <select class="form-control" id="nganh-nghe-master-search">
-                <option selected value="-1">Tất cả</option>
-                @foreach($nganh_nghe as $row)
-                    <option value="{{$row['id']}}">{{$row['name']}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">
-            <button class="btn btn-primary text-left" id="button-master-search"><i class="fa fa-search"></i></button>
+{{--        </div>--}}
+{{--        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">--}}
+{{--            <select class="form-control" id="dia-diem-master-search">--}}
+{{--                <option selected value="-1">Tất cả</option>--}}
+{{--                @foreach($dia_diem as $row)--}}
+{{--                    <option value="{{$row['id']}}">{{$row['name']}}</option>--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
+{{--        </div>--}}
+{{--        <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 center-element">--}}
+{{--            <select class="form-control" id="nganh-nghe-master-search">--}}
+{{--                <option selected value="-1">Tất cả</option>--}}
+{{--                @foreach($nganh_nghe as $row)--}}
+{{--                    <option value="{{$row['id']}}">{{$row['name']}}</option>--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
+{{--        </div>--}}
+{{--        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 center-element">--}}
+{{--            <button class="btn btn-primary text-left" id="button-master-search"><i class="fa fa-search"></i></button>--}}
 
-        </div>
-    </div>
-    <div class="left-search-content overflow-y-auto p-2 bg-light" id="left-search-content">
-        {{--        @include('TrangChu.items')--}}
-    </div>
-</div>
+{{--        </div>--}}
+{{--    </div>--}}
+{{--    <div class="left-search-content overflow-y-auto p-2 bg-light" id="left-search-content">--}}
+{{--        --}}{{--        @include('TrangChu.items')--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 
 {{--    </div> <!-- end slimscroll-menu-->--}}
@@ -548,6 +623,7 @@
 
 <script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 <script type="text/javascript">
+
     // $(window).on('load',function () {
         // $('body').removeClass('loadPage')
         // $('#loadPage').parent().fadeOut('slow')
@@ -575,26 +651,27 @@
     // var nextPage = null;
     // var next_page_check = null;
     $(document).on('click', '#button-master-search', function () {
-        let tieu_de = $('#value-master-search').val();
-        let nganh_nghe = $('#nganh-nghe-master-search').val();
-        let dia_diem = $('#dia-diem-master-search').val();
-        if (nganh_nghe == -1) {
-            nganh_nghe = '';
-        }
-        if (dia_diem == -1) {
-            dia_diem = '';
-        }
-        let ajax = {
-            method: 'get',
-            url: '/tin-tuyen-dung',
-            // url: '/bai-viet/tim-kiem', chưa xóa route
-            data: {
-                tieu_de: tieu_de,
-                nganh_nghe_id: nganh_nghe,
-                dia_diem_id: dia_diem,
-            }
-        }
-        getItemsDefaults($('#left-search-content'), 1, ajax, 'timkiem')
+        $('#tim-kiem-bai-tuyen-dung-master').submit()
+        // let tieu_de = $('#value-master-search').val();
+        // let nganh_nghe = $('#nganh-nghe-master-search').val();
+        // let dia_diem = $('#dia-diem-master-search').val();
+        // if (nganh_nghe == -1) {
+        //     nganh_nghe = '';
+        // }
+        // if (dia_diem == -1) {
+        //     dia_diem = '';
+        // }
+        // let ajax = {
+        //     method: 'get',
+        //     url: '/tin-tuyen-dung',
+        //     // url: '/bai-viet/tim-kiem', chưa xóa route
+        //     data: {
+        //         tieu_de: tieu_de,
+        //         nganh_nghe_id: nganh_nghe,
+        //         dia_diem_id: dia_diem,
+        //     }
+        // }
+        // getItemsDefaults($('#left-search-content'), 1, ajax, 'timkiem')
     });
 
     $(document).on('click', function (e) {
@@ -616,20 +693,23 @@
         }
     });
     $(function () {
+
         $('#loadPage').css('with','80%');
         $(window).on('load',function () {
             $('#loadPage').parent().fadeOut('slow')
         });
+        select2Default($('#dia-diem-master-search'));
+        select2Default($('#nganh-nghe-master-search'));
         // select2Default($('#dia-diem-master-search')).select2({
         //     dropdownParent : $('.left-search-header')
         // }
         // );
         // select2Default($('#nganh-nghe-master-search'));
-        select2Single($('#dia-diem-master-search',$('.left-search-header')));
-        select2Single($('#nganh-nghe-master-search',$('.left-search-header')));
-        $('.left-search').css('width', '0px');
-        $('.left-search-content').css('max-height', ($(document).height() * 0.8) + 'px');
-        $('.left-search-header').css('min-height', $('.navbar-custom').height() + 'px');
+        // select2Single($('#dia-diem-master-search',$('.left-search-header')));
+        // select2Single($('#nganh-nghe-master-search',$('.left-search-header')));
+        // $('.left-search').css('width', '0px');
+        // $('.left-search-content').css('max-height', ($(document).height() * 0.8) + 'px');
+        // $('.left-search-header').css('min-height', $('.navbar-custom').height() + 'px');
 
         // $('#nganh-nghe-master-search').on('select2:close',function () {
         //     // alert()
@@ -638,11 +718,11 @@
         //     $('#value-master-search').focus();
         // });
 //exit search container
-        $('.exit-search').on('click', function () {
-            $('.left-search').addClass('d-none').fadeOut().css('width', '0px');
-            // $('.value-search').val('');
-
-        });
+//         $('.exit-search').on('click', function () {
+//             $('.left-search').addClass('d-none').fadeOut().css('width', '0px');
+//             $('.value-search').val('');
+        //
+        // });
 
         $(window).resize(function () {
             if ($(document).width()) {
@@ -656,14 +736,14 @@
         });
 
     });
-    $(document).on('keyup',function (e) {
-        if ($('.left-search').hasClass('d-none') == false){
-            if (e.keyCode == 13){
-                $('#button-master-search').trigger('click');
-            }
-            // console.log(e)
-        }
-    });
+    // $(document).on('keyup',function (e) {
+    //     if ($('.left-search').hasClass('d-none') == false){
+    //         if (e.keyCode == 13){
+    //             $('#button-master-search').trigger('click');
+    //         }
+    //         // console.log(e)
+    //     }
+    // });
 </script>
 </body>
 </html>

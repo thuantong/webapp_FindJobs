@@ -42,8 +42,8 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th class="text-center">STT</th>
-                                    <th class="text-center">Tiêu đề</th>
-                                    <th class="text-center">Nhà tuyển dụng</th>
+                                    <th class="text-center">Công việc</th>
+{{--                                    <th class="text-center">Nhà tuyển dụng</th>--}}
                                     <th class="text-center">Công ty tuyển dụng</th>
                                     <th class="text-center">Trạng thái</th>
                                     <th class="text-center">Chức năng</th>
@@ -110,15 +110,15 @@
                 },
                 {
                     data: 'tieu_de',
-                    className: 'text-center'
+                    className: 'text-center text-capitalize'
                 },
-                {
-                    data: 'nha_tuyen_dung_name',
-                    className: 'text-center'
-                },
+                // {
+                //     data: 'nha_tuyen_dung_name',
+                //     className: 'text-center'
+                // },
                 {
                     data: 'cong_ty_name',
-                    className: 'text-center'
+                    className: 'text-center  text-uppercase'
                 },
                 {
                     render: function (api, rowIdx, columns, meta) {

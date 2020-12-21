@@ -40,13 +40,19 @@ class QuanLyBaiDangController extends Controller
         return view('QuanLyTuyenDung.QLBaiDang.index',compact('data'));
     }
     public function getDanhSach(){
-        $data['data'] = BaiTuyenDung::with('getChucVu','getKieuLamViec','getNhaTuyenDung','getCongTy','getDiaDiem','getBangCap','getNganhNghe')->get();
+        $data['data'] = BaiTuyenDung::with(['getChucVu','getKieuLamViec','getNhaTuyenDung','getCongTy','getDiaDiem','getBangCap','getNganhNghe',
+
+            'getDuyetTin'=>function($q){
+            $q->select('id','noi_dung','bai_dang_id');
+            }
+        ])->get()->toArray();
 //        $data = $this->nhaTuyenDung->with('getBaiViet')->get();
         $index = 0;
 //        dd(json_decode($data));
 //        foreach ($data['get_bai_viet'] as $row){
 //            $layThem[$index] = $row->with('getCongTy')->get();
 //        }
+//        dd($data);
         return $data;
     }
 }

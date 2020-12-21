@@ -15,6 +15,10 @@ class HangMucThanhToanSeeder extends Seeder
             array(
                 'name'=>'Đăng Bài Viết',
                 'gia'=> 1
+            ),
+            array(
+                'name'=>'Đăng ký bài hot',
+                'gia'=> 1
             )
         ));
 

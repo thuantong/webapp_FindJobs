@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CongTy;
 
 use App\Http\Controllers\Controller;
 use App\Models\CongTy;
+use App\Models\DiaDiem;
 use App\Models\NganhNghe;
 use App\Models\NhaTuyenDung;
 use App\Models\QuyMoNhanSu;
@@ -19,7 +20,7 @@ class CongTyController extends Controller
     public function __construct()
     {
 
-        $this->middleware(['auth','email.confirm']);
+        $this->middleware(['auth','email.confirm','nha_tuyen_dung']);
         $this->middleware(function ($request, $next) {
 //            abort(404);
         $this->nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
@@ -38,17 +39,19 @@ class CongTyController extends Controller
     public function getData(){
         $data['nganh_nghe'] = NganhNghe::all()->toArray();
         $data['quy_mo_nhan_su'] = QuyMoNhanSu::all()->toArray();
+        $data['dia_diem'] = DiaDiem::all()->toArray();
         $data['data'] = $this->nhaTuyenDung->getCongTy()->first();
         if ($data['data'] != null){
             $getNganhNghe = $data['data']->getNganhNgheId()->toArray();
             $data['data'] = $data['data']->toArray();
             $data['data']['nganh_nghe_ids'] = $getNganhNghe;
+            $data['data']['dia_chi_chi_nhanh'] = unserialize($data['data']['dia_chi_chi_nhanh']);
+            $data['data']['gio_lam_viec'] = unserialize($data['data']['gio_lam_viec']);
+            $data['data']['ngay_lam_viec'] = unserialize($data['data']['ngay_lam_viec']);
         }
 
 
-        $data['data']['dia_chi_chi_nhanh'] = unserialize($data['data']['dia_chi_chi_nhanh']);
-        $data['data']['gio_lam_viec'] = unserialize($data['data']['gio_lam_viec']);
-        $data['data']['ngay_lam_viec'] = unserialize($data['data']['ngay_lam_viec']);
+
         return $data;
     }
     public function index()
@@ -94,7 +97,7 @@ class CongTyController extends Controller
 //        $congTyNew->ten_cong_ty = serialize($request->linh_vuc_hoat_dong);
         $title = 'Cập nhật';
         try {
-            if ($request->get('id') == null){
+            if ($request->id == null){
                 $congTyNew = new CongTy();
             }else{
                 $congTyNew = CongTy::query()->find($request->id)->first();
@@ -105,6 +108,7 @@ class CongTyController extends Controller
             $congTyNew->email = $request->email_cong_ty;
             $congTyNew->phone = $request->dien_thoai_cong_ty;
             $congTyNew->dia_chi = $request->dia_chi_chinh;
+            $congTyNew->dia_diem_id = $request->dia_diem_id;
             $congTyNew->gio_lam_viec = serialize($request->gio_lam_viec);
             $congTyNew->ngay_lam_viec = serialize($request->ngay_lam_viec);
             $congTyNew->so_nhan_vien = $request->quy_mo_nhan_su;
@@ -119,7 +123,10 @@ class CongTyController extends Controller
 
             $nganhNghe = $request->linh_vuc_hoat_dong;
             $nhaTuyenDung = $this->nhaTuyenDung;
-            $nhaTuyenDung->getCongTy()->save($congTyNew);
+            if ($request->id == null){
+                $nhaTuyenDung->getCongTy()->save($congTyNew);
+            }
+
             $congTyNew->getNganhNghe()->detach();
             $congTyNew->getNganhNghe()->attach($nganhNghe);
 

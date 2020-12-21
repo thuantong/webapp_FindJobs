@@ -19,7 +19,7 @@ class AdminTrangChuController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','auth.admin']);
         $this->middleware(function ($request, $next) {
             $this->quanTriVien = TaiKhoan::query()->find(Auth::user()->id)->getQuanTriVien;
             return $next($request);
