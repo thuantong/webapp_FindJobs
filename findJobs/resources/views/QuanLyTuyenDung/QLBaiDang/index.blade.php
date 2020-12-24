@@ -108,7 +108,7 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a>Trang chủ</a></li>
                         <li class="breadcrumb-item"><a>Quản Lý Tuyển Dụng</a></li>
-                        <li class="breadcrumb-item active">Quản Lý Bài Đăng</li>
+                        <li class="breadcrumb-item active">Quản Lý Bài Tuyển Dụng</li>
                     </ol>
                 </div>
                 <h4 class="page-title">{{__('Quản Lý Bài Đăng')}}</h4>
@@ -116,7 +116,144 @@
         </div>
     </div>
 
+
     <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="card-box p-1 mb-1 text-center">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-12">
+                                <label>Địa điểm</label>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select class="form-control qltd-search-field" id="qltd-dia-diem">
+                                    <option value="">Tất cả</option>
+                                    @foreach($data['dia_diem'] as $row)
+                                        <option value="{{$row['id']}}">{{$row['name']}}</option>
+                                        @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <label>Ngành nghề</label>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select class="form-control  qltd-search-field" id="qltd-nganh-nghe">
+                                    <option value="">Tất cả</option>
+                                    @foreach($data['nganh_nghe'] as $row)
+                                        <option value="{{$row['id']}}">{{$row['name']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <label>Chức vụ</label>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select class="form-control qltd-search-field" id="qltd-chuc-vu">
+                                    <option value="">Tất cả</option>
+                                    @foreach($data['chuc_vu'] as $row)
+                                        <option value="{{$row['id']}}">{{$row['name']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-12">
+                                <label>Mức lương</label>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select class="form-control qltd-search-field" id="qltd-muc-luong">
+                                    <option selected value="">Tất cả</option>
+                                    <option value="1">Từ 2 triệu</option>
+                                    <option value="2">Từ 5 triệu</option>
+                                    <option value="3">Từ 10 triệu</option>
+                                    <option value="4">Từ 20 triệu</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <label>Kinh nghiệm</label>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select class="form-control  qltd-search-field" id="qltd-kinh-nghiem">
+                                    <option value="">Tất cả</option>
+                                    @foreach($data['kinh_nghiem'] as $row)
+                                        <option value="{{$row['id']}}">{{$row['name']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <label>Bài hot</label>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select class="form-control  qltd-search-field" id="qltd-bai-hot">
+                                    <option value="">Tất cả</option>
+                                    <option value="1">Có</option>
+                                    <option value="0">Không</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-12">
+                                <label>Bài Viết</label>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <select class="form-control qltd-search-field" id="qltd-bai-viet">
+                                    <option  value="">Tất cả</option>
+                                    <optio  value="1">Đang tuyển dụng</optio>
+                                    <option  value="2">Đã bị từ chối</option>
+                                    <option selected  value="0">Chờ được duyệt</option>
+                                    <option value="0">Bị từ chối - Đã chỉnh sửa</option>
+                                    <option  value="4">Đã tạm ngưng</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 text-right">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-12 text-center">
+                                <label>Ngày Đăng Tin</label>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <input class="form-control" id="qltd-ngay-dang">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4 col-md-4 center-element text-right">
+                        <button class="btn btn-primary btn-sm" id="search-qltd">Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-sm-12 col-md-12">
             <div class="card-box p-1 mb-1 text-center">
 
@@ -186,6 +323,8 @@
             //     allowClear: false
             // });
 
+
+
             $("#so_luong_chi_nhanh").TouchSpin({
                 min: 0,
                 buttondown_class: "btn btn-primary waves-effect",
@@ -227,6 +366,15 @@
     @include('BaiViet.scriptThemMoi')
     <script type="text/javascript">
         $(function () {
+            $('.qltd-search-field').each(function () {
+                select2Default($(this))
+            })
+            lichNgay($('#qltd-ngay-dang'))
+            // select2Default($('#qltd-chuc-vu'))
+            // select2Default($('#qltd-dia-diem'))
+            // select2Default($('#qltd-nganh-nghe'))
+            // select2Default($('#qltd-kinh-nghiem'))
+            // select2Default($('#qltd-bai-hot'))
             getInitHtml();
         });
         $(document).on('click', '#form-update-body button#call-them-moi-cong-ty', function () {
@@ -272,6 +420,20 @@
             }
             __parent.find('textarea').val(""+value+"");
         });
+
+        $(document).on('click','#search-qltd',function () {
+            let diaDiem = $('#qltd-dia-diem').val();
+            let nganhNghe = $('#qltd-nganh-nghe').val();
+            let chucVu = $('#qltd-chuc-vu').val();
+            let mucLuong = $('#qltd-muc-luong').val();
+            let kinhNghiem = $('#qltd-kinh-nghiem').val();
+            let baiHot = $('#qltd-bai-hot').val();
+            let baiViet = $('#qltd-bai-viet').val();
+            let ngay_dang = $('#qltd-ngay-dang').val();
+
+            table.ajax.url('/quan-ly-tuyen-dung/quan-ly-bai-dang/get-danh-sach?dia_diem='+diaDiem+'&nganh_nghe='+nganhNghe+'&chuc_vu='+chucVu+'&muc_luong='+mucLuong+'&kinh_nghiem='+kinhNghiem+'&bai_hot='+baiHot+'&bai_viet='+baiViet+'&ngay_dang='+ngay_dang).load();
+            // table.
+        })
         // $(document).on('click','#quan-ly-bai-dang .chinh_sua',function () {
         //     let __this = $(this);
         //     let id = __this.parent().data('id');

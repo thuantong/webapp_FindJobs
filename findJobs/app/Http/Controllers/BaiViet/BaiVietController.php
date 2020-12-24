@@ -269,7 +269,7 @@ BaiVietController extends Controller
         $typeSend = 1;
         return view('NopDon.modal.content', compact('data', 'typeSend'));
     }
-
+    //chi tiết bài tuyển dụng
     public function getThongTinBaiViet($post, Request $request)
     {
         $data = BaiTuyenDung::query()->with([
@@ -369,6 +369,7 @@ BaiVietController extends Controller
 //        echo "<strong>đs</strong>";
 //        return;
 //        dd(htmlentities('<strong>đs</strong>'));
+//        dd($data);
         $typeSend = 1;
         return view('BaiViet.chiTiet', compact('data', 'nguoiTimViec', 'typeSend'));
 //        }
@@ -674,6 +675,7 @@ BaiVietController extends Controller
 //        $data['bai_tuyen_dung'] = $query->distinct('id')->where('status',$trangThaiDaDuyet)->paginate(10, ['id','tieu_de','ten_chuc_vu','luong','isHot','status','han_tuyen', 'nha_tuyen_dung_id','dia_diem_id','cong_ty_id'], 'page', $page);
         $data['trang_hien_tai'] = $data['bai_tuyen_dung']->currentPage();
         $data['check_trang'] = $data['bai_tuyen_dung']->nextPageUrl();
+
 //        dd($data);
         return view('TrangChu.items', compact('data'));
 
@@ -710,6 +712,7 @@ BaiVietController extends Controller
 
     public function luuChinhSua(Request $request)
     {
+        $this->khoiTaoThongTin();
         $title = "Chỉnh sửa bài tuyển dụng";
         try {
             $id = $request->id;
@@ -731,8 +734,28 @@ BaiVietController extends Controller
             $quyen_loi_cong_viec = $request->quyen_loi_cong_viec;
             $dia_chi_cong_viec = $request->dia_chi_cong_viec;
             $yeu_cau_ho_so = $request->yeu_cau_ho_so;
-            if ($timBaiTuyenDung = BaiTuyenDung::query()->find($id)) {
+//            so_ngay_ton_tai
 
+            if ($timBaiTuyenDung = BaiTuyenDung::query()->find($id)) {
+                if ($request->so_ngay_ton_tai > 0){
+//                    if ($timBaiTuyenDung->status != 1 || $timBaiTuyenDung->status != 2){
+//
+//                    }
+                    if ($timBaiTuyenDung->status == 4){
+                        $timBaiTuyenDung->status = 1;
+                        $timBaiTuyenDung->han_bai_viet = Carbon::now($this->tzHoChiMinh())->addDays($request->so_ngay_ton_tai);
+                    }else{
+                        $timBaiTuyenDung->han_bai_viet = Carbon::parse($timBaiTuyenDung->han_bai_viet)->addDays($request->so_ngay_ton_tai);
+                    }
+                    $donHang = $timBaiTuyenDung->getDonHang;
+                    $this->tienDangTin *= floatval($request->so_ngay_ton_tai);
+//                    return $this->tienDangTin;
+                    $this->capNhatSoDu($this->tienDangTin);
+                    $donHang->so_luong += floatval($request->so_ngay_ton_tai);
+                    $donHang->tong_tien += floatval($this->tienDangTin);
+
+                    $donHang->save();
+                }
                 $timBaiTuyenDung->tieu_de = $tieu_de_bai_dang;
                 $timBaiTuyenDung->ten_chuc_vu = $ten_chuc_vu;
                 $timBaiTuyenDung->so_luong_tuyen = $so_luong_tuyen;

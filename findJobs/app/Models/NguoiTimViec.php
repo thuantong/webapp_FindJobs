@@ -24,13 +24,16 @@ class NguoiTimViec extends Model
         'so_thich',
         'avatar',
         'status',
+        'file_path',
         'social',
         'muc_luong',
         'ten_truong_tot_nghiep',
         'tag_jobs',
         'muc_tieu_nghe_nghiep',
+        'status_job',
     ];
     protected $attributes = [
+        'status_job'=>0,
         'status' => 1,
         'gioi_tinh' => 1,
     ];

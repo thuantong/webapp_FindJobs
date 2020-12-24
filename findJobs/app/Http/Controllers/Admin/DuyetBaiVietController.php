@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BaiTuyenDung;
+use App\Models\DonHang;
 use App\Models\DuyetBai;
 use App\Models\NhaTuyenDung;
 use App\Models\QuanTriVien;
@@ -57,7 +58,7 @@ class DuyetBaiVietController extends Controller
         $id = $request->get('id');
         $data = BaiTuyenDung::query()->with('getNhaTuyenDung','getNganhNghe','getCongTy','getChucVu','getKieuLamViec','getDiaDiem','getBangCap','getKinhNghiem')->find($id)->toArray();
         $data['get_nha_tuyen_dung']['ho_ten'] = NhaTuyenDung::query()->find($data['get_nha_tuyen_dung']['id'])->getTaiKhoan['ho_ten'];
-        $data['luong'] = unserialize($data['luong']);
+//        $data['luong'] = unserialize($data['luong']);
 
         return $data;
     }
@@ -67,8 +68,9 @@ class DuyetBaiVietController extends Controller
         $id = $request->id;
         $baiTuyenDung = BaiTuyenDung::query()->find($id);
         try {
+            $donHang = DonHang::query()->where('bai_tuyen_dung_id',$baiTuyenDung->id)->first();
             $baiTuyenDung->status = 1;//accept
-            $baiTuyenDung->han_bai_viet = Carbon::now($this->tzHoChiMinh())->toDateTimeString();
+            $baiTuyenDung->han_bai_viet = Carbon::now($this->tzHoChiMinh())->addDays($donHang->so_luong)->toDateTimeString();
                 $baiTuyenDung->save();
             return $this->getResponse($title,200,'Phê duyệt bài viết '.$baiTuyenDung->tieu_de.' Thành công!');
         }catch (\Exception $e){

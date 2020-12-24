@@ -472,7 +472,7 @@
 {{--            độ tuổi--}}
             <div class="row form-group">
                 <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 text-center text-md-right">
-                    <label>{{__('Độ tuổi:')}}<<abbr class="text-danger  font-15">* </abbr>/label>
+                    <label>{{__('Độ tuổi:')}}<abbr class="text-danger  font-15">* </abbr></label>
                 </div>
                 <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                     <div class="input-group">
@@ -602,6 +602,21 @@
                 <label class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
                     <h4 class="text-uppercase bg-light p-2">{{__('Thông tin dịch vụ')}}</h4></label>
             </div>
-    </div>
+            <div class="row form-group">
+                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 text-center text-md-right">
+                    <label><abbr class="text-danger  font-15">* </abbr>{{__('Gia hạn thêm ngày:')}}</label>
+                </div>
+                <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                    <input class="form-control not-null text-center so_ngay_ton_tai" value="0" id="so_ngay_ton_tai_update"
+                           title="Số ngày đăng tin">
 
+                    <span class="invalid-feedback" role="alert">
+                            <strong></strong>
+                        </span>
+                </div>
+                <span class="form-text text-muted"><small>Số ngày tin được hiển thị trên mục bài đăng tìm việc! (1000đ/1 ngày,tương ứng 1 xu)</small></span>
+
+            </div>
+    </div>
+    </div>
 </div>

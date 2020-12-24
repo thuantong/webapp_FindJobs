@@ -85,7 +85,7 @@ trait NhaTuyenDungTrait
             $taiKhoan->ho_ten = $request->ho_ten_nhatuyendung;
             $taiKhoan->email = $request->email_nhatuyendung;
             $taiKhoan->phone = $request->phone_nhatuyendung;
-            $taiKhoan->avatar = $request->avatar_nhatuyendung;
+//            $taiKhoan->avatar = $request->avatar_nhatuyendung;
 
             $nhaTuyenDung = $taiKhoan->getNhaTuyenDung;
 //            $nhaTuyenDung->ho_ten = $request->ho_ten_nhatuyendung;

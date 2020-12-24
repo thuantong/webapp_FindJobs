@@ -267,7 +267,7 @@
 
                     </div>
                 </div>
-                <div class="row form-group">
+                <div class="row form-group d-none">
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center text-md-right">
                         <label for="avatar_tuyen_dung">{{__('Ảnh đại diện: ')}}</label>
                     </div>
@@ -304,7 +304,7 @@
                         <label>Giới thiệu bản thân:</label>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <textarea class="form-control break-custom"
+                        <textarea class="form-control"
                                   id="gioi_thieu">@if($data['nha_tuyen_dung']['gioi_thieu']){{$data['nha_tuyen_dung']['gioi_thieu']}}@endif</textarea>
                     </div>
                 </div>

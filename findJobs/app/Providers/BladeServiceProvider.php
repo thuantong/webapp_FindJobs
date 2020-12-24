@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\BangCap;
+use App\Models\ChucVu;
 use App\Models\DiaDiem;
 use App\Models\NganhNghe;
 use Illuminate\Support\Facades\View;
@@ -31,6 +33,11 @@ class BladeServiceProvider extends ServiceProvider
         View::share('dia_diem',$diaDiem);
         $nganhNghe = NganhNghe::all()->toArray();
         View::share('nganh_nghe',$nganhNghe);
+//        $bangCap = BangCap::all()->toArray();
+//        View::share('bang_cap',$bangCap);
+$chucVu = ChucVu::all()->toArray();
+        View::share('chuc_vu',$chucVu);
+
         Blade::directive('money_xu', function ($money) {
             return "<?php echo number_format($money, 0); ?>";
         });

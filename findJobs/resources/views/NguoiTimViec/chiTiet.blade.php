@@ -13,7 +13,7 @@
                              id="avatar-user">
 
                         <h4 class="mb-0">@if(\Illuminate\Support\Arr::exists($data,'chi_tiet_nguoi_tim_viec') == true && $data['chi_tiet_nguoi_tim_viec'] == 1){{ucwords($data['nguoi_tim_viec']['get_tai_khoan']['ho_ten'])}}@else{{Auth::user()->ho_ten}}@endif</h4>
-                        <p class="text-muted">@webdesigner</p>
+{{--                        <p class="text-muted">@webdesigner</p>--}}
 
                         {{--                            <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Follow--}}
                         {{--                            </button>--}}
@@ -101,10 +101,66 @@
                                 <i class="mdi mdi-face-profile mr-1"></i>{{__('Kinh nghiệm')}}
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#about-me-exp2" data-toggle="tab" aria-expanded="true"
+                               class="nav-link ml-0">
+                                <i class="mdi mdi-face-profile mr-1"></i>{{__('Hồ sơ')}}
+                            </a>
+                        </li>
                     </ul>
 
                     <div class="tab-content">
+                        <div class="tab-pane" id="about-me-exp2">
 
+                            <div class="row">
+{{--                                <div class="col-sm-12 col-md-12">--}}
+{{--                                    Tải ảnh CV mới lên:--}}
+{{--                                </div>--}}
+{{--                                <div class="col-sm-12 col-md-12">--}}
+{{--                                    <form class="row" action="{{route('nguoitimviec.uploadFile')}}" method="post" enctype="multipart/form-data">--}}
+{{--                                        @csrf--}}
+
+{{--                                        --}}{{--                                                @if($errors->any())--}}
+{{--                                        <div class="col-sm-12 col-md-12">--}}
+{{--                                            @error('file')--}}
+{{--                                            <div class="alert alert-danger">--}}
+{{--                                                {{$message}}--}}
+
+{{--                                            </div>--}}
+{{--                                            <h4></h4>--}}
+{{--                                            @enderror--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-sm-6 col-md-6">--}}
+{{--                                            <input type="file" name="file" id="file_pdf">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-sm-6 col-md-6">--}}
+{{--                                            <button type="submit" class="btn btn-primary">Tải lên</button>--}}
+{{--                                        </div>--}}
+{{--                                        --}}{{--                                                @endif--}}
+
+
+
+
+{{--                                    </form>--}}
+
+{{--                                </div>--}}
+                                @if($data['nguoi_tim_viec']['file_path'] != null)
+                                    <div class="col-sm-12 col-md-12">
+
+                                        {{--                                        <a href="{{route('nguoitimviec.viewPDF',array('file_name'=>$data['nguoi_tim_viec']['file_path']))}}" target="_blank">Xem file</a>--}}
+                                        {{--                                        <object data="@if($data['nguoi_tim_viec']['file_path'] != null){{URL::asset($data['nguoi_tim_viec']['file_path'])}}@endif" type="application/pdf">--}}
+                                        <iframe src="@if($data['nguoi_tim_viec']['file_path'] != null){{URL::asset($data['nguoi_tim_viec']['file_path'])}}@endif" style="width: calc(100%);height: 500px"></iframe>
+                                        <a href="@if($data['nguoi_tim_viec']['file_path'] != null){{URL::asset($data['nguoi_tim_viec']['file_path'])}}@endif" class="btn btn-primary waves-effect waves-light position-absolute" style="right: 0px"><i class="fa fa-arrows"></i></a>
+                                        {{--                                        </object>--}}
+
+                                        {{--                                        <dic  id="load-file-pdf">--}}
+
+                                        {{--                                        </dic>--}}
+                                    </div>
+                                @endif
+                            </div>
+
+                        </div>
                         <div class="tab-pane" id="about-me-exp">
 
                             <h5 class="mb-4 text-uppercase bg-light p-2"><i class="mdi mdi-briefcase mr-1"></i>
@@ -121,7 +177,7 @@
                                 @include('User.nguoiTimViec.htmlKinhNghiemLamViec')
                             </ul>
 
-                            <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i
+                            <h5 class="mb-3 mt-4 text-uppercase d-none bg-light p-2"><i
                                     class="mdi mdi-cards-variant mr-1"></i>
                                 {{__('Dự án')}}
                                 @if(\Illuminate\Support\Arr::exists($data,'chi_tiet_nguoi_tim_viec') == true && $data['chi_tiet_nguoi_tim_viec'] == 1)
@@ -131,7 +187,7 @@
                                 @endif
 
                             </h5>
-                            <div class="table-responsive">
+                            <div class="table-responsive d-none">
                                 <table class="table table-bordered mb-0 table-project" id="table-project">
                                     <thead class="thead-light">
                                     <tr>

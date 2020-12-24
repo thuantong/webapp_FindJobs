@@ -100,9 +100,11 @@ class CongTyController extends Controller
             if ($request->id == null){
                 $congTyNew = new CongTy();
             }else{
-                $congTyNew = CongTy::query()->find($request->id)->first();
+                $congTyNew = CongTy::query()->find($request->id);
             }
-
+            $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
+            $taiKhoan->avatar = $request->logo_cong_ty != null ? $request->logo_cong_ty : 'images/default-company-logo.jpg';
+            $taiKhoan->save();
             $congTyNew->name = $request->ten_cong_ty;
             $congTyNew->websites = $request->link_website;
             $congTyNew->email = $request->email_cong_ty;

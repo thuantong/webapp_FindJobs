@@ -8,6 +8,7 @@ Trạng thái:
 		+ 1 : Đã được duyệt
 		+ 2 : Bị từ chối (Kèm tin nhắn)
 		+ 3 : Đã chỉnh sửa
+4: đã tạm dừng
 - Duyệt tin :
 		+ 0 : Chờ duyệt
 		+ 1 : Đã được duyệt

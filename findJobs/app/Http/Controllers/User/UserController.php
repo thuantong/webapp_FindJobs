@@ -71,9 +71,12 @@ class UserController extends Controller
         $imageName = $nguoiTimViec->id.$request->name;
         $path = public_path('images/'.$imageName);
         file_put_contents($path, $image);
+        $taiKhoan = TaiKhoan::query()->find(Auth::user()->id);
+        $taiKhoan->avatar = 'images/'.$imageName;
+        $taiKhoan->save();
         $nguoiTimViec->avatar = 'images/'.$imageName;
         $nguoiTimViec->save();
-        Session::put('avatar',$nguoiTimViec->avatar);
+        Session::put('avatar',$taiKhoan->avatar);
         return response('images/'.$imageName);
 
     }

@@ -31,9 +31,8 @@
                 <div class="modal-body">
                     <p>- Người đăng tin(tức nhà tuyển dụng) phải có ảnh đại diện</p>
                     <p>- Bài tuyển dụng phải trình bày đầy đủ các thông tin cơ bản.</p>
-                    <p>- Bài tuyển dụng phải trình bày đầy đủ các thông tin cơ bản.</p>
                     <p>- Các mô tả bài tuyển dụng phải được mô tả rõ ràng, đặc biệt phải đúng với chuyên ngành của bài tuyển dụng</p>
-                    <p>Nếu không đủ các yêu cầu trên bài tuyển dụng sẽ bị từ chối!</p>
+                    <p>Nếu không đủ các yêu cầu trên, hoặc có điều gì đó bất thường trong bài tuyển dụng sẽ bị từ chối và nhắc nhở nội dung cho nhà tuyển dụng!</p>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -320,10 +319,10 @@
                 {{--console.log({{unserialize(''+e.luong+'')}})--}}
                 $('#review-modal').find('.gioi_tinh_tuyen').text(gioi_tinh);
                 $('#review-modal').find('.dia_diem,.iteam-click span:eq(3)').text(e.get_dia_diem.name);
-                $('#review-modal').find('.muc_luong,.iteam-click span:eq(2)').text(e.luong.join(' - ') + ' Triệu');
+                $('#review-modal').find('.muc_luong,.iteam-click span:eq(2)').text(e.luong_from+' - ' +e.luong_to+ ' Triệu');
                 // $('#review-modal').find('#nganh_nghe').text(e.get_kieu_lam_viec.name);
-                $('#review-modal').find('#yeu_cau_cong_viec').text(e.yeu_cau_cong_viec);
-                $('#review-modal').find('#quyen_loi_cong_viec').text(e.quyen_loi);
+                $('#review-modal').find('#yeu_cau_cong_viec').html(e.yeu_cau_cong_viec);
+                $('#review-modal').find('#quyen_loi_cong_viec').html(e.quyen_loi);
                 $('#review-modal').find('.iteam-click img').attr('src', '/' + e.get_cong_ty.logo);
                 // $('#review-modal').find('.iteam-click img').attr('src','/'+e.get_cong_ty.logo);
                 $('#review-modal').find('.cong_ty,.iteam-click span:eq(1)').text(e.get_cong_ty.name);

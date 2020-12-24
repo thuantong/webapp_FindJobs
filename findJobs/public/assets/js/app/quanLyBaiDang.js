@@ -40,7 +40,8 @@ const getDanhSach = () => {
             }
         },
         {
-            data: 'tieu_de'
+            data: 'tieu_de',
+            className:'text-capitalize'
         },
         {
             data: 'get_chuc_vu.name'
@@ -54,7 +55,8 @@ const getDanhSach = () => {
                 if (columns.han_bai_viet == null) {
                     return '<span class="text-warning">Bài viết chưa được xác nhận</span>'
                 }
-                return columns.han_bai_viet;
+                // return moment(columns.han_bai_viet,"YYYY-MM-DD");
+                return moment(columns.han_bai_viet).format("DD/MM/YYYY");
             }
         },
         {
@@ -65,6 +67,8 @@ const getDanhSach = () => {
                         return '<span class="text-success">Đang tuyển dụng</span>';
                     case '2':
                         return '<span class="text-danger">Đã bị từ chối</span>';
+                    case '4':
+                        return '<span class="text-danger">Đã tạm ngưng</span>';
                 }
                 return '<span class="text-warning">Chờ được duyệt</span>';
                 // return columns.status;

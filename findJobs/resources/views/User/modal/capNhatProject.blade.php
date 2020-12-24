@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row d-none">
                     <label class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-form-label text-sm-center text-md-right">{{ __('Trạng thái') }}</label>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">

@@ -201,6 +201,8 @@ Route::namespace('NguoiTimViec')->group(function (){
 
         Route::get('/nguoi-tim-viet/chi-tiet','NguoiTimViecControler@chiTiet')->name('chiTiet');
         Route::get('/nguoi-tim-viet/tim-kiem-nha-tuyen-dung','NguoiTimViecControler@timKiemNhaTuyenDung')->name('timKiemNhaTuyenDung');
+        Route::post('/nguoi-tim-viet/upload-file','NguoiTimViecControler@uploadFile')->name('uploadFile');
+        Route::get('/nguoi-tim-viet/view-file','NguoiTimViecControler@viewPDF')->name('viewPDF');
     });
 });
 
@@ -244,7 +246,11 @@ Route::namespace('Mail')->group(function (){
 Route::namespace('NhaTuyenDung')->group(function (){
     Route::name('nhatuyendung.')->group(function (){
         Route::get('/tim-kiem-ung-vien','NhaTuyenDungController@index')->name('index');
+        Route::get('/tim-kiem-ung-vien/chi-tiet','NhaTuyenDungController@chiTiet')->name('chiTiet');
         Route::get('/nha-tuyen-dung/chi-tiet','ChiTietNhaTuyenDungController@chiTietNhaTuyenDung')->name('chiTietNhaTuyenDung');
-
     });
+});
+
+Route::get('/xem-chuc-nang-nha-tuyen-dung',function (){
+   return view('review_nhatuyendung.index');
 });

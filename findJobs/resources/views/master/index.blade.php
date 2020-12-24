@@ -113,7 +113,7 @@
 {{--            </li>--}}
 
             <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle  waves-effect waves-light text-white" data-toggle="dropdown" href="#"
+                <a class="nav-link dropdown-toggle d-none waves-effect waves-light text-white" data-toggle="dropdown" href="#"
                    role="button" aria-haspopup="false" aria-expanded="false" id="goi-danh-sach-thong-bao">
                     <i class="icofont icofont-bell-alt noti-icon"></i>
                     <span class="badge badge-danger rounded-circle noti-icon-badge">0</span>
@@ -277,6 +277,11 @@
                     </a>
                 </li>
                     @else
+                    <li>
+                        <a href="{{URL::asset('/xem-chuc-nang-nha-tuyen-dung')}}" class="nav-link text-white">
+                            Dành cho nhà tuyển dụng
+                        </a>
+                    </li>
                     <li>
                         <a href="{{URL::asset('/dang-nhap')}}" class="nav-link text-white">
                             Đăng nhập
@@ -493,7 +498,42 @@
                                     <div class="col-sm-2 col-md-2  center-element">
 {{--                                        <button type="submit" class="btn btn-warning waves-effect waves-light text-left" id="nang-cao-button-master-search">ff</button>--}}
                                         <button type="button" class="btn btn-white waves-effect waves-light text-left" id="button-master-search"><i class="fa fa-search"></i></button>
+                                        <a class="nav-link center-element fillter" id="fillter-new-query"  data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                                            <span class="text-white"><i class="fa fa-filter"></i></span>
+                                        </a>
+                                    </div>
+                                    <div class="collapse bg-primary" id="collapseExample2" style="z-index: 2;width: calc(70%)">
+                                        <div class="card-box m-1 p-1 bg-primary border-primary" style="border-radius: 0px">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-6 ">
+                                                    <div class="row pl-1 pr-1">
+                                                        <label class="col-sm-12 col-md-12">Mức lương</label>
+                                                        <select class="form-control col-sm-12 col-md-12" name="muc_luong">
+                                                            <option selected value="">Tất cả mức lương</option>
+                                                            <option value="1" @if(Request::exists('muc_luong') && Request::get('muc_luong') != "" && Request::get('muc_luong') == 1){{'selected'}}@endif>Từ 2 triệu</option>
+                                                            <option value="2" @if(Request::exists('muc_luong') && Request::get('muc_luong') != "" && Request::get('muc_luong') == 2){{'selected'}}@endif>Từ 5 triệu</option>
+                                                            <option value="3" @if(Request::exists('muc_luong') && Request::get('muc_luong') != "" && Request::get('muc_luong') == 3){{'selected'}}@endif>Từ 10 triệu</option>
+                                                            <option value="4" @if(Request::exists('muc_luong') && Request::get('muc_luong') != "" && Request::get('muc_luong') == 4){{'selected'}}@endif>Từ 20 triệu</option>
 
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 ">
+                                                    <div class="row pl-1 pr-1">
+                                                        <label class="col-sm-12 col-md-12">Chức vụ</label>
+                                                        <select class="form-control col-sm-12 col-md-12" name="chuc_vu">
+                                                            <option selected value="">Tất cả mức lương</option>
+                                                            @foreach($chuc_vu as $row)
+                                                                <option value="{{$row['id']}}">{{$row['name']}}</option>
+
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -518,13 +558,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        Tống Minh Thuận - 15020551
+
+                        <p>Tên: Tống Minh Thuận @email: tongminhthuan0405@gmail.com</p>
+{{--                        <p>MSSV: 15xxx551</p>--}}
+{{--                        <p>Khoán luận tốt nghiệp 2020 - 2021</p>--}}
+{{--                        <p>Website tìm kiếm việc làm</p>--}}
                     </div>
                     <div class="col-md-6">
                         <div class="text-md-right footer-links d-none d-sm-block">
-                            <a href="javascript:void(0);">About Us</a>
-                            <a href="javascript:void(0);">Help</a>
-                            <a href="javascript:void(0);">Contact Us</a>
+                            <a href="javascript:void(0);">Thông tin</a>
+
                         </div>
                     </div>
                 </div>

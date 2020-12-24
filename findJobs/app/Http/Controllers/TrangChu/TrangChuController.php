@@ -123,6 +123,9 @@ class TrangChuController extends Controller
                         [
                             'getTaiKhoan' => function ($q) {
                                 $q->select('id', 'ho_ten');
+                            },
+                            'getCongTy'=>function($q){
+                            $q->select('id','logo','name');
                             }
                         ]
                     );
@@ -160,6 +163,23 @@ class TrangChuController extends Controller
             if ($request->exists('chuc_vu') && $request->get('chuc_vu') != "") {
                 $query->where('chuc_vu_id',$request->get('chuc_vu'));
             }
+            if ($request->exists('muc_luong') && $request->get('muc_luong') != "") {
+                switch ($request->get('muc_luong')){
+                    case 1:
+                        $muc_luong_id = 2;
+                        break;
+                    case 2:
+                        $muc_luong_id = 5;
+                        break;
+                    case 3:
+                        $muc_luong_id = 10;
+                        break;
+                    case 4:
+                        $muc_luong_id = 20;
+                        break;
+                }
+                $query->where('luong_from','<=',$muc_luong_id);
+            }
             if ($request->exists('kieu_lam_viec') && $request->get('kieu_lam_viec') != "") {
                 $query->where('kieu_lam_viec_id',$request->get('kieu_lam_viec'));
             }
@@ -179,9 +199,7 @@ class TrangChuController extends Controller
                 $colect = $colect->where('get_nganh_nghe','!=',array());
             }
             $colect = $colect->values()->toArray();
-//            $trangThaiDaDuyet =
-//            $data['bai_tuyen_dung'] =
-//dd($colect);
+//            dd($colect);
             $perpage = 10;
             $colection = collect($colect);
             $data['bai_tuyen_dung'] = new LengthAwarePaginator(

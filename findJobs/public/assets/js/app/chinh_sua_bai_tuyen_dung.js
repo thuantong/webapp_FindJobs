@@ -119,11 +119,12 @@ $(document).on('click','#chinh-sua-bai-tuyen-dung-modal #save',function () {
             quyen_loi_cong_viec: __parent.find('.quyen_loi_cong_viec_update').val(),
             dia_chi_cong_viec: __parent.find('.dia_chi_cong_viec_update').val(),
             yeu_cau_ho_so :array_ho_so_yey_cau,
+            so_ngay_ton_tai: __parent.find('#so_ngay_ton_tai_update').val()
         };
         // console.log(data)
         // return;
         sendAjaxNoFunc('post', '/bai-viet/chinh-sua/luu-tin', data, __this.attr('id')).done(e => {
-            // console.log(e)
+            console.log(e)
             getHtmlResponse(e);
             if (e.status == 405) {
                 alertConfirm(e).then(result => {

@@ -69,13 +69,14 @@ $(document).on('click', '.cap-nhat-project', function () {
     let name = $(this).parents('tr').find('td').eq(1).text();
     let fromDate = $(this).parents('tr').find('td').eq(2).text();
     let toDate = $(this).parents('tr').find('td').eq(3).text();
-    let status = $(this).parents('tr').find('td').eq(4).data('id');
-    let links = $(this).parents('tr').find('td').eq(5).text();
+    // let status = $(this).parents('tr').find('td').eq(4).data('id');
+    let links = $(this).parents('tr').find('td').eq(4).text();
+    console.log(links)
     $('#modal-cap-nhat-project .modal-body').find('input').eq(0).val(indexs);
     $('#modal-cap-nhat-project .modal-body').find('input').eq(1).val((name == 'NULL') ? '' : name);
     $('#modal-cap-nhat-project .modal-body').find('input').eq(2).val((fromDate == 'NULL') ? '' : fromDate);
     $('#modal-cap-nhat-project .modal-body').find('input').eq(3).val((toDate == 'NULL') ? '' : toDate);
-    $('#modal-cap-nhat-project .modal-body').find('select').val((status == '') ? '' : status).trigger('change.select2');
+    // $('#modal-cap-nhat-project .modal-body').find('select').val((status == '') ? '' : status).trigger('change.select2');
     $('#modal-cap-nhat-project .modal-body').find('textarea').val((links == 'NULL') ? '' : links);
 
     $('#modal-cap-nhat-project').modal('show');
@@ -99,8 +100,8 @@ $(document).on('click', '#modal-cap-nhat-project .modal-footer button:eq(1)', fu
     let name = _parent.find('input').eq(1).val();
     let fromDate = _parent.find('input').eq(2).val();
     let toDate = _parent.find('input').eq(3).val();
-    let status = _parent.find('select').val();
-    let status_text = _parent.find('select').find('option:checked').text();
+    // let status = _parent.find('select').val();
+    // let status_text = _parent.find('select').find('option:checked').text();
     let links = _parent.find('textarea').val();
 
     let errorCount = 0;
@@ -124,7 +125,7 @@ $(document).on('click', '#modal-cap-nhat-project .modal-footer button:eq(1)', fu
                     toDate : toDate,
                     status : {
                         class: getHtmlStatusProject(status),
-                        text : status_text,
+                        // text : status_text,
                         id: status
                     },
                     links : links,
@@ -144,8 +145,8 @@ $(document).on('click', '#modal-cap-nhat-project .modal-footer button:eq(1)', fu
                 $('.table-project tbody').find('tr').eq(parseInt(indexs) - 1).find('td').eq(1).text((name == '') ? 'NULL' : name);
                 $('.table-project tbody').find('tr').eq(parseInt(indexs) - 1).find('td').eq(2).text((fromDate == '') ? 'NULL' : fromDate);
                 $('.table-project tbody').find('tr').eq(parseInt(indexs) - 1).find('td').eq(3).text((toDate == '') ? 'NULL' : toDate);
-                $('.table-project tbody').find('tr').eq(parseInt(indexs) - 1).find('td').eq(4).data('id', status).html('<span class="' + getHtmlStatusProject(status) + '">' + status_text + '</span>');
-                $('.table-project tbody').find('tr').eq(parseInt(indexs) - 1).find('td').eq(5).html('<a href="' + ((links == '') ? 'NULL' : links) + '" target="_blank">' + ((links == '') ? 'NULL' : links) + '</a>');
+                // $('.table-project tbody').find('tr').eq(parseInt(indexs) - 1).find('td').eq(4).data('id', status).html('<span class="' + getHtmlStatusProject(status) + '">' + status_text + '</span>');
+                $('.table-project tbody').find('tr').eq(parseInt(indexs) - 1).find('td').eq(4).html('<a href="' + ((links == '') ? 'NULL' : links) + '" target="_blank">' + ((links == '') ? 'NULL' : links) + '</a>');
                 break;
         }
 

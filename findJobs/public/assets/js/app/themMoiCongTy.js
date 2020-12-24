@@ -261,7 +261,7 @@ $(document).on('click', 'button#save-cong-ty', function () {
         // console.log(dataSend);
         // return;
         sendAjaxNoFunc('post', '/danh-sach-cong-ty/tao-moi', dataSend, __this.attr('id')).done(res => {
-            // console.log('them moi',res);
+            console.log('them moi',res);
             getHtmlResponse(res);
             if (res.status == 200) {
                 if (__this.parents('.modal').length > 0){

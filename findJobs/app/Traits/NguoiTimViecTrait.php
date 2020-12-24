@@ -182,6 +182,7 @@ trait NguoiTimViecTrait
             $taiKhoan->phone = $request->so_dien_thoai;
             $taiKhoan->email = $request->dia_chi_email;
             $taiKhoan->ho_ten = $request->ho_ten;
+//            $taiKhoan->avatar = $request->ho_ten;
             $taiKhoan->save();
 
             $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
@@ -204,6 +205,7 @@ trait NguoiTimViecTrait
             $nguoiTimViec->social = serialize($request->all_social);
             $nguoiTimViec->exp_lam_viec = serialize($request->all_exp);
             $nguoiTimViec->projects = serialize($request->all_projects);
+            $nguoiTimViec->status_job = $request->status_jobs;
             $nguoiTimViec->ngay_sinh = Carbon::createFromFormat('d/m/Y',$request->ngay_sinh)->format('Y-m-d');
 
             $nguoiTimViec->save();

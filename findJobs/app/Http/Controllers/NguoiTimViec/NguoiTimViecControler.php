@@ -9,10 +9,15 @@ use App\Models\KieuLamViec;
 use App\Models\NganhNghe;
 use App\Models\NguoiTimViec;
 use App\Models\NhaTuyenDung;
+use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class NguoiTimViecControler extends Controller
 {
@@ -20,6 +25,7 @@ class NguoiTimViecControler extends Controller
     {
         $this->middleware(['auth']);
     }
+
 
     public function chiTiet(Request $request)
     {
@@ -117,7 +123,7 @@ class NguoiTimViecControler extends Controller
 //            dd($nhaTuyenDung);
             if (count($nhaTuyenDung) > 0) {
                 foreach ($nhaTuyenDung as $row) {
-                    if ($row['get_cong_ty'] != null || ($row['get_cong_ty'] != null &&  array_key_exists('get_nganh_nghe',$row['get_cong_ty']) && count($row['get_cong_ty']['get_nganh_nghe'])) > 0) {
+                    if ($row['get_cong_ty'] != null || ($row['get_cong_ty'] != null && array_key_exists('get_nganh_nghe', $row['get_cong_ty']) && count($row['get_cong_ty']['get_nganh_nghe'])) > 0) {
 //                    $data['nha_tuyen_dung'] = array();
 //                } else {
                         $data['nha_tuyen_dung'][$index] = $row;
@@ -125,7 +131,7 @@ class NguoiTimViecControler extends Controller
                     }
 
                 }
-                if (array_key_exists('nha_tuyen_dung',$data) == false){
+                if (array_key_exists('nha_tuyen_dung', $data) == false) {
                     $data['nha_tuyen_dung'] = array();
                 }
 //                dd($data['nha_tuyen_dung']);
@@ -143,10 +149,9 @@ class NguoiTimViecControler extends Controller
 //                } else {
                         $data['nha_tuyen_dung'][$index] = $row;
                         $index++;
-                    }
-                    ;
+                    };
                 }
-                if (array_key_exists('nha_tuyen_dung',$data) == false){
+                if (array_key_exists('nha_tuyen_dung', $data) == false) {
                     $data['nha_tuyen_dung'] = array();
                 }
             } else {
@@ -166,7 +171,7 @@ class NguoiTimViecControler extends Controller
 
                 }
 //                dd(array_key_exists('nha_tuyen_dung',$data));
-                if (array_key_exists('nha_tuyen_dung',$data) == false){
+                if (array_key_exists('nha_tuyen_dung', $data) == false) {
                     $data['nha_tuyen_dung'] = array();
                 }
             } else {
@@ -211,4 +216,56 @@ class NguoiTimViecControler extends Controller
 //        $items = $items instanceof Collection ? $items : Collection::make($items);
 //        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
 //    }
+    public function uploadFile(Request $request)
+    {
+//        dd($request->file('file'));
+//        $allowed = array('pdf','docx','doc');
+//        $ext = pathinfo($request->file('file'), PATHINFO_EXTENSION);
+//        if (!in_array($ext, $allowed)) {
+//            return redirect()->back()->withErrors(['error'=>'File không đúng định dạng, phải là file pdf hoặc file doc! Mời bạn tải lại']);
+//        }
+        $request->validate([
+            'file' => 'required|mimes:pdf,docx|max:2048',
+        ],[
+            'file.required'=>'Chưa chọn file',
+            'file.mimes'=>'File không đúng định dạng, File phải có định dạng kiểu: :values',
+            'file.max'=>'File không được quá 2mb',
+        ]);
+//        Validator::make($request->all(), [
+//            'file' => ['required|mimes:pdf,docx|max:2048'],
+//
+//        ],array(
+//            'file.required'=>'Chưa chọn file',
+////            'file.mimes'=>'Định dạng file không đúng, file phải đúng định dạng: :values',
+//            'file.max'=>'File không được quá 2mb',
+//        ))->validate();
+//        $fileName = time().'.'.$request->post('file_pdf')->extension();
+        $fileName = time().'.'.$request->file('file')->extension();
+//        dd($fileName);
+        $request->file('file')->move(public_path('uploads'),$fileName);
+//        $path = ;
+
+//        file_put_contents($path, $fileName);
+//        $request->post('file_pdf')->move(public_path('uploads'), $fileName);
+        $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
+        $nguoiTimViec->file_path = 'uploads/'.$fileName;
+        $nguoiTimViec->save();
+//        return response()->file(URL::asset($nguoiTimViec->file_path));
+        return redirect()->back();
+//        dd($request);
+//        Validator::make($request->all(),['file_pdf'=>"required|string|mimes:pdf,zip"])->validate();
+//        $request->validate([
+//            'file_pdf' => 'required|mimes:csv,txt,xlx,xls|max:2048'
+//        ]);
+//dd('đấ');
+    }
+    public function viewPDF(Request $request){
+        $filename = 'Pham-Thi-Nga-Apply-giaovie1nquannhiem.pdf';
+        $path = storage_path($filename);
+        dd($path);
+        return Response::make(file_get_contents($path), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$filename.'"'
+        ]);
+    }
 }

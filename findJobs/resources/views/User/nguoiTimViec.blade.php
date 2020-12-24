@@ -104,8 +104,8 @@
                                  src="@if($data['nguoi_tim_viec']['avatar'] != null){{URL::asset($data['nguoi_tim_viec']['avatar'])}}@elseif($data['nguoi_tim_viec']['avatar'] == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
                                  id="avatar-user">
 
-                            <h4 class="mb-0">{{Auth::user()->ho_ten}}</h4>
-                            <p class="text-muted">@webdesigner</p>
+                            <h4 class="mb-0 mt-1 text-capitalize">{{Auth::user()->ho_ten}}</h4>
+{{--                            <p class="text-muted">@webdesigner</p>--}}
 
                             {{--                            <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Follow--}}
                             {{--                            </button>--}}
@@ -174,10 +174,70 @@
                                     <i class="mdi mdi-face-profile mr-1"></i>{{__('Kinh nghiệm')}}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="#about-me-exp2" data-toggle="tab" aria-expanded="true"
+                                   class="nav-link ml-0">
+                                    <i class="mdi mdi-face-profile mr-1"></i>{{__('Hồ sơ')}}
+                                </a>
+                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="#about-me-exp" data-toggle="tab" aria-expanded="true"--}}
+{{--                                   class="nav-link ml-0">--}}
+{{--                                    <i class="mdi mdi-face-profile mr-1"></i>{{__('Kinh nghiệm')}}--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                         </ul>
 
                         <div class="tab-content">
+                            <div class="tab-pane" id="about-me-exp2">
 
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        Tải ảnh CV mới lên:
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <form class="row" action="{{route('nguoitimviec.uploadFile')}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+
+{{--                                                @if($errors->any())--}}
+                                            <div class="col-sm-12 col-md-12">
+                                                @error('file')
+                                                <div class="alert alert-danger">
+                                                    {{$message}}
+
+                                                </div>
+                                                <h4></h4>
+                                                @enderror
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <input type="file" name="file" id="file_pdf">
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <button type="submit" class="btn btn-primary">Tải lên</button>
+                                            </div>
+                                            {{--                                                @endif--}}
+
+
+
+
+                                        </form>
+
+                                    </div>
+                                    @if($data['nguoi_tim_viec']['file_path'] != null)
+                                    <div class="col-sm-12 col-md-12">
+{{--                                        <a href="{{route('nguoitimviec.viewPDF',array('file_name'=>$data['nguoi_tim_viec']['file_path']))}}" target="_blank">Xem file</a>--}}
+{{--                                        <object data="@if($data['nguoi_tim_viec']['file_path'] != null){{URL::asset($data['nguoi_tim_viec']['file_path'])}}@endif" type="application/pdf">--}}
+                                            <iframe src="@if($data['nguoi_tim_viec']['file_path'] != null){{URL::asset($data['nguoi_tim_viec']['file_path'])}}@endif" style="width: calc(100%);height: 500px"></iframe>
+{{--                                        </object>--}}
+
+{{--                                        <dic  id="load-file-pdf">--}}
+
+{{--                                        </dic>--}}
+                                    </div>
+                                        @endif
+                                </div>
+
+                            </div>
                             <div class="tab-pane" id="about-me-exp">
 
                                 <h5 class="mb-4 text-uppercase bg-light p-2"><i class="mdi mdi-briefcase mr-1"></i>
@@ -190,14 +250,14 @@
                                     @include('User.nguoiTimViec.htmlKinhNghiemLamViec')
                                 </ul>
 
-                                <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i
+                                <h5 class="mb-3 mt-4 text-uppercase d-none bg-light p-2"><i
                                         class="mdi mdi-cards-variant mr-1"></i>
-                                    {{__('Dự án')}}
+                                    {{__('Dự án đã thực hiện')}}
                                     <button class="btn btn-sm btn-pink pt-0 pb-0 pr-1 pl-1 ml-1"
                                             id="add-new-project">{{__('+')}}</button>
 
                                 </h5>
-                                <div class="table-responsive">
+                                <div class="table-responsive d-none">
                                     <table class="table table-bordered mb-0 table-project" id="table-project">
                                         <thead class="thead-light">
                                         <tr>
@@ -205,8 +265,8 @@
                                             <th>{{__('Tên dự án')}}</th>
                                             <th>{{__('Thời gian bắt đầu')}}</th>
                                             <th>{{__('Ngày hoàn thành')}}</th>
-                                            <th>{{__('Trạng thái')}}</th>
-                                            <th>{{__('Liên kết')}}</th>
+                                            <th class="d-none">{{__('Trạng thái')}}</th>
+                                            <th>{{__('Chức vụ')}}</th>
                                             <th>{{__('Chức năng')}}</th>
                                         </tr>
                                         </thead>
@@ -420,7 +480,18 @@
                                             {{--                                            </div>--}}
                                         </div>
                                     </div>
-
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+                                            <label>Trạng thái tìm việc</label>
+                                        </div>
+{{--                                        @dd($data['nguoi_tim_viec'])--}}
+                                        <div class="col-sm-12 col-md-8">
+                                            <select class="form-control" id="status-jobs">
+                                                <option value="1" @if(isset($data['nguoi_tim_viec']) && $data['nguoi_tim_viec']['status_job'] != null && $data['nguoi_tim_viec']['status_job'] == 1){{'selected'}}@endif>Tôi đã sẵn sàng tìm việc</option>
+                                                <option value="2" @if(isset($data['nguoi_tim_viec']) && $data['nguoi_tim_viec']['status_job'] != null && $data['nguoi_tim_viec']['status_job'] == 2){{'selected'}}@endif>Tôi chưa sẵn sàng tìm việc mới</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth mr-1"></i>
                                         {{__('Mạng xã hội:')}}</h5>
                                     <div class="row">
@@ -555,10 +626,17 @@
     <script type="text/javascript" src="{{URL::asset('assets\js\app\nguoiTimViec.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.js"></script>
 
     <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets\js\app\doi_mat_khau.js')}}"></script>
     <script type="text/javascript">
+        {{--let filePDF = '@if($data['nguoi_tim_viec']['file_path'] != null){{$data['nguoi_tim_viec']['file_path']}}@endif';--}}
+        {{--console.log(filePDF)--}}
+        {{--PDFObject.embed(filePDF,$('#load-file-pdf'))--}}
+        // $('#load-file-pdf').attr('src',filePDF)
+
         var $uploadCrop;
 
         function readFile(input) {
@@ -591,7 +669,6 @@
         });
 
         $(function () {
-
             $('body').addClass('enlarged');
 
             $('#avatar-user').on('click', function () {
@@ -659,17 +736,17 @@
         //     getResponseAjax('post', '/doi-mat-khau', arraySend, arrayCustom);
         // });
 
-        var fixedScroll = $('#scroll-fixed').offset();
-        const headerTop = fixedScroll.top;
-        $(window).on('scroll', function () {
-
-            // console.log(fixedScroll.top, window.pageYOffset + 70);
-            if (window.pageYOffset + 70 >= headerTop) {
-                $('#scroll-fixed').addClass('scroll-fixed-top');
-            } else {
-                $('#scroll-fixed').removeClass('scroll-fixed-top');
-            }
-        });
+        // var fixedScroll = $('#scroll-fixed').offset();
+        // const headerTop = fixedScroll.top;
+        // $(window).on('scroll', function () {
+        //
+        //     // console.log(fixedScroll.top, window.pageYOffset + 70);
+        //     if (window.pageYOffset + 70 >= headerTop) {
+        //         $('#scroll-fixed').addClass('scroll-fixed-top');
+        //     } else {
+        //         $('#scroll-fixed').removeClass('scroll-fixed-top');
+        //     }
+        // });
         // $(document).on('click', '.call-save-profile', function () {
         //     $('.save-profile,.cancel-profile').removeClass('d-none').fadeIn();
         //     $('.call-save-profile').addClass('d-none');

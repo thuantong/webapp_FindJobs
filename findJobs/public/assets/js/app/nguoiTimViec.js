@@ -195,6 +195,7 @@ $(document).on('click', '.save-profile', function () {
                 all_social: all_social,
                 all_exp: all_exp,
                 all_projects: all_projects,
+                status_jobs: $('#status-jobs').find('option:checked').val(),
             },
         };
         // console.log('data ngtk', ajax.data);

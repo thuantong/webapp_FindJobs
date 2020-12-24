@@ -89,7 +89,7 @@
                     <li>
                         <a href="{{route('quanlybaidang.index')}}" class="waves-effect">
                             <i class="fa fa-list-alt"></i>
-                            <span>{{__('Quản lý bài đăng')}}</span>
+                            <span>{{__('Quản lý bài đăng').'('.\App\Models\TaiKhoan::query()->find(\Illuminate\Support\Facades\Auth::user()->id)->getNhaTuyenDung->getBaiViet()->count().")"}}</span>
                         </a>
                     </li>
 
@@ -97,6 +97,12 @@
                         <a href="{{route('quanlyungvien.index')}}" class="waves-effect">
                             <i class="fa fa-users"></i>
                             <span>{{__('Quản lý ứng viên')}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('nhatuyendung.index')}}" class="waves-effect">
+                            <i class="fa fa-users"></i>
+                            <span>{{__('Tìm ứng viên')}}</span>
                         </a>
                     </li>
                 @endif
@@ -130,7 +136,7 @@
 
                     <li>
                         <a href="{{route('admin.duyetbaiviet')}}" class="waves-effect">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-check-square-o"></i>
                             <span>{{__('Duyệt bài viết')}}</span>
                         </a>
                     </li>
@@ -160,7 +166,7 @@
                     </li>
                     <li>
                         <a href="{{route('thecao.index')}}" class="waves-effect">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-credit-card"></i>
                             <span>{{__('Thẻ nạp')}}</span>
                         </a>
                     </li>

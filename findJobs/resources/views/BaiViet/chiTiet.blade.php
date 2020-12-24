@@ -36,7 +36,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="card-box  p-1 mb-1" >
+            <div class="card-box  p-1 mb-1">
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                         <h4 class="tieu_de p-1 m-0 text-center bg-light text-uppercase"
@@ -132,7 +132,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-12 text-left">
 
-                                <button class="btn-sm btn btn-default text-primary p-0">[Xem chi tiết]</button>
+                                <a href="{{route('nhatuyendung.chiTietNhaTuyenDung',['nha_tuyen_dung'=>$data['get_nha_tuyen_dung']['id'] ])}}" class="btn-sm btn btn-default text-primary p-0">[Xem chi tiết]</a>
                             </div>
 
                         </div>
@@ -322,6 +322,50 @@
                                                 @endif
                                             </div>
                                         </div>
+{{--<iframe src="https://careerbuilder.vn/vi/employers/popup/resumeinfo/35A4E900/35A4E900/secretary-personal-assistant-to-director-manager/365C7913.html?"></iframe>--}}
+                                        @if($data['yeu_cau_ho_so'] != null)
+                                            @if(count(unserialize($data['yeu_cau_ho_so'])) != 0)
+                                        <div class="form-group row">
+                                            <label
+                                                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-form-label text-left">Hồ
+                                                sơ yêu cầu:</label>
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 kinh_nghiem"
+                                                 id="ho_so_yeu_cau">
+
+
+                                                    @foreach(unserialize($data['yeu_cau_ho_so']) as $row)
+                                                        @switch($row)
+                                                            @case(1)
+                                                            {{'Tiếng Anh,'}}
+                                                            @break
+                                                            @case(2)
+                                                            {{'Tiếng Việt,'}}
+                                                            @break
+                                                            @case(3)
+                                                            {{'Tiếng Pháp,'}}
+                                                            @break
+                                                            @case(4)
+                                                            {{'Tiếng Trung,'}}
+                                                            @break
+                                                            @case(5)
+                                                            {{'Tiếng Nhật,'}}
+                                                            @break
+                                                            @case(6)
+                                                            {{'Tiếng Hàn Quốc,'}}
+                                                            @break
+
+                                                        @endswitch
+                                                    @endforeach
+
+
+
+                                                {{--                                                @if($data['get_kinh_nghiem'] != null)--}}
+                                                {{--                                                    {{$data['get_kinh_nghiem']['name']}}--}}
+                                                {{--                                                @endif--}}
+                                            </div>
+                                        </div>
+                                            @endif
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -332,15 +376,19 @@
                             <div class="w-100" id="noi-dung-right-side" style="height: 50px">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                        <h4 class="tieu_de bg-light p-1 m-0 text-center">Việc làm gợi ý<a class="float-right" href="{{route('trangchu.index',array('kieu_lam_viec'=>$data['kieu_lam_viec_id']))}}">[Xem thêm]</a></h4>
+                                        <h4 class="tieu_de bg-light p-1 m-0 text-center">Việc làm gợi ý<a
+                                                class="float-right"
+                                                href="{{route('trangchu.index',array('kieu_lam_viec'=>$data['kieu_lam_viec_id']))}}">[Xem
+                                                thêm]</a></h4>
 
                                     </div>
                                 </div>
                                 <div class="row">
                                     @if($data['bai_tuyen_dung']->count() != 0)
-{{--                                        @dd($data['bai_tuyen_dung'][0]['get_cong_ty']['cong_ty_logo'])--}}
+                                        {{--                                        @dd($data['bai_tuyen_dung'][0]['get_cong_ty']['cong_ty_logo'])--}}
                                         @foreach($data['bai_tuyen_dung'] as $row)
-                                            <a class="col-sm-12 col-md-12 ribbon-box iteam-click" href="{{route('baiviet.getThongTinBaiViet',[$row['id'],'chitiet'=>1])}}">
+                                            <a class="col-sm-12 col-md-12 ribbon-box iteam-click"
+                                               href="{{route('baiviet.getThongTinBaiViet',[$row['id'],'chitiet'=>1])}}">
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <img src="{{URL::asset($row['getCongTy']->cong_ty_logo)}}"
@@ -353,7 +401,8 @@
                                                             </h5>
                                                         </div>
                                                         <div class="row">
-                                                            <small class="col-sm-12 col-md-12 overflow-hidden text-dark text-uppercase">
+                                                            <small
+                                                                class="col-sm-12 col-md-12 overflow-hidden text-dark text-uppercase">
                                                                 {{$row['getCongTy']->cong_ty_name}}
                                                             </small>
                                                         </div>
@@ -362,23 +411,27 @@
                                                                 <span class="icofont icofont-money mr-1">
                                                                     {{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}
                                                                 </span>
-{{--                                                                @if(Auth::user() != null){{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}@else <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a> @endif--}}
+                                                                {{--                                                                @if(Auth::user() != null){{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}@else <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a> @endif--}}
                                                             </small>
                                                         </div>
                                                         <div class="row">
                                                             <small class="col-sm-12 col-md-12">
-                                                                <span class="icofont icofont-location-pin mr-1"></span>{{$row['getDiaDiem']->dia_diem}}
+                                                                <span
+                                                                    class="icofont icofont-location-pin mr-1"></span>{{$row['getDiaDiem']->dia_diem}}
                                                             </small>
                                                         </div>
                                                         <div class="row">
                                                             <small class="col-sm-12 col-md-12">
-                                                                <span class="fa fa-calendar-plus-o mr-1"></span>{{\Illuminate\Support\Carbon::parse($row['han_tuyen'])->format('d/m/Y')}}
+                                                                <span
+                                                                    class="fa fa-calendar-plus-o mr-1"></span>{{\Illuminate\Support\Carbon::parse($row['han_tuyen'])->format('d/m/Y')}}
                                                             </small>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 @if(intval($row['isHot']) == 1)
-                                                    <div class="ribbon-two ribbon-two-danger floats-right"><span class="right-custom" style="top: 7px;left: -14px;">Hot</span>
+                                                    <div class="ribbon-two ribbon-two-danger floats-right"><span
+                                                            class="right-custom"
+                                                            style="top: 7px;left: -14px;">Hot</span>
                                                     </div>
                                                 @endif
                                             </a>
@@ -550,26 +603,26 @@
         </div>
     </div>
 
-{{--    <div class="row">--}}
-{{--        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
-{{--            <div class="card-box  p-1 mb-1">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-sm-12 col-md-12">--}}
-{{--                        <h5 class="bg-light text-center p-1">{{__('Việc làm tương tự')}}</h5>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row" style="margin-left: 0;margin-right: 0">--}}
-{{--                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-light">--}}
-{{--                        --}}{{--                        <div class="row" id="viec-lam-tuong-tu-render">--}}
-{{--                        <div class="row" id="container-items">--}}
-{{--                            @include('BaiViet.chiTiet.baiVietLienQuan')--}}
+    {{--    <div class="row">--}}
+    {{--        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">--}}
+    {{--            <div class="card-box  p-1 mb-1">--}}
+    {{--                <div class="row">--}}
+    {{--                    <div class="col-sm-12 col-md-12">--}}
+    {{--                        <h5 class="bg-light text-center p-1">{{__('Việc làm tương tự')}}</h5>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <div class="row" style="margin-left: 0;margin-right: 0">--}}
+    {{--                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-light">--}}
+    {{--                        --}}{{--                        <div class="row" id="viec-lam-tuong-tu-render">--}}
+    {{--                        <div class="row" id="container-items">--}}
+    {{--                            @include('BaiViet.chiTiet.baiVietLienQuan')--}}
 
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
     @if(intval(Session::get('loai_tai_khoan')) == 1)
 
         @include('NopDon.NopDonModal.index')

@@ -342,7 +342,7 @@
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                         <div class="row">
-                                                            <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}"><span class="icofont icofont-money"></span>{{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}}}</span></div>
+                                                            <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}"><span class="icofont icofont-money"></span>{{$row['luong_from']}}{{' - '}}{{$row['luong_to']}}{{' Triệu'}}</span></div>
                                                             <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{$row['get_dia_diem']['name']}}"><span class="icofont icofont-location-pin"></span>{{$row['get_dia_diem']['name']}}</span></div>
                                                             <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{$row['han_tuyen']}}"><span class="fa fa-calendar-plus-o"></span>{{$row['han_tuyen']}}</span></div>
                                                             {{--                            <div class="col-sm-4 col-md-4 col-xl-4 text"><span title="{{$row['han_tuyen']}}">{{$row['han_tuyen']}}</span></div>--}}
