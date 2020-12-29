@@ -34,7 +34,9 @@
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
             <div class="card overflow-auto-scroll">
+                <a href="/" class="position-absolute mr-1" style="right: 0">Xem tất cả</a>
                 <div class="card-body" id="container-items">
+
                     @include('TrangChu.items')
                     {{--                    <div class="processing-input text-center">--}}
                     {{--                        <button class="btn btn-white" type="button" disabled="">--}}
@@ -222,10 +224,10 @@
                                             id="trang-chu-like-post">
                                         <i class="icofont icofont-thumbs-up">Lưu bài</i>
                                     </button>
-                                    <button class="btn btn-outline-info"
-                                            title="Chat với nhà tuyển dụng">
-                                        <i class="icofont icofont-ui-text-loading "></i> Chat
-                                    </button>
+{{--                                    <button class="btn btn-outline-info"--}}
+{{--                                            title="Chat với nhà tuyển dụng">--}}
+{{--                                        <i class="icofont icofont-ui-text-loading "></i> Chat--}}
+{{--                                    </button>--}}
 
 
                                     {{--                                <div class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning @endif waves-effect position-relative" @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) id="call-modal-nop-don" @endif><i class="fa fa-send">@if(in_array($data['id'],$data['don_xin_viec']['data'])){{' Đã ứng tuyển'}}@else{{' Nộp đơn'}}@endif</i>--}}

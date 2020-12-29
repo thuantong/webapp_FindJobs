@@ -17,7 +17,7 @@ class CreateNapTheTable extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->smallInteger('status');
-            $table->bigInteger('loai_the_id')->nullable();
+            $table->bigInteger('loai_the_id')->unsigned()->nullable();
 //            $table->timestamps();
         });
     }

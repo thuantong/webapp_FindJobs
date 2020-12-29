@@ -16,9 +16,9 @@ class CreateBaiTuyenDungTable extends Migration
         Schema::create('bai_tuyen_dung', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned()->unique();
             $table->string('tieu_de')->nullable();
-            $table->string('luong')->unsigned();
-            $table->string('tuoi')->unsigned();
-            $table->string('ten_chuc_vu')->unsigned();
+            $table->string('luong');
+            $table->string('tuoi');
+            $table->string('ten_chuc_vu');
             $table->date('han_tuyen')->nullable();
             $table->dateTime('han_bai_viet')->nullable();
             $table->integer('so_luong_tuyen')->nullable();

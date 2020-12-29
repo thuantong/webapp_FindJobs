@@ -15,8 +15,8 @@ class CreatePhanQuyenTaiKhoanTable extends Migration
     {
         Schema::create('phan_quyen_tai_khoan', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('tai_khoan_id')->nullable();
-            $table->integer('phan_quyen_id')->nullable();
+            $table->bigInteger('tai_khoan_id')->unsigned()->nullable();
+            $table->integer('phan_quyen_id')->unsigned()->nullable();
 
         });
     }

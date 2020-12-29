@@ -16,9 +16,9 @@ class CreateTinNhanTable extends Migration
         Schema::create('tin_nhan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('noi_dung');
-            $table->bigInteger('nguoi_tim_viec_id')->nullable();
-            $table->bigInteger('nha_tuyen_dung_id')->nullable();
-            $table->bigInteger('quan_tri_vien_id')->nullable();
+            $table->bigInteger('nguoi_tim_viec_id')->unsigned()->nullable();
+            $table->bigInteger('nha_tuyen_dung_id')->unsigned()->nullable();
+            $table->bigInteger('quan_tri_vien_id')->unsigned()->nullable();
             $table->smallInteger('status')->nullable();
             $table->timestamps();
         });

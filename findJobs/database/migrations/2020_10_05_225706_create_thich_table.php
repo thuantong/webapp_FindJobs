@@ -15,8 +15,8 @@ class CreateThichTable extends Migration
     {
         Schema::create('thich', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('nguoi_tim_viec_id')->nullable();
-            $table->bigInteger('bai_tuyen_dung_id')->nullable();
+            $table->bigInteger('nguoi_tim_viec_id')->unsigned()->nullable();
+            $table->bigInteger('bai_tuyen_dung_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

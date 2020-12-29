@@ -73,4 +73,20 @@ class QuanLyTaiKhoanController extends Controller
         }
 
     }
+    public function setTacVuPhanQuyen(Request $request){
+        $title = "Phân quyền tài khoản";
+
+        try {
+            $id = $request->idQuyen;
+            $idTK = $request->idTK;
+            $findUser = TaiKhoan::query()->find($idTK);
+            //lấy quyền người tìm việc == 1
+            $findUser->getPhanQuyen()->detach();
+            $findUser->getPhanQuyen()->attach($id);
+
+            return $this->getResponse($title, 200, "Phân quyền tài khoản thành công!");
+        } catch (\Exception $exception) {
+            return $this->getResponse($title, 400, "Phân quyền tài khoản thất bại!");
+        }
+    }
 }

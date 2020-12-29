@@ -568,28 +568,28 @@
                     <div class="mt-0">
                         <div class="custom-control custom-checkbox">
 {{--                            @dd(count(unserialize($data['data']['yeu_cau_ho_so'])))--}}
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="ban_cap_yeu_cau_update" value="1" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("1",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
-                            <label class="custom-control-label" for="customCheck1">Tiếng Anh</label>
+                            <input type="checkbox" class="custom-control-input" id="customCheck1_update" name="ban_cap_yeu_cau_update" value="1" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("1",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
+                            <label class="custom-control-label" for="customCheck1_update">Tiếng Anh</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="ban_cap_yeu_cau_update" value="2" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("2",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
-                            <label class="custom-control-label" for="customCheck2">Tiếng Việt</label>
+                            <input type="checkbox" class="custom-control-input" id="customCheck2_update" name="ban_cap_yeu_cau_update" value="2" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("2",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
+                            <label class="custom-control-label" for="customCheck2_update">Tiếng Việt</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck3" name="ban_cap_yeu_cau_update" value="3" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("3",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
-                            <label class="custom-control-label" for="customCheck3">Tiếng Pháp</label>
+                            <input type="checkbox" class="custom-control-input" id="customCheck3_update" name="ban_cap_yeu_cau_update" value="3" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("3",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
+                            <label class="custom-control-label" for="customCheck3_update">Tiếng Pháp</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck4" name="ban_cap_yeu_cau_update" value="4" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("4",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
-                            <label class="custom-control-label" for="customCheck4">Tiếng Trung</label>
+                            <input type="checkbox" class="custom-control-input" id="customCheck4_update" name="ban_cap_yeu_cau_update" value="4" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("4",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
+                            <label class="custom-control-label" for="customCheck4_update">Tiếng Trung</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck5" name="ban_cap_yeu_cau_update" value="5" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("5",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
-                            <label class="custom-control-label" for="customCheck5">Tiếng Nhật</label>
+                            <input type="checkbox" class="custom-control-input" id="customCheck5_update" name="ban_cap_yeu_cau_update" value="5" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("5",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
+                            <label class="custom-control-label" for="customCheck5_update">Tiếng Nhật</label>
                         </div>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck6" name="ban_cap_yeu_cau_update" value="6" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("6",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
-                            <label class="custom-control-label" for="customCheck6">Tiếng Hàn Quốc</label>
+                            <input type="checkbox" class="custom-control-input" id="customCheck6_update" name="ban_cap_yeu_cau_update" value="6" @if(isset($data['data']['yeu_cau_ho_so']) && unserialize($data['data']['yeu_cau_ho_so']) != null && in_array("6",unserialize($data['data']['yeu_cau_ho_so']))){{"checked"}}@endif>
+                            <label class="custom-control-label" for="customCheck6_update">Tiếng Hàn Quốc</label>
                         </div>
                     </div>
                     {{--                    <span class="invalid-feedback" role="alert">--}}

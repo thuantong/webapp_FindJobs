@@ -15,8 +15,8 @@ class CreateTacVuPhanQuyenTable extends Migration
     {
         Schema::create('tac_vu_phan_quyen', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tac_vu_id')->nullable();
-            $table->integer('phan_quyen_id')->nullable();
+            $table->integer('tac_vu_id')->unsigned()->nullable();
+            $table->integer('phan_quyen_id')->unsigned()->nullable();
 
         });
     }

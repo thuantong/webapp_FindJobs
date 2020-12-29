@@ -226,7 +226,7 @@
                             <div class="col-sm-12 col-md-12">
                                 <select class="form-control qltd-search-field" id="qltd-bai-viet">
                                     <option  value="">Tất cả</option>
-                                    <optio  value="1">Đang tuyển dụng</optio>
+                                    <option value="1">Đang tuyển dụng</option>
                                     <option  value="2">Đã bị từ chối</option>
                                     <option selected  value="0">Chờ được duyệt</option>
                                     <option value="0">Bị từ chối - Đã chỉnh sửa</option>

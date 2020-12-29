@@ -34,8 +34,9 @@ class NhaTuyenDungController extends Controller
         if ($request->exists('dia_diem') && $request->get('dia_diem') != "") {
             $nguoiTimViec->where('dia_diem_id', $request->get('dia_diem'));
         }
-        $nguoiTimViec = $nguoiTimViec->where('status_job',1)->get()->toArray();
+        $nguoiTimViec = $nguoiTimViec->where('status_job',2)->get()->toArray();
 //        dd($nguoiTimViec->get()->toArray());
+//        dd($nguoiTimViec);
         $collection = collect($nguoiTimViec);
         if ($request->exists('nguoi_tim_viec') && $request->get('nguoi_tim_viec') != "") {
             $collection = $collection->where('get_tai_khoan','!=',null);

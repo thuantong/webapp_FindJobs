@@ -35,7 +35,8 @@ class MyLoginController extends Controller
                 $message_register = 'Tạo tài khoản thành công! Nhập lại tài khoản vừa tạo!';
                 return view('auth.login', compact('message_register'));
             } elseif ($request->get('message_register') != 1 && $request->get('message_register') != null) {
-                abort(404);
+//                abort(404);
+                return redirect('/');
             } elseif ($request->get('message_register') == null) {
                 return view('auth.login');
             }

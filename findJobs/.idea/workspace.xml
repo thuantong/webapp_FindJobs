@@ -2,66 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/TimViecLam.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../diagram/picture/ClassDiagram1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../diagram/picture/ClassDiagram1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/Ke hoach KLTN.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/Ke hoach KLTN.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../doc/timvieclamonelinenew_final.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../doc/timvieclamonelinenew_final.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/findJobs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/findJobs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/111074536_1599847650253799_769132930_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/120160612_113927.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1c7b__227 - Copy.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1c7b__227.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1ccn.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1hinh-anh-meo-luoi-nam-ngu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1wallpaper-4k-hinh-nen-4k-chu-meo-cuc-dang-yeu_101305276.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1wallpaper-4k-hinh-nen-4k-hinh-anh-ve-vu-tru-cuc-dep-2_101311313.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/1wallpaper-4k-hinh-nen-4k-thiet-ke-cuc-dep_101257772.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/255564364_600307947151144_1254106024952987648_n.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/2hinh-anh-meo-luoi-nam-ngu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/2wallpaper-4k-hinh-nen-4k-chu-meo-cuc-dang-yeu_101305276.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/3wallpaper-4k-hinh-nen-4k-hinh-anh-ve-vu-tru-cuc-dep-2_101311313.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/53456671_2265823577078838_3008160669955522560_o.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/55564364_600307947151144_1254106024952987648_n.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/55564364_600307947151144_1254106024952987648_n.jpg4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/5c4a668831fc3ga-co-bap-chuyen-cac-mon-ga-636380807809652325 - Copy.png1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/5c4a668831fc3ga-co-bap-chuyen-cac-mon-ga-636380807809652325.png1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/62475385_1691732720970628_5551592173243203584_n.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/62475385_1691732720970628_5551592173243203584_n.jpg4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/69626363-483815235746184-68935-5523-2978-1567678619 - Copy.png1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/70962972_630705280670222_5633021231302180864_n.jpeg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/87369239_148190649983978_7329649221504598016_o.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/BYQA8299.png1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/COAB7976.png1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/IMG_0033.JPG2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/IMG_0035.JPG1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/IMG_0037.JPG2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/IMG_0937.JPG1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/IMG_1712.JPG1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/IMG_1726.JPG1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/IMG_2025.JPG1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/IMG_2138.JPG1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/TNHH+Khoa+Học+Dinh+Dưỡng+Orgalife.png4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/TNHH_Khoa_Học_Dinh_Dưỡng_Orgalife.png4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/VICF4319.png1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/background-JOBS.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/bh.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/cach-nau-banh-canh-cua-dong-ngon.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/cach-nau-ca-ngu-kho-thom.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/hinh-anh-meo-luoi-nam-ngu.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.png1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.png2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/maxresdefault.jpg3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/received_769257649899914.jpeg2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/unnamed.png1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/wallpaper-4k-hinh-nen-4k-chu-meo-cuc-dang-yeu_101305276.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/wallpaper-4k-hinh-nen-4k-chu-meo-cuc-dang-yeu_101305276.jpg2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/wallpaper-4k-hinh-nen-4k-hinh-anh-ve-vu-tru-cuc-dep-2_101311313.jpg1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/wallpaper-4k-hinh-nen-4k-hinh-anh-ve-vu-tru-cuc-dep-2_101311313.jpg2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/wallpaper-4k-hinh-nen-4k-thiet-ke-cuc-dep_101257772.jpg1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/QuanLyTaiKhoanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/QuanLyTaiKhoanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NhaTuyenDung/NhaTuyenDungController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NhaTuyenDung/NhaTuyenDungController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_222914_create_tac_vu_phan_quyen_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_222914_create_tac_vu_phan_quyen_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_223251_create_phan_quyen_tai_khoan_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_223251_create_phan_quyen_tai_khoan_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_224906_create_quan_tam_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_224906_create_quan_tam_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_225443_create_luu_bai_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_225443_create_luu_bai_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_225706_create_thich_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_225706_create_thich_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_230107_create_bai_tuyen_dung_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_230107_create_bai_tuyen_dung_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_230744_create_cong_ty_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_230744_create_cong_ty_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_231257_create_nha_tuyen_dung_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_231257_create_nha_tuyen_dung_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_232037_create_nganh_nghe_cong_ty_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_232037_create_nganh_nghe_cong_ty_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_232227_create_tin_nhan_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_232227_create_tin_nhan_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_232542_create_quan_tri_vien_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_232542_create_quan_tri_vien_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_232700_create_duyet_bai_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_232700_create_duyet_bai_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_233009_create_don_hang_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_233009_create_don_hang_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_005451_relationship_mapping.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_005451_relationship_mapping.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_150124_create_nap_the_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_150124_create_nap_the_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_25_155446_add_column_nguoi_tim_viec_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_25_155446_add_column_nguoi_tim_viec_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_26_180453_create_don_xin_viec_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_26_180453_create_don_xin_viec_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_19_225416_create_thong_bao_admin_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_19_225416_create_thong_bao_admin_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_20_020403_add_column_dia_diem_cong_ty_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_20_020403_add_column_dia_diem_cong_ty_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/app/chinh_sua_bai_tuyen_dung.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/chinh_sua_bai_tuyen_dung.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/app/quanLyBaiDang.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/quanLyBaiDang.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/modal/chinh_sua/content_chinh_sua.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/modal/chinh_sua/content_chinh_sua.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/QuanLyTuyenDung/QLBaiDang/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/QuanLyTuyenDung/QLBaiDang/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,7 +334,8 @@
       <workItem from="1608429696941" duration="946000" />
       <workItem from="1608468246345" duration="110381000" />
       <workItem from="1608759571162" duration="3552000" />
-      <workItem from="1609174335850" duration="1406000" />
+      <workItem from="1609174335850" duration="2804000" />
+      <workItem from="1609267926156" duration="9541000" />
     </task>
     <servers />
   </component>
@@ -423,11 +399,11 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state width="528" height="446" key="SwitcherDM/78.0.1288.768@78.0.1288.768" timestamp="1608603200231" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1609174339655">
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog" timestamp="1609267925305">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768/1366.0.1280.680@78.0.1288.768" timestamp="1602336516648" />
-    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1609174339655" />
+    <state x="430" y="213" key="com.intellij.ide.util.TipDialog/78.0.1288.768@78.0.1288.768" timestamp="1609267925305" />
     <state x="379" y="3" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605090822913">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -440,14 +416,14 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="429" y="140" width="586" height="488" key="find.popup/78.0.1288.768@78.0.1288.768" timestamp="1602784075560" />
-    <state x="378" y="172" key="run.anything.popup" timestamp="1608583436121">
+    <state x="378" y="172" key="run.anything.popup" timestamp="1609272274824">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1608583436121" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1608762051802">
+    <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1609272274824" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1609277801482">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1608762051802" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1609277801482" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -514,12 +490,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/TrangChu/index.blade.php</url>
-          <line>55</line>
+          <line>57</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php</url>
-          <line>148</line>
+          <line>157</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -544,7 +520,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/TrangChu/index.blade.php</url>
-          <line>261</line>
+          <line>263</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -583,7 +559,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php</url>
-          <line>102</line>
+          <line>103</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -730,6 +706,11 @@
           <url>file://$PROJECT_DIR$/resources/views/QuanLyTuyenDung/QLBaiDang/index.blade.php</url>
           <line>433</line>
           <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/index.blade.php</url>
+          <line>214</line>
+          <option name="timeStamp" value="209" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js</url>

@@ -17,10 +17,10 @@ class CreateDonHangTable extends Migration
             $table->bigIncrements('id');
             $table->integer('so_luong');
             $table->decimal('tong_tien',12)->nullable();
-            $table->bigInteger('nha_tuyen_dung_id')->nullable();
-            $table->bigInteger('nguoi_tim_viec_id')->nullable();
-            $table->bigInteger('bai_tuyen_dung_id')->nullable();
-            $table->integer('hang_muc_thanh_toan_id')->nullable();
+            $table->bigInteger('nha_tuyen_dung_id')->unsigned()->nullable();
+            $table->bigInteger('nguoi_tim_viec_id')->unsigned()->nullable();
+            $table->bigInteger('bai_tuyen_dung_id')->unsigned()->nullable();
+            $table->integer('hang_muc_thanh_toan_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

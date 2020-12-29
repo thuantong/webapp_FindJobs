@@ -33,8 +33,8 @@ class BladeServiceProvider extends ServiceProvider
         View::share('dia_diem',$diaDiem);
         $nganhNghe = NganhNghe::all()->toArray();
         View::share('nganh_nghe',$nganhNghe);
-//        $bangCap = BangCap::all()->toArray();
-//        View::share('bang_cap',$bangCap);
+        $bangCap = BangCap::all()->toArray();
+        View::share('bang_cap',$bangCap);
 $chucVu = ChucVu::all()->toArray();
         View::share('chuc_vu',$chucVu);
 

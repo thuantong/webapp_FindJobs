@@ -14,8 +14,8 @@ class CreateThongBaoAdminTable extends Migration
     public function up()
     {
         Schema::table('thong_bao', function (Blueprint $table) {
-            $table->bigInteger('tai_khoan_from_id')->nullable();
-            $table->bigInteger('tai_khoan_to_id')->nullable();
+            $table->bigInteger('tai_khoan_from_id')->unsigned()->nullable();
+            $table->bigInteger('tai_khoan_to_id')->unsigned()->nullable();
 //            $table->name
 //            $table->timestamps();
         });

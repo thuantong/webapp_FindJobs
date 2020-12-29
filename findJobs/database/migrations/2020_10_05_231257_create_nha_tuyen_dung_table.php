@@ -24,7 +24,7 @@ class CreateNhaTuyenDungTable extends Migration
             $table->smallInteger('gioi_tinh')->nullable();
             $table->smallInteger('nam_sinh')->nullable();
             $table->smallInteger('status')->nullable();
-            $table->bigInteger('tai_khoan_id')->nullable();
+            $table->bigInteger('tai_khoan_id')->unsigned()->nullable();
             $table->bigInteger('bai_dang_id')->nullable();
         });
     }

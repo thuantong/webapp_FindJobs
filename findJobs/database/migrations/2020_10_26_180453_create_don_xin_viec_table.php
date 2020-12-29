@@ -16,8 +16,8 @@ class CreateDonXinViecTable extends Migration
         Schema::create('don_xin_viec', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('file')->nullable();
-            $table->bigInteger('bai_tuyen_dung_id')->nullable();
-            $table->bigInteger('nguoi_tim_viec_id')->nullable();
+            $table->bigInteger('bai_tuyen_dung_id')->unsigned()->nullable();
+            $table->bigInteger('nguoi_tim_viec_id')->unsigned()->nullable();
             $table->timestamps();
         });
         Schema::table('don_xin_viec', function (Blueprint $table) {

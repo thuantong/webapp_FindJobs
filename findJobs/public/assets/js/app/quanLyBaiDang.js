@@ -62,12 +62,12 @@ const getDanhSach = () => {
         {
             render: function (api, rowIdx, columns, meta) {
 
-                switch (columns.status) {
-                    case '1':
+                switch (parseInt(columns.status)) {
+                    case 1:
                         return '<span class="text-success">Đang tuyển dụng</span>';
-                    case '2':
+                    case 2:
                         return '<span class="text-danger">Đã bị từ chối</span>';
-                    case '4':
+                    case 4:
                         return '<span class="text-danger">Đã tạm ngưng</span>';
                 }
                 return '<span class="text-warning">Chờ được duyệt</span>';

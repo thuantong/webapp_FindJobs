@@ -15,8 +15,8 @@ class CreateNganhNgheCongTyTable extends Migration
     {
         Schema::create('nganh_nghe_cong_ty', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('nganh_nghe_id')->nullable();
-            $table->bigInteger('cong_ty_id')->nullable();
+            $table->integer('nganh_nghe_id')->unsigned()->nullable();
+            $table->bigInteger('cong_ty_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

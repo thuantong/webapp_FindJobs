@@ -81,6 +81,8 @@ class RelationshipMapping extends Migration
         });
 
         Schema::table('bai_tuyen_dung_nganh_nghe', function (Blueprint $table) {
+            $table->integer('nganh_nghe_id')->unsigned()->nullable()->change();
+            $table->bigInteger('bai_tuyen_dung_id')->unsigned()->nullable()->change();
             $table->foreign('nganh_nghe_id')->references('id')->on('nganh_nghe')->onDelete('SET NULL')->onUpdate('cascade');
             $table->foreign('bai_tuyen_dung_id')->references('id')->on('bai_tuyen_dung')->onDelete('cascade')->onUpdate('cascade');
         });

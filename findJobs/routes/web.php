@@ -161,6 +161,7 @@ Route::namespace('Admin')->group(function () {
         Route::get('/admin/danh-sach-tai-khoan','QuanLyTaiKhoanController@index')->name('danhSachTaiKhoan');
         Route::get('/admin/danh-sach-tai-khoan/get-data','QuanLyTaiKhoanController@getDanhSachTaiKhoan')->name('getDanhSachTaiKhoan');
         Route::get('/admin/danh-sach-tai-khoan/get-phan-quyen','QuanLyTaiKhoanController@getTacVu')->name('getPhanQuyen');
+        Route::post('/admin/danh-sach-tai-khoan/set-phan-quyen','QuanLyTaiKhoanController@setTacVuPhanQuyen')->name('setTacVuPhanQuyen');
         Route::post('/admin/danh-sach-tai-khoan/khoa-tai-khoan','QuanLyTaiKhoanController@khoaTaiKhoan')->name('khoaTaiKhoan');
         Route::post('/admin/danh-sach-tai-khoan/mo-khoa-tai-khoan','QuanLyTaiKhoanController@moKhoaTaiKhoan')->name('moKhoaTaiKhoan');
 

@@ -74,7 +74,7 @@
 {{--                            @if (Route::has('register') == false)--}}
                             @if (strtolower(Route::currentRouteName()) != 'auth.form.register')
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('auth.form.register')}}">{{ __('Tạo tài khoản') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('auth.form.register')}}">{{ __('Đăng ký tài khoản') }}</a>
                                 </li>
                             @endif
                         @else

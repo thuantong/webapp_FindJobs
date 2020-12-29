@@ -9,7 +9,7 @@ $(document).on('click','.chinh_sua',function () {
         },
     }
     sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
-        console.log(e)
+        // console.log(e)
         $('#chinh-sua-bai-tuyen-dung-modal').modal('show');
         $('#chinh-sua-bai-tuyen-dung-modal').find('.modal-body').html(e);
         eventModalChinhSua();

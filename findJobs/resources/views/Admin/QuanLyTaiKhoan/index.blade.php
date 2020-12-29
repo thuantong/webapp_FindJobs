@@ -210,7 +210,7 @@
         }
 
         $(document).on('click','.them-moi-danh-sach',function () {
-            $('#modal-them-moi-tai-khoan').modal('show')
+            $('#modal-them-moi-tai-khoan').modal('show');
         });
         $(document).on('click','#modal-them-moi-tai-khoan .modal-footer #save',function () {
             let __this = $(this);
@@ -233,6 +233,28 @@
             })
         });
 //main
+        $(document).on('click','#save-tac-vu',function () {
+
+            let __this = $(this);
+            let idQuyen = $('#get-phan-quyen').find('input:checked').data('action');
+            let idTK = $('#get-phan-quyen').find('#action-phan-quyen').val();
+            let ajax ={
+                method:'post',
+                url:'/admin/danh-sach-tai-khoan/set-phan-quyen',
+                data : {
+                    idQuyen : idQuyen,
+                    idTK:idTK
+                }
+            }
+            sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e=>{
+                console.log(e);
+                getHtmlResponse(e);
+                if(e.status == 200){
+                    db_ajax_reload_all(table);
+                }
+            })
+            console.log()
+        })
         $(function () {
             table = getDataTaiKhoan();
 

@@ -93,7 +93,7 @@
 
                         @if(intval(Session::get('loai_tai_khoan')) == 1)
                             <div class="row">
-                                <div class="col-sm-12 col-md-12 text-left">
+                                <div class="col-sm-12 col-md-6 text-left">
                                     <div
                                         class="btn quan-tam-nha-tuyen-dung mt-2  @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"
                                         id="quan-tam-nha-tuyen-dung"
@@ -105,6 +105,15 @@
                                     {{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
                                     {{--                                    <button class="btn btn-info btn-sm"></button>--}}
                                 </div>
+                                    <div class="col-sm-12 col-md-6 text-left">
+                                        <button
+                                            class="btn mt-2 @if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data']) == false) btn-outline-primary @else btn-primary like-animation @endif waves-effect bao-cao-button-call"
+                                            @if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data']) == false) id="bao-cao-button-call" @endif
+                                        ><i
+                                                class="fa fa-exclamation"></i>@if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data'])){{__(' Đã báo cáo')}}@else{{__(' Báo cáo')}}@endif
+                                        </button>
+                                    </div>
+
                             </div>
                         @endif
 
@@ -190,10 +199,10 @@
                                                     {{--                                                    <i class="icofont icofont-bell-alt noti-icon"></i>--}}
                                                     {{--                                                    <span class="badge badge-danger rounded-circle noti-icon-badge">4</span>--}}
                                                     {{--                                                </a>--}}
-                                                    <button class="btn btn-outline-info"
-                                                            title="Chat với nhà tuyển dụng">
-                                                        <i class="icofont icofont-ui-text-loading "></i> Chat
-                                                    </button>
+{{--                                                    <button class="btn btn-outline-info"--}}
+{{--                                                            title="Chat với nhà tuyển dụng">--}}
+{{--                                                        <i class="icofont icofont-ui-text-loading "></i> Chat--}}
+{{--                                                    </button>--}}
 
                                                     <div
                                                         class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning like-animation @endif waves-effect position-relative call-modal-nop-don"
@@ -202,12 +211,8 @@
                                                         {{--                                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
 
                                                     </div>
-                                                    <button
-                                                        class="btn @if(in_array($data['id'],$data['bao_cao']['data']) == false) btn-outline-primary @else btn-primary like-animation @endif waves-effect bao-cao-button-call"
-                                                        @if(in_array($data['id'],$data['bao_cao']['data']) == false) id="bao-cao-button-call" @endif
-                                                    ><i
-                                                            class="fa fa-exclamation"></i>@if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data'])){{__(' Đã báo cáo')}}@else{{__(' Báo cáo')}}@endif
-                                                    </button>
+{{--                                                    @dd($data)--}}
+
 
                                                 </div>
 
@@ -322,8 +327,9 @@
                                                 @endif
                                             </div>
                                         </div>
+{{--                                        @dd(unserialize($data['yeu_cau_ho_so']))--}}
 {{--<iframe src="https://careerbuilder.vn/vi/employers/popup/resumeinfo/35A4E900/35A4E900/secretary-personal-assistant-to-director-manager/365C7913.html?"></iframe>--}}
-                                        @if($data['yeu_cau_ho_so'] != null)
+                                        @if($data['yeu_cau_ho_so'] != null && unserialize($data['yeu_cau_ho_so']) != null)
                                             @if(count(unserialize($data['yeu_cau_ho_so'])) != 0)
                                         <div class="form-group row">
                                             <label

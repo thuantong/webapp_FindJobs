@@ -17,8 +17,8 @@ class CreateDuyetBaiTable extends Migration
             $table->bigIncrements('id');
             $table->smallInteger('status');
             $table->string('noi_dung');
-            $table->bigInteger('bai_dang_id')->nullable();
-            $table->bigInteger('quan_tri_vien_id')->nullable();
+            $table->bigInteger('bai_dang_id')->unsigned()->nullable();
+            $table->bigInteger('quan_tri_vien_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

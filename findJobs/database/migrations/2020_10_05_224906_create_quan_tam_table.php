@@ -15,8 +15,8 @@ class CreateQuanTamTable extends Migration
     {
         Schema::create('quan_tam', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('nguoi_tim_viec_id')->nullable();
-            $table->bigInteger('nha_tuyen_dung_id')->nullable();
+            $table->bigInteger('nguoi_tim_viec_id')->unsigned()->nullable();
+            $table->bigInteger('nha_tuyen_dung_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

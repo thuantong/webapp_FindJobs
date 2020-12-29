@@ -18,7 +18,7 @@ class CreateQuanTriVienTable extends Migration
 //            $table->text('ho_ten')->nullable();
             $table->text('dia_chi')->nullable();
             $table->string('cap_bac')->nullable();
-            $table->bigInteger('tai_khoan_id')->nullable();
+            $table->bigInteger('tai_khoan_id')->unsigned()->nullable();
         });
     }
 

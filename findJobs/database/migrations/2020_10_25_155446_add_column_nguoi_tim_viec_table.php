@@ -15,10 +15,10 @@ class AddColumnNguoiTimViecTable extends Migration
     {
         Schema::table('nguoi_tim_viec', function (Blueprint $table) {
             $table->text('muc_tieu_nghe_nghiep')->nullable();
-            $table->integer('bang_cap_id')->nullable();
-            $table->integer('kieu_lam_viec_id')->nullable();
+            $table->integer('bang_cap_id')->unsigned()->nullable();
+            $table->integer('kieu_lam_viec_id')->unsigned()->nullable();
             $table->string('ten_truong_tot_nghiep')->nullable();
-            $table->integer('dia_diem_id')->nullable();
+            $table->integer('dia_diem_id')->unsigned()->nullable();
             $table->string('tag_jobs')->nullable();
 
             $table->foreign('bang_cap_id')->references('id')->on('bang_cap')->onDelete('cascade')->onUpdate('cascade');
