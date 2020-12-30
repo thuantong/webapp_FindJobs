@@ -7,7 +7,7 @@
             <button class="btn btn-sm btn-danger ml-1 mr-1 xoa1-exp">{{__('Xóa')}}</button>
         </div>
 
-        <h5 class="mt-0 mb-1 company-name-exp">{{$data['cong_ty_chuc_vu']}}</h5>
+        <h5 class="mt-0 mb-1 company-name-exp" style="text-transform: capitalize">{{$data['cong_ty_chuc_vu']}}</h5>
 
         <p class="company-link-exp">{{$data['trang_web']}}</p>
         <p class="text-muted mt-2 description-exp">{{$data['mo_ta']}}</p>
@@ -26,7 +26,7 @@
                     </div>
                 @endif
 
-                <h5 class="mt-0 mb-1 company-name-exp">{{ucwords($row['tenCtyVaChucVu'])}}</h5>
+                <h5 class="mt-0 mb-1 company-name-exp"style="text-transform: capitalize">{{$row['tenCtyVaChucVu']}}</h5>
 
                 <p class="company-link-exp">{{$row['websites']}}</p>
                 <p class="text-muted mt-2 description-exp">{{$row['mo_ta']}}</p>

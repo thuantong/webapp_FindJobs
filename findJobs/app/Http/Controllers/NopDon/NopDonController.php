@@ -7,6 +7,7 @@ use App\Models\BaiTuyenDung;
 use App\Models\DonXinViec;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class NopDonController extends Controller
@@ -62,7 +63,7 @@ class NopDonController extends Controller
 
             $id = $request->id_bai_viet;
             $this->nguoiTimViec->gioi_tinh = $request->gioi_tinh;
-            $this->nguoiTimViec->ngay_sinh = $request->ngay_sinh;
+            $this->nguoiTimViec->ngay_sinh = Carbon::createFromFormat('d/m/Y',$request->ngay_sinh)->format('Y-m-d');
             $this->nguoiTimViec->dia_chi = $request->dia_chi;
             $this->nguoiTimViec->exp_lam_viec = serialize($request->kinh_nghiem);
             $this->nguoiTimViec->projects = serialize($request->projects);

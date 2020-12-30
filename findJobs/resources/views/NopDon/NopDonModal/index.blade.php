@@ -170,14 +170,14 @@
 
                                     </ul>
 
-                                    <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i
+                                    <h5 class="mb-3 mt-4 d-none text-uppercase bg-light p-2"><i
                                             class="mdi mdi-cards-variant mr-1"></i>
                                         {{__('Dự án')}}
                                         <button class="btn btn-sm btn-pink pt-0 pb-0 pr-1 pl-1 ml-1"
                                                 id="add-new-project">{{__('+')}}</button>
 
                                     </h5>
-                                    <div class="table-responsive">
+                                    <div class="table-responsive d-none">
                                         <table class="table table-bordered mb-0 table-project" id="table-project">
                                             <thead class="thead-light">
                                             <tr>

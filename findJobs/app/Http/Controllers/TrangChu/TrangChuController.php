@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\TrangChu;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendEmail;
 use App\Models\BaiTuyenDung;
 use App\Models\NganhNghe;
+use App\Models\NguoiTimViec;
 use App\Models\TaiKhoan;
 use App\Traits\StoredJobsTrait;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 
@@ -27,6 +30,9 @@ class TrangChuController extends Controller
 
     public function index(Request $request)
     {
+
+//        $nguoiTimViecALL['data']= '';
+
 //        if (Auth::user()->loai == 3){
 //            dd('trang admin');
 //        }

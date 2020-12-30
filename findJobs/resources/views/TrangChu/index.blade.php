@@ -276,14 +276,16 @@
         }
 
         const getThongTinChiTietPost = (e) => {
-            // console.log('con cac ne', e);
+            console.log('con cac ne', e);
+            // console.log('con cac dđne', e['don_xin_viec']['data'].length);
+            // return;
             if (e != null) {
                 if (parseInt(loaiTaiKhoan) == 1) {
                     // console.log(e.bai_da_luu.data.findIndex(x=>x.id == e.id))
 
                     if (e.bai_da_luu.data !== undefined) {
                         // if (e.bai_da_luu.data.includes(e.id) == true) {
-                        if (e.bai_da_luu.data.findIndex(x => x.id == e.id) != -1) {
+                        if (e.bai_da_luu.data.findIndex(x => x == e.id) != -1) {
                             $('#trang-chu-like-post').removeClass('btn-outline-primary');
                             $('#trang-chu-like-post').addClass('btn-primary');
                             $('#trang-chu-like-post').addClass('like-animation');
@@ -298,9 +300,9 @@
                         }
                     }
                     //
-                    if (e.nguoi_tim_viec.get_don_xin_viec != null) {
+                    if (e.don_xin_viec.data != null) {
                         // get_don_xin_viec
-                        if (e.nguoi_tim_viec.get_don_xin_viec.findIndex(x => x.bai_tuyen_dung_id == e.id) != -1) {
+                        if (e.don_xin_viec.data != null && e.don_xin_viec.data.findIndex(x => x == e.id) != -1) {
                             $('.call-modal-nop-don').removeClass('btn-outline-warning');
                             $('.call-modal-nop-don').addClass('btn-warning');
                             $('.call-modal-nop-don').addClass('like-animation');
@@ -501,7 +503,7 @@
                     __this.removeClass('btn-outline-primary');
                     __this.addClass('btn-primary');
                     __this.addClass('like-animation');
-                    __this.find('i').text('Đã lưu')
+                    __this.find('i').text('Đã lưu');
                     let ajax = {
                         method: 'post',
                         url: '/bai-viet/like',
@@ -510,6 +512,8 @@
                             thich: 1
                         }
                     };
+                    // console.log('lưu',ajax)
+                    // return;
                     sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '')
                         .done(e => {
                             console.log(e)
@@ -528,6 +532,8 @@
                             thich: 0
                         }
                     };
+                    // console.log('chưa lưu',ajax)
+                    // return;
                     sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '')
                         .done(e => {
                             console.log(e)

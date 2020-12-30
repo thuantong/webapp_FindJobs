@@ -118,7 +118,7 @@
                                     <textarea class="form-control"
                                               placeholder="@if($data['nguoi_tim_viec']['gioi_thieu'] == null){{'NULL'}}@endif">@if($data['nguoi_tim_viec']['gioi_thieu'] != null){{$data['nguoi_tim_viec']['gioi_thieu']}}@endif</textarea>
                                 </p>
-                                <p class="mb-2 font-13"><strong>{{__('Số điện thoại:')}}</strong><span
+                                <p class="mb-2 font-13"><strong>{{__('Số điện thoại:')}}<abbr style="color: red">*</abbr></strong><span
                                         class="ml-2">
                                         <input class="form-control phone not-null" title="Số điện thoại"
                                                value="{{Auth::user()->phone}}"
@@ -128,7 +128,7 @@
                                                 </span>
                                 </p>
 
-                                <p class="mb-2 font-13"><strong>{{'Email :'}}</strong> <span
+                                <p class="mb-2 font-13"><strong>{{'Email :'}}</strong><abbr style="color: red">*</abbr> <span
                                         class="ml-2 "><input class="form-control email not-null" data-rule="email"
                                                              title="Email" value="{{Auth::user()->email}}"
                                                              autocomplete="off"></span>
@@ -288,7 +288,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="ho_ten">{{__('Họ và tên: ')}}</label>
+                                                <label for="ho_ten">{{__('Họ và tên: ')}}<abbr style="color: red">*</abbr></label>
                                                 <input type="text" class="form-control not-null" id="ho_ten"
                                                        title="Họ và tên"
                                                        placeholder="Nhập họ và tên" value="{{Auth::user()->ho_ten}}">
@@ -299,7 +299,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="gioi_tinh">{{__('Giới tính')}}</label>
+                                                <label for="gioi_tinh">{{__('Giới tính')}}<abbr style="color: red">*</abbr></label>
 
                                                 <select class="form-control not-null" id="gioi_tinh" title="Giới tính">
                                                     <option value="" disabled selected
@@ -317,7 +317,7 @@
                                         </div> <!-- end col -->
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="ngay_sinh">{{__('Ngày sinh')}}</label>
+                                                <label for="ngay_sinh">{{__('Ngày sinh')}}<abbr style="color: red">*</abbr></label>
                                                 <input class="form-control not-null" title="Ngày sinh"
                                                        placeholder="@if($data['nguoi_tim_viec']['ngay_sinh'] == '' || $data['nguoi_tim_viec']['ngay_sinh'] == null){{'Chọn ngày sinh'}}@endif"
                                                        id="ngay_sinh"
@@ -361,7 +361,7 @@
                                         </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label for="khu_vuc">{{__('Khu vực')}}</label>
+                                                                                        <label for="khu_vuc">{{__('Khu vực')}}<abbr style="color: red">*</abbr></label>
 
                                                                                         <select class="form-control not-null" id="khu_vuc" title="Chọn khu vực">
                                                                                             <option disabled selected value="">{{__('Chọn khu vực')}}</option>
@@ -395,15 +395,16 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex">
+{{--                                                    @dd()--}}
                                                     <input type="text"
                                                            class="form-control text-center font-weight-bold text-primary"
                                                            id="muc_luong_from"
-                                                           value="@if($data['nguoi_tim_viec']['muc_luong'] != null){{trim(substr($data['nguoi_tim_viec']['muc_luong'],0,strpos($data['nguoi_tim_viec']['muc_luong'],'-')))}}@else{{0}}@endif"
+                                                           value="@if($data['nguoi_tim_viec']['muc_luong'] != null && strlen($data['nguoi_tim_viec']['muc_luong']) != 1){{trim(substr($data['nguoi_tim_viec']['muc_luong'],0,strpos($data['nguoi_tim_viec']['muc_luong'],'-')))}}@else{{0}}@endif"
                                                            placeholder="Nhập mức lương">
                                                     <input type="text"
                                                            class="form-control text-center font-weight-bold text-primary"
                                                            id="muc_luong_to"
-                                                           value="@if($data['nguoi_tim_viec']['muc_luong'] != null){{trim(substr($data['nguoi_tim_viec']['muc_luong'],strpos($data['nguoi_tim_viec']['muc_luong'],'-')+1))}}@else{{0}}@endif"
+                                                           value="@if($data['nguoi_tim_viec']['muc_luong'] != null && strlen($data['nguoi_tim_viec']['muc_luong']) != 1){{trim(substr($data['nguoi_tim_viec']['muc_luong'],strpos($data['nguoi_tim_viec']['muc_luong'],'-')+1))}}@else{{0}}@endif"
                                                            placeholder="Nhập mức lương">
                                                 </div>
 
@@ -415,7 +416,7 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                             <div class="form-group">
-                                                <label for="hoc_van">{{__('Học vấn:')}}</label>
+                                                <label for="hoc_van">{{__('Học vấn:')}}<abbr style="color: red">*</abbr></label>
                                                 <select class="form-control not-null hoc_van" id="hoc_van"
                                                         title="Học vấn">
                                                     <option disabled selected value="">{{__('Chọn học vấn')}}</option>
@@ -487,6 +488,8 @@
 {{--                                        @dd($data['nguoi_tim_viec'])--}}
                                         <div class="col-sm-12 col-md-8">
                                             <select class="form-control" id="status-jobs">
+
+                                                <option value="" selected disabled>Chưa chọn trạng thái</option>
                                                 <option value="1" @if(isset($data['nguoi_tim_viec']) && $data['nguoi_tim_viec']['status_job'] != null && $data['nguoi_tim_viec']['status_job'] == 1){{'selected'}}@endif>Tôi đã sẵn sàng tìm việc</option>
                                                 <option value="2" @if(isset($data['nguoi_tim_viec']) && $data['nguoi_tim_viec']['status_job'] != null && $data['nguoi_tim_viec']['status_job'] == 2){{'selected'}}@endif>Tôi chưa sẵn sàng tìm việc mới</option>
                                             </select>

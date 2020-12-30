@@ -53,7 +53,7 @@ trait NguoiTimViecTrait
 //            dd($data);
             return view('User.nguoiTimViec',compact('data','typeSend'));
         }else{
-            abort(404);
+            return redirect('/');
         }
     }
 

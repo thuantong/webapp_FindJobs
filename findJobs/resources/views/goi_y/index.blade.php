@@ -162,23 +162,24 @@
 
                         </div>
                         <div class="row">
+                            <p>Có thể hợp với bạn:</p>
+{{--                            @foreach($dataobj['tin_goi_y'] as $row)--}}
+{{--                            <p>--}}
+{{--                                <span style="width: 50%"><img src="{{asset('img/emails/'.$row['get_cong_ty']['logo'])}}" style="width: 100px"></span>--}}
+{{--                                <span style="width: 50%">{{$row['get_cong_ty']['name']}}</span>--}}
+{{--                            </p>--}}
+{{--                            @endforeach--}}
+
                             <div class="col-sm-12 col-md-12 p-1">
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12">Tên công ty tuyển dụng</div>
-                                    <div class="col-sm-12 col-md-12">Công việc</div>
-                                    <div class="col-sm-12 col-md-12"><button>Xem công việc</button></div>
+                                @foreach($dataobj['tin_goi_y'] as $row)
+                                <div class="row" style="border: #a3adc1 1px solid;margin-bottom: 10px">
+{{--                                    <div class="col-sm-12 col-md-12"><img src="{{URL::asset($row['get_cong_ty']['logo'])}}" style="width: 100px"></div>--}}
+                                    <p class="col-sm-12 col-md-12" style="text-transform: capitalize">{{$row['get_cong_ty']['name']}}</p>
+                                    <p class="col-sm-12 col-md-12"><b style="text-transform: capitalize">{{$row['tieu_de']}}</b></p>
+                                    <p class="col-sm-12 col-md-12"><a href="{{URL::asset('/bai-viet/thong-tin&baiviet='.$row['id'].'&chitiet=1')}}">Xem công việc</a></p>
                                 </div>
-{{--                                <p>Hiện tại chúng tôi nhận thấy tài khoản của bạn của một số hành động quy phạm tiêu chuẩn của ứng dụng chúng tôi nên đã tạm khóa tài khoản.</p>--}}
-{{--                                <p>Mọi thắc mắc xin liên hệ vào Hotline: 1900123456</p>--}}
-                                {{--                                    <button class="btn-primary">ádasd</button>--}}
-                                {{--                                <h4>Chào mừng {{ucwords($dataobj['ho_ten'])}} đến với {{env('APP_NAME')}}</h4>--}}
-                                {{--                                <p>Để sử dụng các dịch vụ của {{env('APP_NAME')}} bạn cần kích hoạt tài khoản! Nhấn--}}
-                                {{--                                    vào đường dẫn phía dưới:</p>--}}
-                                {{--                                    <form action="{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}" method="post">--}}
-                                {{--                                    </form>--}}
-                                {{--                                <p>--}}
-                                {{--                                    <a href="{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}">{{route('taikhoan.kichHoatTaiKhoan',$dataobj['token'])}}</a>--}}
-                                {{--                                </p>--}}
+                                @endforeach
+
                             </div>
 
                         </div>

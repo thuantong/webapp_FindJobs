@@ -77,7 +77,7 @@ Route::namespace('TaiKhoan')->group(function (){
 });
 Route::namespace('BaiViet')->group(function (){
     Route::name('baiviet.')->group(function (){
-        Route::get('/dang-bai-viet','BaiVietController@index')->name('index')->middleware(['auth','email.confirm']);
+        Route::get('/dang-bai-viet','BaiVietController@index')->name('index')->middleware(['auth','email.confirm','nha_tuyen_dung']);
         Route::get('/tin-tuyen-dung', 'BaiVietController@layTatCaBaiViet');
         Route::post('/dang-bai-viet/luu-tin','BaiVietController@savePost')->name('savepost')->middleware(['auth','email.confirm']);
         Route::get('/bai-viet/thong-tin&baiviet={post}&chitiet=1','BaiVietController@getThongTinBaiViet')->name('getThongTinBaiViet')->middleware(['auth','email.confirm']);

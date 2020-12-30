@@ -2,40 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd959c79-f8b5-490d-9d4c-40ec260841be" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../doc/~WRL0004.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../doc/~WRL3961.tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/QuanLyTaiKhoanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/QuanLyTaiKhoanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/MyLoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NhaTuyenDung/NhaTuyenDungController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NhaTuyenDung/NhaTuyenDungController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_222914_create_tac_vu_phan_quyen_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_222914_create_tac_vu_phan_quyen_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_223251_create_phan_quyen_tai_khoan_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_223251_create_phan_quyen_tai_khoan_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_224906_create_quan_tam_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_224906_create_quan_tam_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_225443_create_luu_bai_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_225443_create_luu_bai_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_225706_create_thich_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_225706_create_thich_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_230107_create_bai_tuyen_dung_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_230107_create_bai_tuyen_dung_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_230744_create_cong_ty_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_230744_create_cong_ty_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_231257_create_nha_tuyen_dung_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_231257_create_nha_tuyen_dung_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_232037_create_nganh_nghe_cong_ty_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_232037_create_nganh_nghe_cong_ty_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_232227_create_tin_nhan_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_232227_create_tin_nhan_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_232542_create_quan_tri_vien_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_232542_create_quan_tri_vien_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_232700_create_duyet_bai_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_232700_create_duyet_bai_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_05_233009_create_don_hang_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_05_233009_create_don_hang_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_005451_relationship_mapping.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_005451_relationship_mapping.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_08_150124_create_nap_the_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_08_150124_create_nap_the_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_25_155446_add_column_nguoi_tim_viec_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_25_155446_add_column_nguoi_tim_viec_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_26_180453_create_don_xin_viec_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_26_180453_create_don_xin_viec_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_19_225416_create_thong_bao_admin_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_19_225416_create_thong_bao_admin_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_20_020403_add_column_dia_diem_cong_ty_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_20_020403_add_column_dia_diem_cong_ty_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/app/chinh_sua_bai_tuyen_dung.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/chinh_sua_bai_tuyen_dung.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/app/quanLyBaiDang.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/app/quanLyBaiDang.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/viewPhanQuyen.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/chiTiet.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/BaiViet/modal/chinh_sua/content_chinh_sua.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/BaiViet/modal/chinh_sua/content_chinh_sua.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/QuanLyTuyenDung/QLBaiDang/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/QuanLyTuyenDung/QLBaiDang/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/everyMinute.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/everyMinute.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NopDon/NopDonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NopDon/NopDonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/NguoiTimViecTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/NguoiTimViecTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/NopDon/NopDonModal/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/NopDon/modal/content.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/NopDon/modal/content.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/TrangChu/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/danhSachDaUngTuyen.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/danhSachDaUngTuyen.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlKinhNghiemLamViec.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/User/nguoiTimViec/htmlKinhNghiemLamViec.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/goi_y/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/goi_y/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -335,7 +316,7 @@
       <workItem from="1608468246345" duration="110381000" />
       <workItem from="1608759571162" duration="3552000" />
       <workItem from="1609174335850" duration="2804000" />
-      <workItem from="1609267926156" duration="9541000" />
+      <workItem from="1609267926156" duration="19548000" />
     </task>
     <servers />
   </component>
@@ -359,10 +340,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="476" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/78.0.1288.768@78.0.1288.768" timestamp="1601925610950" />
-    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608573686074">
+    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609304415913">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1608573686074" />
+    <state x="452" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/78.0.1288.768@78.0.1288.768" timestamp="1609304415913" />
     <state x="298" y="0" key="CommitChangelistDialog2" timestamp="1608572751912">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
@@ -420,10 +401,10 @@
       <screen x="78" y="0" width="1288" height="768" />
     </state>
     <state x="378" y="172" key="run.anything.popup/78.0.1288.768@78.0.1288.768" timestamp="1609272274824" />
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1609277801482">
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup" timestamp="1609308732822">
       <screen x="78" y="0" width="1288" height="768" />
     </state>
-    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1609277801482" />
+    <state x="378" y="37" width="672" height="676" key="search.everywhere.popup/78.0.1288.768@78.0.1288.768" timestamp="1609308732822" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -584,7 +565,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/TrangChu/TrangChuController.php</url>
-          <line>23</line>
+          <line>26</line>
           <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -654,7 +635,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/BaiViet/BaiVietController.php</url>
-          <line>635</line>
+          <line>636</line>
           <option name="timeStamp" value="190" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -711,6 +692,11 @@
           <url>file://$PROJECT_DIR$/resources/views/Admin/QuanLyTaiKhoan/index.blade.php</url>
           <line>214</line>
           <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/TrangChu/index.blade.php</url>
+          <line>277</line>
+          <option name="timeStamp" value="210" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/app/nguoiTimViec.js</url>

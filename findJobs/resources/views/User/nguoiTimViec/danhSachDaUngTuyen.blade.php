@@ -146,11 +146,16 @@
                 {
                     render: function (api, rowIdx, columns, meta) {
                         let displayNone = 'd-none';
-                        if (columns.status == 3){
+                        // let disnoneg = 'd-none';
+                        if (columns.don_xin_viec_status == 1){
                             displayNone = '';
                         }
+                        // console.log(columns.status)
+                        // if (columns.status == 1){
+                        //     disnoneg = '';
+                        // }
                         return '<a class="btn btn-sm btn-info waves-effect mr-1" href = "/bai-viet/thong-tin&baiviet='+columns.id+'&chitiet=1" target="_blank">Đi tới</a>' +
-                            '<a class="btn btn-sm btn-primary waves-effect" href = "https://mail.google.com" target="_blank">Xác nhận</a>'
+                            '<a class="btn btn-sm btn-primary '+displayNone+' waves-effect" href = "https://mail.google.com" target="_blank">Gmail</a>'
                             ;
                     },
                     className: 'text-center'

@@ -425,22 +425,23 @@ BaiVietController extends Controller
 
         if (Session::has('loai_tai_khoan')) {
             if (intval(Session::get('loai_tai_khoan')) == 1) {
-                $nguoiTimViecTim = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec()->first()->with([
+                $nguoiTimViecTim = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec()->first();
+                    $data['bai_da_luu']['data'] = $nguoiTimViecTim->getLuuBai->pluck('id')->toArray();
+                $data['don_xin_viec']['data'] = $nguoiTimViecTim->getDonXinViec()->get()->pluck('id')->toArray();
+                $data['don_xin_viec']['data'] = $nguoiTimViecTim->getDonXinViec()->get()->pluck('bai_tuyen_dung_id')->toArray();
+                    $nguoiTimViecTim->with([
                     'getNhaTuyenDungQuanTam' => function ($subquery) {
                         $subquery->select('nha_tuyen_dung.id')->withPivot('nguoi_tim_viec_id', 'nha_tuyen_dung_id');
                     },
-                    'getDonXinViec' => function ($subquery) {
-                        $subquery->select('id', 'nguoi_tim_viec_id', 'bai_tuyen_dung_id');
-                    },
-                    'getLuuBai' => function ($subquery) {
-                        $subquery->select('bai_tuyen_dung.id')->withPivot('nguoi_tim_viec_id', 'bai_tuyen_dung_id');
-                    },
+//                    'getDonXinViec' => function ($subquery) {
+//                        $subquery->select('id', 'nguoi_tim_viec_id', 'bai_tuyen_dung_id');
+//                    },
                     'getBaoCao' => function ($subquery) {
                         $subquery->select('nha_tuyen_dung.id')->withPivot('nguoi_tim_viec_id', 'nha_tuyen_dung_id');
                     },
                 ]);
                 $data['nguoi_tim_viec'] = $nguoiTimViecTim->get()->toArray()[0];
-                $data['bai_da_luu']['data'] = $data['nguoi_tim_viec']['get_luu_bai'];
+//                $data['bai_da_luu']['data'] = $data['nguoi_tim_viec']['get_luu_bai'];
                 $data['nguoi_tim_viec']['exp_lam_viec'] = unserialize($data['nguoi_tim_viec']['exp_lam_viec']);
                 $data['nguoi_tim_viec']['projects'] = unserialize($data['nguoi_tim_viec']['projects']);
                 $data['nguoi_tim_viec']['social'] = unserialize($data['nguoi_tim_viec']['social']);
