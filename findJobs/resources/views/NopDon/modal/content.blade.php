@@ -31,7 +31,7 @@
         <div class="tab-content b-0 mb-0" id="tab-nop-don">
 
             <div id="bar" class="progress mb-3" style="height: 7px;">
-                <div class="bar progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
+                <div class="bar progress-bar progress-bar-striped progress-bar-animated bg-primary"></div>
             </div>
 
             <div class="tab-pane" id="thong-tin-ca-nhan">
@@ -181,6 +181,22 @@
                             @endif
                         </ul>
 
+                        <h5 class="mb-3 mt-4 text-uppercase bg-light p-2"><i
+                                class="mdi mdi-cards-variant mr-1"></i>
+                            {{__('Hồ sơ xin việc')}}
+                            <button class="btn btn-sm btn-pink pt-0 pb-0 pr-1 pl-1 ml-1"
+                                    id="add-new-file-upload">{{__('Thêm hồ sơ')}}</button>
+                            <input type="file" multiple class="d-none" id="add-new-file-upload-input">
+                        </h5>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12" id="render-file-upload">
+
+                            </div>
+                            <div class="col-sm-12 col-md-6" id="render-file-upload-iframe">
+                                <iframe src=""></iframe>
+                            </div>
+                        </div>
                         <h5 class="mb-3 mt-4 text-uppercase d-none bg-light p-2"><i
                                 class="mdi mdi-cards-variant mr-1"></i>
                             {{__('Dự án')}}

@@ -352,28 +352,8 @@ BaiVietController extends Controller
         $data['get_nha_tuyen_dung']['tai_khoan'] = TaiKhoan::query()->find($data['get_nha_tuyen_dung']['tai_khoan_id'])->toArray();
         $data['don_xin_viec']['total'] = DonXinViec::query()->where('bai_tuyen_dung_id', $post)->count();
 
-
-//        dd($nguoiTimViec);
-//        dd(Auth::user()->id);
-//        dd($nguoiTimViec);
-//        dd($data);
-
-//        switch (intval($request->get('chitiet'))) {
-//            case 0:
-//                return $data;
-//            case 1:
-//                dd($nguoiTimViec);
-//        dd($data['id']);
-//                dd($data['don_xin_viec']['data']);
-//        dd(in_array($data['id'],$data['don_xin_viec']['data']));
-//        echo "<strong>đs</strong>";
-//        return;
-//        dd(htmlentities('<strong>đs</strong>'));
-//        dd($data);
         $typeSend = 1;
         return view('BaiViet.chiTiet', compact('data', 'nguoiTimViec', 'typeSend'));
-//        }
-//        return $data;
     }
 
     /**

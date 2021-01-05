@@ -184,7 +184,7 @@ class TrangChuController extends Controller
                         $muc_luong_id = 20;
                         break;
                 }
-                $query->where('luong_from','<=',$muc_luong_id);
+                $query->where('luong_from','>=',$muc_luong_id);
             }
             if ($request->exists('kieu_lam_viec') && $request->get('kieu_lam_viec') != "") {
                 $query->where('kieu_lam_viec_id',$request->get('kieu_lam_viec'));
@@ -215,94 +215,6 @@ class TrangChuController extends Controller
                 $page,
                 ['path' => route($request->route()->getName())]
             );
-//            dd($data);
-//dd($request->exists('page'));
-//            $trangThaiDaDuyet = 1;
-
-
-//            switch ($request->has('nganh_nghe_id') == true && $request->get('nganh_nghe_id') != null) {
-//                case true :
-//                    //init value
-//                    $tieuDe = $request->get('tieu_de');
-//                    $nganhNghe = $request->get('nganh_nghe_id') == null ? null : $request->get('nganh_nghe_id');
-//                    $diaDiem = $request->get('dia_diem_id') == null ? null : $request->get('dia_diem_id');
-//                    $query = NganhNghe::query()->find($nganhNghe)->getBaiTuyenDung()->newQuery()->with([
-//                        'getNhaTuyenDung' => function ($subquery) {
-//                            $subquery->select('id', 'tai_khoan_id')->with(
-//                                [
-//                                    'getTaiKhoan' => function ($q) {
-//                                        $q->select('id', 'ho_ten');
-//                                    }
-//                                ]
-//                            );
-//                        },
-//                        'getDonHang' => function ($subquery) {
-//                            $subquery->select('id', 'so_luong as so_ngay_bai_dang', 'bai_tuyen_dung_id');
-//                        },
-//                        'getDiaDiem' => function ($subquery) {
-//                            $subquery->select('id', 'name as dia_diem');
-//                        },
-//                        'getCongTy' => function ($subquery) {
-//                            $subquery->select('id', 'name as cong_ty_name', 'logo as cong_ty_logo');
-//                        },
-//
-//                    ]);
-//
-//                    if ($request->has('kieu_lam_viec') == true && $request->get('kieu_lam_viec') != null) {
-//                        $query->where('kieu_lam_viec_id', $request->get('kieu_lam_viec'));
-//                    }
-//                    if ($request->has('chuc_vu') == true && $request->get('chuc_vu') != null) {
-//                        $query->where('chuc_vu_id', $request->get('chuc_vu'));
-//                    }
-//
-//                    if ($request->has('dia_diem_id') == true && $request->get('dia_diem_id') != null) {
-//                        $query->where('dia_diem_id', $request->get('dia_diem_id'));
-//                    }
-//
-////                }
-//                    $data['bai_tuyen_dung'] = $query->distinct('bai_tuyen_dung.id')->where('status', $trangThaiDaDuyet)->orderBy('bai_tuyen_dung.isHot', 'desc')->paginate(10, ['bai_tuyen_dung.id', 'bai_tuyen_dung.tieu_de', 'bai_tuyen_dung.ten_chuc_vu', 'luong', 'bai_tuyen_dung.isHot', 'bai_tuyen_dung.status', 'bai_tuyen_dung.han_tuyen', 'bai_tuyen_dung.nha_tuyen_dung_id', 'bai_tuyen_dung.dia_diem_id', 'bai_tuyen_dung.cong_ty_id'], 'page', $page);
-//                    break;
-//                case false:
-//                    $query = BaiTuyenDung::with([
-//                        'getNhaTuyenDung' => function ($subquery) {
-//                            $subquery->select('id', 'tai_khoan_id')->with(
-//                                [
-//                                    'getTaiKhoan' => function ($q) {
-//                                        $q->select('id', 'ho_ten');
-//                                    }
-//                                ]
-//                            );
-//                        },
-//                        'getDonHang' => function ($subquery) {
-//                            $subquery->select('id', 'so_luong as so_ngay_bai_dang', 'bai_tuyen_dung_id');
-//                        },
-//                        'getDiaDiem' => function ($subquery) {
-//                            $subquery->select('id', 'name as dia_diem');
-//                        },
-//                        'getCongTy' => function ($subquery) {
-//                            $subquery->select('id', 'name as cong_ty_name', 'logo as cong_ty_logo');
-//                        },
-//
-//                    ]);
-//
-//                    $tieuDe = $request->get('tieu_de');
-//
-//                    if ($request->has('kieu_lam_viec') == true && $request->get('kieu_lam_viec') != null) {
-//                        $query->where('kieu_lam_viec_id', $request->get('kieu_lam_viec'));
-//                    }
-//                    if ($request->has('chuc_vu') == true && $request->get('chuc_vu') != null) {
-//                        $query->where('chuc_vu_id', $request->get('chuc_vu'));
-//                    }
-//
-//                    if ($request->has('dia_diem_id') == true && $request->get('dia_diem_id') != null) {
-//                        $query->where('dia_diem_id', $request->get('dia_diem_id'));
-//                    }
-//
-//
-//
-//                    break;
-//            }
-
 
             $data['trang_hien_tai'] = $data['bai_tuyen_dung']->currentPage();
             $data['check_trang'] = $data['bai_tuyen_dung']->nextPageUrl();
@@ -312,10 +224,13 @@ class TrangChuController extends Controller
         } catch (\Exception $e) {
             return redirect('/');
         }
-//        dd('cc');
 
     }
-//    public function logout(){
-//        Auth::logout();
-//    }
+    public function vietLam(Request $request){
+        $type = intval($request->get('type'));
+        return view('TrangChu.danh_sach_viec_lam',compact('type'));
+    }
+    public function gioiThieuVeChungToi(){
+        return view('TrangChu.gioi_thieu_ban_than');
+    }
 }

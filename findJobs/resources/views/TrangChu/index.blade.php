@@ -57,7 +57,8 @@
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                 <h4 class="m-0 tieu_de bg-light p-1 tieu-de-chi-tiet">Đang tải...</h4>
                                 <label class="float-left"><span
-                                        class="cong_ty text-uppercase">Đang tải...</span></label><label class="float-right d-none">Nhà tuyển
+                                        class="cong_ty text-uppercase">Đang tải...</span></label><label
+                                    class="float-right d-none">Nhà tuyển
                                     dụng: <span class="name_nguoi_dang">Đang tải...</span></label>
                             </div>
 
@@ -174,12 +175,12 @@
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
                                         <span>Mức lương:</span>
                                         <p class="mb-0">
-{{--                                            @if(Auth::user() != null)--}}
-                                                <label class="muc_luong">Đang tải...</label>
-{{--                                            @else--}}
-{{--                                                <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a>--}}
-{{----}}
-{{--                                            @endif--}}
+                                            {{--                                            @if(Auth::user() != null)--}}
+                                            <label class="muc_luong">Đang tải...</label>
+                                            {{--                                            @else--}}
+                                            {{--                                                <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a>--}}
+                                            {{----}}
+                                            {{--                                            @endif--}}
                                         </p></div>
                                 </div>
 
@@ -192,7 +193,7 @@
 
                             </div>
                             <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5 text-right p-0">
-{{--                                <b>Báo cáo Nhà tuyển dụng:</b>--}}
+                                {{--                                <b>Báo cáo Nhà tuyển dụng:</b>--}}
                             </div>
                             <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center p-0">
                                 @if(intval(Session::get('loai_tai_khoan')) == 1)
@@ -203,7 +204,7 @@
                                     </button>
                             </div>
 
-                            </div>
+                        </div>
 
                     </div>
                     @if(intval(Session::get('loai_tai_khoan')) == 1)
@@ -224,10 +225,10 @@
                                             id="trang-chu-like-post">
                                         <i class="icofont icofont-thumbs-up">Lưu bài</i>
                                     </button>
-{{--                                    <button class="btn btn-outline-info"--}}
-{{--                                            title="Chat với nhà tuyển dụng">--}}
-{{--                                        <i class="icofont icofont-ui-text-loading "></i> Chat--}}
-{{--                                    </button>--}}
+                                    {{--                                    <button class="btn btn-outline-info"--}}
+                                    {{--                                            title="Chat với nhà tuyển dụng">--}}
+                                    {{--                                        <i class="icofont icofont-ui-text-loading "></i> Chat--}}
+                                    {{--                                    </button>--}}
 
 
                                     {{--                                <div class="btn @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) btn-outline-warning @else btn-warning @endif waves-effect position-relative" @if(in_array($data['id'],$data['don_xin_viec']['data']) == false) id="call-modal-nop-don" @endif><i class="fa fa-send">@if(in_array($data['id'],$data['don_xin_viec']['data'])){{' Đã ứng tuyển'}}@else{{' Nộp đơn'}}@endif</i>--}}
@@ -256,18 +257,11 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-
-        $(window).on("load", function(){
-            fullSizePage();
-        });
-    </script>
-    <script type="text/javascript">
         let loaiTaiKhoan = '{{Session::get('loai_tai_khoan')}}'
         let idBaiTuyenDung = '';
         let currenPage = null;
         let nextPage = null;
         let next_page_check = null;
-
 
         const getProcessing = () => {
             return '<div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">\n' +
@@ -276,7 +270,7 @@
         }
 
         const getThongTinChiTietPost = (e) => {
-            console.log('con cac ne', e);
+            // console.log('con cac ne', e);
             // console.log('con cac dđne', e['don_xin_viec']['data'].length);
             // return;
             if (e != null) {
@@ -388,7 +382,7 @@
                 $('.nganh_nghe').text(array_nganh_nghe.join(' - '));
 
 
-                $('.muc_luong').text(e.luong_from+' - '+e.luong_to+ ' Triệu');
+                $('.muc_luong').text(e.luong_from + ' - ' + e.luong_to + ' Triệu');
                 // return;
                 {{--                href="{{route('baiviet.getThongTinBaiViet',[$row['id']])}}--}}
                 $('#xem-chi-tiet-rut-gon').attr('href', '/bai-viet/thong-tin&baiviet=' + e.id + '&chitiet=1');
@@ -479,15 +473,9 @@
     <script type="text/javascript">
         //main
         $(function () {
+
             $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
-            // let ajaxBaiViet = {
-            //     method:'get',
-            //     url :"/tin-tuyen-dung",
-            //     data : {
-            //         getTin : 1,
-            //         page : 1
-            //     }
-            // }
+
             // //init lấy danh sách việc làm | lấy page 1
             // getItemsDefaults($('#container-items'), ajaxBaiViet.data.page,ajaxBaiViet);
             // //end init
@@ -516,7 +504,7 @@
                     // return;
                     sendAjaxNoFunc(ajax.method, ajax.url, ajax.data, '')
                         .done(e => {
-                            console.log(e)
+                            // console.log(e)
                             $('.tong-luot-thich').text(e.total_thich);
                         });
                 } else if (__this.hasClass('btn-primary') == true) {
@@ -544,38 +532,6 @@
 
             });
 
-            //resize post
-            // $(window).resize(function () {
-            //     widthImage = $('#container-items .iteam-click').find('img').parent().width();
-            //     heightImage = widthImage;
-            //     $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
-            //
-            // });
-
-            //call ajax
-            // $(document).on('click','#container-items .iteam-click', function () {
-            //     getThongTinChiTietPost(null);
-            //
-            //     let __this = $(this);
-            //     let ajax ={
-            //         method:'get',
-            //         url:'/bai-viet/thong-tin&baiviet='+__this.data('id'),
-            //         data:{
-            //
-            //         }
-            //     };
-            //     console.log('checked',__this.hasClass('iteam-click-focus'))
-            //
-            //     if (__this.hasClass('iteam-click-focus') == false){
-            //         sendAjaxNoFunc(ajax.method,ajax.url,ajax.data,'').done(e =>{
-            //             // console.log('thongtin',e)
-            //             getThongTinChiTietPost(e)
-            //         });
-            //     }
-            //
-            // });
-
-
             $(document).on('click', '#container-items .iteam-click', function () {
                 // console.log($(this).height());
                 let __this = $(this);
@@ -593,23 +549,74 @@
                     $('.arrow-item').addClass('d-none');
                 }
             });
+            let formDataFileUpload  = new FormData();
+            let formDataFileUpload_check  = [];
+            $(document).on('change', '#add-new-file-upload-input', function (e) {
+                // var tmppath = URL.createObjectURL(e.target.files[0]);
+                // console.log( $(this).get(0).files.length);
+                let __this = $(this);
+                var formData = formDataFileUpload;
+                for (var i = 0; i < __this.get(0).files.length; ++i) {
+                    // console.log($(this).get(0).files[i]);
+                    let findTheSame = formDataFileUpload_check.includes(__this.get(0).files[i].name);
+                    if (findTheSame == false){
+                        formData.append("fileUpload[]", __this.get(0).files[i]);
+                        formDataFileUpload_check.push(__this.get(0).files[i].name);
+                        $('#render-file-upload').append('<span>' + __this.get(0).files[i].name + '</span><br>');
+                    }
 
-            // $(document).on('click','#container-items .iteam-click .xem-chi-tiet-post',function (e) {
-            //     let __this = $(this);
-            //     e.preventDefault();
-            //     // target="_blank"
-            //     if ($(document).width() >= 576){
-            //         __this.attr('target','_blank');
-            //         __this.click();
-            //     }else if($(document).width() < 576){
-            //         __this.removeAttr('target');
-            //         __this.click();
-            //
-            //
-            //     }
-            // });
+                    // names.push($(this).get(0).files[i].name);
+                    // console.log(findTheSame)
+                }
+                let data = formData;
 
+                // return;
+                $.ajax({
+                    method: 'post',
+                    url: '/nguoi-tim-viet/upload-file-multiple',
+                    data: data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    },
+                    processData: false,
+                    contentType: false,
+                }).done(e => {
+                    let response = e;
+                    for(let i = 0;i<response.length;i++){
+                        $('#render-file-upload-iframe').append('<iframe src="'+'{{URL::asset('/uploads')}}'+'/'+response[i]+'"></iframe>');
+                    }
+                    console.log(data.getAll('fileUpload[]'));
+                    for(let [name, value] of data) {
+                        let checkFileSame = response.includes(name);
+                        if(checkFileSame == true){
+                            console.log('true')
+                            data.delete(name);
+                        }else{
+                            console.log('false')
+                        }
+
+                        // console.log(name)
+                        // console.log(value)
+                        // alert('${name} = ${value}'); // key1 = value1, then key2 = value2
+                    }
+                    console.log(data.getAll('fileUpload[]'))
+                    // console.log(data.get('fileUpload[]'));
+                    console.log(e);
+                })
+
+
+                // success: function (res) {
+                //     sendAjaxNoFunc('post', '/nguoi-tim-viet/upload-file-multiple', data, '').done(e => {
+                //         console.log(e);
+                //     })
+                //     // console.log(formData);
+                // }
+            });
+        $(document).on('click', '#add-new-file-upload', function () {
+            $('#add-new-file-upload-input').trigger('click');
         });
+        })
+        ;
     </script>
     <!-- Plugins js-->
     {{--    <script src="{{URL::asset('assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>--}}

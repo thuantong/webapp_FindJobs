@@ -511,3 +511,58 @@ b, strong {
     background: var(--white)!important;
     color: black !important
 }
+.checkbox-primary input[type=checkbox]:checked + label::before{
+    background-color: var(--normal)!important;
+    border-color: var(--normal)!important;
+}
+
+.content-page{
+    padding: 0 15px 0px 15px!important;
+}
+.footer{
+    background: var(--normal)!important;
+    position: inherit!important;
+}
+.bg-active{
+    background: var(--active)!important;
+}
+.content-page{
+    margin-left:0px!important;
+}
+.enlarged .content-page{
+    margin-left:0px!important;
+}
+.enlarged .left-side-menu{
+    width: 0px!important;
+    /*display: none!important;*/
+}
+.enlarged .left-side-menu #sidebar-menu > ul > li > a i{
+    display: none!important;
+}
+.sidebar-enable .left-side-menu{
+    display: block!important;
+}
+/*.sidebar-enable.enlarged  .left-side-menu{*/
+/*    display: block!important;*/
+/*}*/
+.left-side-menu{
+    display: none!important;
+}
+.left-side-menu-custom{
+    border-right: 2px var(--hover) solid!important;
+}
+.page-item.active .page-link{
+    z-index: 0!important;
+}
+.timeline-sm .timeline-sm-item:after{
+    border: 2px solid var(--normal)!important;
+}
+.form-wizard-header .nav-item .nav-link .number{
+    color: var(--normal);
+}
+.form-wizard-header .nav-item .nav-link.active{
+    color: var(--white)!important;
+}
+/*.left-side-menu{*/
+/*    display: none;*/
+/*}*/

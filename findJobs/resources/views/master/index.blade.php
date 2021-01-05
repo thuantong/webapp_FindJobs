@@ -54,7 +54,7 @@
 {{----}}
 <div id="preloader">
     <div class="progress mb-0" style="border-radius: 0px!important;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="loadPage" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" id="loadPage" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
     </div>
 {{--    <div id="status">--}}
 {{--        <div class="progress mb-0">--}}
@@ -82,7 +82,7 @@
                     Việc làm
                 </a>
             </li>
-            <li>
+            <li class="d-none d-md-block">
                 <a class="nav-link center-element search-field-new-query" id="search-field-new-query"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     <span class="text-white">Tìm kiếm</span>
                 </a>
@@ -90,13 +90,7 @@
 
             @if(Auth::user() != null)
 
-                @if(Session::exists('loai_tai_khoan') && Session::get('loai_tai_khoan') == 1)
-                    <li>
-                        <a href="{{route('nguoitimviec.timKiemNhaTuyenDung')}}" class="nav-link text-white">
-                            Tìm kiếm nhà tuyển dụng
-                        </a>
-                    </li>
-                @endif
+
                 @if(Session::exists('loai_tai_khoan') && Session::get('loai_tai_khoan') == 2)
 {{--                    <li>--}}
 {{--                        <a href="{{route('nhatuyendung.index')}}" class="nav-link text-white">--}}
@@ -277,7 +271,7 @@
                     </a>
                 </li>
                     @else
-                    <li>
+                    <li class="d-md-block d-none">
                         <a href="{{URL::asset('/xem-chuc-nang-nha-tuyen-dung')}}" class="nav-link text-white">
                             Dành cho nhà tuyển dụng
                         </a>
@@ -296,19 +290,15 @@
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
             <li>
                 <a href="/" class="nav-link logo text-center">
-                        <span class="logo-lg">
+                        <span class="logo">
                             <span class="logo-lg-text-light text-white">{{env('APP_NAME')}}</span>
 {{--                            <img src="assets\images\logo-sm.png" alt="" height="24">--}}
 {{--                            <img src="assets\images\logo-light.png" alt="" height="20">--}}
                         <!-- <span class="logo-lg-text-light">Xeria</span> -->
                         </span>
-                    <span class="logo-sm">
-{{--                                                    <span class="logo-sm-text-dark text-white">{{env('APP_NAME')}}</span>--}}
-
-                        <span class="logo-sm-text-dark text-white">TMJ</span>
-                            <!-- <span class="logo-sm-text-dark">X</span> -->
-{{--                            <img src="assets\images\logo-sm.png" alt="" height="24">--}}
-                        </span>
+{{--                    <span class="logo-sm">--}}
+{{--                        <span class="logo-sm-text-dark text-white">TMJ</span>--}}
+{{--                        </span>--}}
                 </a>
             </li>
             <li>
@@ -557,16 +547,62 @@
         <footer class="footer">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-sm-12 col-md-12 mb-4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12"><b class="text-white">Việc làm theo địa điểm</b></div>
+                                    @for($i=0; $i<4;$i++)
+                                    <a class="col-sm-12 col-md-12 text-white waves-effect waves-light" href="{{URL::asset('/?dia_diem='.$dia_diem[$i]['id'])}}">{{$dia_diem[$i]['name']}}</a>
+                                        @endfor
+                                    <a class="col-sm-12 col-md-12 text-white waves-effect waves-light" href="{{URL::asset('/danh-sach-viec-lam?type=1')}}" style="text-decoration: underline">Xem tất cả<span class="pl-1 fa fa-angle-double-right"></span></a>
 
-                        <p>Tên: Tống Minh Thuận @email: tongminhthuan0405@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12"><b class="text-white">Việc làm theo ngành nghề</b></div>
+                                    @for($i=0; $i<4;$i++)
+                                        <a class="col-sm-12 col-md-12 text-white waves-effect waves-light" href="{{URL::asset('/?nganh_nghe='.$nganh_nghe[$i]['id'])}}">{{$nganh_nghe[$i]['name']}}</a>
+                                    @endfor
+                                    <a class="col-sm-12 col-md-12 text-white waves-effect waves-light" href="{{URL::asset('/danh-sach-viec-lam?type=2')}}" style="text-decoration: underline">Xem tất cả<span class="pl-1 fa fa-angle-double-right"></span></a>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12"><b class="text-white">Việc làm theo kiểu làm việc</b></div>
+                                    @for($i=0; $i<4;$i++)
+                                        <a class="col-sm-12 col-md-12 text-white waves-effect waves-light" href="{{URL::asset('/?kieu_lam_viec='.$kieu_lam_viec[$i]['id'])}}">{{$kieu_lam_viec[$i]['name']}}</a>
+                                    @endfor
+                                    <a class="col-sm-12 col-md-12 text-white waves-effect waves-light" href="{{URL::asset('/danh-sach-viec-lam?type=3')}}" style="text-decoration: underline">Xem tất cả<span class="pl-1 fa fa-angle-double-right"></span></a>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12"><b class="text-white">Việc làm theo chức vụ</b></div>
+                                    @for($i=0; $i<4;$i++)
+                                        <a class="col-sm-12 col-md-12 text-white waves-effect waves-light" href="{{URL::asset('/?chuc_vu='.$chuc_vu[$i]['id'])}}">{{$chuc_vu[$i]['name']}}</a>
+                                    @endfor
+                                    <a class="col-sm-12 col-md-12 text-white waves-effect waves-light" href="{{URL::asset('/danh-sach-viec-lam?type=4')}}" style="text-decoration: underline">Xem tất cả<span class="pl-1 fa fa-angle-double-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bg-active">
+                    <div class="col-sm-12 col-md-6">
+
+                        <p class="pt-2"><b class="text-white">Website đăng tin tuyển dụng và tìm việc làm</b></p>
+                        <p><b class="text-white">Tên: Tống Minh Thuận @email: tongminhthuan0405@gmail.com</b></p>
 {{--                        <p>MSSV: 15xxx551</p>--}}
 {{--                        <p>Khoán luận tốt nghiệp 2020 - 2021</p>--}}
 {{--                        <p>Website tìm kiếm việc làm</p>--}}
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-12 col-md-6 center-element">
                         <div class="text-md-right footer-links d-none d-sm-block">
-                            <a href="javascript:void(0);">Thông tin</a>
+                            <a href="{{route('trangchu.gioiThieuVeChungToi')}}" class="text-white waves-effect waves-light">Thông tin</a>
 
                         </div>
                     </div>
@@ -631,6 +667,7 @@
 
 <!-- Right bar overlay-->
 <div class="rightbar-overlay"></div>
+
 <script src="{{URL::asset('assets\js\vendor.min.js')}}"></script>
 
 
@@ -660,6 +697,7 @@
 <script src="{{URL::asset('assets\js\app.min.js')}}"></script>
 <script src="{{URL::asset('assets\js\customs-js-mine.js')}}"></script>
 {{--<script src="{{asset('assets\js\date-picker-vi.js')}}"></script>--}}
+
 
 @stack('scripts')
 <!-- Vendor js -->
@@ -717,27 +755,28 @@
         // getItemsDefaults($('#left-search-content'), 1, ajax, 'timkiem')
     });
 
-    $(document).on('click', function (e) {
-
-        if (!$(e.target).hasClass('left-search') && $(e.target).parents('.left-search').length == 0) {
-            $('.exit-search').trigger('click');
-        }
-        if ($(e.target).hasClass('search-field') || $(e.target).parents('.search-field').length > 0) {
-            $('.left-search').removeClass('d-none').fadeIn('slow');
-            if ($(document).width()) {
-                $('.left-search').css('width', $(document).width() + 'px');
-                if ($(document).width() < 500) {
-                    $('.left-search').css('width', $(document).width() + 'px');
-                } else if ($(document).width() > 500) {
-                    $('.left-search').css('width', ($(document).width() * 0.8) + 'px');
-                }
-            }
-            $('.value-search').focus();
-        }
-    });
+    // $(document).on('click', function (e) {
+    //
+    //     if (!$(e.target).hasClass('left-search') && $(e.target).parents('.left-search').length == 0) {
+    //         $('.exit-search').trigger('click');
+    //     }
+    //     if ($(e.target).hasClass('search-field') || $(e.target).parents('.search-field').length > 0) {
+    //         $('.left-search').removeClass('d-none').fadeIn('slow');
+    //         if ($(document).width()) {
+    //             $('.left-search').css('width', $(document).width() + 'px');
+    //             if ($(document).width() < 500) {
+    //                 $('.left-search').css('width', $(document).width() + 'px');
+    //             } else if ($(document).width() > 500) {
+    //                 $('.left-search').css('width', ($(document).width() * 0.8) + 'px');
+    //             }
+    //         }
+    //         $('.value-search').focus();
+    //     }
+    // });
     $(function () {
 
-        $('#loadPage').css('with','80%');
+        fullSizePage();
+        $('#loadPage').css('width','80%');
         $(window).on('load',function () {
             $('#loadPage').parent().fadeOut('slow')
         });
@@ -767,16 +806,16 @@
         //
         // });
 
-        $(window).resize(function () {
-            if ($(document).width()) {
-                $('.left-search').css('width', $(document).width() + 'px');
-                if ($(document).width() < 769) {
-                    $('.left-search').css('width', $(document).width() + 'px');
-                } else if ($(document).width() > 768) {
-                    $('.left-search').css('width', ($(document).width() * 0.8) + 'px');
-                }
-            }
-        });
+        // $(window).resize(function () {
+        //     if ($(document).width()) {
+        //         $('.left-search').css('width', $(document).width() + 'px');
+        //         if ($(document).width() < 769) {
+        //             $('.left-search').css('width', $(document).width() + 'px');
+        //         } else if ($(document).width() > 768) {
+        //             $('.left-search').css('width', ($(document).width() * 0.8) + 'px');
+        //         }
+        //     }
+        // });
 
     });
     // $(document).on('keyup',function (e) {

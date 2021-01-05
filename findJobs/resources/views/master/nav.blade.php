@@ -130,7 +130,14 @@
 
 
                 @endif
-
+                @if(Session::exists('loai_tai_khoan') && Session::get('loai_tai_khoan') == 1)
+                    <li>
+                        <a href="{{route('nguoitimviec.timKiemNhaTuyenDung')}}" class="waves-effect">
+                            <i class="fa fa-users"></i>
+                            <span>Tìm kiếm nhà tuyển dụng</span>
+                        </a>
+                    </li>
+                @endif
                 @if(Session::get('loai_tai_khoan') == 3)
                     <li class="menu-title">{{__('Quản trị viên')}}</li>
 

@@ -641,7 +641,7 @@
     <script type="text/javascript">
         let idBaiTuyenDung = '{{$data['id']}}';
         $(function () {
-            fullSizePage();
+            // fullSizePage();
             let size_parent_of_right_side = $('#container-section').height();
             console.log(size_parent_of_right_side)
             $('#noi-dung-right-side').css('height', size_parent_of_right_side + 'px')

@@ -218,12 +218,7 @@ class NguoiTimViecControler extends Controller
 //    }
     public function uploadFile(Request $request)
     {
-//        dd($request->file('file'));
-//        $allowed = array('pdf','docx','doc');
-//        $ext = pathinfo($request->file('file'), PATHINFO_EXTENSION);
-//        if (!in_array($ext, $allowed)) {
-//            return redirect()->back()->withErrors(['error'=>'File không đúng định dạng, phải là file pdf hoặc file doc! Mời bạn tải lại']);
-//        }
+
         $request->validate([
             'file' => 'required|mimes:pdf,docx|max:2048',
         ],[
@@ -231,33 +226,28 @@ class NguoiTimViecControler extends Controller
             'file.mimes'=>'File không đúng định dạng, File phải có định dạng kiểu: :values',
             'file.max'=>'File không được quá 2mb',
         ]);
-//        Validator::make($request->all(), [
-//            'file' => ['required|mimes:pdf,docx|max:2048'],
-//
-//        ],array(
-//            'file.required'=>'Chưa chọn file',
-////            'file.mimes'=>'Định dạng file không đúng, file phải đúng định dạng: :values',
-//            'file.max'=>'File không được quá 2mb',
-//        ))->validate();
-//        $fileName = time().'.'.$request->post('file_pdf')->extension();
-        $fileName = time().'.'.$request->file('file')->extension();
-//        dd($fileName);
-        $request->file('file')->move(public_path('uploads'),$fileName);
-//        $path = ;
 
-//        file_put_contents($path, $fileName);
-//        $request->post('file_pdf')->move(public_path('uploads'), $fileName);
+        $fileName = time().'.'.$request->file('file')->extension();
+
+        $request->file('file')->move(public_path('uploads'),$fileName);
+
         $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
         $nguoiTimViec->file_path = 'uploads/'.$fileName;
         $nguoiTimViec->save();
 //        return response()->file(URL::asset($nguoiTimViec->file_path));
         return redirect()->back();
-//        dd($request);
-//        Validator::make($request->all(),['file_pdf'=>"required|string|mimes:pdf,zip"])->validate();
-//        $request->validate([
-//            'file_pdf' => 'required|mimes:csv,txt,xlx,xls|max:2048'
-//        ]);
-//dd('đấ');
+    }
+
+    public function uploadFileMultiple(Request $request){
+        $file_names = $request->file('fileUpload');
+        $index = 0;
+        foreach ($file_names as $row){
+            $data[$index] = $row->getClientOriginalName();
+            $row->move(public_path('uploads'),$data[$index]);
+            $index++;
+        }
+
+        return $data;
     }
     public function viewPDF(Request $request){
         $filename = 'Pham-Thi-Nga-Apply-giaovie1nquannhiem.pdf';

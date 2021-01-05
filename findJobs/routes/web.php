@@ -32,6 +32,8 @@ Route::namespace('Auth')->group(function (){
 Route::namespace('TrangChu')->group(function () {
     Route::name('trangchu.')->group(function () {
         Route::get('/', 'TrangChuController@index')->name('index');
+        Route::get('/danh-sach-viec-lam', 'TrangChuController@vietLam')->name('vietLam');
+        Route::get('/gioi-thieu-ve-chung-toi', 'TrangChuController@gioiThieuVeChungToi')->name('gioiThieuVeChungToi');
 
 //        Route::get('/search', 'TrangChuController@searchInput');
 //        Route::get('/chi-tiet-tuyen-dung', 'TrangChuController@details')->name('chiTietBaiDang');
@@ -203,6 +205,7 @@ Route::namespace('NguoiTimViec')->group(function (){
         Route::get('/nguoi-tim-viet/chi-tiet','NguoiTimViecControler@chiTiet')->name('chiTiet');
         Route::get('/nguoi-tim-viet/tim-kiem-nha-tuyen-dung','NguoiTimViecControler@timKiemNhaTuyenDung')->name('timKiemNhaTuyenDung');
         Route::post('/nguoi-tim-viet/upload-file','NguoiTimViecControler@uploadFile')->name('uploadFile');
+        Route::post('/nguoi-tim-viet/upload-file-multiple','NguoiTimViecControler@uploadFileMultiple')->name('uploadFileMultiple');
         Route::get('/nguoi-tim-viet/view-file','NguoiTimViecControler@viewPDF')->name('viewPDF');
     });
 });
