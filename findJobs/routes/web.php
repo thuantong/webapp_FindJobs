@@ -185,6 +185,10 @@ Route::namespace('Admin')->group(function () {
 
 Route::namespace('NopDon')->group(function (){
     Route::name('nopdon.')->group(function (){
+        Route::get('/nguoi-tim-viec/nop-don-buoc-mot','NopDonController@nopDonBuocMot')->name('nopDonBuocMot');
+        Route::get('/nguoi-tim-viec/nop-don-buoc-mot/luu-lai','NopDonController@nopDonBuocMotLuuLai')->name('nopDonBuocMotLuuLai');
+        Route::post('/nguoi-tim-viec/nop-don-buoc-hai/luu-lai','NopDonController@nopDonBuocHaiLuuLai')->name('nopDonBuocHaiLuuLai');
+
         Route::get('/nguoi-tim-viec/danh-sach-bai-ung-tuyen','NopDonController@danhSachBaiDaNopDon')->name('danhSachBaiDaNopDon');
         Route::get('/nguoi-tim-viec/get-danh-sach-bai-ung-tuyen','NopDonController@layDanhSachBaiDaNopDon')->name('layDanhSachBaiDaNopDon');
         Route::post('/nop-don-ung-tuyen','NopDonController@nopDonUngTuyen')->name('nopDonUngTuyen');

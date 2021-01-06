@@ -1,3 +1,34 @@
+// const nopDonUngTuyen = async ()=>{
+    // let __this = $(this);
+    $(document).on('click','#nopDonUngTuyen',async function () {
+        let kinh_nghiem_array =[];
+        $('#exp-list li').each(function () {
+            let item = {};
+            item.from_date = $(this).find('.time-exp').find('b').eq(0).text();
+            item.to_date = $(this).find('.time-exp').find('b').eq(1).text();
+            item.tenCtyVaChucVu = $(this).find('.company-name-exp').text();
+            item.websites = $(this).find('.company-link-exp').text();
+            item.mo_ta = $(this).find('.description-exp').text();
+            kinh_nghiem_array.push(item);
+            // time-exp
+        });
+        await $('#kinh-nghiem-lam-viec').val(JSON.stringify(kinh_nghiem_array));
+
+        let dataConfirm = {
+            message : "Bạn muốn xác nhận nộp đơn ứng tuyển này?",
+            title : "Xác nhận nộp đơn xin việc"
+        }
+        alertConfirm(dataConfirm).then(result => {
+            // console.log('reeeee',result)
+            if (result.value == true) {
+                $('#form-buoc-hai').submit();
+            }
+        })
+    })
+
+
+    // console.log(hrefAtribute)
+// }
 //cập nhật modal kinh nghiệm
 $(document).on('click', '#modal-cap-nhat-exp .modal-footer #save-exp', function () {
 
@@ -122,6 +153,9 @@ const getHtmlExpNew = (data,type) => {
 //modal kinh nghiệm
 $(document).on('shown.bs.modal', '#modal-cap-nhat-exp', function () {
     $(this).find('.modal-body').find('input').eq(1).select();
+    lichThang($(this).find('.modal-body').find('#thoi-gian-bat-dau'));
+    lichThang($(this).find('.modal-body').find('#thoi-gian-ket-thuc'));
+
 });
 
 //xóa 1 kinh nghiệm

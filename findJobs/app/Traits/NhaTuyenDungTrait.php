@@ -24,8 +24,6 @@ trait NhaTuyenDungTrait
 
     public function getEmployer()
     {
-
-        if (Session::get('loai_tai_khoan') == 2) {
             $nhaTuyenDung = TaiKhoan::query()->find(Auth::user()->id)->getNhaTuyenDung;
 
             $data['nha_tuyen_dung'] = $nhaTuyenDung->toArray();
@@ -38,9 +36,6 @@ trait NhaTuyenDungTrait
             $data['bang_cap'] = BangCap::query()->orderBy('name', 'asc')->get();
             $data['quy_mo_nhan_su'] = QuyMoNhanSu::query()->orderBy('id', 'asc')->get();
             return view('User.nhaTuyenDung',compact('data'));
-        } else {
-            abort(404);
-        }
     }
 
     public function setLogoCongTy(Request $request)

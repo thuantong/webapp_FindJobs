@@ -11,35 +11,35 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{URL::asset('assets\images\animat-diamond-color.gif')}}">
+    <link rel="shortcut icon" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\images\animat-diamond-color.gif')}}">
 
     <!-- plugin css -->
-    <link href="{{URL::asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet"
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet"
           type="text/css">
 
     <!-- App css -->
-    <link href="{{URL::asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    {{--    <link href="{{asset('assets\icon\font-awesome\font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    {{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\font-awesome\font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
 <!-- typicon icon -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\typicons-icons\css\typicons.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\typicons-icons\css\typicons.min.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\themify-icons\themify-icons.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\themify-icons\themify-icons.css')}}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\font-awesome\css\font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\font-awesome\css\font-awesome.min.css')}}">
     <!-- ico font -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\icofont\css\icofont.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\icofont\css\icofont.css')}}">
     <!-- feather Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\feather\css\feather.css')}}">
-    <link href="{{URL::asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
-    {{--    <link href="{{URL::asset('assets\css\croppie\2_6_4\croppie.css')}}" rel="stylesheet" type="text/css">--}}
-    <link href="{{URL::asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\feather\css\feather.css')}}">
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
+    {{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\croppie\2_6_4\croppie.css')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Jquery Toast css -->
-    {{--    <link href="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.css')}}" rel="stylesheet" type="text/css">--}}
-    <link href="{{URL::asset('assets\js\vtoast\vtoast.css')}}" rel="stylesheet" type="text/css">
-    {{--        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
-    <link href="{{URL::asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{URL::asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
+    {{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-toast\jquery.toast.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\vtoast\vtoast.css')}}" rel="stylesheet" type="text/css">
+    {{--        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
 
 </head>
 {{--@if(Route::currentRouteName() == 'user.nguoiTimViec')--}}
@@ -476,36 +476,36 @@
 <div class="rightbar-overlay"></div>
 
 <!-- Vendor js -->
-<script src="{{URL::asset('assets\js\vendor.min.js')}}"></script>
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\vendor.min.js')}}"></script>
 
-<script src="{{URL::asset('assets\libs\apexcharts\apexcharts.min.js')}}"></script>
-<script src="{{URL::asset('assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>
-{{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
-{{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js')}}"></script>--}}
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\apexcharts\apexcharts.min.js')}}"></script>
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js')}}"></script>--}}
 
 <!-- Peity chart-->
-<script src="{{URL::asset('assets\libs\peity\jquery.peity.min.js')}}"></script>
-<script src="{{URL::asset('assets\js\chat-js-customs.js')}}"></script>
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\peity\jquery.peity.min.js')}}"></script>
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\chat-js-customs.js')}}"></script>
 
 <!-- Tost-->
-<script src="{{URL::asset('assets\js\vtoast\vtoast.js')}}"></script>
-{{--<script src="{{URL::asset('assets\libs\jquery-toast\jquery.toast.min.js')}}"></script>--}}
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\vtoast\vtoast.js')}}"></script>
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-toast\jquery.toast.min.js')}}"></script>--}}
 
 <!-- toastr init js-->
-{{--<script src="{{URL::asset('assets\js\pages\toastr.init.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\pages\toastr.init.js')}}"></script>--}}
 <!-- init js -->
-{{--<script src="{{asset('assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
 <!-- Modal-Effect -->
-<script src="{{URL::asset('assets\libs\custombox\custombox.min.js')}}"></script>
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\custombox\custombox.min.js')}}"></script>
 
-<script src="{{URL::asset('assets\js\croppie\croppie.js')}}"></script>
-{{--<script src="{{URL::asset('assets\js\croppie\2_6_4\croppie.js')}}"></script>--}}
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\croppie\croppie.js')}}"></script>
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\croppie\2_6_4\croppie.js')}}"></script>--}}
 <!-- App js -->
-<script src="{{URL::asset('assets\js\app.min.js')}}"></script>
-<script src="{{URL::asset('assets\js\customs-js-mine.js')}}"></script>
-{{--<script src="{{asset('assets\js\date-picker-vi.js')}}"></script>--}}
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app.min.js')}}"></script>
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\customs-js-mine.js')}}"></script>
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\date-picker-vi.js')}}"></script>--}}
 @stack('scripts')
-<script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
+<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 <script type="text/javascript">
     let getBaseURL = '{{URL::asset('/')}}';
     let avatarDefault = '{{URL::asset('images/default-company-logo.jpg')}}';
@@ -647,28 +647,28 @@
 {{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
 
 {{--    <!-- App favicon -->--}}
-{{--    <link rel="shortcut icon" href="{{asset('assets\images\animat-diamond-color.gif')}}">--}}
+{{--    <link rel="shortcut icon" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\images\animat-diamond-color.gif')}}">--}}
 
 {{--    <!-- plugin css -->--}}
-{{--    <link href="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">--}}
 
 {{--    <!-- App css -->--}}
-{{--    <link href="{{asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">--}}
-{{--    --}}{{--    <link href="{{asset('assets\icon\font-awesome\font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\themify-icons\themify-icons.css')}}">--}}
+{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    --}}{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\font-awesome\font-awesome.min.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\themify-icons\themify-icons.css')}}">--}}
 {{--    <!-- Font Awesome -->--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\font-awesome\css\font-awesome.min.css')}}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\font-awesome\css\font-awesome.min.css')}}">--}}
 {{--    <!-- ico font -->--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\icofont\css\icofont.css')}}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\icofont\css\icofont.css')}}">--}}
 {{--    <!-- feather Awesome -->--}}
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('assets\icon\feather\css\feather.css')}}">--}}
-{{--    <link href="{{URL::asset('assets\js\vtoast\vtoast.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\feather\css\feather.css')}}">--}}
+{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\vtoast\vtoast.css')}}" rel="stylesheet" type="text/css">--}}
 
-{{--    --}}{{--        <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
-{{--    <link href="{{asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">--}}
-{{--    <link href="{{asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">--}}
-{{--    <link href="{{asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">--}}
-{{--    <link href="{{asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    --}}{{--        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\app.min.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">--}}
 
 {{--</head>--}}
 {{--<body>--}}
@@ -1008,26 +1008,26 @@
 {{--</div>--}}
 {{--</body>--}}
 {{--<!-- Vendor js -->--}}
-{{--<script src="{{asset('assets\js\vendor.min.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\vendor.min.js')}}"></script>--}}
 
-{{--<script src="{{asset('assets\libs\apexcharts\apexcharts.min.js')}}"></script>--}}
-{{--<script src="{{asset('assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>--}}
-{{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
-{{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\apexcharts\apexcharts.min.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js')}}"></script>--}}
 
 {{--<!-- Peity chart-->--}}
-{{--<script src="{{asset('assets\libs\peity\jquery.peity.min.js')}}"></script>--}}
-{{--<script src="{{asset('assets\js\chat-js-customs.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\peity\jquery.peity.min.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\chat-js-customs.js')}}"></script>--}}
 
-{{--<script src="{{URL::asset('assets\js\vtoast\vtoast.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\vtoast\vtoast.js')}}"></script>--}}
 
 {{--<!-- init js -->--}}
-{{--<script src="{{asset('assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
 
 {{--<!-- App js -->--}}
-{{--<script src="{{asset('assets\js\app.min.js')}}"></script>--}}
-{{--<script src="{{asset('assets\js\customs-js-mine.js')}}"></script>--}}
-{{--<script src="{{asset('assets\js\croppie\croppie.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app.min.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\customs-js-mine.js')}}"></script>--}}
+{{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\croppie\croppie.js')}}"></script>--}}
 {{--<script>--}}
 {{--    $(function () {--}}
 {{--        $('body').css('overflow-y',auto)--}}

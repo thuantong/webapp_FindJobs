@@ -40,7 +40,7 @@
     <script type="text/javascript">
         let data_action_confifm = '{{Auth::user()->id}}';
     </script>
-    <script type="text/javascript" src="{{URL::asset('assets/js/app/chuc-nang-gui-confirm-email.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets/js/app/chuc-nang-gui-confirm-email.js')}}"></script>
 {{--    <script type="text/javascript">--}}
 {{--        $(document).on('click','#gui-xac-nhan-email',function () {--}}
 {{--            let __this = $(this);--}}

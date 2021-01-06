@@ -70,7 +70,7 @@
                         class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-form-label text-sm-center text-md-right">{{ __('Thời gian bắt đầu') }}</label>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <input type="text"
+                        <input type="text" id="thoi-gian-bat-dau"
                                class="form-control from-date-exp"
                                value="01/2020" required autofocus title="{{ __('Thời gian bắt đầu') }}">
                         <span class="invalid-feedback" role="alert">
@@ -87,7 +87,7 @@
                         class="col-sm-12 col-md-4 col-lg-4 col-xl-4 col-form-label text-sm-center text-md-right">{{ __('Thời gian kết thúc') }}</label>
 
                     <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <input type="text"
+                        <input type="text" id="thoi-gian-ket-thuc"
                                class="form-control to-date-exp"
                                value="02/2020" required autofocus title="{{ __('Thời gian kết thúc') }}">
                         <span class="invalid-feedback" role="alert">

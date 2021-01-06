@@ -1,12 +1,12 @@
 @extends('master.index')
 @section('content')
     <head><!-- third party css -->
-        <link href="{{URL::asset('assets\libs\datatables\dataTables.bootstrap4.css')}}" rel="stylesheet"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\dataTables.bootstrap4.css')}}" rel="stylesheet"
               type="text/css">
-        <link href="{{URL::asset('assets\libs\datatables\responsive.bootstrap4.css')}}" rel="stylesheet"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\responsive.bootstrap4.css')}}" rel="stylesheet"
               type="text/css">
-        <link href="{{URL::asset('assets\libs\datatables\buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\datatables\select.bootstrap4.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\buttons.bootstrap4.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\select.bootstrap4.css')}}" rel="stylesheet" type="text/css">
     </head>
 
 
@@ -123,17 +123,17 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="{{URL::asset('assets\libs\datatables\jquery.dataTables.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\dataTables.bootstrap4.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\dataTables.responsive.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\responsive.bootstrap4.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\dataTables.buttons.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\buttons.html5.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\buttons.flash.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\buttons.print.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\dataTables.keyTable.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\datatables\dataTables.select.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\jquery.dataTables.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\dataTables.bootstrap4.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\dataTables.responsive.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\dataTables.buttons.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\buttons.html5.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\buttons.flash.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\buttons.print.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\dataTables.keyTable.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\datatables\dataTables.select.min.js')}}"></script>
     <script type="text/javascript">
         $(function () {
             let ajax = {

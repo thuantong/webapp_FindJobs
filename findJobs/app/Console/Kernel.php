@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('sendmail:update')->everyMinute();
+         $schedule->command('sendmail:update')->weekends();
          $schedule->command('hantuyendung:doitrangthai')->daily();
     }
 

@@ -271,7 +271,7 @@
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 center-element position-relative">
                         <div style="width: 8rem;height: 8rem;" id="logo_cong_ty">
-                            <img src="{{URL::asset('images/default-company-logo.jpg')}}"
+                            <img src="{{URL::asset(env('URL_ASSET_PUBLIC').'images/default-company-logo.jpg')}}"
                                  class="avatar-xl img-thumbnail"
                                  data-src="{{URL::asset('images/default-company-logo.jpg')}}"
                                  alt="profile-image" tabindex="-1" style="width: 100%;height: 100%">

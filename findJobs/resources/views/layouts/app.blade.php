@@ -16,30 +16,30 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="shortcut icon" href="{{asset('assets\images\animat-diamond-color.gif')}}">
+    <link rel="shortcut icon" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\images\animat-diamond-color.gif')}}">
 
     <!-- plugin css -->
-    <link href="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\themify-icons\themify-icons.css')}}">
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\themify-icons\themify-icons.css')}}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\font-awesome\css\font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\font-awesome\css\font-awesome.min.css')}}">
     <!-- ico font -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\icofont\css\icofont.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\icofont\css\icofont.css')}}">
     <!-- feather Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets\icon\feather\css\feather.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\icon\feather\css\feather.css')}}">
     <!-- App css -->
-    <link href="{{asset('assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-{{--    <link href="{{asset('assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
-    <link href="{{asset('assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+{{--    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\icons.min.css')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\app.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\style-customs.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\croppie\croppie.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\css\croppie\demo.css')}}" rel="stylesheet" type="text/css">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-image: url('{{asset('images/background-JOBS.jpg')}}')!important;">
+<body style="background-image: url('{{URL::asset(env('URL_ASSET_PUBLIC').'images/default/kDRPs.jpg')}}')!important;">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
+        <nav class="navbar-custom bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
 {{--                    {{ config('app.name', 'Tìm việc online') }}--}}
@@ -71,7 +71,6 @@
 
                             </li>
 
-{{--                            @if (Route::has('register') == false)--}}
                             @if (strtolower(Route::currentRouteName()) != 'auth.form.register')
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="{{ route('auth.form.register')}}">{{ __('Đăng ký tài khoản') }}</a>
@@ -79,51 +78,37 @@
                             @endif
                         @else
 
-{{--                            <li class="nav-item dropdown">--}}
-{{--                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-{{--                                    {{ Auth::user()->name }}--}}
-{{--                                </a>--}}
-
-{{--                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
-{{--                                    <a class="dropdown-item" href="{{ route('logout') }}"--}}
-{{--                                       onclick="event.preventDefault();--}}
-{{--                                                     document.getElementById('logout-form').submit();">--}}
-{{--                                        {{ __('Logout') }}--}}
-{{--                                    </a>--}}
-
-{{--                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
-{{--                                        @csrf--}}
-{{--                                    </form>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-    <script src="{{asset('assets\js\vendor.min.js')}}"></script>
+{{--        <main class="py-4">--}}
+            <div class="container-fluid py-4">
+                @yield('content')
+            </div>
 
-    <script src="{{asset('assets\libs\apexcharts\apexcharts.min.js')}}"></script>
-    <script src="{{asset('assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>
-    {{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
-    {{--<script src="{{asset('assets\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js')}}"></script>--}}
+{{--        </main>--}}
+    </div>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\vendor.min.js')}}"></script>
+
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\apexcharts\apexcharts.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-sparkline\jquery.sparkline.min.js')}}"></script>
+    {{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-1.2.2.min.js')}}"></script>--}}
+    {{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-vectormap\jquery-jvectormap-world-mill-en.js')}}"></script>--}}
 
     <!-- Peity chart-->
-    <script src="{{asset('assets\libs\peity\jquery.peity.min.js')}}"></script>
-    <script src="{{asset('assets\js\chat-js-customs.js')}}"></script>
-    <script src="{{asset('assets\js\croppie\croppie.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\peity\jquery.peity.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\chat-js-customs.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\croppie\croppie.js')}}"></script>
 
     <!-- init js -->
-    {{--<script src="{{asset('assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
+    {{--<script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\pages\dashboard-2.init.js')}}"></script>chart--}}
 
     <!-- App js -->
-    <script src="{{asset('assets\js\app.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app.min.js')}}"></script>
     @stack('scripts')
-    <script src="{{asset('assets\js\customs-js-mine.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\customs-js-mine.js')}}"></script>
 </body>
 </html>

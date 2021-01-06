@@ -9,7 +9,7 @@
                         <input type="file" id="update_avatar" class="d-none">
 
                         <img class="rounded-circle avatar-xl img-thumbnail"
-                             src="@if($data['nguoi_tim_viec']['avatar'] != null){{URL::asset($data['nguoi_tim_viec']['avatar'])}}@elseif($data['nguoi_tim_viec']['avatar'] == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
+                             src="@if($data['nguoi_tim_viec']['avatar'] != null){{URL::asset(env('URL_ASSET_PUBLIC').$data['nguoi_tim_viec']['avatar'])}}@elseif($data['nguoi_tim_viec']['avatar'] == null){{URL::asset(env('URL_ASSET_PUBLIC').'images\default-user-icon-8.jpg')}}@endif"
                              id="avatar-user">
 
                         <h4 class="mb-0">@if(\Illuminate\Support\Arr::exists($data,'chi_tiet_nguoi_tim_viec') == true && $data['chi_tiet_nguoi_tim_viec'] == 1){{ucwords($data['nguoi_tim_viec']['get_tai_khoan']['ho_ten'])}}@else{{Auth::user()->ho_ten}}@endif</h4>

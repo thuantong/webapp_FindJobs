@@ -116,7 +116,7 @@ div.overflow-auto-scroll {
     left: unset !important;
     top: 0px;
     /*top: -5px;*/
-    z-index: 1;
+    z-index: 0;
     overflow: hidden;
     width: 65px;
     height: 65px;
@@ -532,14 +532,17 @@ b, strong {
 .enlarged .content-page{
     margin-left:0px!important;
 }
-.enlarged .left-side-menu{
-    width: 0px!important;
-    /*display: none!important;*/
-}
-.enlarged .left-side-menu #sidebar-menu > ul > li > a i{
-    display: none!important;
-}
+/*.enlarged .left-side-menu{*/
+/*    width: 0px!important;*/
+/*    !*display: none!important;*!*/
+/*}*/
+/*.enlarged .left-side-menu #sidebar-menu > ul > li > a i{*/
+/*    display: none!important;*/
+/*}*/
 .sidebar-enable .left-side-menu{
+    display: block!important;
+}
+.sidebar-enable.enlarged .left-side-menu{
     display: block!important;
 }
 /*.sidebar-enable.enlarged  .left-side-menu{*/
@@ -549,7 +552,10 @@ b, strong {
     display: none!important;
 }
 .left-side-menu-custom{
-    border-right: 2px var(--hover) solid!important;
+    border-left: 2px var(--hover) solid!important;
+    right: 0px!important;
+    width: 300px!important;
+    background: var(--light);
 }
 .page-item.active .page-link{
     z-index: 0!important;

@@ -10,6 +10,7 @@ use App\Models\NganhNghe;
 use App\Models\NguoiTimViec;
 use App\Models\NhaTuyenDung;
 use App\Models\TaiKhoan;
+use App\Models\DonXinViec;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -228,9 +229,7 @@ class NguoiTimViecControler extends Controller
         ]);
 
         $fileName = time().'.'.$request->file('file')->extension();
-
         $request->file('file')->move(public_path('uploads'),$fileName);
-
         $nguoiTimViec = TaiKhoan::query()->find(Auth::user()->id)->getNguoiTimViec;
         $nguoiTimViec->file_path = 'uploads/'.$fileName;
         $nguoiTimViec->save();
@@ -247,6 +246,18 @@ class NguoiTimViecControler extends Controller
             $index++;
         }
 
+        if($request->has('type') && $request->type == 1){
+            $donTimKiem = DonXinViec::query()->find($request->don_xin_viec);
+            foreach ($file_names as $row){
+                $data[$index] = 'uploads/'.$row->getClientOriginalName();
+                // $row->move(public_path('uploads'),$data[$index]);
+                // $index++;
+            }
+            $donTimKiem->file = json_encode($data);
+            $donTimKiem->save();
+            return $this->getResponse("Nộp đơn ứng tuyển", 200, 'Nộp đơn ứng tuyển thành công');
+
+        }
         return $data;
     }
     public function viewPDF(Request $request){

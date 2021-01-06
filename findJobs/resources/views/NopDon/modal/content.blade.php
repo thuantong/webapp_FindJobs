@@ -193,8 +193,8 @@
                             <div class="col-sm-12 col-md-12" id="render-file-upload">
 
                             </div>
-                            <div class="col-sm-12 col-md-6" id="render-file-upload-iframe">
-                                <iframe src=""></iframe>
+                            <div class="col-sm-12 col-md-12" id="render-file-upload-iframe">
+                                <!-- <iframe src=""></iframe> -->
                             </div>
                         </div>
                         <h5 class="mb-3 mt-4 text-uppercase d-none bg-light p-2"><i

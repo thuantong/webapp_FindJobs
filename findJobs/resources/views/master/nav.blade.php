@@ -1,30 +1,5 @@
 <div class="left-side-menu left-side-menu-custom pt-0">
-{{--    <div id="carouselExampleIndicators" class="carousel slide m-2" data-ride="carousel">--}}
-{{--        <ol class="carousel-indicators">--}}
-{{--            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--}}
-{{--            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>--}}
-{{--            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>--}}
-{{--        </ol>--}}
-{{--        <div class="carousel-inner" role="listbox">--}}
-{{--            <div class="carousel-item active">--}}
-{{--                <img class="d-block img-fluid" src="{{URL::asset('assets\images\small\img-3.jpg')}}" alt="First slide">--}}
-{{--            </div>--}}
-{{--            <div class="carousel-item">--}}
-{{--                <img class="d-block img-fluid" src="{{URL::asset('assets\images\small\img-2.jpg')}}" alt="Second slide">--}}
-{{--            </div>--}}
-{{--            <div class="carousel-item">--}}
-{{--                <img class="d-block img-fluid" src="{{URL::asset('assets\images\small\img-1.jpg')}}" alt="Third slide">--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">--}}
-{{--            <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
-{{--            <span class="sr-only">Previous</span>--}}
-{{--        </a>--}}
-{{--        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">--}}
-{{--            <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
-{{--            <span class="sr-only">Next</span>--}}
-{{--        </a>--}}
-{{--    </div>--}}
+
     <div class="slimscroll-menu">
     {{--        {{'Số dư'.Session::get('so_du')}}--}}
 
@@ -34,6 +9,12 @@
             {{--{{json_encode(Session::get('role'))}}--}}
             <ul class="metismenu" id="side-menu">
 {{--                {{Session::has('so_du') == true}}--}}
+                <li class="d-block d-md-none">
+                    <a href="{{URL::asset('/')}}" class="waves-effect">
+                        <i class="fa fa-file-text-o"></i>
+                        <span>{{__('Việc làm')}}</span>
+                    </a>
+                </li>
                 @if(Auth::user() != null)
                     <li class="">
                         @if(Session::get('loai_tai_khoan') != 3 && Session::get('loai_tai_khoan') != 1)

@@ -1,19 +1,19 @@
 @extends('master.index')
 @section('content')
     <head>
-        <link href="{{URL::asset('assets\libs\quill\quill.core.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\quill\quill.bubble.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\quill\quill.snow.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\quill\quill.core.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\quill\quill.bubble.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\quill\quill.snow.css')}}" rel="stylesheet" type="text/css">
 
-        <link href="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
               rel="stylesheet">
 
-        <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
               type="text/css">
-        <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
-{{--        <link href="{{URL::asset('assets\libs\quill\quill.snow.css')}}" rel="stylesheet" type="text/css">--}}
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+{{--        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\quill\quill.snow.css')}}" rel="stylesheet" type="text/css">--}}
 {{--        <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">--}}
 {{--        <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">--}}
 
@@ -52,24 +52,24 @@
 
 @endsection
 @push('scripts')
-    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\jquery.multi-select.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.js')}}"></script>
 
-    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
 
     <script type="text/javascript"
-            src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
+            src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
 
     <link rel="stylesheet" type="text/css"
           href="{{asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
     <script type="text/javascript"
-            src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+            src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
 
     <!-- Plugins js -->
-{{--    <script src="{{URL::asset('assets\libs\katex\katex.min.js')}}"></script>--}}
-    <script src="{{URL::asset('assets\libs\quill\quill.min.js')}}"></script>
+{{--    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\katex\katex.min.js')}}"></script>--}}
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\quill\quill.min.js')}}"></script>
 {{--    <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>--}}
 {{--    <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>--}}
 {{----}}
@@ -82,17 +82,17 @@
 {{--    <script src="//cdn.quilljs.com/1.0.0/quill.core.js"></script>--}}
 
     <!-- Init js-->
-{{--    <script src="{{URL::asset('assets\js\pages\form-quilljs.init.js')}}"></script>--}}
-{{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\themMoiCongTy.js')}}"></script>--}}
+{{--    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\pages\form-quilljs.init.js')}}"></script>--}}
+{{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\themMoiCongTy.js')}}"></script>--}}
 {{--    <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>--}}
 {{--    <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>--}}
-{{--    <script src="{{URL::asset('assets\libs\quill\quill.min.js')}}"></script>--}}
-{{--    <script src="{{URL::asset('assets\libs\katex\katex.min.js')}}"></script>--}}
+{{--    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\quill\quill.min.js')}}"></script>--}}
+{{--    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\katex\katex.min.js')}}"></script>--}}
     <!-- Init js-->
-{{--    <script src="{{URL::asset('assets\js\pages\form-quilljs.init.js')}}"></script>--}}
+{{--    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\pages\form-quilljs.init.js')}}"></script>--}}
     <script type="text/javascript"
-            src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
+            src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
     <script type="text/javascript">
 
         var quill = new Quill("#mo-ta-editor", {
@@ -217,7 +217,7 @@
 {{--    <script type="text/javascript">--}}
 {{--        let HTMLcongTy = null;--}}
 {{--    </script>--}}
-    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\date-picker-vi.js')}}"></script>
 {{--    js đăng bài--}}
     @include('BaiViet.scriptThemMoi')
     <script>

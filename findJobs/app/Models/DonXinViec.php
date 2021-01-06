@@ -11,7 +11,7 @@ class DonXinViec extends Model
 //    protected $dateFormat = 'Y-m-d H+7:i:sO';
     public $timestamps = true;
     protected $fillable = [
-        'file','ngay_phong_van','thoi_gian_phong_van'
+        'file','ngay_phong_van','thoi_gian_phong_van','kinh_nghiem_lam_viec'
         ];
     protected $attributes = [
         'status' => 0,

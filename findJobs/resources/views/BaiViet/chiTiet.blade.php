@@ -1,17 +1,17 @@
 @extends('master.index')
 @section('content')
     <head>
-        <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
         <!-- ION Slider -->
-        <link href="{{URL::asset('assets\libs\ion-rangeslider\ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\ion-rangeslider\ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
         {{--        <link href="assets\libs\bootstrap-select\bootstrap-select.min.css" rel="stylesheet" type="text/css">--}}
-        <link href="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
               rel="stylesheet">
-        <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
 
         {{--        date picker--}}
-        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
               type="text/css">
     </head>
     @include('BaoCao.modalBaoCao')
@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-sm-2 col-md-2">
                         <img
-                            src="@if($data['get_cong_ty']['logo'] != null){{URL::asset(''.$data['get_cong_ty']['logo'].'')}}@endif"
+                            src="@if($data['get_cong_ty']['logo'] != null){{URL::asset(env('URL_ASSET_PUBLIC').$data['get_cong_ty']['logo'].'')}}@endif"
                             class="border" style="width: calc(100%)">
 
                     </div>
@@ -102,6 +102,7 @@
                                         <span class="badge badge-danger noti-icon-badge position-absolute"
                                               style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>
                                     </div>
+
                                     {{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
                                     {{--                                    <button class="btn btn-info btn-sm"></button>--}}
                                 </div>
@@ -397,7 +398,7 @@
                                                href="{{route('baiviet.getThongTinBaiViet',[$row['id'],'chitiet'=>1])}}">
                                                 <div class="row">
                                                     <div class="col-sm-4">
-                                                        <img src="{{URL::asset($row['getCongTy']->cong_ty_logo)}}"
+                                                        <img src="{{URL::asset(env('URL_ASSET_PUBLIC').$row['getCongTy']->cong_ty_logo)}}"
                                                              class="border" style="width: calc(100%)">
                                                     </div>
                                                     <div class="col-sm-8">
@@ -647,30 +648,35 @@
             $('#noi-dung-right-side').css('height', size_parent_of_right_side + 'px')
         })
     </script>
-    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\jquery.multi-select.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.js')}}"></script>
 
     {{--date picker--}}
-    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
 
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\date-picker-vi.js')}}"></script>
     <!-- Plugins js-->
-    <script src="{{URL::asset('assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-project.js')}}"></script>
 
     <!-- Init js-->
-    <script src="{{URL::asset('assets\js\pages\form-wizard.init.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\pages\form-wizard.init.js')}}"></script>
 
 
     <script type="text/javascript">
+
+
         $(function () {
             // viec-lam-tuong-tu-render
             getViecLamTuongTu();
+            $('#call-modal-nop-don').on('click', function () {
+                window.location.href = "/nguoi-tim-viec/nop-don-buoc-mot?bai_tuyen_dung="+idBaiTuyenDung;
+            });
             $('#trang-chu-like-post').on('click', function () {
                 let __this = $(this);
                 let idPost = __this.data('id');
@@ -780,9 +786,12 @@
             {{--    $('#viec-lam-tuong-tu-render').html(e)--}}
             {{--})--}}
         }
-    </script>
-    <script type="text/javascript" src="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-bao-cao.js')}}"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>
+
+
+    </script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\sweetalert2\sweetalert2.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-bao-cao.js')}}"></script>
+
+{{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>--}}
 @endpush

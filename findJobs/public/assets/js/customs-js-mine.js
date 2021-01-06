@@ -64,6 +64,7 @@ $(function () {
     });
     // let time = 0;
     $('.button-menu-mobile').on('click', function () {
+        $('body').removeClass('enlarged')
         // console.log($('.left-side-menu-custom').css('display'))
         // $('.left-side-menu').css('display','block')
 
@@ -722,9 +723,9 @@ const db_ajax_reload_all = (e) => {
 const db_ajax_reload_page = (e) => {
     e.ajax.reload(null, false);
 }
-if($("body").find('.ql-bold').length > 0){
-    $(document).on('click','button.ql-bold',function () {
-        alert()
-    })
-}
+// if($("body").find('.ql-bold').length > 0){
+//     $(document).on('click','button.ql-bold',function () {
+//         alert()
+//     })
+// }
 

@@ -101,7 +101,7 @@
                             <input type="file" id="update_avatar" class="d-none">
 
                             <img class="rounded-circle avatar-xl img-thumbnail"
-                                 src="@if($data['nguoi_tim_viec']['avatar'] != null){{URL::asset($data['nguoi_tim_viec']['avatar'])}}@elseif($data['nguoi_tim_viec']['avatar'] == null){{URL::asset('images\default-user-icon-8.jpg')}}@endif"
+                                 src="@if($data['nguoi_tim_viec']['avatar'] != null){{URL::asset(env('URL_ASSET_PUBLIC').$data['nguoi_tim_viec']['avatar'])}}@elseif($data['nguoi_tim_viec']['avatar'] == null){{URL::asset(env('URL_ASSET_PUBLIC').'images\default-user-icon-8.jpg')}}@endif"
                                  id="avatar-user">
 
                             <h4 class="mb-0 mt-1 text-capitalize">{{Auth::user()->ho_ten}}</h4>
@@ -614,26 +614,26 @@
     {{--    <script src="assets\libs\bootstrap-select\bootstrap-select.min.js"></script>--}}
 
     <!-- Ion Range Slider-->
-    <script src="{{URL::asset('assets\libs\ion-rangeslider\ion.rangeSlider.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\ion-rangeslider\ion.rangeSlider.min.js')}}"></script>
 
     <!-- Range slider init js-->
-    <script src="{{URL::asset('assets\js\pages\range-sliders.init.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\pages\range-sliders.init.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\jquery.multi-select.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.js')}}"></script>
 
     {{--date picker--}}
-    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\nguoiTimViec.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\nguoiTimViec.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-project.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.js"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\doi_mat_khau.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\date-picker-vi.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\doi_mat_khau.js')}}"></script>
     <script type="text/javascript">
         {{--let filePDF = '@if($data['nguoi_tim_viec']['file_path'] != null){{$data['nguoi_tim_viec']['file_path']}}@endif';--}}
         {{--console.log(filePDF)--}}

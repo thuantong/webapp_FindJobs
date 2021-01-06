@@ -1,11 +1,10 @@
-@extends('layouts.app')
-
+{{--@extends('layouts.app')--}}
+@extends('master.index')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-sm-8 col-md-8">
-            <div class="card">
 
+    <div class="row justify-content-center mt-3" @if (strtolower(Route::currentRouteName()) != 'auth.form.login' && strtolower(Route::currentRouteName()) != 'auth.form.register') @else style="min-height: 65vh"@endif>
+        <div class="col-sm-12 col-md-8">
+            <div class="card">
 
                 <div class="row">
                     <div class="col-sm-2 col-md-2 bg-primary center-element">
@@ -79,17 +78,7 @@
 
 
                             </form>
-{{--                            <div class="text-center">--}}
-{{--                                <h5 class="mt-3 text-muted">{{__('Đăng nhập với')}}</h5>--}}
-{{--                                <ul class="social-list list-inline mt-3 mb-0">--}}
-{{--                                    <li class="list-inline-item">--}}
-{{--                                        <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="fa fa-facebook-official"></i></a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="list-inline-item">--}}
-{{--                                        <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="fa fa-google-plus"></i></a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
+
                         </div>
                     </div>
                 </div>
@@ -97,15 +86,18 @@
             </div>
         </div>
     </div>
-</div>
+
 
 @endsection
 @push('scripts')
     <script type="text/javascript">
         $(function () {
+            let backround = "{{URL::asset(env('URL_ASSET_PUBLIC').'images/default/kDRPs.jpg')}}";
+            $('body').css('background-image','url('+backround+')');
+            // console.log(backround)
             $('input').on('input',function () {
                 $('#show-response-dang-ky').remove();
-            })
+            });
         })
     </script>
     @endpush

@@ -2,9 +2,9 @@
 @section('content')
     <head>
         {{--        <link href="assets\libs\clockpicker\bootstrap-clockpicker.min.css" rel="stylesheet" type="text/css">--}}
-        <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
               type="text/css">
 
     </head>
@@ -275,7 +275,7 @@
                         <div style="width: 8rem;height: 8rem;" id="avatar_tuyen_dung">
                             {{--                            <img src="{{URL::asset(Session::get('avatar'))}}" class="avatar-xl img-thumbnail" data-data="{{Session::get('avatar')}}"--}}
                             <img
-                                src="@if(Auth::user()->avatar != null){{URL::asset(Auth::user()->avatar)}}@else{{URL::asset('images\default-user-icon-8.jpg')}}@endif"
+                                src="@if(Auth::user()->avatar != null){{URL::asset(env('URL_ASSET_PUBLIC').Auth::user()->avatar)}}@else{{URL::asset(env('URL_ASSET_PUBLIC').'images\default-user-icon-8.jpg')}}@endif"
                                 class="avatar-xl img-thumbnail" data-data="{{Auth::user()->avatar}}"
                                 alt="profile-image" tabindex="-1" style="width: 100%;height: 100%">
                             <div class="position-absolute center-element"
@@ -409,30 +409,30 @@
     </div>
 @endsection
 @push('scripts')
-    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\jquery.multi-select.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.js')}}"></script>
 
-    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
 
     <script type="text/javascript"
-            src="{{URL::asset('assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
+            src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\date-time-picker\moment-with-locales.min.js')}}"></script>
 
     <link rel="stylesheet" type="text/css"
-          href="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
+          href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\date-time-picker\bootstrap-datetimepicker.css')}}">
     <script type="text/javascript"
-            src="{{URL::asset('assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+            src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\date-time-picker\bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\nhaTuyenDung.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\doi_mat_khau.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\nhaTuyenDung.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\doi_mat_khau.js')}}"></script>
     {{--    init valiable of confirm email--}}
     <script type="text/javascript">
         let data_action_confifm = '{{Auth::user()->id}}';
     </script>
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-gui-confirm-email.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-gui-confirm-email.js')}}"></script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\date-picker-vi.js')}}"></script>
     <script>
         $(function () {
             var fixedScroll = $('#scroll-fixed').offset();
@@ -500,7 +500,7 @@
         }
     </script>
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\themMoiCongTy.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\themMoiCongTy.js')}}"></script>
     <script>
         $(document).on('click', 'button#call-them-moi-cong-ty', function () {
             $('div.modal#them-moi-cong-ty').modal('show');

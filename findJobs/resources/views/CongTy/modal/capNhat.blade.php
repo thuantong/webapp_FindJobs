@@ -296,9 +296,9 @@
         <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 center-element position-relative">
             <div style="width: 8rem;height: 8rem;" id="logo_cong_ty">
                 <img
-                    src="@if($data['cong_ty']['logo'] != null){{URL::asset(''.$data['cong_ty']['logo'].'')}}@else{{URL::asset('images/default-company-logo.jpg')}}@endif"
+                    src="@if($data['cong_ty']['logo'] != null){{URL::asset(env('URL_ASSET_PUBLIC').$data['cong_ty']['logo'].'')}}@else{{URL::asset(env('URL_ASSET_PUBLIC').'images/default-company-logo.jpg')}}@endif"
                     class="avatar-xl img-thumbnail"
-                    data-data="@if($data['cong_ty']['logo'] != null){{URL::asset(''.$data['cong_ty']['logo'].'')}}@else{{URL::asset('images/default-company-logo.jpg')}}@endif"
+                    data-data="@if($data['cong_ty']['logo'] != null){{URL::asset($data['cong_ty']['logo'].'')}}@else{{URL::asset('images/default-company-logo.jpg')}}@endif"
                     alt="profile-image" tabindex="-1" style="width: 100%;height: 100%">
                 <div class="position-absolute hover-me"
                      style="display:none;width: 8rem;height: 8rem;top:0">

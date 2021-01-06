@@ -1,24 +1,24 @@
 @extends('master.index')
 @section('content')
     <head>
-        <link href="{{URL::asset('assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset('assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
         <!-- ION Slider -->
-        <link href="{{URL::asset('assets\libs\ion-rangeslider\ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\ion-rangeslider\ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
         {{--        <link href="assets\libs\bootstrap-select\bootstrap-select.min.css" rel="stylesheet" type="text/css">--}}
-        <link href="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
               rel="stylesheet">
-        <link href="{{URL::asset('assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
 
         {{--        date picker--}}
-        <link href="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
               type="text/css">
     </head>
     {{--                    <!-- start page title -->//header--}}
     @include('User.modal.capNhatExp')
     @include('User.modal.capNhatProject')
     @include('NopDon.modal.master')
-    @include('BaoCao.modalBaoCao')
+    {{--<!-- @include('BaoCao.modalBaoCao') -->--}}
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -32,9 +32,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div class="card overflow-auto-scroll">
-                <a href="/" class="position-absolute mr-1" style="right: 0">Xem tất cả</a>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 pb-2 pl-0">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="card text-right mb-0" style="border-bottom: none">
+                        <a href="/" class="mr-1" style="right: 0">Xem tất cả</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card overflow-auto-scroll mb-0">
+
                 <div class="card-body" id="container-items">
 
                     @include('TrangChu.items')
@@ -44,12 +52,20 @@
                     {{--                                           aria-hidden="true"></span>--}}
                     {{--                        </button>--}}
                     {{--                    </div>--}}
-                    {{$data['bai_tuyen_dung']->links()}}
+
                 </div>
 
             </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="card text-center mb-0" style="border-top: none">
+                        {{$data['bai_tuyen_dung']->links()}}
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div class="d-none d-md-block col-md-6 col-xl-6">
+        <div class="d-none d-md-block col-md-6 col-xl-6 pr-0">
             <div class="card">
                 <div class="card-body pb-0">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -198,10 +214,10 @@
                             <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center p-0">
                                 @if(intval(Session::get('loai_tai_khoan')) == 1)
 
-                                    <button class="btn btn-outline-primary float-right bao-cao-button-call"><i
+                                    <!-- <button class="btn btn-outline-primary float-right bao-cao-button-call"><i
                                             class="fa fa-exclamation">Báo cáo</i>
                                         @endif
-                                    </button>
+                                    </button> -->
                             </div>
 
                         </div>
@@ -235,12 +251,16 @@
                                     {{--                                    <span class="badge badge-danger noti-icon-badge position-absolute" style="right: 0px">{{$data['don_xin_viec']['total']}}</span>--}}
                                     {{----}}
                                     {{--                                </div>--}}
-                                    <button
+                                    <a
                                         class="btn btn-outline-warning waves-effect position-relative call-modal-nop-don">
-                                        <i class="fa fa-send">{{' Nộp đơn'}}</i>
+                                        <i class="text-dark fa fa-send">{{' Nộp đơn'}}</i>
 
-                                    </button>
+                                    </a>
+{{--                                    <a href="{{route('nopdon.nopDonBuocMot',array('nguoi_tim_viec'))}}"--}}
+{{--                                        class="btn btn-outline-warning waves-effect position-relative">--}}
+{{--                                        <i class="text-dark fa fa-send">{{' Nộp đơn'}}</i>--}}
 
+{{--                                    </a>--}}
 
                                 </div>
 
@@ -419,11 +439,7 @@
 
         };
         $(document).on('click', '#call-modal-nop-don', function () {
-            sendAjaxNoFunc('get', '/bai-viet/get-view-nop-don', {id: idBaiTuyenDung}, '').done(e => {
-                $('#modal-nop-don .modal-content').html(e);
-                $('#modal-nop-don').modal('show')
-            })
-
+            window.location.href = "/nguoi-tim-viec/nop-don-buoc-mot?bai_tuyen_dung="+idBaiTuyenDung;
         });
         let widthImage = $('#container-items .iteam-click').find('img').parent().width();
         let heightImage = widthImage;
@@ -452,28 +468,21 @@
 
             }
         }
-
-
     </script>
-
-    <script src="{{URL::asset('assets\libs\multiselect\jquery.multi-select.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\jquery-quicksearch\jquery.quicksearch.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\select2\select2.min.js')}}"></script>
-
 
 
     {{--date picker--}}
-    <script src="{{URL::asset('assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
-    <script src="{{URL::asset('assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
-    <script src="{{URL::asset('assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 
 
-    <script type="text/javascript" src="{{URL::asset('assets\js\date-picker-vi.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-bao-cao.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\date-picker-vi.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-bao-cao.js')}}"></script>
     <script type="text/javascript">
         //main
         $(function () {
-
+            // $('body').scrollTop(0);
             $('#container-items .iteam-click').find('img').css('width', widthImage).css('height', heightImage);
 
             // //init lấy danh sách việc làm | lấy page 1
@@ -549,84 +558,90 @@
                     $('.arrow-item').addClass('d-none');
                 }
             });
-            let formDataFileUpload  = new FormData();
-            let formDataFileUpload_check  = [];
-            $(document).on('change', '#add-new-file-upload-input', function (e) {
-                // var tmppath = URL.createObjectURL(e.target.files[0]);
-                // console.log( $(this).get(0).files.length);
-                let __this = $(this);
-                var formData = formDataFileUpload;
-                for (var i = 0; i < __this.get(0).files.length; ++i) {
-                    // console.log($(this).get(0).files[i]);
-                    let findTheSame = formDataFileUpload_check.includes(__this.get(0).files[i].name);
-                    if (findTheSame == false){
-                        formData.append("fileUpload[]", __this.get(0).files[i]);
-                        formDataFileUpload_check.push(__this.get(0).files[i].name);
-                        $('#render-file-upload').append('<span>' + __this.get(0).files[i].name + '</span><br>');
-                    }
+{{--            let formDataFileUpload  = new FormData();--}}
+{{--            let formDataFileUpload_check  = [];--}}
+{{--            $(document).on('change', '#add-new-file-upload-input', function (e) {--}}
+{{--                // var tmppath = URL.createObjectURL(e.target.files[0]);--}}
+{{--                // console.log( $(this).get(0).files.length);--}}
+{{--                let __this = $(this);--}}
+{{--                var formData = formDataFileUpload;--}}
+{{--                let countFile = 0;--}}
+{{--                for (var i = 0; i < __this.get(0).files.length; ++i) {--}}
+{{--                    // console.log($(this).get(0).files[i].type);--}}
+{{--                    let findTheSame = formDataFileUpload_check.includes(__this.get(0).files[i].name);--}}
+{{--                    // console.log(findTheSame); console.log(formDataFileUpload_check);--}}
+{{--                    if (findTheSame == false && $(this).get(0).files[i].type == "application/pdf"){--}}
+{{--                        formData.append("fileUpload[]", __this.get(0).files[i]);--}}
+{{--                        formDataFileUpload_check.push(__this.get(0).files[i].name);--}}
+{{--                        countFile++;--}}
+{{--                        // $('#render-file-upload').append('<span>' + __this.get(0).files[i].name + '</span><br>');--}}
+{{--                    }--}}
 
-                    // names.push($(this).get(0).files[i].name);
-                    // console.log(findTheSame)
-                }
-                let data = formData;
+{{--                    // names.push($(this).get(0).files[i].name);--}}
+{{--                    // console.log(findTheSame)--}}
+{{--                }--}}
+{{--                let data = formData;--}}
+{{--// console.log(data.getAll('fileUpload[]').length)--}}
+{{--                // return;--}}
+{{--                if(data.getAll('fileUpload[]').length > 0){--}}
+{{--                    $.ajax({--}}
+{{--                    method: 'post',--}}
+{{--                    url: '/nguoi-tim-viet/upload-file-multiple',--}}
+{{--                    data: data,--}}
+{{--                    headers: {--}}
+{{--                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),--}}
+{{--                    },--}}
+{{--                    processData: false,--}}
+{{--                    contentType: false,--}}
+{{--                }).done(e => {--}}
+{{--                    let response = e;--}}
+{{--                    for(let i = 0;i<response.length;i++){--}}
+{{--                        let link_res = '{{URL::asset(env('URL_ASSET_PUBLIC').'/uploads')}}'+'/'+response[i];--}}
+{{--                        $('#render-file-upload').append('<a href="'+link_res+'" target="_blank">' + response[i] + '</a><br>');--}}
+{{--                        // $('#render-file-upload-iframe').append('<iframe src="'+'{{URL::asset('/uploads')}}'+'/'+response[i]+'" style="width:100%"></iframe>');--}}
+{{--                    }--}}
+{{--                    console.log(data.getAll('fileUpload[]'));--}}
+{{--                    for(let [name, value] of data) {--}}
+{{--                        let checkFileSame = response.includes(name);--}}
+{{--                        if(checkFileSame == true){--}}
+{{--                            console.log('true')--}}
+{{--                            data.delete(name);--}}
+{{--                        }else{--}}
+{{--                            console.log('false')--}}
+{{--                        }--}}
 
-                // return;
-                $.ajax({
-                    method: 'post',
-                    url: '/nguoi-tim-viet/upload-file-multiple',
-                    data: data,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    },
-                    processData: false,
-                    contentType: false,
-                }).done(e => {
-                    let response = e;
-                    for(let i = 0;i<response.length;i++){
-                        $('#render-file-upload-iframe').append('<iframe src="'+'{{URL::asset('/uploads')}}'+'/'+response[i]+'"></iframe>');
-                    }
-                    console.log(data.getAll('fileUpload[]'));
-                    for(let [name, value] of data) {
-                        let checkFileSame = response.includes(name);
-                        if(checkFileSame == true){
-                            console.log('true')
-                            data.delete(name);
-                        }else{
-                            console.log('false')
-                        }
-
-                        // console.log(name)
-                        // console.log(value)
-                        // alert('${name} = ${value}'); // key1 = value1, then key2 = value2
-                    }
-                    console.log(data.getAll('fileUpload[]'))
-                    // console.log(data.get('fileUpload[]'));
-                    console.log(e);
-                })
+{{--                        // console.log(name)--}}
+{{--                        // console.log(value)--}}
+{{--                        // alert('${name} = ${value}'); // key1 = value1, then key2 = value2--}}
+{{--                    }--}}
+{{--                    // console.log(data.getAll('fileUpload[]'))--}}
+{{--                    // // console.log(data.get('fileUpload[]'));--}}
+{{--                    // console.log(e);--}}
+{{--                })--}}
+{{--                }--}}
 
 
-                // success: function (res) {
-                //     sendAjaxNoFunc('post', '/nguoi-tim-viet/upload-file-multiple', data, '').done(e => {
-                //         console.log(e);
-                //     })
-                //     // console.log(formData);
-                // }
-            });
-        $(document).on('click', '#add-new-file-upload', function () {
-            $('#add-new-file-upload-input').trigger('click');
-        });
+
+{{--                // success: function (res) {--}}
+{{--                //     sendAjaxNoFunc('post', '/nguoi-tim-viet/upload-file-multiple', data, '').done(e => {--}}
+{{--                //         console.log(e);--}}
+{{--                //     })--}}
+{{--                //     // console.log(formData);--}}
+{{--                // }--}}
+{{--            });--}}
+//         $(document).on('click', '#add-new-file-upload', function () {
+//             $('#add-new-file-upload-input').trigger('click');
+//         });
         })
         ;
     </script>
     <!-- Plugins js-->
-    {{--    <script src="{{URL::asset('assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>--}}
+    {{--    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>--}}
 
-    {{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\cap-nhat-project.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-project.js')}}"></script>--}}
 
 
-    <!-- Init js-->
-    {{--    <script src="{{URL::asset('assets\js\pages\form-wizard.init.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{URL::asset('assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>--}}
+{{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>--}}
 
 @endpush
