@@ -227,7 +227,7 @@
                                     <div class="col-sm-12 col-md-12">
 {{--                                        <a href="{{route('nguoitimviec.viewPDF',array('file_name'=>$data['nguoi_tim_viec']['file_path']))}}" target="_blank">Xem file</a>--}}
 {{--                                        <object data="@if($data['nguoi_tim_viec']['file_path'] != null){{URL::asset($data['nguoi_tim_viec']['file_path'])}}@endif" type="application/pdf">--}}
-                                            <iframe src="@if($data['nguoi_tim_viec']['file_path'] != null){{URL::asset($data['nguoi_tim_viec']['file_path'])}}@endif" style="width: calc(100%);height: 500px"></iframe>
+                                            <iframe src="@if($data['nguoi_tim_viec']['file_path'] != null){{URL::asset(env('URL_ASSET_PUBLIC').$data['nguoi_tim_viec']['file_path'])}}@endif" style="width: calc(100%);height: 500px"></iframe>
 {{--                                        </object>--}}
 
 {{--                                        <dic  id="load-file-pdf">--}}

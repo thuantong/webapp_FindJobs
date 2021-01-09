@@ -1,18 +1,25 @@
 @extends('master.index')
 @section('content')
     <head>
-        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\multi-select.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\multi-select.css')}}" rel="stylesheet"
+              type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\select2\select2.min.css')}}" rel="stylesheet"
+              type="text/css">
         <!-- ION Slider -->
-        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\ion-rangeslider\ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\ion-rangeslider\ion.rangeSlider.css')}}"
+              rel="stylesheet" type="text/css">
         {{--        <link href="assets\libs\bootstrap-select\bootstrap-select.min.css" rel="stylesheet" type="text/css">--}}
-        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
-              rel="stylesheet">
-        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\sweetalert2\sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+        <link
+            href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.css')}}"
+            rel="stylesheet">
+        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\sweetalert2\sweetalert2.min.css')}}"
+              rel="stylesheet" type="text/css">
 
         {{--        date picker--}}
-        <link href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}" rel="stylesheet"
-              type="text/css">
+        <link
+            href="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.css')}}"
+            rel="stylesheet"
+            type="text/css">
     </head>
     {{--                    <!-- start page title -->//header--}}
     @include('User.modal.capNhatExp')
@@ -89,10 +96,25 @@
                                         <label class="fa fa-street-view"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Chức vụ:</span>
-                                        <p class="mb-0">
-                                            <label class="chuc_vu">Đang tải...</label>
-                                        </p></div>
+                                        <label>Chức vụ:</label>
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 chuc_vu">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+                                        {{--                                        <p class="mb-0">--}}
+                                        {{--                                            <label class="chuc_vu">--}}
+                                        {{--                                                <div class="processing-input text-center">--}}
+                                        {{--                                                    <button class="btn btn-white" type="button" disabled="">--}}
+                                        {{--                                                        Đang tải <span class="spinner-border spinner-border-sm mr-1"--}}
+                                        {{--                                                                       role="status" aria-hidden="true"></span>--}}
+                                        {{--                                                    </button>--}}
+                                        {{--                                                </div>--}}
+                                        {{--                                            </label>--}}
+                                        {{--                                        </p>--}}
+                                    </div>
                                 </div>
 
                                 <div class="row border-bottom pt-1">
@@ -100,10 +122,16 @@
                                         <label class="icofont icofont-brainstorming"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Kinh nghiệm:</span>
-                                        <p class="mb-0">
-                                            <label class="kinh_nghiem">Đang tải...</label>
-                                        </p></div>
+                                        <label>Kinh nghiệm:</label>
+                                        {{--                                        <br>--}}
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 kinh_nghiem">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row border-bottom pt-1">
@@ -111,10 +139,19 @@
                                         <label class="fa fa-graduation-cap"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Yêu cầu bằng cấp:</span>
-                                        <p class="mb-0">
-                                            <label class="yc_bang_cap">Đang tải...</label>
-                                        </p></div>
+                                        <label>Yêu cầu bằng cấp:</label>
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 yc_bang_cap">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{--                                        <p class="mb-0">--}}
+                                    {{--                                            <label class="yc_bang_cap">--}}
+                                    {{--                                            </label>--}}
+                                    {{--                                        </p></div>--}}
                                 </div>
 
                                 <div class="row border-bottom pt-1">
@@ -122,10 +159,18 @@
                                         <label class="fa fa-user-plus"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Số lượng cần tuyển:</span>
-                                        <p class="mb-0">
-                                            <label class="so_luong_tuyen">Đang tải...</label>
-                                        </p></div>
+                                        <label>Số lượng cần tuyển:</label>
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 so_luong_tuyen">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+                                        {{--                                        <p class="mb-0">--}}
+                                        {{--                                            <label class="so_luong_tuyen">Đang tải...</label>--}}
+                                        {{--                                        </p>--}}
+                                    </div>
                                 </div>
 
                                 <div class="row pt-1">
@@ -133,10 +178,18 @@
                                         <label class="icofont icofont-chart-histogram"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Ngành nghề:</span>
-                                        <p class="mb-0">
-                                            <label class="nganh_nghe">Đang tải...</label>
-                                        </p></div>
+                                        <label>Ngành nghề:</label>
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 nganh_nghe">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+                                        {{--                                        <p class="mb-0">--}}
+                                        {{--                                            <label class="nganh_nghe">Đang tải...</label>--}}
+                                        {{--                                        </p>--}}
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 border-left">
@@ -145,10 +198,19 @@
                                         <label class="fa fa-calendar-plus-o"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Hạn nộp hồ sơ:</span>
-                                        <p class="mb-0">
-                                            <label class="han_nop">Đang tải...</label>
-                                        </p></div>
+                                        <label>Hạn nộp hồ sơ:</label>
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 han_nop">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+
+                                        {{--                                        <p class="mb-0">--}}
+                                        {{--                                            <label class="han_nop">Đang tải...</label>--}}
+                                        {{--                                        </p> --}}
+                                    </div>
                                 </div>
 
                                 <div class="row border-bottom pt-1">
@@ -156,10 +218,26 @@
                                         <label class="fa fa-briefcase"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Hình thức làm việc:</span>
-                                        <p class="mb-0">
-                                            <label class="kieu_lam_viec">Đang tải...</label>
-                                        </p></div>
+                                        <label>Hình thức làm việc:</label>
+
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 kieu_lam_viec">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+{{--                                        <div class="row">--}}
+{{--                                            <div class="col-md-12 kieu_lam_viec">--}}
+{{--                                                <div class="bg-light w-100 mb-1 box-thumbnail"--}}
+{{--                                                     style="height: 25px"></div>--}}
+
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+                                        {{--                                        <p class="mb-0">--}}
+                                        {{--                                            <label class="kieu_lam_viec">Đang tải...</label>--}}
+                                        {{--                                        </p>--}}
+                                    </div>
                                 </div>
 
                                 <div class="row border-bottom pt-1">
@@ -167,10 +245,18 @@
                                         <label class="fa fa-transgender"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Giới tính:</span>
-                                        <p class="mb-0">
-                                            <label class="gioi_tinh_tuyen">Đang tải...</label>
-                                        </p></div>
+                                        <label>Giới tính:</label>
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 gioi_tinh_tuyen">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+{{--                                        <p class="mb-0">--}}
+{{--                                            <label class="gioi_tinh_tuyen">Đang tải...</label>--}}
+{{--                                        </p>--}}
+                                    </div>
                                 </div>
 
                                 <div class="row border-bottom pt-1">
@@ -178,10 +264,18 @@
                                         <label class="icofont icofont-location-pin"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Địa điểm tuyển dụng:</span>
-                                        <p class="mb-0">
-                                            <label class="dia_diem">Đang tải...</label>
-                                        </p></div>
+                                        <label>Địa điểm tuyển dụng:</label>
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 dia_diem">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+{{--                                        <p class="mb-0">--}}
+{{--                                            <label class="dia_diem">Đang tải...</label>--}}
+{{--                                        </p>--}}
+                                    </div>
                                 </div>
 
                                 <div class="row pt-1">
@@ -189,15 +283,24 @@
                                         <label class="icofont icofont-money"></label>
                                     </div>
                                     <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
-                                        <span>Mức lương:</span>
-                                        <p class="mb-0">
-                                            {{--                                            @if(Auth::user() != null)--}}
-                                            <label class="muc_luong">Đang tải...</label>
-                                            {{--                                            @else--}}
-                                            {{--                                                <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a>--}}
-                                            {{----}}
-                                            {{--                                            @endif--}}
-                                        </p></div>
+                                        <label>Mức lương:</label>
+
+                                        <div class="row">
+                                            <div class="col-md-12 pb-2 muc_luong">
+                                                <div class="bg-light w-100 mb-1 box-thumbnail"
+                                                     style="height: 25px"></div>
+
+                                            </div>
+                                        </div>
+{{--                                        <p class="mb-0">--}}
+{{--                                            --}}{{--                                            @if(Auth::user() != null)--}}
+{{--                                            <label class="muc_luong">Đang tải...</label>--}}
+{{--                                            --}}{{--                                            @else--}}
+{{--                                            --}}{{--                                                <a href="{{URL::asset('/dang-nhap')}}">Đăng nhập</a>--}}
+{{--                                            --}}{{----}}
+{{--                                            --}}{{--                                            @endif--}}
+{{--                                        </p>--}}
+                                    </div>
                                 </div>
 
                             </div>
@@ -212,12 +315,13 @@
                                 {{--                                <b>Báo cáo Nhà tuyển dụng:</b>--}}
                             </div>
                             <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 text-center p-0">
-                                @if(intval(Session::get('loai_tai_khoan')) == 1)
+                            @if(intval(Session::get('loai_tai_khoan')) == 1)
 
-                                    <!-- <button class="btn btn-outline-primary float-right bao-cao-button-call"><i
+                                <!-- <button class="btn btn-outline-primary float-right bao-cao-button-call"><i
                                             class="fa fa-exclamation">Báo cáo</i>
-                                        @endif
-                                    </button> -->
+                                            </button> -->
+                                @endif
+
                             </div>
 
                         </div>
@@ -256,11 +360,11 @@
                                         <i class="text-dark fa fa-send">{{' Nộp đơn'}}</i>
 
                                     </a>
-{{--                                    <a href="{{route('nopdon.nopDonBuocMot',array('nguoi_tim_viec'))}}"--}}
-{{--                                        class="btn btn-outline-warning waves-effect position-relative">--}}
-{{--                                        <i class="text-dark fa fa-send">{{' Nộp đơn'}}</i>--}}
+                                    {{--                                    <a href="{{route('nopdon.nopDonBuocMot',array('nguoi_tim_viec'))}}"--}}
+                                    {{--                                        class="btn btn-outline-warning waves-effect position-relative">--}}
+                                    {{--                                        <i class="text-dark fa fa-send">{{' Nộp đơn'}}</i>--}}
 
-{{--                                    </a>--}}
+                                    {{--                                    </a>--}}
 
                                 </div>
 
@@ -277,6 +381,7 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
+
         let loaiTaiKhoan = '{{Session::get('loai_tai_khoan')}}'
         let idBaiTuyenDung = '';
         let currenPage = null;
@@ -284,9 +389,16 @@
         let next_page_check = null;
 
         const getProcessing = () => {
-            return '<div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">\n' +
-                '                 Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>\n' +
-                '    </button></div>';
+            return '<div class="row">\n' +
+                '                                            <div class="col-md-12 muc_luong">\n' +
+                '                                                <div class="bg-light w-100 mb-1 box-thumbnail"\n' +
+                '                                                     style="height: 25px"></div>\n' +
+                '\n' +
+                '                                            </div>\n' +
+                '                                        </div>'
+            // return '<div class="processing-input text-center"><button class="btn btn-white" type="button" disabled="">\n' +
+            //     '                 Đang tải <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>\n' +
+            //     '    </button></div>';
         }
 
         const getThongTinChiTietPost = (e) => {
@@ -439,7 +551,7 @@
 
         };
         $(document).on('click', '#call-modal-nop-don', function () {
-            window.location.href = "/nguoi-tim-viec/nop-don-buoc-mot?bai_tuyen_dung="+idBaiTuyenDung;
+            window.location.href = "/nguoi-tim-viec/nop-don-buoc-mot?bai_tuyen_dung=" + idBaiTuyenDung;
         });
         let widthImage = $('#container-items .iteam-click').find('img').parent().width();
         let heightImage = widthImage;
@@ -471,14 +583,17 @@
     </script>
 
 
-    {{--date picker--}}
-    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
-    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
+
+    <script
+        src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-datepicker\bootstrap-datepicker.min.js')}}"></script>
+    <script
+        src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\bootstrap-touchspin\jquery.bootstrap-touchspin.min.js')}}"></script>
     <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\lay-danh-sach-viec-lam.js')}}"></script>
 
 
     <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\date-picker-vi.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-bao-cao.js')}}"></script>
+    <script type="text/javascript"
+            src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-bao-cao.js')}}"></script>
     <script type="text/javascript">
         //main
         $(function () {
@@ -558,77 +673,76 @@
                     $('.arrow-item').addClass('d-none');
                 }
             });
-{{--            let formDataFileUpload  = new FormData();--}}
-{{--            let formDataFileUpload_check  = [];--}}
-{{--            $(document).on('change', '#add-new-file-upload-input', function (e) {--}}
-{{--                // var tmppath = URL.createObjectURL(e.target.files[0]);--}}
-{{--                // console.log( $(this).get(0).files.length);--}}
-{{--                let __this = $(this);--}}
-{{--                var formData = formDataFileUpload;--}}
-{{--                let countFile = 0;--}}
-{{--                for (var i = 0; i < __this.get(0).files.length; ++i) {--}}
-{{--                    // console.log($(this).get(0).files[i].type);--}}
-{{--                    let findTheSame = formDataFileUpload_check.includes(__this.get(0).files[i].name);--}}
-{{--                    // console.log(findTheSame); console.log(formDataFileUpload_check);--}}
-{{--                    if (findTheSame == false && $(this).get(0).files[i].type == "application/pdf"){--}}
-{{--                        formData.append("fileUpload[]", __this.get(0).files[i]);--}}
-{{--                        formDataFileUpload_check.push(__this.get(0).files[i].name);--}}
-{{--                        countFile++;--}}
-{{--                        // $('#render-file-upload').append('<span>' + __this.get(0).files[i].name + '</span><br>');--}}
-{{--                    }--}}
+            let formDataFileUpload = new FormData();
+            let formDataFileUpload_check = [];
+            $(document).on('change', '#add-new-file-upload-input', function (e) {
+                // var tmppath = URL.createObjectURL(e.target.files[0]);
+                // console.log( $(this).get(0).files.length);
+                let __this = $(this);
+                var formData = formDataFileUpload;
+                let countFile = 0;
+                for (var i = 0; i < __this.get(0).files.length; ++i) {
+                    // console.log($(this).get(0).files[i].type);
+                    let findTheSame = formDataFileUpload_check.includes(__this.get(0).files[i].name);
+                    // console.log(findTheSame); console.log(formDataFileUpload_check);
+                    if (findTheSame == false && $(this).get(0).files[i].type == "application/pdf") {
+                        formData.append("fileUpload[]", __this.get(0).files[i]);
+                        formDataFileUpload_check.push(__this.get(0).files[i].name);
+                        countFile++;
+                        // $('#render-file-upload').append('<span>' + __this.get(0).files[i].name + '</span><br>');
+                    }
 
-{{--                    // names.push($(this).get(0).files[i].name);--}}
-{{--                    // console.log(findTheSame)--}}
-{{--                }--}}
-{{--                let data = formData;--}}
-{{--// console.log(data.getAll('fileUpload[]').length)--}}
-{{--                // return;--}}
-{{--                if(data.getAll('fileUpload[]').length > 0){--}}
-{{--                    $.ajax({--}}
-{{--                    method: 'post',--}}
-{{--                    url: '/nguoi-tim-viet/upload-file-multiple',--}}
-{{--                    data: data,--}}
-{{--                    headers: {--}}
-{{--                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),--}}
-{{--                    },--}}
-{{--                    processData: false,--}}
-{{--                    contentType: false,--}}
-{{--                }).done(e => {--}}
-{{--                    let response = e;--}}
-{{--                    for(let i = 0;i<response.length;i++){--}}
-{{--                        let link_res = '{{URL::asset(env('URL_ASSET_PUBLIC').'/uploads')}}'+'/'+response[i];--}}
-{{--                        $('#render-file-upload').append('<a href="'+link_res+'" target="_blank">' + response[i] + '</a><br>');--}}
-{{--                        // $('#render-file-upload-iframe').append('<iframe src="'+'{{URL::asset('/uploads')}}'+'/'+response[i]+'" style="width:100%"></iframe>');--}}
-{{--                    }--}}
-{{--                    console.log(data.getAll('fileUpload[]'));--}}
-{{--                    for(let [name, value] of data) {--}}
-{{--                        let checkFileSame = response.includes(name);--}}
-{{--                        if(checkFileSame == true){--}}
-{{--                            console.log('true')--}}
-{{--                            data.delete(name);--}}
-{{--                        }else{--}}
-{{--                            console.log('false')--}}
-{{--                        }--}}
+                    // names.push($(this).get(0).files[i].name);
+                    // console.log(findTheSame)
+                }
+                let data = formData;
+// console.log(data.getAll('fileUpload[]').length)
+                // return;
+                if (data.getAll('fileUpload[]').length > 0) {
+                    $.ajax({
+                        method: 'post',
+                        url: '/nguoi-tim-viet/upload-file-multiple',
+                        data: data,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                        },
+                        processData: false,
+                        contentType: false,
+                    }).done(e => {
+                        let response = e;
+                        for (let i = 0; i < response.length; i++) {
+                            let link_res = '{{URL::asset(env('URL_ASSET_PUBLIC').'/uploads')}}' + '/' + response[i];
+                            $('#render-file-upload').append('<a href="' + link_res + '" target="_blank">' + response[i] + '</a><br>');
+                            // $('#render-file-upload-iframe').append('<iframe src="'+'{{URL::asset('/uploads')}}'+'/'+response[i]+'" style="width:100%"></iframe>');
+                        }
+                        console.log(data.getAll('fileUpload[]'));
+                        for (let [name, value] of data) {
+                            let checkFileSame = response.includes(name);
+                            if (checkFileSame == true) {
+                                console.log('true')
+                                data.delete(name);
+                            } else {
+                                console.log('false')
+                            }
 
-{{--                        // console.log(name)--}}
-{{--                        // console.log(value)--}}
-{{--                        // alert('${name} = ${value}'); // key1 = value1, then key2 = value2--}}
-{{--                    }--}}
-{{--                    // console.log(data.getAll('fileUpload[]'))--}}
-{{--                    // // console.log(data.get('fileUpload[]'));--}}
-{{--                    // console.log(e);--}}
-{{--                })--}}
-{{--                }--}}
+                            // console.log(name)
+                            // console.log(value)
+                            // alert('${name} = ${value}'); // key1 = value1, then key2 = value2
+                        }
+                        // console.log(data.getAll('fileUpload[]'))
+                        // // console.log(data.get('fileUpload[]'));
+                        // console.log(e);
+                    })
+                }
 
 
-
-{{--                // success: function (res) {--}}
-{{--                //     sendAjaxNoFunc('post', '/nguoi-tim-viet/upload-file-multiple', data, '').done(e => {--}}
-{{--                //         console.log(e);--}}
-{{--                //     })--}}
-{{--                //     // console.log(formData);--}}
-{{--                // }--}}
-{{--            });--}}
+                // success: function (res) {
+                //     sendAjaxNoFunc('post', '/nguoi-tim-viet/upload-file-multiple', data, '').done(e => {
+                //         console.log(e);
+                //     })
+                //     // console.log(formData);
+                // }
+            });
 //         $(document).on('click', '#add-new-file-upload', function () {
 //             $('#add-new-file-upload-input').trigger('click');
 //         });
@@ -636,12 +750,12 @@
         ;
     </script>
     <!-- Plugins js-->
-    {{--    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>--}}
+    {{--    --}}{{--    <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\twitter-bootstrap-wizard\jquery.bootstrap.wizard.min.js')}}"></script>--}}
 
-    {{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-project.js')}}"></script>--}}
+    {{--    --}}{{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-kinh-nghiem.js')}}"></script>--}}
+    {{--    --}}{{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\cap-nhat-project.js')}}"></script>--}}
 
 
-{{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>--}}
+    {{--    <script type="text/javascript" src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\js\app\chuc-nang-nop-don-ung-tuyen.js')}}"></script>--}}
 
 @endpush

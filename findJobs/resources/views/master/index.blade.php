@@ -82,13 +82,16 @@
     <div class="navbar-custom">
 
         <ul class="list-unstyled topnav-menu float-right mb-0">
+            @if(Session::get('loai_tai_khoan') != 3)
             <li>
 
                 <a href="/" class="nav-link d-none d-md-block text-white">
                     Việc làm
                 </a>
             </li>
+            @endif
             @if (strtolower(Route::currentRouteName()) != 'auth.form.login' && strtolower(Route::currentRouteName()) != 'auth.form.register')
+                    @if(Session::get('loai_tai_khoan') != 3)
                 <li class="d-none d-md-block">
                     <a class="nav-link center-element search-field-new-query" id="search-field-new-query"
                        data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
@@ -96,6 +99,7 @@
                         <span class="text-white">Tìm kiếm</span>
                     </a>
                 </li>
+                        @endif
             @endif
 
             @if(Auth::user() != null)
@@ -310,9 +314,9 @@
 
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
             <li>
-                <a href="/" class="nav-link logo text-center">
+                <a href="/@if(Session::get('loai_tai_khoan') == 3){{'admin'}}@endif" class="nav-link logo text-center">
             <span class="logo">
-                <span class="logo-lg-text-light text-white">{{env('APP_NAME')}}</span>
+                <span class="logo-lg-text-light text-white">{{env('APP_NAME')}}@if(Session::get('loai_tai_khoan') == 3){{' - Quản trị'}}@endif</span>
 {{--                            <img src="assets\images\logo-sm.png" alt="" height="24">--}}
             {{--                            <img src="assets\images\logo-light.png" alt="" height="20">--}}
             <!-- <span class="logo-lg-text-light">Xeria</span> -->

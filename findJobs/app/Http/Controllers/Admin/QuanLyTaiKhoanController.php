@@ -24,7 +24,11 @@ class QuanLyTaiKhoanController extends Controller
 
     public function getDanhSachTaiKhoan()
     {
-        $data['data'] = TaiKhoan::query()->with('getPhanQuyen')->get()->toArray();
+        $data['data'] = TaiKhoan::query()->with([
+            'getPhanQuyen'=>function($q){
+                $q->orderBy('id','desc');
+            }
+        ])->get()->toArray();
         return $data;
         dd($data);
     }

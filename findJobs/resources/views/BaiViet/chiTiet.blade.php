@@ -44,13 +44,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2 col-md-2">
+                    <div class="col-sm-6 col-md-2 p-1">
                         <img
                             src="@if($data['get_cong_ty']['logo'] != null){{URL::asset(env('URL_ASSET_PUBLIC').$data['get_cong_ty']['logo'].'')}}@endif"
-                            class="border" style="width: calc(100%)">
+                            class="" style="width: calc(100%)">
 
                     </div>
-                    <div class="col-sm-4 col-md-4">
+                    <div class="col-sm-6 col-md-4">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
                                 <i>
@@ -91,35 +91,8 @@
                             </div>
                         </div>
 
-                        @if(intval(Session::get('loai_tai_khoan')) == 1)
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6 text-left">
-                                    <div
-                                        class="btn quan-tam-nha-tuyen-dung mt-2  @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"
-                                        id="quan-tam-nha-tuyen-dung"
-                                        data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">
-                                        <i class="icofont icofont-thumbs-up">@if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true){{' Đã quan tâm'}}@else{{' Quan tâm'}}@endif</i>
-                                        <span class="badge badge-danger noti-icon-badge position-absolute"
-                                              style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>
-                                    </div>
-
-                                    {{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
-                                    {{--                                    <button class="btn btn-info btn-sm"></button>--}}
-                                </div>
-                                    <div class="col-sm-12 col-md-6 text-left">
-                                        <button
-                                            class="btn mt-2 @if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data']) == false) btn-outline-primary @else btn-primary like-animation @endif waves-effect bao-cao-button-call"
-                                            @if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data']) == false) id="bao-cao-button-call" @endif
-                                        ><i
-                                                class="fa fa-exclamation"></i>@if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data'])){{__(' Đã báo cáo')}}@else{{__(' Báo cáo')}}@endif
-                                        </button>
-                                    </div>
-
-                            </div>
-                        @endif
-
                     </div>
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-12 col-md-6">
                         <div class="row">
                             <div class="col-sm-12 col-md-12">
                                 <label class="mb-0">Giới thiệu:</label>
@@ -147,6 +120,34 @@
 
                         </div>
 
+                    </div>
+                    <div class="col-sm-12 col-md-12 text-center">
+                        @if(intval(Session::get('loai_tai_khoan')) == 1)
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 text-left">
+                                    <div
+                                        class="btn quan-tam-nha-tuyen-dung mt-2  @if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true) btn-info like-animation @else btn-outline-info @endif waves-effect position-relative"
+                                        id="quan-tam-nha-tuyen-dung"
+                                        data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif">
+                                        <i class="icofont icofont-thumbs-up">@if(in_array($data['get_nha_tuyen_dung']['id'],$data['nha_tuyen_dung_da_quan_tam']['data']) == true){{' Đã quan tâm'}}@else{{' Quan tâm'}}@endif</i>
+                                        <span class="badge badge-danger noti-icon-badge position-absolute"
+                                              style="right: 0px">{{$data['nha_tuyen_dung_da_quan_tam']['total']}}</span>
+                                    </div>
+{{--                                    @dd($data['get_nha_tuyen_dung']['get_tai_khoan']['ho_ten'])--}}
+                                    {{--                                    <div class="btn btn-outline-info btn-sm quan-tam-nha-tuyen-dung" id="quan-tam-nha-tuyen-dung" data-id="@if($data['get_nha_tuyen_dung']['id'] != null){{$data['get_nha_tuyen_dung']['id']}}@endif"><i class="fa fa-heart">Quan tâm</i></div>--}}
+                                    {{--                                    <button class="btn btn-info btn-sm"></button>--}}
+                                </div>
+                                <div class="col-sm-6 col-md-6 text-right">
+                                    <button
+                                        class="btn mt-2 @if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data']) == false) btn-outline-primary @else btn-primary like-animation @endif waves-effect bao-cao-button-call"
+                                        @if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data']) == false) id="bao-cao-button-call" data-id="{{$data['get_nha_tuyen_dung']['id']}}" @endif
+                                    ><i
+                                            class="fa fa-exclamation"></i>@if(in_array($data['get_nha_tuyen_dung']['id'],$data['bao_cao']['data'])){{__(' Đã báo cáo')}}@else{{__(' Báo cáo')}}@endif
+                                    </button>
+                                </div>
+
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -380,7 +381,7 @@
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 border-left">
                         <div class="w-100 position-relative overflow-y-auto">
-                            <div class="w-100" id="noi-dung-right-side" style="height: 50px">
+                            <div class="w-100" id="noi-dung-right-side" style="height: auto">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <h4 class="tieu_de bg-light p-1 m-0 text-center">Việc làm gợi ý<a
@@ -643,9 +644,9 @@
         let idBaiTuyenDung = '{{$data['id']}}';
         $(function () {
             // fullSizePage();
-            let size_parent_of_right_side = $('#container-section').height();
-            console.log(size_parent_of_right_side)
-            $('#noi-dung-right-side').css('height', size_parent_of_right_side + 'px')
+            // let size_parent_of_right_side = $('#container-section').height();
+            // console.log(size_parent_of_right_side)
+            // $('#noi-dung-right-side').css('height', size_parent_of_right_side + 'px')
         })
     </script>
     <script src="{{URL::asset(env('URL_ASSET_PUBLIC').'assets\libs\multiselect\jquery.multi-select.js')}}"></script>

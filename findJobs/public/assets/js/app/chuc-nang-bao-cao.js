@@ -1,7 +1,6 @@
 $(document).on('click', '#bao-cao-button-call', function () {
     let __this = $(this);
     let id = __this.data('id');
-
     $('#bao-cao-modal').modal('show');
     $('#bao-cao-modal').find('#action-check').val(id);
 
@@ -11,6 +10,8 @@ $(document).on('click', '#bao-cao-modal .modal-footer #save', function () {
     let __this = $(this);
     let __thisModal_content = $('#bao-cao-modal').find('.modal-body');
     let idNTD = __thisModal_content.find('#action-check').val();
+    // console.log(idNTD)
+    // return;
     let noi_dung_BC = __thisModal_content.find('#noi-dung-bao-cao').val();
     let error = 0;
     error += notNullMessage(__thisModal_content.find('.not-null'));

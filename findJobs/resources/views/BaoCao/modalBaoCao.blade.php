@@ -27,7 +27,7 @@
 
                 <div class="form-group row">
                     <div class="col-sm-12 col-md-12 text-center">
-                        <h4>Nhà tuyển dụng</h4>
+                        <h4>{{$data['get_nha_tuyen_dung']['get_tai_khoan']['ho_ten']}}</h4>
                     </div>
 
                 </div>

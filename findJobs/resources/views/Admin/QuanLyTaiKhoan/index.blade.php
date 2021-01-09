@@ -48,7 +48,7 @@
                                     <th class="text-center">STT</th>
                                     <th class="text-center">Tên tài khoản</th>
                                     <th class="text-center">Email</th>
-                                    <th class="text-center">Quyền</th>
+                                    <th class="text-center">Họ và Tên</th>
                                     <th class="text-center">Trạng thái</th>
                                     <th class="text-center">Chức năng</th>
                                 </tr>
